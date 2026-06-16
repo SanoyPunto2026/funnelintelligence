@@ -23,6 +23,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    window.clearApp = clearData;
     // Inject the legacy logic after the component mounts
     const script = document.createElement('script');
     script.src = '/legacy/trd-logic.js';
@@ -133,8 +134,8 @@ export default function Home() {
       <div class="topbar">
         <div class="title"><h2 id="pageTitle">Action Center</h2><p id="pageSubtitle">Prioridades y decisiones del día.</p></div>
         <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <button class="learn-toggle" id="uploadBtn"><i class="ph ph-download-simple"></i> Cargar CSV/Excel</button>
-          <button class="learn-toggle" id="clearBtn" style="background:#ef4444;border-color:#ef4444"><i class="ph ph-trash"></i> Eliminar Datos</button>
+          <button class="learn-toggle" id="uploadBtn" onclick="document.querySelector('input[type=\\'file\\']').click()"><i class="ph ph-download-simple"></i> Cargar CSV/Excel</button>
+          <button class="learn-toggle" id="clearBtn" onclick="window.clearApp()" style="background:#ef4444;border-color:#ef4444"><i class="ph ph-trash"></i> Eliminar Datos</button>
           <button class="learn-toggle" onclick="toggleLearning()"><i class="ph ph-graduation-cap"></i> Learning Mode</button>
           <div class="pill"><i class="ph-fill ph-brain"></i> Ask TRD AI</div>
         </div>
@@ -155,18 +156,6 @@ export default function Home() {
     </div>
   `;
 
-  useEffect(() => {
-    // Attach event listener to our custom upload button dynamically injected
-    const btn = document.getElementById('uploadBtn');
-    if (btn) {
-      btn.onclick = () => {
-        if (fileInputRef.current) fileInputRef.current.click();
-      };
-    }
-    const clrBtn = document.getElementById('clearBtn');
-    if (clrBtn) {
-      clrBtn.onclick = clearData;
-    }
   }, [htmlString]); // This runs after htmlString is injected or changed
 
   return (
