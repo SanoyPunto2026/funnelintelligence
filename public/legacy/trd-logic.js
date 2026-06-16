@@ -1,4 +1,4 @@
-﻿let DATA = window.DATA || {};
+let DATA = window.DATA || {};
 
 let RAW_DATE_DATA = {
   client_configs: [],
@@ -10,6 +10,16 @@ let RAW_DATE_DATA = {
 
 window.updateData = function(newData) { 
   if (!newData) return;
+  
+  // Si no hay datos, inyectamos un cliente "Sin Datos" con valores en 0
+  if (!newData.clients || newData.clients.length === 0) {
+    newData = {
+      clients: [{ client: "Sin Datos", currency: "USD" }],
+      leads: [],
+      ads: [{ client: "Sin Datos", currency: "USD", ad_name_norm: "-", adset_norm: "-", spend: 0, meta_results: 0 }]
+    };
+  }
+  
   DATA = newData;
   
   if (newData.clients || newData.leads || newData.ads) {
@@ -24,6 +34,9 @@ window.updateData = function(newData) {
     if (dates.length > 0) {
       RAW_DATE_DATA.available_start = dates[0];
       RAW_DATE_DATA.available_end = dates[dates.length - 1];
+    } else {
+      RAW_DATE_DATA.available_start = "2026-05-01";
+      RAW_DATE_DATA.available_end = "2026-05-31";
     }
   }
 
@@ -708,7 +721,6 @@ async function askAI() {
     chatEl.innerHTML += `<div class="msg"><strong>TRD AI:</strong> <em>Error de conexin con Gemini.</em></div>`;
   }
 }
-function answerAI(q){ return ""; }</div><div class="msg"><strong>TRD AI:</strong> ${answerAI(q)}</div>`;document.getElementById('askInput').value=''}
 function answerAI(q){
   const s=q.toLowerCase();
   const worst=[...DATA.clients].sort((a,b)=>activeScore(a)-activeScore(b))[0];
