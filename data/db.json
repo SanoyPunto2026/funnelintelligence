@@ -1,0 +1,6657 @@
+{
+  "clients": [
+    {
+      "client": "John Roa",
+      "currency": "USD",
+      "leads": 386,
+      "appointments": 43,
+      "moved": 386,
+      "active": 94,
+      "attributed": 121,
+      "stagnant": 292,
+      "workflow": 386,
+      "used_button": 55,
+      "waiting": 87,
+      "discarded_inferred": 0,
+      "custom_data": 282,
+      "appointment_rate": 0.11139896373056994,
+      "movement_rate": 1,
+      "crm_activity": 0.24352331606217617,
+      "attribution_quality": 0.3134715025906736,
+      "meta_results": 350,
+      "spend": 1098.33,
+      "avg_cpl": 3.138085714285714,
+      "ads_count": 14,
+      "acquisition_score": 100,
+      "appointment_score": 100,
+      "movement_score": 100,
+      "activity_score": 24.352331606217618,
+      "attribution_score": 31.34715025906736,
+      "score": 78,
+      "category": "Healthy",
+      "main_problem": "CRM Activity"
+    },
+    {
+      "client": "Andrea New Homes",
+      "currency": "USD",
+      "leads": 171,
+      "appointments": 11,
+      "moved": 171,
+      "active": 110,
+      "attributed": 136,
+      "stagnant": 61,
+      "workflow": 171,
+      "used_button": 2,
+      "waiting": 17,
+      "discarded_inferred": 0,
+      "custom_data": 41,
+      "appointment_rate": 0.06432748538011696,
+      "movement_rate": 1,
+      "crm_activity": 0.6432748538011696,
+      "attribution_quality": 0.7953216374269005,
+      "meta_results": 144,
+      "spend": 741.9000000000001,
+      "avg_cpl": 5.152083333333334,
+      "ads_count": 13,
+      "acquisition_score": 81.51565258844776,
+      "appointment_score": 57.745138038895696,
+      "movement_score": 100,
+      "activity_score": 64.32748538011695,
+      "attribution_score": 79.53216374269006,
+      "score": 75,
+      "category": "Healthy",
+      "main_problem": "Appointment Stage"
+    },
+    {
+      "client": "Erica Maxwell",
+      "currency": "USD",
+      "leads": 207,
+      "appointments": 0,
+      "moved": 207,
+      "active": 7,
+      "attributed": 140,
+      "stagnant": 200,
+      "workflow": 207,
+      "used_button": 140,
+      "waiting": 130,
+      "discarded_inferred": 0,
+      "custom_data": 109,
+      "appointment_rate": 0,
+      "movement_rate": 1,
+      "crm_activity": 0.033816425120772944,
+      "attribution_quality": 0.6763285024154589,
+      "meta_results": 35,
+      "spend": 357.71,
+      "avg_cpl": 10.220285714285714,
+      "ads_count": 5,
+      "acquisition_score": 35,
+      "appointment_score": 0,
+      "movement_score": 100,
+      "activity_score": 3.3816425120772946,
+      "attribution_score": 67.6328502415459,
+      "score": 39,
+      "category": "Broken",
+      "main_problem": "Appointment Stage"
+    },
+    {
+      "client": "Johana Gómez",
+      "currency": "COP",
+      "leads": 123,
+      "appointments": 2,
+      "moved": 123,
+      "active": 102,
+      "attributed": 78,
+      "stagnant": 21,
+      "workflow": 123,
+      "used_button": 78,
+      "waiting": 71,
+      "discarded_inferred": 0,
+      "custom_data": 78,
+      "appointment_rate": 0.016260162601626018,
+      "movement_rate": 1,
+      "crm_activity": 0.8292682926829268,
+      "attribution_quality": 0.6341463414634146,
+      "meta_results": 80,
+      "spend": 1573039,
+      "avg_cpl": 19662.9875,
+      "ads_count": 8,
+      "acquisition_score": 75,
+      "appointment_score": 14.596332009831729,
+      "movement_score": 100,
+      "activity_score": 82.92682926829268,
+      "attribution_score": 63.41463414634146,
+      "score": 60,
+      "category": "Emerging",
+      "main_problem": "Appointment Stage"
+    }
+  ],
+  "ads": [
+    {
+      "client": "John Roa",
+      "ad_name_norm": "IMG #4",
+      "adset_norm": "ECUADOR | 30 A 64 | ABIERTO",
+      "spend": 12.87,
+      "meta_results": 2,
+      "leads_crm": 2,
+      "appointments": 0,
+      "moved": 2,
+      "appointment_rate": 0,
+      "movement_rate": 1,
+      "classification": "Needs Review",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "IMG #5",
+      "adset_norm": "ECUADOR | 30 A 64 | ABIERTO",
+      "spend": 38.71,
+      "meta_results": 5,
+      "leads_crm": 4,
+      "appointments": 1,
+      "moved": 4,
+      "appointment_rate": 0.25,
+      "movement_rate": 1,
+      "classification": "Needs Review",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "IMG #6",
+      "adset_norm": "ECUADOR | 30 A 64 | ABIERTO",
+      "spend": 10.62,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "VID #2",
+      "adset_norm": "ECUADOR | 30 A 64 | ABIERTO",
+      "spend": 1.34,
+      "meta_results": 4,
+      "leads_crm": 4,
+      "appointments": 1,
+      "moved": 4,
+      "appointment_rate": 0.25,
+      "movement_rate": 1,
+      "classification": "Needs Review",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "VID #3",
+      "adset_norm": "ECUADOR | 30 A 64 | ABIERTO",
+      "spend": 0,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "VID #4",
+      "adset_norm": "ECUADOR | 30 A 64 | ABIERTO",
+      "spend": 424.15,
+      "meta_results": 117,
+      "leads_crm": 111,
+      "appointments": 11,
+      "moved": 111,
+      "appointment_rate": 0.0990990990990991,
+      "movement_rate": 1,
+      "classification": "Elite Winner",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "IMG #1",
+      "adset_norm": "IMAGENES",
+      "spend": 2.11,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "IMG #2",
+      "adset_norm": "IMAGENES",
+      "spend": 0,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "IMG #3",
+      "adset_norm": "IMAGENES",
+      "spend": 0.81,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "IMG #4",
+      "adset_norm": "IMAGENES",
+      "spend": 207.66,
+      "meta_results": 74,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "IMG #5",
+      "adset_norm": "IMAGENES",
+      "spend": 87.61,
+      "meta_results": 18,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "VID #2",
+      "adset_norm": "VIDEOS",
+      "spend": 0.34,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "VID #3",
+      "adset_norm": "VIDEOS",
+      "spend": 288.8,
+      "meta_results": 125,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "John Roa",
+      "ad_name_norm": "VID #1",
+      "adset_norm": "VIDEOS",
+      "spend": 23.31,
+      "meta_results": 5,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Video 3 | Palm City",
+      "adset_norm": "TRD | Sur de Florida | Marzo 2026",
+      "spend": 0,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Video 4 | Palm City",
+      "adset_norm": "TRD | Sur de Florida | Marzo 2026",
+      "spend": 369.85,
+      "meta_results": 82,
+      "leads_crm": 77,
+      "appointments": 7,
+      "moved": 77,
+      "appointment_rate": 0.09090909090909091,
+      "movement_rate": 1,
+      "classification": "Elite Winner",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Video 6 | Palm City",
+      "adset_norm": "TRD | Sur de Florida | Marzo 2026",
+      "spend": 0.08,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Imagen 1 | Palm City",
+      "adset_norm": "TRD | NY_NJ_MA | Marzo 2026",
+      "spend": 0,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Imagen 2 | Port ST. Lucie",
+      "adset_norm": "TRD | NY_NJ_MA | Marzo 2026",
+      "spend": 0,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Imagen 2 | Palm City",
+      "adset_norm": "TRD | NY_NJ_MA | Marzo 2026",
+      "spend": 0,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Video 1 | Palm City",
+      "adset_norm": "TRD | NY_NJ_MA | Marzo 2026",
+      "spend": 92.46,
+      "meta_results": 16,
+      "leads_crm": 16,
+      "appointments": 1,
+      "moved": 16,
+      "appointment_rate": 0.0625,
+      "movement_rate": 1,
+      "classification": "Needs Review",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Video1 | Port ST. Lucie",
+      "adset_norm": "TRD | NY_NJ_MA | Marzo 2026",
+      "spend": 266.33,
+      "meta_results": 44,
+      "leads_crm": 41,
+      "appointments": 2,
+      "moved": 41,
+      "appointment_rate": 0.04878048780487805,
+      "movement_rate": 1,
+      "classification": "Funnel Winner",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Video 2 | Palm City",
+      "adset_norm": "TRD | NY_NJ_MA | Marzo 2026",
+      "spend": 0,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Video 6 | Port St. Lucie",
+      "adset_norm": "TRD | Sur de Florida | Marzo 2026",
+      "spend": 0,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Video 7 | Palm City",
+      "adset_norm": "TRD | Sur de Florida | Marzo 2026",
+      "spend": 1.87,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Video 2 | Port ST. Lucie",
+      "adset_norm": "TRD | NY_NJ_MA | Marzo 2026",
+      "spend": 8.74,
+      "meta_results": 2,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Andrea New Homes",
+      "ad_name_norm": "TRD | Video 2 | Palm City",
+      "adset_norm": "TRD | NY_NJ_MA | Marzo 2026",
+      "spend": 2.57,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Erica Maxwell",
+      "ad_name_norm": "VID #1",
+      "adset_norm": "CONJUNTO #1 | CIUDADES PRINCIPALES | VIDEOS",
+      "spend": 35.76,
+      "meta_results": 4,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Erica Maxwell",
+      "ad_name_norm": "VID #2",
+      "adset_norm": "CONJUNTO #1 | CIUDADES PRINCIPALES | VIDEOS",
+      "spend": 290.14,
+      "meta_results": 30,
+      "leads_crm": 7,
+      "appointments": 0,
+      "moved": 7,
+      "appointment_rate": 0,
+      "movement_rate": 1,
+      "classification": "Needs Review",
+      "currency": "USD"
+    },
+    {
+      "client": "Erica Maxwell",
+      "ad_name_norm": "IMG #1",
+      "adset_norm": "CONJUNTO #2 | CIUDADES PRINCIPALES | IMAGENES",
+      "spend": 6.06,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Erica Maxwell",
+      "ad_name_norm": "IMG #2",
+      "adset_norm": "CONJUNTO #2 | CIUDADES PRINCIPALES | IMAGENES",
+      "spend": 23.41,
+      "meta_results": 1,
+      "leads_crm": 1,
+      "appointments": 0,
+      "moved": 1,
+      "appointment_rate": 0,
+      "movement_rate": 1,
+      "classification": "Needs Review",
+      "currency": "USD"
+    },
+    {
+      "client": "Erica Maxwell",
+      "ad_name_norm": "IMG #3",
+      "adset_norm": "CONJUNTO #2 | CIUDADES PRINCIPALES | IMAGENES",
+      "spend": 2.34,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "USD"
+    },
+    {
+      "client": "Johana Gómez",
+      "ad_name_norm": "VID #1",
+      "adset_norm": "COLOMBIA | 30 A 65 | ABIERTO | VIDEOS",
+      "spend": 43770,
+      "meta_results": 1,
+      "leads_crm": 1,
+      "appointments": 0,
+      "moved": 1,
+      "appointment_rate": 0,
+      "movement_rate": 1,
+      "classification": "Needs Review",
+      "currency": "COP"
+    },
+    {
+      "client": "Johana Gómez",
+      "ad_name_norm": "VID #2",
+      "adset_norm": "COLOMBIA | 30 A 65 | ABIERTO | VIDEOS",
+      "spend": 31403,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "COP"
+    },
+    {
+      "client": "Johana Gómez",
+      "ad_name_norm": "VID #3",
+      "adset_norm": "COLOMBIA | 30 A 65 | ABIERTO | VIDEOS",
+      "spend": 1238664,
+      "meta_results": 67,
+      "leads_crm": 65,
+      "appointments": 0,
+      "moved": 65,
+      "appointment_rate": 0,
+      "movement_rate": 1,
+      "classification": "Volume Winner",
+      "currency": "COP"
+    },
+    {
+      "client": "Johana Gómez",
+      "ad_name_norm": "VID #5",
+      "adset_norm": "COLOMBIA | 30 A 65 | ABIERTO | VIDEOS",
+      "spend": 116102,
+      "meta_results": 4,
+      "leads_crm": 4,
+      "appointments": 2,
+      "moved": 4,
+      "appointment_rate": 0.5,
+      "movement_rate": 1,
+      "classification": "Funnel Winner",
+      "currency": "COP"
+    },
+    {
+      "client": "Johana Gómez",
+      "ad_name_norm": "VID #6",
+      "adset_norm": "COLOMBIA | 30 A 65 | ABIERTO | VIDEOS",
+      "spend": 49553,
+      "meta_results": 2,
+      "leads_crm": 2,
+      "appointments": 0,
+      "moved": 2,
+      "appointment_rate": 0,
+      "movement_rate": 1,
+      "classification": "Needs Review",
+      "currency": "COP"
+    },
+    {
+      "client": "Johana Gómez",
+      "ad_name_norm": "VID #4",
+      "adset_norm": "COLOMBIA | 30 A 65 | ABIERTO | VIDEOS",
+      "spend": 28607,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "COP"
+    },
+    {
+      "client": "Johana Gómez",
+      "ad_name_norm": "VID #7",
+      "adset_norm": "COLOMBIA | 30 A 65 | ABIERTO | VIDEOS",
+      "spend": 58823,
+      "meta_results": 6,
+      "leads_crm": 6,
+      "appointments": 0,
+      "moved": 6,
+      "appointment_rate": 0,
+      "movement_rate": 1,
+      "classification": "Needs Review",
+      "currency": "COP"
+    },
+    {
+      "client": "Johana Gómez",
+      "ad_name_norm": "VID #8",
+      "adset_norm": "COLOMBIA | 30 A 65 | ABIERTO | VIDEOS",
+      "spend": 6117,
+      "meta_results": 0,
+      "leads_crm": 0,
+      "appointments": 0,
+      "moved": 0,
+      "appointment_rate": 0,
+      "movement_rate": 0,
+      "classification": "No CRM Match",
+      "currency": "COP"
+    }
+  ],
+  "leads": [
+    {
+      "client": "John Roa",
+      "name": "Yele",
+      "last_activity": "2026-06-01",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "🌸",
+      "last_activity": "2026-06-01",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "🎶",
+      "last_activity": "2026-06-01",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Luis M.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Juan P.",
+      "last_activity": "2026-05-31",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Gerxithoop B.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Marnie",
+      "last_activity": "2026-06-03",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Mary A.",
+      "last_activity": "2026-06-01",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Juan C.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Luis S.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Carmen S.",
+      "last_activity": "2026-05-30",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Alejo I.",
+      "last_activity": "2026-06-01",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Lulu",
+      "last_activity": "2026-06-02",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Gaston",
+      "last_activity": "2026-05-30",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Aracelys H.",
+      "last_activity": "2026-05-30",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Kairo F.",
+      "last_activity": "2026-06-01",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Maritza",
+      "last_activity": "2026-05-30",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Xhristopher T.",
+      "last_activity": "2026-06-01",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Ricardo M.",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Arelys",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Luis P.",
+      "last_activity": "2026-05-29",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Ss",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Patricia F.",
+      "last_activity": "2026-05-28",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Rafael R.",
+      "last_activity": "2026-05-28",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Angie D.",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Villa E.",
+      "last_activity": "2026-05-28",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Kathyuska B.",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Chat A.",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Sandra C.",
+      "last_activity": "2026-06-03",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Maria elena",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Freddy",
+      "last_activity": "2026-05-28",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Arī Y.",
+      "last_activity": "2026-05-28",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Rosario G.",
+      "last_activity": "2026-05-28",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Fabiola",
+      "last_activity": "2026-06-01",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Sandra C.",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Yudi C.",
+      "last_activity": "2026-05-27",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Camila",
+      "last_activity": "2026-05-27",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Yeny",
+      "last_activity": "2026-05-27",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "José A.",
+      "last_activity": "2026-05-27",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Al S.",
+      "last_activity": "2026-05-27",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Marilin C.",
+      "last_activity": "2026-05-27",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Italo T.",
+      "last_activity": "2026-05-27",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Julia L.",
+      "last_activity": "2026-05-27",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Daicy B.",
+      "last_activity": "2026-05-27",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Gerardo M.",
+      "last_activity": "2026-05-27",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Wilmer C.",
+      "last_activity": "2026-05-27",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Misd C.",
+      "last_activity": "2026-05-27",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Geiser",
+      "last_activity": "2026-05-27",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Carlos P.",
+      "last_activity": "2026-05-27",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Julio C.",
+      "last_activity": "2026-05-26",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Javier S.",
+      "last_activity": "2026-05-27",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Maralex R.",
+      "last_activity": "2026-05-26",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Maralex R.",
+      "last_activity": "2026-05-26",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Ad S.",
+      "last_activity": "2026-05-26",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Guillermo M.",
+      "last_activity": "2026-05-26",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Stev",
+      "last_activity": "2026-05-26",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Inti Q.",
+      "last_activity": "2026-05-26",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Ricardo",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Chat A.",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Viviana",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Sanchez S.",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Luz M.",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "John cubillos",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Aida",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Fausto A.",
+      "last_activity": "2026-05-25",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Eduardo V.",
+      "last_activity": "2026-05-25",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "German G.",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Eleazar M.",
+      "last_activity": "2026-05-25",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Mauricio V.",
+      "last_activity": "2026-05-24",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Mango T.",
+      "last_activity": "2026-05-24",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Carmen R.",
+      "last_activity": "2026-05-24",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Carmendepsi",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Arturo C.",
+      "last_activity": "2026-05-24",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Alvarado A.",
+      "last_activity": "2026-05-24",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Anita🌸",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Carmen",
+      "last_activity": "2026-06-04",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Pato",
+      "last_activity": "2026-05-24",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Nancy L.",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Danny",
+      "last_activity": "2026-05-26",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Ozzy",
+      "last_activity": "2026-05-24",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Andres R.",
+      "last_activity": "2026-05-24",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Nicolas M.",
+      "last_activity": "2026-05-27",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Karen G.",
+      "last_activity": "2026-05-24",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Sandy V.",
+      "last_activity": "2026-05-24",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Felipe C.",
+      "last_activity": "2026-05-24",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Liliana",
+      "last_activity": "2026-05-26",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Karilu",
+      "last_activity": "2026-05-23",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Anny",
+      "last_activity": "2026-05-23",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Michaelsanga28",
+      "last_activity": "2026-05-23",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Mirian R.",
+      "last_activity": "2026-05-23",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Alejandro F.",
+      "last_activity": "2026-05-23",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Idania",
+      "last_activity": "2026-05-23",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Chat A.",
+      "last_activity": "2026-05-23",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Yordana",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Alejandro T.",
+      "last_activity": "2026-05-23",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Fabmichelle",
+      "last_activity": "2026-05-23",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Gabriela B.",
+      "last_activity": "2026-05-23",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Jhonny C.",
+      "last_activity": "2026-05-23",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Vilma V.",
+      "last_activity": "2026-05-23",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "K P.",
+      "last_activity": "2026-05-23",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Mauricio J.",
+      "last_activity": "2026-05-23",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Armando L.",
+      "last_activity": "2026-05-27",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Chat A.",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Eddiso",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Maria R.",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Alex C.",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Rodi",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Luisa O.",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Hernando C.",
+      "last_activity": "2026-05-22",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Jenny C.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Elizabeth S.",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Happy T.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Ana",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Chat A.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Nhora E.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Daysi",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "John Roa",
+      "name": "Lorna",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Daniel M.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Wilmer E.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Lili",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Leonardo C.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Oscar A.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Mariaisabel",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Francisco C.",
+      "last_activity": "2026-05-20",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Christian R.",
+      "last_activity": "2026-05-20",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Daniel R.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Edwin P.",
+      "last_activity": "2026-05-20",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Roche M.",
+      "last_activity": "2026-05-20",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Mayleen B.",
+      "last_activity": "2026-05-20",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Carlos U.",
+      "last_activity": "2026-05-20",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Paola L.",
+      "last_activity": "2026-05-20",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Marithza P.",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Maria",
+      "last_activity": "2026-05-20",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Jose G.",
+      "last_activity": "2026-05-19",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Segundo V.",
+      "last_activity": "2026-05-19",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Norma P.",
+      "last_activity": "2026-05-19",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Consuelo R.",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Elizabeth T.",
+      "last_activity": "2026-05-19",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Addy Y.",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Dennis M.",
+      "last_activity": "2026-05-19",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Martha L.",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Germanico R.",
+      "last_activity": "2026-05-19",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Leydy M.",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Marilyn M.",
+      "last_activity": "2026-05-18",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Angel B.",
+      "last_activity": "2026-05-18",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Jorge R.",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Edgar M.",
+      "last_activity": "2026-05-18",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Jack S.",
+      "last_activity": "2026-05-18",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Gisela",
+      "last_activity": "2026-05-18",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Maria A.",
+      "last_activity": "2026-05-18",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Edgar G.",
+      "last_activity": "2026-05-18",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "John Roa",
+      "name": "Ricardo A.",
+      "last_activity": "2026-05-18",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Andres N.",
+      "last_activity": "2026-05-18",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Ruth P.",
+      "last_activity": "2026-05-18",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Jaime J.",
+      "last_activity": "2026-05-18",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Milagros D.",
+      "last_activity": "2026-05-18",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Juan R.",
+      "last_activity": "2026-05-18",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Nubia M.",
+      "last_activity": "2026-05-18",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Francisco C.",
+      "last_activity": "2026-05-18",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "John Roa",
+      "name": "Nelson",
+      "last_activity": "2026-05-17",
+      "ad": "VID #4",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Jessiett “.",
+      "last_activity": "2026-06-01",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Jason V.",
+      "last_activity": "2026-06-04",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Grecia E.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Niko G.",
+      "last_activity": "2026-06-04",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Juan K.",
+      "last_activity": "2026-06-01",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Carol P.",
+      "last_activity": "2026-06-04",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Frank D.",
+      "last_activity": "2026-05-31",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Eanos M.",
+      "last_activity": "2026-06-04",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Julio C.",
+      "last_activity": "2026-06-04",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Terry N.",
+      "last_activity": "2026-06-04",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Teresita F.",
+      "last_activity": "2026-06-04",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Flavia D.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Laurie",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Jorge C.",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Mariposa",
+      "last_activity": "2026-06-01",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Carlos E.",
+      "last_activity": "2026-06-01",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "John T.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Suzie T.",
+      "last_activity": "2026-06-01",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "James C.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Tia C.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Jenny S.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Christopher D.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 2 | Port ST. Lucie - Copia",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Miluzka C.",
+      "last_activity": "2026-05-27",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Claraines J.",
+      "last_activity": "2026-05-27",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Mayra S.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Jacob F.",
+      "last_activity": "2026-05-26",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "En S.",
+      "last_activity": "2026-05-26",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Nelson P.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Maria R.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Miguel R.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Janette R.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Maddimess",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 2 | Port ST. Lucie - Copia",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Patricia C.",
+      "last_activity": "2026-05-25",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Sandra M.",
+      "last_activity": "2026-05-25",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Cita",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Dolores A.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Chef.orozcojuan",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Monica B.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Dixon O.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Emmanuel T.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Mayra L.",
+      "last_activity": "2026-05-27",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Fawzy A.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Linda F.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Blanca E.",
+      "last_activity": "2026-05-23",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Edgar J.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Luz G.",
+      "last_activity": "2026-05-24",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Diana D.",
+      "last_activity": "2026-05-22",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Karla B.",
+      "last_activity": "2026-05-24",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Kathy M.",
+      "last_activity": "2026-05-22",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Franco M.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Carito O.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Mi H.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Mesbah A.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Janice T.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Nissim B.",
+      "last_activity": "2026-05-20",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Benjimejiavega",
+      "last_activity": "2026-05-20",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Anibal D.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Antuanete C.",
+      "last_activity": "2026-05-20",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Yeldy Y.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Alba N.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Esther T.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Lina B.",
+      "last_activity": "2026-05-24",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Danna C.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Nataly",
+      "last_activity": "2026-05-19",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Hector E.",
+      "last_activity": "2026-05-20",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "R H.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Jorge C.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Rolina L.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Carlos B.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Terrence G.",
+      "last_activity": "2026-05-17",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Lisa M.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Marielena T.",
+      "last_activity": "2026-05-17",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Marielena T.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Sean M.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Jorge D.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Yanet P.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Carlos M.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Russ B.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "J. D.",
+      "last_activity": "2026-05-24",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Jose A.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Karolyn O.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Winston C.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Eric Z.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Troybryantkhove",
+      "last_activity": "2026-05-14",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Edwin M.",
+      "last_activity": "2026-05-14",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Leonardo C.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Jody S.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Rosario M.",
+      "last_activity": "2026-05-20",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Ingris H.",
+      "last_activity": "2026-05-13",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Kenny C.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Fernando V.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Lizeth A.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Cita",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Liliana M.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Nick S.",
+      "last_activity": "2026-05-16",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Mary F.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Ana R.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Joel P.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Realtor_ E.",
+      "last_activity": "2026-05-11",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Robin S.",
+      "last_activity": "2026-05-12",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Sybil B.",
+      "last_activity": "2026-05-11",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Angélica R.",
+      "last_activity": "2026-05-12",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Suviti S.",
+      "last_activity": "2026-05-10",
+      "ad": "TRD | Video 1 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Elizabeth P.",
+      "last_activity": "2026-05-10",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Luisa",
+      "last_activity": "2026-05-24",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Jose N.",
+      "last_activity": "2026-05-10",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Claudia H.",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Delmi P.",
+      "last_activity": "2026-05-10",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Liceth B.",
+      "last_activity": "2026-05-10",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Seguimiento",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Sol G.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Malena A.",
+      "last_activity": "2026-05-09",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Cristina R.",
+      "last_activity": "2026-05-09",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Andres_1296",
+      "last_activity": "2026-05-08",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Eugene A.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Claudia N.",
+      "last_activity": "2026-05-08",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Claudia N.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Patricia M.",
+      "last_activity": "2026-05-08",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Oscar S.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Ronald H.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Nedamis D.",
+      "last_activity": "2026-05-07",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Dawk C.",
+      "last_activity": "2026-05-07",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Silvana R.",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Carlos G.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Fela E.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Viviana R.",
+      "last_activity": "2026-05-07",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Oscar D.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Gloria C.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Gary D.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Lizzeth B.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Realtor/ C.",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Tovias M.",
+      "last_activity": "2026-05-24",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "William R.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Angie F.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Ana L.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Carla.l.moya",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Steven B.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Greg S.",
+      "last_activity": "2026-05-06",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Javier M.",
+      "last_activity": "2026-06-05",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Md M.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Maribel S.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Marisol M.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Alice D.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Gisel M.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Yelitza M.",
+      "last_activity": "2026-05-05",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Clara",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Juancarlos M.",
+      "last_activity": "2026-06-04",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Sergio E.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Alvaro G.",
+      "last_activity": "2026-05-04",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Juan D.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Carolina M.",
+      "last_activity": "2026-05-23",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "L E.",
+      "last_activity": "2026-05-07",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Jerry A.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Diana P.",
+      "last_activity": "2026-05-04",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Nelida S.",
+      "last_activity": "2026-05-29",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Dunystore M.",
+      "last_activity": "2026-05-04",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Ana A.",
+      "last_activity": "2026-05-04",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Abdul M.",
+      "last_activity": "2026-05-03",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "N A.",
+      "last_activity": "2026-05-03",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Manny A.",
+      "last_activity": "2026-05-03",
+      "ad": "TRD | Video1 | Port ST. Lucie",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "♕ⓜⓐⓝⓟⓡⓔⓔⓣ♕",
+      "last_activity": "2026-05-03",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Yarima G.",
+      "last_activity": "2026-05-03",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Andrea New Homes",
+      "name": "Karen M.",
+      "last_activity": "2026-05-03",
+      "ad": "TRD | Video 4 | Palm City",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Elver C.",
+      "last_activity": "2026-05-30",
+      "ad": "IMG #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Miguel A.",
+      "last_activity": "2026-05-28",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Orjan G.",
+      "last_activity": "2026-05-27",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "César D.",
+      "last_activity": "2026-05-26",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Adri B.",
+      "last_activity": "2026-05-25",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Andres S.",
+      "last_activity": "2026-05-25",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Juancarlos S.",
+      "last_activity": "2026-05-23",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Gabriel G.",
+      "last_activity": "2026-05-22",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Sandra E.",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Carol Q.",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Alex I.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Patricia B.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Andrutec",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Ruben D.",
+      "last_activity": "2026-05-21",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Mary P.",
+      "last_activity": "2026-05-23",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "José L.",
+      "last_activity": "2026-05-20",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Edgar L.",
+      "last_activity": "2026-05-20",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Esteban S.",
+      "last_activity": "2026-05-20",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Blanca N.",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Elmer R.",
+      "last_activity": "2026-05-19",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Andres L.",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Jimmy A.",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Yadirafranco",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Nestor B.",
+      "last_activity": "2026-05-18",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Cristofers V.",
+      "last_activity": "2026-05-18",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Amira M.",
+      "last_activity": "2026-05-18",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Edwin Q.",
+      "last_activity": "2026-05-18",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Campo E.",
+      "last_activity": "2026-05-18",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Gustavo C.",
+      "last_activity": "2026-05-17",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Andres S.",
+      "last_activity": "2026-05-17",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Juan D.",
+      "last_activity": "2026-05-17",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Ferney R.",
+      "last_activity": "2026-05-17",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Mónica C.",
+      "last_activity": "2026-05-17",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Luis M.",
+      "last_activity": "2026-05-17",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Jorge L.",
+      "last_activity": "2026-05-17",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Daniela R.",
+      "last_activity": "2026-05-17",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Samuel",
+      "last_activity": "2026-05-17",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Jorge A.",
+      "last_activity": "2026-05-16",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Jairo S.",
+      "last_activity": "2026-05-16",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Gatto G.",
+      "last_activity": "2026-05-16",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Fernando P.",
+      "last_activity": "2026-05-16",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Julián C.",
+      "last_activity": "2026-05-16",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Jose A.",
+      "last_activity": "2026-05-16",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Nancy V.",
+      "last_activity": "2026-05-16",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Ferma U.",
+      "last_activity": "2026-05-15",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Wilson",
+      "last_activity": "2026-05-15",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Carlos O.",
+      "last_activity": "2026-05-15",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Luz N.",
+      "last_activity": "2026-05-14",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Karen M.",
+      "last_activity": "2026-05-14",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Simba P.",
+      "last_activity": "2026-05-14",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Kathe",
+      "last_activity": "2026-05-14",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Jhon H.",
+      "last_activity": "2026-05-14",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Maritza T.",
+      "last_activity": "2026-05-13",
+      "ad": "VID #1",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Tatis J.",
+      "last_activity": "2026-05-13",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Héctor C.",
+      "last_activity": "2026-05-13",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Arley H.",
+      "last_activity": "2026-05-13",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Ruben D.",
+      "last_activity": "2026-05-12",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Marcela R.",
+      "last_activity": "2026-05-12",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Emilio A.",
+      "last_activity": "2026-05-12",
+      "ad": "VID #1",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Edgardo J.",
+      "last_activity": "2026-05-12",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Josefin O.",
+      "last_activity": "2026-05-12",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Diana K.",
+      "last_activity": "2026-05-12",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Alvaro D.",
+      "last_activity": "2026-05-12",
+      "ad": "VID #1",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Mary E.",
+      "last_activity": "2026-05-12",
+      "ad": "VID #1",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Jhon B.",
+      "last_activity": "2026-05-11",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Carlos M.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #2",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Felipe C.",
+      "last_activity": "2026-05-11",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Ibagué T.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Fredy R.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "German G.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Favio V.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Marco A.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Simon M.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Laupa M.",
+      "last_activity": "2026-05-12",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Fernando G.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Albeiro C.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Erasmo T.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Luis M.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Juan C.",
+      "last_activity": "2026-05-11",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Ingrid S.",
+      "last_activity": "2026-05-11",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Mary G.",
+      "last_activity": "2026-05-11",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Santiago A.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Jose R.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Carlos A.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Maria D.",
+      "last_activity": "2026-05-11",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Javier M.",
+      "last_activity": "2026-05-10",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Epigmenio V.",
+      "last_activity": "2026-05-10",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Hernando A.",
+      "last_activity": "2026-05-10",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Helberto C.",
+      "last_activity": "2026-05-10",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Raul L.",
+      "last_activity": "2026-05-10",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Yeferson R.",
+      "last_activity": "2026-05-10",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Enith M.",
+      "last_activity": "2026-05-10",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Alex C.",
+      "last_activity": "2026-05-10",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Elsy S.",
+      "last_activity": "2026-05-10",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Antonio A.",
+      "last_activity": "2026-05-10",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Raul O.",
+      "last_activity": "2026-05-09",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Mauricio A.",
+      "last_activity": "2026-05-09",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Daniel C.",
+      "last_activity": "2026-05-09",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Juan G.",
+      "last_activity": "2026-05-09",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Diana F.",
+      "last_activity": "2026-05-28",
+      "ad": "VID #6",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Miguel A.",
+      "last_activity": "2026-05-09",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Victor B.",
+      "last_activity": "2026-05-09",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Nubia G.",
+      "last_activity": "2026-05-09",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Diana G.",
+      "last_activity": "2026-05-09",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Jose A.",
+      "last_activity": "2026-05-08",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Henry G.",
+      "last_activity": "2026-05-08",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Beatriz O.",
+      "last_activity": "2026-05-08",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Carolina.",
+      "last_activity": "2026-05-08",
+      "ad": "IMG #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Marlenc",
+      "last_activity": "2026-05-08",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Julio C.",
+      "last_activity": "2026-05-08",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Monica D.",
+      "last_activity": "2026-05-07",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Irma M.",
+      "last_activity": "2026-05-07",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Leondarioalvarezquiceno Á.",
+      "last_activity": "2026-05-07",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Manuel J.",
+      "last_activity": "2026-05-20",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Claudia C.",
+      "last_activity": "2026-05-07",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Omar R.",
+      "last_activity": "2026-05-07",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Suarez S.",
+      "last_activity": "2026-05-07",
+      "ad": "IMG #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Mardoqueo P.",
+      "last_activity": "2026-05-07",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Carlos G.",
+      "last_activity": "2026-05-07",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Alfonso A.",
+      "last_activity": "2026-05-07",
+      "ad": "VID #4",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Milton G.",
+      "last_activity": "2026-05-07",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Carolina G.",
+      "last_activity": "2026-05-07",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Veronica",
+      "last_activity": "2026-05-07",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Rosa M.",
+      "last_activity": "2026-05-07",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Eva M.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Maria D.",
+      "last_activity": "2026-05-07",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Luz E.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Adalis C.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Maria I.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Ana L.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Miriam R.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Carmiña M.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Dora B.",
+      "last_activity": "2026-05-07",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Rosalba G.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Carlos",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Julio C.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Clara I.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Fhanny R.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Vian U.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Maria C.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Sandra D.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Pedro R.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Sonia. O.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Diego A.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Leidy P.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Elias C.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Edilia M.",
+      "last_activity": "2026-05-05",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Pedro J.",
+      "last_activity": "2026-05-05",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Alba N.",
+      "last_activity": "2026-05-05",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Gladys A.",
+      "last_activity": "2026-05-06",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Mauricio R.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Leonardogarciacadrera",
+      "last_activity": "2026-05-05",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Jeiver S.",
+      "last_activity": "2026-05-05",
+      "ad": "IMG #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Valentina L.",
+      "last_activity": "2026-05-05",
+      "ad": "IMG #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Fabiola",
+      "last_activity": "2026-05-05",
+      "ad": "IMG #3",
+      "status": "Primera llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Edilson",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Juan M.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Angela S.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Gabriel P.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Erica Maxwell",
+      "name": "Maria C.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Christian P.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #7",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Carlos R.",
+      "last_activity": "2026-06-02",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Magda",
+      "last_activity": "2026-05-31",
+      "ad": "VID #7",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Giovanni A.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Juan D.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #7",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Mario A.",
+      "last_activity": "2026-06-01",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Oscar C.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #7",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Juan P.",
+      "last_activity": "2026-05-31",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Bambinashoes",
+      "last_activity": "2026-05-30",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Fabio C.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Marta C.",
+      "last_activity": "2026-05-30",
+      "ad": "VID #7",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Andres H.",
+      "last_activity": "2026-05-30",
+      "ad": "VID #7",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Mauricio S.",
+      "last_activity": "2026-05-30",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Sandra M.",
+      "last_activity": "2026-05-30",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Luz M.",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Lincolnrd",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Juahn A.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Malparios",
+      "last_activity": "2026-05-29",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Lead",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Patricia K.",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Consuladocolmia",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Ana C.",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Nancy B.",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Monicalopezrealtordemiami",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Linapinedarealtorassociate",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Sonia R.",
+      "last_activity": "2026-05-29",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Linatamayoa",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "My R.",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Cynthia G.",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Paola",
+      "last_activity": "2026-05-28",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Amelia C.",
+      "last_activity": "2026-06-04",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Marce M.",
+      "last_activity": "2026-06-04",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Martha L.",
+      "last_activity": "2026-05-27",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Didier A.",
+      "last_activity": "2026-06-02",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Redes S.",
+      "last_activity": "2026-05-26",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Andro C.",
+      "last_activity": "2026-06-02",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Carlos J.",
+      "last_activity": "2026-06-02",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Nelson E.",
+      "last_activity": "2026-06-01",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Isabel G.",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Rolando O.",
+      "last_activity": "2026-06-01",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Leonel C.",
+      "last_activity": "2026-06-01",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Gerardo B.",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Gerardo B.",
+      "last_activity": "2026-06-01",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Andres R.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Nadia R.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Jonathan P.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Claudia S.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Wilson J.",
+      "last_activity": "2026-05-27",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Hector O.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Edison B.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Hender V.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Marian R.",
+      "last_activity": "2026-05-25",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Wilson M.",
+      "last_activity": "2026-05-30",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Roger R.",
+      "last_activity": "2026-05-30",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Aprende I.",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Carol Q.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Durlandy G.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Nis V.",
+      "last_activity": "2026-06-04",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Gabriel J.",
+      "last_activity": "2026-06-04",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Sofia J.",
+      "last_activity": "2026-05-20",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Maria F.",
+      "last_activity": "2026-06-03",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Aleyda C.",
+      "last_activity": "2026-05-19",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Luis D.",
+      "last_activity": "2026-06-01",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Jhon E.",
+      "last_activity": "2026-06-01",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Diego L.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Mauricio B.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "John E.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Caropizarroi",
+      "last_activity": "2026-05-22",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Miguel A.",
+      "last_activity": "2026-05-30",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Domus F.",
+      "last_activity": "2026-05-16",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Martin M.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Alex R.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Aura R.",
+      "last_activity": "2026-05-27",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Johany T.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Carlos A.",
+      "last_activity": "2026-06-04",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Juan A.",
+      "last_activity": "2026-06-04",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Merly",
+      "last_activity": "2026-05-22",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "William G.",
+      "last_activity": "2026-06-04",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Andres A.",
+      "last_activity": "2026-06-04",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Jessica O.",
+      "last_activity": "2026-05-30",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Mariedva |.",
+      "last_activity": "2026-05-13",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Aly M.",
+      "last_activity": "2026-05-13",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Chat A.",
+      "last_activity": "2026-05-13",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Lucía B.",
+      "last_activity": "2026-06-03",
+      "ad": "VID #1",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Kaya",
+      "last_activity": "2026-05-12",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Jacqueline G.",
+      "last_activity": "2026-06-01",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Zamir A.",
+      "last_activity": "2026-05-11",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Andy A.",
+      "last_activity": "2026-05-10",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Margarita M.",
+      "last_activity": "2026-06-01",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Alba M.",
+      "last_activity": "2026-05-10",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "José E.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Jenifer T.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "William D.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Danilo M.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #6",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Raquel Z.",
+      "last_activity": "2026-05-30",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Orlando T.",
+      "last_activity": "2026-05-30",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Isaiah",
+      "last_activity": "2026-05-08",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Alejandra G.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Milton S.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Mary E.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Alejandro S.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Andrea L.",
+      "last_activity": "2026-05-22",
+      "ad": "VID #6",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Ana V.",
+      "last_activity": "2026-05-06",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Marleny T.",
+      "last_activity": "2026-06-03",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Hernan A.",
+      "last_activity": "2026-06-03",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Gratiniano L.",
+      "last_activity": "2026-06-03",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Familia C.",
+      "last_activity": "2026-05-05",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Arbelaez Y.",
+      "last_activity": "2026-05-13",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Stiven C.",
+      "last_activity": "2026-06-02",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Héctor A.",
+      "last_activity": "2026-06-02",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Miguel R.",
+      "last_activity": "2026-06-02",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Realtor M.",
+      "last_activity": "2026-05-04",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "David A.",
+      "last_activity": "2026-06-01",
+      "ad": "VID #5",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Luzstellazul",
+      "last_activity": "2026-05-04",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Diana M.",
+      "last_activity": "2026-05-24",
+      "ad": "Sin atribución",
+      "status": "Activo",
+      "risk": "Medio"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Johan A.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #5",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Grant",
+      "last_activity": "2026-05-03",
+      "ad": "Sin atribución",
+      "status": "Estancado",
+      "risk": "Alto"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Jader E.",
+      "last_activity": "2026-05-31",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Rafael C.",
+      "last_activity": "2026-05-30",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Gerardo R.",
+      "last_activity": "2026-06-02",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Jose Q.",
+      "last_activity": "2026-05-29",
+      "ad": "VID #3",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Hijo D.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #5",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    },
+    {
+      "client": "Johana Gómez",
+      "name": "Juan S.",
+      "last_activity": "2026-06-05",
+      "ad": "VID #5",
+      "status": "Segunda llamada",
+      "risk": "Bajo"
+    }
+  ],
+  "benchmarks": {
+    "total_clients": 4,
+    "total_leads": 887,
+    "total_appointments": 56,
+    "avg_score": 63,
+    "avg_appointment_rate": 0.04799665292807823,
+    "top_appointment_rate": 0.11139896373056994,
+    "avg_movement_rate": 1,
+    "avg_activity_rate": 0.4374707219167614,
+    "avg_attribution_quality": 0.604816995974112,
+    "healthy_clients": 2,
+    "risk_clients": 2,
+    "critical_clients": 1,
+    "agency_health_score": 68,
+    "agency_category": "Emerging",
+    "agency_stage_matrix": [
+      {
+        "stage": "Average Client Score",
+        "value": 0.63,
+        "benchmark": 0.7,
+        "score": 90,
+        "health": "yellow"
+      },
+      {
+        "stage": "Healthy Accounts",
+        "value": 0.5,
+        "benchmark": 0.6,
+        "score": 83,
+        "health": "yellow"
+      },
+      {
+        "stage": "Appointment Rate",
+        "value": 0.04799665292807823,
+        "benchmark": 0.07240932642487047,
+        "score": 66,
+        "health": "red"
+      },
+      {
+        "stage": "CRM Activity",
+        "value": 0.4374707219167614,
+        "benchmark": 0.6,
+        "score": 73,
+        "health": "red"
+      },
+      {
+        "stage": "Attribution Quality",
+        "value": 0.604816995974112,
+        "benchmark": 0.85,
+        "score": 71,
+        "health": "red"
+      }
+    ]
+  },
+  "funnel_intelligence": [
+    {
+      "client": "John Roa",
+      "stages": [
+        {
+          "key": "meta",
+          "label": "Meta Results",
+          "value": 350,
+          "prev": null,
+          "rate": null,
+          "benchmark": null,
+          "health": "neutral"
+        },
+        {
+          "key": "crm",
+          "label": "CRM Leads",
+          "value": 386,
+          "prev": 350,
+          "rate": 1.1028571428571428,
+          "benchmark": 1,
+          "health": "green"
+        },
+        {
+          "key": "movement",
+          "label": "CRM Movement",
+          "value": 386,
+          "prev": 386,
+          "rate": 1,
+          "benchmark": 1,
+          "health": "green"
+        },
+        {
+          "key": "appointments",
+          "label": "Appointments",
+          "value": 43,
+          "prev": 386,
+          "rate": 0.11139896373056994,
+          "benchmark": 0.06313416009019165,
+          "health": "green"
+        },
+        {
+          "key": "sales",
+          "label": "Sales",
+          "value": null,
+          "prev": 43,
+          "rate": null,
+          "benchmark": null,
+          "health": "neutral",
+          "pending": true
+        }
+      ],
+      "health_matrix": [
+        {
+          "stage": "Attribution",
+          "value": 0.3134715025906736,
+          "benchmark": 0.604816995974112,
+          "score": 52,
+          "health": "red"
+        },
+        {
+          "stage": "CRM Movement",
+          "value": 1,
+          "benchmark": 1,
+          "score": 100,
+          "health": "green"
+        },
+        {
+          "stage": "CRM Activity",
+          "value": 0.24352331606217617,
+          "benchmark": 0.4374707219167614,
+          "score": 56,
+          "health": "red"
+        },
+        {
+          "stage": "Appointment Rate",
+          "value": 0.11139896373056994,
+          "benchmark": 0.04799665292807823,
+          "score": 100,
+          "health": "green"
+        }
+      ],
+      "leakages": [
+        {
+          "from": "Meta Results",
+          "to": "CRM Leads",
+          "lost": 0,
+          "leak_rate": 0
+        },
+        {
+          "from": "CRM Leads",
+          "to": "CRM Movement",
+          "lost": 0,
+          "leak_rate": 0
+        },
+        {
+          "from": "CRM Movement",
+          "to": "Appointments",
+          "lost": 343,
+          "leak_rate": 0.8886010362694301
+        }
+      ],
+      "biggest_leak": {
+        "from": "CRM Movement",
+        "to": "Appointments",
+        "lost": 343,
+        "leak_rate": 0.8886010362694301
+      },
+      "bottleneck": {
+        "stage": "Attribution",
+        "value": 0.3134715025906736,
+        "benchmark": 0.604816995974112,
+        "score": 52,
+        "health": "red"
+      },
+      "benchmark_appointments": 19,
+      "opportunity_appointments": 0,
+      "economics": [
+        {
+          "stage": "Meta Results",
+          "value": 350,
+          "cost_per": 3.138085714285714
+        },
+        {
+          "stage": "CRM Leads",
+          "value": 386,
+          "cost_per": 2.8454145077720203
+        },
+        {
+          "stage": "CRM Movement",
+          "value": 386,
+          "cost_per": 2.8454145077720203
+        },
+        {
+          "stage": "Appointments",
+          "value": 43,
+          "cost_per": 25.542558139534883
+        }
+      ],
+      "note_crm_exceeds_meta": true
+    },
+    {
+      "client": "Andrea New Homes",
+      "stages": [
+        {
+          "key": "meta",
+          "label": "Meta Results",
+          "value": 144,
+          "prev": null,
+          "rate": null,
+          "benchmark": null,
+          "health": "neutral"
+        },
+        {
+          "key": "crm",
+          "label": "CRM Leads",
+          "value": 171,
+          "prev": 144,
+          "rate": 1.1875,
+          "benchmark": 1,
+          "health": "green"
+        },
+        {
+          "key": "movement",
+          "label": "CRM Movement",
+          "value": 171,
+          "prev": 171,
+          "rate": 1,
+          "benchmark": 1,
+          "health": "green"
+        },
+        {
+          "key": "appointments",
+          "label": "Appointments",
+          "value": 11,
+          "prev": 171,
+          "rate": 0.06432748538011696,
+          "benchmark": 0.06313416009019165,
+          "health": "green"
+        },
+        {
+          "key": "sales",
+          "label": "Sales",
+          "value": null,
+          "prev": 11,
+          "rate": null,
+          "benchmark": null,
+          "health": "neutral",
+          "pending": true
+        }
+      ],
+      "health_matrix": [
+        {
+          "stage": "Attribution",
+          "value": 0.7953216374269005,
+          "benchmark": 0.604816995974112,
+          "score": 100,
+          "health": "green"
+        },
+        {
+          "stage": "CRM Movement",
+          "value": 1,
+          "benchmark": 1,
+          "score": 100,
+          "health": "green"
+        },
+        {
+          "stage": "CRM Activity",
+          "value": 0.6432748538011696,
+          "benchmark": 0.4374707219167614,
+          "score": 100,
+          "health": "green"
+        },
+        {
+          "stage": "Appointment Rate",
+          "value": 0.06432748538011696,
+          "benchmark": 0.04799665292807823,
+          "score": 100,
+          "health": "green"
+        }
+      ],
+      "leakages": [
+        {
+          "from": "Meta Results",
+          "to": "CRM Leads",
+          "lost": 0,
+          "leak_rate": 0
+        },
+        {
+          "from": "CRM Leads",
+          "to": "CRM Movement",
+          "lost": 0,
+          "leak_rate": 0
+        },
+        {
+          "from": "CRM Movement",
+          "to": "Appointments",
+          "lost": 160,
+          "leak_rate": 0.935672514619883
+        }
+      ],
+      "biggest_leak": {
+        "from": "CRM Movement",
+        "to": "Appointments",
+        "lost": 160,
+        "leak_rate": 0.935672514619883
+      },
+      "bottleneck": {
+        "stage": "Attribution",
+        "value": 0.7953216374269005,
+        "benchmark": 0.604816995974112,
+        "score": 100,
+        "health": "green"
+      },
+      "benchmark_appointments": 8,
+      "opportunity_appointments": 0,
+      "economics": [
+        {
+          "stage": "Meta Results",
+          "value": 144,
+          "cost_per": 5.152083333333334
+        },
+        {
+          "stage": "CRM Leads",
+          "value": 171,
+          "cost_per": 4.338596491228071
+        },
+        {
+          "stage": "CRM Movement",
+          "value": 171,
+          "cost_per": 4.338596491228071
+        },
+        {
+          "stage": "Appointments",
+          "value": 11,
+          "cost_per": 67.44545454545455
+        }
+      ],
+      "note_crm_exceeds_meta": true
+    },
+    {
+      "client": "Erica Maxwell",
+      "stages": [
+        {
+          "key": "meta",
+          "label": "Meta Results",
+          "value": 35,
+          "prev": null,
+          "rate": null,
+          "benchmark": null,
+          "health": "neutral"
+        },
+        {
+          "key": "crm",
+          "label": "CRM Leads",
+          "value": 207,
+          "prev": 35,
+          "rate": 5.914285714285715,
+          "benchmark": 1,
+          "health": "green"
+        },
+        {
+          "key": "movement",
+          "label": "CRM Movement",
+          "value": 207,
+          "prev": 207,
+          "rate": 1,
+          "benchmark": 1,
+          "health": "green"
+        },
+        {
+          "key": "appointments",
+          "label": "Appointments",
+          "value": 0,
+          "prev": 207,
+          "rate": 0,
+          "benchmark": 0.06313416009019165,
+          "health": "red"
+        },
+        {
+          "key": "sales",
+          "label": "Sales",
+          "value": null,
+          "prev": 0,
+          "rate": null,
+          "benchmark": null,
+          "health": "neutral",
+          "pending": true
+        }
+      ],
+      "health_matrix": [
+        {
+          "stage": "Attribution",
+          "value": 0.6763285024154589,
+          "benchmark": 0.604816995974112,
+          "score": 100,
+          "health": "green"
+        },
+        {
+          "stage": "CRM Movement",
+          "value": 1,
+          "benchmark": 1,
+          "score": 100,
+          "health": "green"
+        },
+        {
+          "stage": "CRM Activity",
+          "value": 0.033816425120772944,
+          "benchmark": 0.4374707219167614,
+          "score": 8,
+          "health": "red"
+        },
+        {
+          "stage": "Appointment Rate",
+          "value": 0,
+          "benchmark": 0.04799665292807823,
+          "score": 0,
+          "health": "red"
+        }
+      ],
+      "leakages": [
+        {
+          "from": "Meta Results",
+          "to": "CRM Leads",
+          "lost": 0,
+          "leak_rate": 0
+        },
+        {
+          "from": "CRM Leads",
+          "to": "CRM Movement",
+          "lost": 0,
+          "leak_rate": 0
+        },
+        {
+          "from": "CRM Movement",
+          "to": "Appointments",
+          "lost": 207,
+          "leak_rate": 1
+        }
+      ],
+      "biggest_leak": {
+        "from": "CRM Movement",
+        "to": "Appointments",
+        "lost": 207,
+        "leak_rate": 1
+      },
+      "bottleneck": {
+        "stage": "Appointment Rate",
+        "value": 0,
+        "benchmark": 0.04799665292807823,
+        "score": 0,
+        "health": "red"
+      },
+      "benchmark_appointments": 10,
+      "opportunity_appointments": 10,
+      "economics": [
+        {
+          "stage": "Meta Results",
+          "value": 35,
+          "cost_per": 10.220285714285714
+        },
+        {
+          "stage": "CRM Leads",
+          "value": 207,
+          "cost_per": 1.7280676328502413
+        },
+        {
+          "stage": "CRM Movement",
+          "value": 207,
+          "cost_per": 1.7280676328502413
+        },
+        {
+          "stage": "Appointments",
+          "value": 0,
+          "cost_per": 0
+        }
+      ],
+      "note_crm_exceeds_meta": true
+    },
+    {
+      "client": "Johana Gómez",
+      "stages": [
+        {
+          "key": "meta",
+          "label": "Meta Results",
+          "value": 80,
+          "prev": null,
+          "rate": null,
+          "benchmark": null,
+          "health": "neutral"
+        },
+        {
+          "key": "crm",
+          "label": "CRM Leads",
+          "value": 123,
+          "prev": 80,
+          "rate": 1.5375,
+          "benchmark": 1,
+          "health": "green"
+        },
+        {
+          "key": "movement",
+          "label": "CRM Movement",
+          "value": 123,
+          "prev": 123,
+          "rate": 1,
+          "benchmark": 1,
+          "health": "green"
+        },
+        {
+          "key": "appointments",
+          "label": "Appointments",
+          "value": 2,
+          "prev": 123,
+          "rate": 0.016260162601626018,
+          "benchmark": 0.06313416009019165,
+          "health": "red"
+        },
+        {
+          "key": "sales",
+          "label": "Sales",
+          "value": null,
+          "prev": 2,
+          "rate": null,
+          "benchmark": null,
+          "health": "neutral",
+          "pending": true
+        }
+      ],
+      "health_matrix": [
+        {
+          "stage": "Attribution",
+          "value": 0.6341463414634146,
+          "benchmark": 0.604816995974112,
+          "score": 100,
+          "health": "green"
+        },
+        {
+          "stage": "CRM Movement",
+          "value": 1,
+          "benchmark": 1,
+          "score": 100,
+          "health": "green"
+        },
+        {
+          "stage": "CRM Activity",
+          "value": 0.8292682926829268,
+          "benchmark": 0.4374707219167614,
+          "score": 100,
+          "health": "green"
+        },
+        {
+          "stage": "Appointment Rate",
+          "value": 0.016260162601626018,
+          "benchmark": 0.04799665292807823,
+          "score": 34,
+          "health": "red"
+        }
+      ],
+      "leakages": [
+        {
+          "from": "Meta Results",
+          "to": "CRM Leads",
+          "lost": 0,
+          "leak_rate": 0
+        },
+        {
+          "from": "CRM Leads",
+          "to": "CRM Movement",
+          "lost": 0,
+          "leak_rate": 0
+        },
+        {
+          "from": "CRM Movement",
+          "to": "Appointments",
+          "lost": 121,
+          "leak_rate": 0.983739837398374
+        }
+      ],
+      "biggest_leak": {
+        "from": "CRM Movement",
+        "to": "Appointments",
+        "lost": 121,
+        "leak_rate": 0.983739837398374
+      },
+      "bottleneck": {
+        "stage": "Appointment Rate",
+        "value": 0.016260162601626018,
+        "benchmark": 0.04799665292807823,
+        "score": 34,
+        "health": "red"
+      },
+      "benchmark_appointments": 6,
+      "opportunity_appointments": 4,
+      "economics": [
+        {
+          "stage": "Meta Results",
+          "value": 80,
+          "cost_per": 19662.9875
+        },
+        {
+          "stage": "CRM Leads",
+          "value": 123,
+          "cost_per": 12788.934959349594
+        },
+        {
+          "stage": "CRM Movement",
+          "value": 123,
+          "cost_per": 12788.934959349594
+        },
+        {
+          "stage": "Appointments",
+          "value": 2,
+          "cost_per": 786519.5
+        }
+      ],
+      "note_crm_exceeds_meta": true
+    }
+  ],
+  "progression_funnels": [
+    {
+      "client": "John Roa",
+      "mode": "modeled_reached_stage",
+      "stages": [
+        {
+          "key": "meta",
+          "label": "Meta Results",
+          "description": "Base de leads reportados por Meta.",
+          "value": 350,
+          "from_previous": 1,
+          "cumulative_from_crm": 0.9067357512953368,
+          "cumulative_from_meta": 1,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "neutral",
+          "pending": false
+        },
+        {
+          "key": "crm",
+          "label": "CRM Leads",
+          "description": "Leads capturados en Leadtion.",
+          "value": 386,
+          "from_previous": 1.1028571428571428,
+          "cumulative_from_crm": 1,
+          "cumulative_from_meta": 1.1028571428571428,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "neutral",
+          "pending": false
+        },
+        {
+          "key": "contacted",
+          "label": "Contactados",
+          "description": "Modelo: workflow detectado, actividad reciente, interacción o cita.",
+          "value": 386,
+          "from_previous": 1,
+          "cumulative_from_crm": 1,
+          "cumulative_from_meta": 1.1028571428571428,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "green",
+          "pending": false
+        },
+        {
+          "key": "first_call",
+          "label": "1ra llamada",
+          "description": "Modelo: interacción detectada por botón/handover/respuesta.",
+          "value": 333,
+          "from_previous": 0.8626943005181347,
+          "cumulative_from_crm": 0.8626943005181347,
+          "cumulative_from_meta": 0.9514285714285714,
+          "lost_from_previous": 53,
+          "leak_rate": 0.13730569948186527,
+          "health": "green",
+          "pending": false
+        },
+        {
+          "key": "second_call",
+          "label": "2da llamada",
+          "description": "Modelo: datos personalizados diligenciados o etapa posterior.",
+          "value": 326,
+          "from_previous": 0.978978978978979,
+          "cumulative_from_crm": 0.844559585492228,
+          "cumulative_from_meta": 0.9314285714285714,
+          "lost_from_previous": 7,
+          "leak_rate": 0.021021021021021023,
+          "health": "green",
+          "pending": false
+        },
+        {
+          "key": "follow_up",
+          "label": "Seguimiento",
+          "description": "Modelo: seguimiento/espera, actividad útil o posterior.",
+          "value": 128,
+          "from_previous": 0.39263803680981596,
+          "cumulative_from_crm": 0.3316062176165803,
+          "cumulative_from_meta": 0.3657142857142857,
+          "lost_from_previous": 198,
+          "leak_rate": 0.6073619631901841,
+          "health": "red",
+          "pending": false
+        },
+        {
+          "key": "appointment",
+          "label": "Agendados",
+          "description": "Citas confirmadas o abiertas.",
+          "value": 43,
+          "from_previous": 0.3359375,
+          "cumulative_from_crm": 0.11139896373056994,
+          "cumulative_from_meta": 0.12285714285714286,
+          "lost_from_previous": 85,
+          "leak_rate": 0.6640625,
+          "health": "red",
+          "pending": false
+        },
+        {
+          "key": "sales",
+          "label": "Ventas",
+          "description": "Pendiente integración de cierres.",
+          "value": null,
+          "from_previous": null,
+          "cumulative_from_crm": null,
+          "cumulative_from_meta": null,
+          "lost_from_previous": null,
+          "leak_rate": null,
+          "health": "neutral",
+          "pending": true
+        }
+      ],
+      "biggest_drop": {
+        "key": "follow_up",
+        "label": "Seguimiento",
+        "description": "Modelo: seguimiento/espera, actividad útil o posterior.",
+        "value": 128,
+        "from_previous": 0.39263803680981596,
+        "cumulative_from_crm": 0.3316062176165803,
+        "cumulative_from_meta": 0.3657142857142857,
+        "lost_from_previous": 198,
+        "leak_rate": 0.6073619631901841,
+        "health": "red",
+        "pending": false
+      },
+      "note": "Esta vista muestra progresión acumulada: cuántos leads alcanzaron cada etapa. Es modelada con tags, workflows, actividad y citas. Para precisión real se necesita exportar Pipeline Stage y Stage History desde Leadtion.",
+      "missing_fields": [
+        "Pipeline Stage actual",
+        "Stage History",
+        "Fecha hacer 1ra llamada",
+        "Fecha hacer 2da llamada",
+        "Cita asistida",
+        "Venta/Cierre"
+      ]
+    },
+    {
+      "client": "Andrea New Homes",
+      "mode": "modeled_reached_stage",
+      "stages": [
+        {
+          "key": "meta",
+          "label": "Meta Results",
+          "description": "Base de leads reportados por Meta.",
+          "value": 144,
+          "from_previous": 1,
+          "cumulative_from_crm": 0.8421052631578947,
+          "cumulative_from_meta": 1,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "neutral",
+          "pending": false
+        },
+        {
+          "key": "crm",
+          "label": "CRM Leads",
+          "description": "Leads capturados en Leadtion.",
+          "value": 171,
+          "from_previous": 1.1875,
+          "cumulative_from_crm": 1,
+          "cumulative_from_meta": 1.1875,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "neutral",
+          "pending": false
+        },
+        {
+          "key": "contacted",
+          "label": "Contactados",
+          "description": "Modelo: workflow detectado, actividad reciente, interacción o cita.",
+          "value": 171,
+          "from_previous": 1,
+          "cumulative_from_crm": 1,
+          "cumulative_from_meta": 1.1875,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "green",
+          "pending": false
+        },
+        {
+          "key": "first_call",
+          "label": "1ra llamada",
+          "description": "Modelo: interacción detectada por botón/handover/respuesta.",
+          "value": 45,
+          "from_previous": 0.2631578947368421,
+          "cumulative_from_crm": 0.2631578947368421,
+          "cumulative_from_meta": 0.3125,
+          "lost_from_previous": 126,
+          "leak_rate": 0.7368421052631579,
+          "health": "red",
+          "pending": false
+        },
+        {
+          "key": "second_call",
+          "label": "2da llamada",
+          "description": "Modelo: datos personalizados diligenciados o etapa posterior.",
+          "value": 45,
+          "from_previous": 1,
+          "cumulative_from_crm": 0.2631578947368421,
+          "cumulative_from_meta": 0.3125,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "green",
+          "pending": false
+        },
+        {
+          "key": "follow_up",
+          "label": "Seguimiento",
+          "description": "Modelo: seguimiento/espera, actividad útil o posterior.",
+          "value": 28,
+          "from_previous": 0.6222222222222222,
+          "cumulative_from_crm": 0.16374269005847952,
+          "cumulative_from_meta": 0.19444444444444445,
+          "lost_from_previous": 17,
+          "leak_rate": 0.37777777777777777,
+          "health": "yellow",
+          "pending": false
+        },
+        {
+          "key": "appointment",
+          "label": "Agendados",
+          "description": "Citas confirmadas o abiertas.",
+          "value": 11,
+          "from_previous": 0.39285714285714285,
+          "cumulative_from_crm": 0.06432748538011696,
+          "cumulative_from_meta": 0.0763888888888889,
+          "lost_from_previous": 17,
+          "leak_rate": 0.6071428571428571,
+          "health": "red",
+          "pending": false
+        },
+        {
+          "key": "sales",
+          "label": "Ventas",
+          "description": "Pendiente integración de cierres.",
+          "value": null,
+          "from_previous": null,
+          "cumulative_from_crm": null,
+          "cumulative_from_meta": null,
+          "lost_from_previous": null,
+          "leak_rate": null,
+          "health": "neutral",
+          "pending": true
+        }
+      ],
+      "biggest_drop": {
+        "key": "first_call",
+        "label": "1ra llamada",
+        "description": "Modelo: interacción detectada por botón/handover/respuesta.",
+        "value": 45,
+        "from_previous": 0.2631578947368421,
+        "cumulative_from_crm": 0.2631578947368421,
+        "cumulative_from_meta": 0.3125,
+        "lost_from_previous": 126,
+        "leak_rate": 0.7368421052631579,
+        "health": "red",
+        "pending": false
+      },
+      "note": "Esta vista muestra progresión acumulada: cuántos leads alcanzaron cada etapa. Es modelada con tags, workflows, actividad y citas. Para precisión real se necesita exportar Pipeline Stage y Stage History desde Leadtion.",
+      "missing_fields": [
+        "Pipeline Stage actual",
+        "Stage History",
+        "Fecha hacer 1ra llamada",
+        "Fecha hacer 2da llamada",
+        "Cita asistida",
+        "Venta/Cierre"
+      ]
+    },
+    {
+      "client": "Erica Maxwell",
+      "mode": "modeled_reached_stage",
+      "stages": [
+        {
+          "key": "meta",
+          "label": "Meta Results",
+          "description": "Base de leads reportados por Meta.",
+          "value": 35,
+          "from_previous": 1,
+          "cumulative_from_crm": 0.16908212560386474,
+          "cumulative_from_meta": 1,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "neutral",
+          "pending": false
+        },
+        {
+          "key": "crm",
+          "label": "CRM Leads",
+          "description": "Leads capturados en Leadtion.",
+          "value": 207,
+          "from_previous": 5.914285714285715,
+          "cumulative_from_crm": 1,
+          "cumulative_from_meta": 5.914285714285715,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "neutral",
+          "pending": false
+        },
+        {
+          "key": "contacted",
+          "label": "Contactados",
+          "description": "Modelo: workflow detectado, actividad reciente, interacción o cita.",
+          "value": 207,
+          "from_previous": 1,
+          "cumulative_from_crm": 1,
+          "cumulative_from_meta": 5.914285714285715,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "green",
+          "pending": false
+        },
+        {
+          "key": "first_call",
+          "label": "1ra llamada",
+          "description": "Modelo: interacción detectada por botón/handover/respuesta.",
+          "value": 206,
+          "from_previous": 0.9951690821256038,
+          "cumulative_from_crm": 0.9951690821256038,
+          "cumulative_from_meta": 5.885714285714286,
+          "lost_from_previous": 1,
+          "leak_rate": 0.004830917874396135,
+          "health": "green",
+          "pending": false
+        },
+        {
+          "key": "second_call",
+          "label": "2da llamada",
+          "description": "Modelo: datos personalizados diligenciados o etapa posterior.",
+          "value": 205,
+          "from_previous": 0.9951456310679612,
+          "cumulative_from_crm": 0.9903381642512077,
+          "cumulative_from_meta": 5.857142857142857,
+          "lost_from_previous": 1,
+          "leak_rate": 0.0048543689320388345,
+          "health": "green",
+          "pending": false
+        },
+        {
+          "key": "follow_up",
+          "label": "Seguimiento",
+          "description": "Modelo: seguimiento/espera, actividad útil o posterior.",
+          "value": 130,
+          "from_previous": 0.6341463414634146,
+          "cumulative_from_crm": 0.6280193236714976,
+          "cumulative_from_meta": 3.7142857142857144,
+          "lost_from_previous": 75,
+          "leak_rate": 0.36585365853658536,
+          "health": "yellow",
+          "pending": false
+        },
+        {
+          "key": "appointment",
+          "label": "Agendados",
+          "description": "Citas confirmadas o abiertas.",
+          "value": 0,
+          "from_previous": 0,
+          "cumulative_from_crm": 0,
+          "cumulative_from_meta": 0,
+          "lost_from_previous": 130,
+          "leak_rate": 1,
+          "health": "red",
+          "pending": false
+        },
+        {
+          "key": "sales",
+          "label": "Ventas",
+          "description": "Pendiente integración de cierres.",
+          "value": null,
+          "from_previous": null,
+          "cumulative_from_crm": null,
+          "cumulative_from_meta": null,
+          "lost_from_previous": null,
+          "leak_rate": null,
+          "health": "neutral",
+          "pending": true
+        }
+      ],
+      "biggest_drop": {
+        "key": "appointment",
+        "label": "Agendados",
+        "description": "Citas confirmadas o abiertas.",
+        "value": 0,
+        "from_previous": 0,
+        "cumulative_from_crm": 0,
+        "cumulative_from_meta": 0,
+        "lost_from_previous": 130,
+        "leak_rate": 1,
+        "health": "red",
+        "pending": false
+      },
+      "note": "Esta vista muestra progresión acumulada: cuántos leads alcanzaron cada etapa. Es modelada con tags, workflows, actividad y citas. Para precisión real se necesita exportar Pipeline Stage y Stage History desde Leadtion.",
+      "missing_fields": [
+        "Pipeline Stage actual",
+        "Stage History",
+        "Fecha hacer 1ra llamada",
+        "Fecha hacer 2da llamada",
+        "Cita asistida",
+        "Venta/Cierre"
+      ]
+    },
+    {
+      "client": "Johana Gómez",
+      "mode": "modeled_reached_stage",
+      "stages": [
+        {
+          "key": "meta",
+          "label": "Meta Results",
+          "description": "Base de leads reportados por Meta.",
+          "value": 80,
+          "from_previous": 1,
+          "cumulative_from_crm": 0.6504065040650406,
+          "cumulative_from_meta": 1,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "neutral",
+          "pending": false
+        },
+        {
+          "key": "crm",
+          "label": "CRM Leads",
+          "description": "Leads capturados en Leadtion.",
+          "value": 123,
+          "from_previous": 1.5375,
+          "cumulative_from_crm": 1,
+          "cumulative_from_meta": 1.5375,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "neutral",
+          "pending": false
+        },
+        {
+          "key": "contacted",
+          "label": "Contactados",
+          "description": "Modelo: workflow detectado, actividad reciente, interacción o cita.",
+          "value": 123,
+          "from_previous": 1,
+          "cumulative_from_crm": 1,
+          "cumulative_from_meta": 1.5375,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "green",
+          "pending": false
+        },
+        {
+          "key": "first_call",
+          "label": "1ra llamada",
+          "description": "Modelo: interacción detectada por botón/handover/respuesta.",
+          "value": 78,
+          "from_previous": 0.6341463414634146,
+          "cumulative_from_crm": 0.6341463414634146,
+          "cumulative_from_meta": 0.975,
+          "lost_from_previous": 45,
+          "leak_rate": 0.36585365853658536,
+          "health": "yellow",
+          "pending": false
+        },
+        {
+          "key": "second_call",
+          "label": "2da llamada",
+          "description": "Modelo: datos personalizados diligenciados o etapa posterior.",
+          "value": 78,
+          "from_previous": 1,
+          "cumulative_from_crm": 0.6341463414634146,
+          "cumulative_from_meta": 0.975,
+          "lost_from_previous": 0,
+          "leak_rate": 0,
+          "health": "green",
+          "pending": false
+        },
+        {
+          "key": "follow_up",
+          "label": "Seguimiento",
+          "description": "Modelo: seguimiento/espera, actividad útil o posterior.",
+          "value": 71,
+          "from_previous": 0.9102564102564102,
+          "cumulative_from_crm": 0.5772357723577236,
+          "cumulative_from_meta": 0.8875,
+          "lost_from_previous": 7,
+          "leak_rate": 0.08974358974358974,
+          "health": "green",
+          "pending": false
+        },
+        {
+          "key": "appointment",
+          "label": "Agendados",
+          "description": "Citas confirmadas o abiertas.",
+          "value": 2,
+          "from_previous": 0.028169014084507043,
+          "cumulative_from_crm": 0.016260162601626018,
+          "cumulative_from_meta": 0.025,
+          "lost_from_previous": 69,
+          "leak_rate": 0.971830985915493,
+          "health": "red",
+          "pending": false
+        },
+        {
+          "key": "sales",
+          "label": "Ventas",
+          "description": "Pendiente integración de cierres.",
+          "value": null,
+          "from_previous": null,
+          "cumulative_from_crm": null,
+          "cumulative_from_meta": null,
+          "lost_from_previous": null,
+          "leak_rate": null,
+          "health": "neutral",
+          "pending": true
+        }
+      ],
+      "biggest_drop": {
+        "key": "appointment",
+        "label": "Agendados",
+        "description": "Citas confirmadas o abiertas.",
+        "value": 2,
+        "from_previous": 0.028169014084507043,
+        "cumulative_from_crm": 0.016260162601626018,
+        "cumulative_from_meta": 0.025,
+        "lost_from_previous": 69,
+        "leak_rate": 0.971830985915493,
+        "health": "red",
+        "pending": false
+      },
+      "note": "Esta vista muestra progresión acumulada: cuántos leads alcanzaron cada etapa. Es modelada con tags, workflows, actividad y citas. Para precisión real se necesita exportar Pipeline Stage y Stage History desde Leadtion.",
+      "missing_fields": [
+        "Pipeline Stage actual",
+        "Stage History",
+        "Fecha hacer 1ra llamada",
+        "Fecha hacer 2da llamada",
+        "Cita asistida",
+        "Venta/Cierre"
+      ]
+    }
+  ]
+}

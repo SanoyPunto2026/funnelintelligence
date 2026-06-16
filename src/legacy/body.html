@@ -1,0 +1,24 @@
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">T</div><div><h1>TRD OS</h1><p>V18.2 · QA Hardened Ads</p></div></div>
+  <div class="nav">
+    <button class="active" onclick="showView('action')">🏠 Action Center</button>
+    <button onclick="showView('agency')">🩺 Agency Health</button>
+    <button onclick="showView('engine')">⚙️ Health Engine</button>
+    <button onclick="showView('clients')">👥 Clients</button>
+    <button onclick="showView('client')">📋 Client Workspace</button>
+    <button onclick="showView('ads')">📈 Ad Intelligence</button>
+    <button onclick="showView('leads')">🎯 Lead Explorer</button>
+    <button onclick="showView('risks')">🚨 Risks</button>
+    <button onclick="showView('alerts')">🔔 Alert Engine</button>
+    <button onclick="showView('opportunities')">💡 Opportunities</button>
+    <button onclick="showView('ai')">🧠 AI Analyst</button>
+    <button onclick="showView('academy')">📚 Academy</button>
+  </div>
+  <div class="card" style="margin-top:24px;padding:14px"><div class="small">Nuevo V10</div><strong>Commercial Pipeline Analytics</strong><p class="small">Pipeline estilo Leadtion con % por etapa y concentración.</p></div>
+</aside>
+<main class="main">
+  <div class="topbar"><div class="title"><h2 id="pageTitle">Action Center</h2><p id="pageSubtitle">Prioridades y decisiones del día.</p></div><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><button class="learn-toggle" onclick="toggleLearning()">🎓 Learning Mode</button><div class="pill">🧠 Ask TRD AI</div></div></div>
+  <section id="view-action" class="view"></section><section id="view-academy" class="view hidden"></section><section id="view-agency" class="view hidden"></section><section id="view-engine" class="view hidden"></section><section id="view-clients" class="view hidden"></section><section id="view-client" class="view hidden"></section><section id="view-ads" class="view hidden"></section><section id="view-leads" class="view hidden"></section><section id="view-risks" class="view hidden"></section><section id="view-alerts" class="view hidden"></section><section id="view-opportunities" class="view hidden"></section><section id="view-ai" class="view hidden"></section>
+</main>
+</div>
