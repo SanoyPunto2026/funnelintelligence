@@ -14,8 +14,8 @@ export default function Home() {
     script.src = '/legacy/trd-logic.js';
     script.async = true;
     script.onload = () => {
-      // Fetch initial data
-      fetchData();
+      // Load initial data from localStorage
+      loadLocalData();
     };
     document.body.appendChild(script);
 
@@ -24,11 +24,11 @@ export default function Home() {
     };
   }, []);
 
-  const fetchData = async () => {
+  const loadLocalData = () => {
     try {
-      const res = await fetch('/api/data?t=' + Date.now(), { cache: 'no-store' });
-      if (res.ok) {
-        const json = await res.json();
+      const local = localStorage.getItem('trd_uploaded_data');
+      if (local) {
+        const json = JSON.parse(local);
         if (window.updateData) {
           window.updateData(json);
         } else {
@@ -36,16 +36,11 @@ export default function Home() {
           if (window.renderAll) window.renderAll();
         }
       } else {
-        if (window.updateData) {
-          window.updateData({ clients: [] });
-        } else {
-          window.DATA = { clients: [] };
-          if (window.renderAll) window.renderAll();
-        }
+        if (window.updateData) window.updateData({ clients: [] });
       }
       setDataLoaded(true);
     } catch (e) {
-      console.error('Error fetching data:', e);
+      console.error('Error loading local data:', e);
       if (window.updateData) window.updateData({ clients: [] });
     }
   };
@@ -65,8 +60,12 @@ export default function Home() {
         body: formData,
       });
       if (res.ok) {
+        const result = await res.json();
+        localStorage.setItem('trd_uploaded_data', JSON.stringify(result.data));
         alert('Archivo subido exitosamente. Refrescando datos...');
-        await fetchData();
+        if (window.updateData) {
+          window.updateData(result.data);
+        }
       } else {
         alert('Error al subir archivo');
       }
