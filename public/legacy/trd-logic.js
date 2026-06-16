@@ -1156,6 +1156,7 @@ function buildProgression(filtered,clients){
 }
 function applyDateRange(){
   const filtered=rawFilteredLeads();
+  if(!DATA.benchmarks) DATA.benchmarks={total_clients:0,total_leads:0,total_appointments:0,avg_appointment_rate:0,top_appointment_rate:0,avg_movement_rate:0,avg_activity_rate:0,avg_attribution_quality:0,healthy_clients:0,risk_clients:0,critical_clients:0,agency_health_score:0,agency_category:"Emerging",engine_agency_health_score:0,engine_agency_category:"Emerging",agency_stage_matrix:[]};
   DATA.clients=buildClientMetrics(filtered);
   DATA.ads=buildAds(filtered);
   DATA.leads=filtered.map(l=>({client:l.client,name:l.name,last_activity:l.last_activity,ad:l.ad,status:l.status,risk:l.risk}));
