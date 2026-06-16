@@ -156,8 +156,6 @@ export default function Home() {
     </div>
   `;
 
-  }, [htmlString]); // This runs after htmlString is injected or changed
-
   return (
     <>
       <div ref={containerRef} dangerouslySetInnerHTML={{ __html: htmlString }} suppressHydrationWarning />
