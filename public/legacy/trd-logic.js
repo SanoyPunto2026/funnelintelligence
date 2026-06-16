@@ -218,7 +218,7 @@ function toggleLearning(){
 const fmtNum = v => new Intl.NumberFormat('es-CO').format(Math.round(v||0));
 const fmtPct = v => ((v||0)*100).toFixed(1)+"%";
 function money(v,c){
-  if(v===null || v===undefined || Number.isNaN(Number(v))) return "â€”";
+  if(v===null || v===undefined || Number.isNaN(Number(v))) return "";
   if(c==="COP") return "$"+fmtNum(Number(v))+" COP";
   if(c==="EUR") return "â‚¬"+Number(v).toFixed(2)+" EUR";
   return "$"+Number(v).toFixed(2)+" USD";
@@ -277,8 +277,8 @@ function currencySplitHTML(items){
 const cBy = n => (DATA.clients||[]).find(c=>c.client===n) || (DATA.clients||[])[0] || {client:'',leads:0,appointments:0,moved:0,active:0,attributed:0,stagnant:0,workflow:0,used_button:0,waiting:0,discarded_inferred:0,custom_data:0,appointment_rate:0,movement_rate:0,crm_activity:0,attribution_quality:0,meta_results:0,spend:0,avg_cpl:0,ads_count:0,score:0,category:'Emerging',main_problem:'Sin datos',appointment_score:0,movement_score:0,activity_score:0,attribution_score:0,acquisition_score:0,currency:'USD',engine_score:0,engine_category:'Emerging',engine_bottleneck:'appointment',engine_strength:'appointment'};
 const fiBy = n => DATA.funnel_intelligence.find(f=>f.client===n);
 const pfBy = n => DATA.progression_funnels.find(f=>f.client===n);
-const safePct = v => (v===null || v===undefined || Number.isNaN(v)) ? 'â€”' : fmtPct(v);
-const safeNum = v => (v===null || v===undefined || Number.isNaN(v)) ? 'â€”' : fmtNum(v);
+const safePct = v => (v===null || v===undefined || Number.isNaN(v)) ? '-' : fmtPct(v);
+const safeNum = v => (v===null || v===undefined || Number.isNaN(v)) ? '-' : fmtNum(v);
 const adsBy = n => DATA.ads.filter(a=>a.client===n);
 const leadsBy = n => DATA.leads.filter(l=>l.client===n);
 const dotCat = cat => cat==="Broken"?"red":cat==="Emerging"?"yellow":cat==="Elite"?"green":"purple";
@@ -303,10 +303,10 @@ function pipelineAnalytics(c){
   const biggest = p.biggest_drop || {label:'Sin fuga crítica', lost_from_previous:0};
   const stagesHTML = p.stages.map((s,i)=>{
     const cls = s.pending ? 'pending neutral' : s.health;
-    const valueTxt = s.pending ? 'â€”' : fmtNum(s.value);
+    const valueTxt = s.pending ? '-' : fmtNum(s.value);
     const convTxt = s.pending ? 'Pendiente' : (i===0 ? 'Base Meta' : `${fmtPct(s.from_previous)} del paso anterior`);
-    const crmTxt = s.pending ? 'â€”' : (s.key==='meta' ? 'Base Meta' : fmtPct(s.cumulative_from_crm));
-    const metaTxt = s.pending ? 'â€”' : (s.key==='meta' ? '100.0%' : fmtPct(s.cumulative_from_meta));
+    const crmTxt = s.pending ? '-' : (s.key==='meta' ? 'Base Meta' : fmtPct(s.cumulative_from_crm));
+    const metaTxt = s.pending ? '-' : (s.key==='meta' ? '100.0%' : fmtPct(s.cumulative_from_meta));
     const lossTxt = s.lost_from_previous ? `-${fmtNum(s.lost_from_previous)} no avanzaron` : 'Sin pérdida calculada';
     const barW = s.pending ? 4 : Math.min(100, Math.max(4, Math.round((s.cumulative_from_crm||0)*100)));
     return `<div class="progress-stage ${cls}">
@@ -337,7 +337,7 @@ function pipelineAnalytics(c){
       <div class="summary-tile"><div class="summary-label">Base Meta</div><div class="summary-value">${fmtNum(meta.value)}</div><div class="label">resultados reportados</div></div>
       <div class="summary-tile"><div class="summary-label">Base CRM</div><div class="summary-value">${fmtNum(crm.value)}</div><div class="label">leads capturados</div></div>
       <div class="summary-tile"><div class="summary-label">Llegan a cita</div><div class="summary-value">${fmtNum(appointment.value)}</div><div class="label">${fmtPct(appointment.cumulative_from_crm)} del CRM</div></div>
-      <div class="summary-tile"><div class="summary-label">Mayor fuga</div><div class="summary-value">${biggest ? biggest.label : 'â€”'}</div><div class="label">${biggest ? '-' + fmtNum(biggest.lost_from_previous) + ' leads' : 'sin fuga'}</div></div>
+      <div class="summary-tile"><div class="summary-label">Mayor fuga</div><div class="summary-value">${biggest ? biggest.label : '-'}</div><div class="label">${biggest ? '-' + fmtNum(biggest.lost_from_previous) + ' leads' : 'sin fuga'}</div></div>
     </div>
     ${crm.value > meta.value && meta.value > 0 ? '<div class="insight"><strong>Nota de lectura</strong><p>CRM Leads supera Meta Results. Esto puede pasar por fuentes no Meta, duplicados, orgánico o diferencias entre exportaciones. Por eso el avance principal se interpreta desde CRM.</p></div>' : ''}
     <div class="flow-legend">
@@ -364,7 +364,7 @@ function pipelineAnalytics(c){
   </div>`;
 }
 
-function funnelIntel(c){const fi=fiBy(c.client),bot=fi.bottleneck,leak=fi.biggest_leak;return `<div class="grid grid2"><div class="card"><h3>Funnel Flow Ejecutivo</h3><div class="flow-grid" style="margin-top:16px">${fi.stages.map((s,i)=>`<div class="flow-stage ${s.pending?'pending':''}"><h4><span class="health-dot ${hClass(s.health)}"></span>${s.label}</h4><div class="metric">${s.pending?'â€”':fmtNum(s.value)}</div><div class="label">${s.pending?'Integración pendiente':i===0?'Base Meta':`Conversión: ${fmtPct(s.rate)}`}</div><p class="small">${s.benchmark==null?'':`Benchmark: ${fmtPct(s.benchmark)}`}</p></div>`).join('')}</div></div><div class="card"><h3>Bottleneck Detector ${tip('bottleneck')}</h3><div class="insight"><strong>${bot.stage}</strong><p>Etapa más débil frente al benchmark interno.</p></div><div class="grid grid2"><div><div class="metric">${fmtPct(bot.value)}</div><div class="label">Actual</div></div><div><div class="metric">${fmtPct(bot.benchmark)}</div><div class="label">Benchmark</div></div></div></div></div><div class="grid grid2" style="margin-top:18px"><div class="card"><h3>Leakage Analysis ${tip('leakage')}</h3>${fi.leakages.map(l=>`<div class="leak-card" style="margin-top:10px"><strong>${l.from} â†’ ${l.to}</strong><div class="kpi"><span class="small">Perdidos</span><strong>${fmtNum(l.lost)}</strong></div><div class="leak-bar" style="--w:${Math.round(l.leak_rate*100)}%"><i></i></div><p class="small">Leakage: ${fmtPct(l.leak_rate)}</p></div>`).join('')}<div class="insight"><strong>Mayor fuga</strong><p>${leak.from} â†’ ${leak.to} con ${fmtNum(leak.lost)} registros perdidos.</p></div></div><div class="card"><h3>Opportunity Simulator ${tip('opportunitySimulator')}</h3><div class="grid grid3"><div><div class="metric">${c.appointments}</div><div class="label">Citas actuales</div></div><div><div class="metric">${fi.benchmark_appointments}</div><div class="label">Si alcanza benchmark</div></div><div><div class="metric">+${fi.opportunity_appointments}</div><div class="label">Citas potenciales</div></div></div></div></div>`}
+function funnelIntel(c){const fi=fiBy(c.client),bot=fi.bottleneck,leak=fi.biggest_leak;return `<div class="grid grid2"><div class="card"><h3>Funnel Flow Ejecutivo</h3><div class="flow-grid" style="margin-top:16px">${fi.stages.map((s,i)=>`<div class="flow-stage ${s.pending?'pending':''}"><h4><span class="health-dot ${hClass(s.health)}"></span>${s.label}</h4><div class="metric">${s.pending?'-':fmtNum(s.value)}</div><div class="label">${s.pending?'Integración pendiente':i===0?'Base Meta':`Conversión: ${fmtPct(s.rate)}`}</div><p class="small">${s.benchmark==null?'':`Benchmark: ${fmtPct(s.benchmark)}`}</p></div>`).join('')}</div></div><div class="card"><h3>Bottleneck Detector ${tip('bottleneck')}</h3><div class="insight"><strong>${bot.stage}</strong><p>Etapa más débil frente al benchmark interno.</p></div><div class="grid grid2"><div><div class="metric">${fmtPct(bot.value)}</div><div class="label">Actual</div></div><div><div class="metric">${fmtPct(bot.benchmark)}</div><div class="label">Benchmark</div></div></div></div></div><div class="grid grid2" style="margin-top:18px"><div class="card"><h3>Leakage Analysis ${tip('leakage')}</h3>${fi.leakages.map(l=>`<div class="leak-card" style="margin-top:10px"><strong>${l.from} â†’ ${l.to}</strong><div class="kpi"><span class="small">Perdidos</span><strong>${fmtNum(l.lost)}</strong></div><div class="leak-bar" style="--w:${Math.round(l.leak_rate*100)}%"><i></i></div><p class="small">Leakage: ${fmtPct(l.leak_rate)}</p></div>`).join('')}<div class="insight"><strong>Mayor fuga</strong><p>${leak.from} â†’ ${leak.to} con ${fmtNum(leak.lost)} registros perdidos.</p></div></div><div class="card"><h3>Opportunity Simulator ${tip('opportunitySimulator')}</h3><div class="grid grid3"><div><div class="metric">${c.appointments}</div><div class="label">Citas actuales</div></div><div><div class="metric">${fi.benchmark_appointments}</div><div class="label">Si alcanza benchmark</div></div><div><div class="metric">+${fi.opportunity_appointments}</div><div class="label">Citas potenciales</div></div></div></div></div>`}
 function adKey(a){ return `${a.client}__${a.adset_norm||''}__${a.ad_name_norm||''}`; }
 function adSafeId(a){ return encodeURIComponent(adKey(a)); }
 function adKeyFromSafeId(id){
@@ -479,7 +479,7 @@ function benchmarkCenter(base){
   const perf=creativePerformance(base).slice(0,5);
   const topClients=[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a)).slice(0,5);
   return `<div class="benchmark-section">
-    <div class="card"><h3>Creative Performance</h3><div class="creative-grid">${perf.map(p=>`<div class="creative-card"><span class="creative-badge">${p.type}</span><div class="metric">${p.avg_score}</div><div class="label">Avg Ad Health</div><p class="small">${p.ads} ads Â· ${fmtPct(p.appointment_rate)} Appt. Rate Â· CPA ${p.cpa===null?'â€”':moneyBase(p.cpa)}</p></div>`).join('')}</div></div>
+    <div class="card"><h3>Creative Performance</h3><div class="creative-grid">${perf.map(p=>`<div class="creative-card"><span class="creative-badge">${p.type}</span><div class="metric">${p.avg_score}</div><div class="label">Avg Ad Health</div><p class="small">${p.ads} ads Â· ${fmtPct(p.appointment_rate)} Appt. Rate Â· CPA ${p.cpa===null?'-':moneyBase(p.cpa)}</p></div>`).join('')}</div></div>
     <div class="card"><h3>Benchmark Center</h3><div class="matrix-grid">${topAds.map((a,i)=>`<div class="matrix-card"><h4>#${i+1} ${a.ad_name_norm||'Sin nombre'}</h4><div class="metric" style="font-size:26px">${adHealthScore(a)}</div><div class="label">${a.client} Â· ${fmtPct(a.appointment_rate||0)} Appt.</div></div>`).join('')}</div><div class="insight"><strong>Top clientes</strong><p>${topClients.map(c=>`${c.client}: ${activeScore(c)}`).join(' Â· ')}</p></div></div>
   </div>`;
 }
@@ -516,7 +516,7 @@ function renderCompareDock(){
     <div class="kpi"><div><strong>Ad Comparator</strong><p class="small">Comparación lado a lado de anuncios seleccionados.</p></div><button class="ads-filter-btn" onclick="clearCompareAds()">Limpiar</button></div>
     <div class="compare-list">${ads.map(a=>`<span class="compare-chip">${a.ad_name_norm||'Sin nombre'} <button onclick="toggleCompareAd(getAdById('${adSafeId(a)}'))">×</button></span>`).join('')}</div>
     <div class="compare-table"><table><thead><tr><th>Anuncio</th><th>Cliente</th><th>Creative</th><th>Health</th><th>Leads</th><th>Citas</th><th>Appt.</th><th>CPA</th><th>Recomendación</th></tr></thead><tbody>
-      ${ads.map(a=>`<tr><td><strong>${a.ad_name_norm||'Sin nombre'}</strong></td><td>${a.client}</td><td>${getCreativeType(a)}</td><td>${adHealthScore(a)}</td><td>${fmtNum(a.leads_crm)}</td><td>${fmtNum(a.appointments)}</td><td>${fmtPct(a.appointment_rate||0)}</td><td>${costPerAppointment(a)===null?'â€”':moneyBase(costPerAppointment(a))}</td><td>${adRecommendation(adHealthScore(a),a)[0]}</td></tr>`).join('')}
+      ${ads.map(a=>`<tr><td><strong>${a.ad_name_norm||'Sin nombre'}</strong></td><td>${a.client}</td><td>${getCreativeType(a)}</td><td>${adHealthScore(a)}</td><td>${fmtNum(a.leads_crm)}</td><td>${fmtNum(a.appointments)}</td><td>${fmtPct(a.appointment_rate||0)}</td><td>${costPerAppointment(a)===null?'-':moneyBase(costPerAppointment(a))}</td><td>${adRecommendation(adHealthScore(a),a)[0]}</td></tr>`).join('')}
     </tbody></table></div>
   </div>`;
 }
@@ -546,7 +546,7 @@ function renderAdDrilldown(){
       <div class="matrix-card"><strong>${fmtPct(leads.length?leads.filter(l=>l.has_appointment).length/leads.length:0)}</strong><div class="label">Appt. Rate</div></div>
     </div>
     <div class="lead-mini-list">
-      ${leads.length?leads.slice(0,120).map(l=>`<div class="lead-mini-row"><div><strong>${l.name}</strong><div class="small">${l.created_date||''}</div></div><div>${l.status}</div><div>${l.risk}</div><div>${l.last_activity||'â€”'}</div></div>`).join(''):'<div class="empty-range-state">No hay leads asociados en este rango.</div>'}
+      ${leads.length?leads.slice(0,120).map(l=>`<div class="lead-mini-row"><div><strong>${l.name}</strong><div class="small">${l.created_date||''}</div></div><div>${l.status}</div><div>${l.risk}</div><div>${l.last_activity||'-'}</div></div>`).join(''):'<div class="empty-range-state">No hay leads asociados en este rango.</div>'}
     </div>
   </div>`;
 }
@@ -580,10 +580,10 @@ function benchmarkLibrary(base){
   const worst=[...perf].reverse()[0];
   return `<div class="card"><h3>Creative Benchmark Library</h3><p class="small">Aprendizajes acumulados del periodo seleccionado.</p>
     <div class="benchmark-library">
-      <div class="library-card"><span class="term-tag">Top Health</span><h3>${bestType?.type||'â€”'}</h3><p>${bestType?.ads||0} ads Â· Score ${bestType?.avg_score||0} Â· ${fmtPct(bestType?.appointment_rate||0)} Appt.</p></div>
-      <div class="library-card"><span class="term-tag">Best CPA</span><h3>${bestCPA?.type||'â€”'}</h3><p>${bestCPA?.cpa===null?'â€”':moneyBase(bestCPA?.cpa||0)} por cita.</p></div>
-      <div class="library-card"><span class="term-tag">Most Volume</span><h3>${bestVolume?.type||'â€”'}</h3><p>${fmtNum(bestVolume?.leads||0)} leads CRM generados.</p></div>
-      <div class="library-card"><span class="term-tag">Opportunity</span><h3>${worst?.type||'â€”'}</h3><p>Score ${worst?.avg_score||0}. Requiere revisión creativa/comercial.</p></div>
+      <div class="library-card"><span class="term-tag">Top Health</span><h3>${bestType?.type||'-'}</h3><p>${bestType?.ads||0} ads Â· Score ${bestType?.avg_score||0} Â· ${fmtPct(bestType?.appointment_rate||0)} Appt.</p></div>
+      <div class="library-card"><span class="term-tag">Best CPA</span><h3>${bestCPA?.type||'-'}</h3><p>${bestCPA?.cpa===null?'-':moneyBase(bestCPA?.cpa||0)} por cita.</p></div>
+      <div class="library-card"><span class="term-tag">Most Volume</span><h3>${bestVolume?.type||'-'}</h3><p>${fmtNum(bestVolume?.leads||0)} leads CRM generados.</p></div>
+      <div class="library-card"><span class="term-tag">Opportunity</span><h3>${worst?.type||'-'}</h3><p>Score ${worst?.avg_score||0}. Requiere revisión creativa/comercial.</p></div>
     </div>
   </div>`;
 }
@@ -628,8 +628,8 @@ function adCards(client=null){
       <div class="summary-tile"><div class="summary-label">Leads CRM ${tip("crmLeads")}</div><div class="summary-value">${fmtNum(totalLeads)}</div>${trendHTML(totalLeads,2)}</div>
       <div class="summary-tile"><div class="summary-label">Citas ${tip("appointment")}</div><div class="summary-value">${fmtNum(totalAppts)}</div>${trendHTML(totalAppts,3)}</div>
       <div class="summary-tile"><div class="summary-label">Gasto normalizado ${tip("currency")}</div><div class="summary-value">${moneyBase(totalSpend)}</div></div>
-      <div class="summary-tile"><div class="summary-label">CPA promedio</div><div class="summary-value">${avgCPA===null?'â€”':moneyBase(avgCPA)}</div></div>
-      <div class="summary-tile"><div class="summary-label">Top Creative</div><div class="summary-value" style="font-size:20px">${creativePerformance(base)[0]?.type || 'â€”'}</div></div>
+      <div class="summary-tile"><div class="summary-label">CPA promedio</div><div class="summary-value">${avgCPA===null?'-':moneyBase(avgCPA)}</div></div>
+      <div class="summary-tile"><div class="summary-label">Top Creative</div><div class="summary-value" style="font-size:20px">${creativePerformance(base)[0]?.type || '-'}</div></div>
     </div>
     ${benchmarkCenter(base)}${benchmarkLibrary(base)}
     ${currencySplitHTML(base)}
@@ -680,7 +680,7 @@ function adCards(client=null){
             <div class="ads-metric"><strong>${fmtPct(apptRate)}</strong><span>Appt. Rate ${tip("appointmentRateAd")}</span></div>
           </div>
           <div class="ads-progress" style="--w:${progress}%"><i></i></div>
-          <div class="ads-cpa"><div><strong>${cpa===null?'â€”':moneyBase(cpa)}</strong><span>Cost per Appointment</span></div><span>${a.appointments?`${fmtNum(a.appointments)} citas`:''}</span></div>
+          <div class="ads-cpa"><div><strong>${cpa===null?'-':moneyBase(cpa)}</strong><span>Cost per Appointment</span></div><span>${a.appointments?`${fmtNum(a.appointments)} citas`:''}</span></div>
           <div class="small" style="margin-top:10px">Meta: ${fmtNum(a.meta_results)} resultados Â· ${money(a.spend,a.currency)}${a.currency!==currencySettings.base?` Â· ${moneyNormalized(a.spend,a.currency)}`:""}</div>
           <div class="ads-diagnosis">${adInsight(a)}<ul class="recommendation-list">${recs.map(r=>`<li>${r}</li>`).join('')}</ul></div>
           <div class="card-actions">
