@@ -4,9 +4,23 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
   const containerRef = useRef(null);
+  const fileInputRef = useRef(null);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const fileInputRef = useRef(null);
+  const [toast, setToast] = useState(null);
+
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 4000);
+  };
+
+  const clearData = () => {
+    if (confirm('¿Estás seguro de eliminar todos los datos locales? Esto borrará el dashboard actual.')) {
+      localStorage.removeItem('trd_uploaded_data');
+      if (window.updateData) window.updateData({ clients: [], leads: [], ads: [] });
+      showToast('Datos eliminados correctamente.');
+    }
+  };
 
   useEffect(() => {
     // Inject the legacy logic after the component mounts
@@ -61,16 +75,35 @@ export default function Home() {
       });
       if (res.ok) {
         const result = await res.json();
-        localStorage.setItem('trd_uploaded_data', JSON.stringify(result.data));
-        alert('Archivo subido exitosamente. Refrescando datos...');
+        
+        // Merge logic
+        const newData = result.data;
+        const existingRaw = localStorage.getItem('trd_uploaded_data');
+        let mergedData = newData;
+
+        if (existingRaw) {
+          try {
+            const existing = JSON.parse(existingRaw);
+            const clients = [...(existing.clients || [])];
+            (newData.clients || []).forEach(c => {
+               if (!clients.find(ec => ec.client === c.client)) clients.push(c);
+            });
+            const leads = [...(existing.leads || []), ...(newData.leads || [])];
+            const ads = [...(existing.ads || []), ...(newData.ads || [])];
+            mergedData = { clients, leads, ads };
+          } catch(e) {}
+        }
+
+        localStorage.setItem('trd_uploaded_data', JSON.stringify(mergedData));
+        showToast("Archivo '" + (result.fileName || "Cargado") + "' procesado con " + (newData.leads ? newData.leads.length : 0) + " leads nuevos.");
         if (window.updateData) {
-          window.updateData(result.data);
+          window.updateData(mergedData);
         }
       } else {
-        alert('Error al subir archivo');
+        showToast('Error al subir archivo', 'error');
       }
     } catch (e) {
-      alert('Error: ' + e.message);
+      showToast('Error: ' + e.message, 'error');
     } finally {
       setUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = '';
@@ -100,7 +133,8 @@ export default function Home() {
       <div class="topbar">
         <div class="title"><h2 id="pageTitle">Action Center</h2><p id="pageSubtitle">Prioridades y decisiones del día.</p></div>
         <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <button class="learn-toggle" id="uploadBtn" onclick="document.querySelector('input[type=\\'file\\']').click()"><i class="ph ph-download-simple"></i> Cargar CSV/Excel</button>
+          <button class="learn-toggle" id="uploadBtn"><i class="ph ph-download-simple"></i> Cargar CSV/Excel</button>
+          <button class="learn-toggle" id="clearBtn" style="background:#ef4444;border-color:#ef4444"><i class="ph ph-trash"></i> Eliminar Datos</button>
           <button class="learn-toggle" onclick="toggleLearning()"><i class="ph ph-graduation-cap"></i> Learning Mode</button>
           <div class="pill"><i class="ph-fill ph-brain"></i> Ask TRD AI</div>
         </div>
@@ -129,7 +163,11 @@ export default function Home() {
         if (fileInputRef.current) fileInputRef.current.click();
       };
     }
-  }, []); // This runs after component mounts
+    const clrBtn = document.getElementById('clearBtn');
+    if (clrBtn) {
+      clrBtn.onclick = clearData;
+    }
+  }, [htmlString]); // This runs after htmlString is injected or changed
 
   return (
     <>
@@ -141,7 +179,8 @@ export default function Home() {
         ref={fileInputRef}
         onChange={handleFileUpload}
       />
-      {uploading && <div style={{position: 'fixed', bottom: 20, right: 20, background: '#10b981', color: 'white', padding: '10px', borderRadius: '8px', zIndex: 9999}}>Subiendo archivo...</div>}
+      {uploading && <div style={{position: 'fixed', bottom: 20, right: 20, background: '#3b82f6', color: 'white', padding: '15px 20px', borderRadius: '8px', zIndex: 9999, boxShadow: '0 4px 12px rgba(0,0,0,0.1)'}}>Procesando archivo...</div>}
+      {toast && <div style={{position: 'fixed', bottom: 20, right: 20, background: toast.type === 'error' ? '#ef4444' : '#10b981', color: 'white', padding: '15px 20px', borderRadius: '8px', zIndex: 9999, boxShadow: '0 4px 12px rgba(0,0,0,0.1)'}}>{toast.message}</div>}
     </>
   );
 }
