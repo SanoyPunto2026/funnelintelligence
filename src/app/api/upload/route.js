@@ -38,9 +38,29 @@ export async function POST(req) {
           let dateMatch = created.match(/^(\d{4}-\d{2}-\d{2})/);
           let created_date = dateMatch ? dateMatch[1] : created; 
           
-          let adName = row['Ad Name'] || 'Orgánico';
-          let statusRaw = row['Opportunities'] || row['Tags'] || 'Nuevo';
-          let status = statusRaw.includes('open ') ? statusRaw.replace('open ', '').split('|').pop().trim() : statusRaw;
+          let adName = row['Ad Name'] || row['Ad Set'] || 'Orgánico';
+          let adsetName = row['AdSet Name'] || row['Ad Set'] || 'Sin AdSet';
+          let tags = (row['Tags'] || '').toLowerCase();
+          let opps = (row['Opportunities'] || '').toLowerCase();
+          let wfActive = (row['Workflows Active'] || '').toLowerCase();
+          let wfFinished = (row['Workflows Finished'] || '').toLowerCase();
+          let lastAppt = row['Last Appointment - Confirmed/Open'] || '';
+
+          // Derive boolean fields from GHL data
+          let has_appointment = lastAppt.length > 0 || opps.includes('agendado') || tags.includes('cita agendada');
+          let crm_movement = opps.includes('seguimiento') || opps.includes('agendado') || tags.includes('usó_botón') || tags.includes('human handover');
+          let active_recent = wfActive.length > 0 || tags.includes('reactivación') || tags.includes('esperando');
+          let has_attribution = adName !== 'Orgánico' && adName.length > 0;
+          let workflow_detected = wfFinished.length > 0 || wfActive.length > 0;
+          let used_button = tags.includes('usó_botón') || tags.includes('human handover');
+          let waiting = tags.includes('esperando') || opps.includes('seguimiento');
+          let discarded_inferred = opps.includes('descartado') || opps.includes('no interesa');
+          let custom_data_detected = (row['Email'] || '').length > 0 && (row['Phone'] || '').length > 0;
+
+          let statusRaw = row['Opportunities'] || '';
+          let status = statusRaw.length > 0 
+            ? (statusRaw.includes('open ') ? statusRaw.replace(/^open\s+/i, '').split('|').pop().trim() : statusRaw)
+            : (tags.includes('cita agendada') ? 'Agendado' : 'Nuevo Lead');
 
           return {
             client: clientName,
@@ -48,25 +68,40 @@ export async function POST(req) {
             created_date: created_date,
             status: status,
             ad_name_norm: adName,
-            risk: "Medio",
-            last_activity: row['Last Activity'] || ''
+            adset_norm: adsetName,
+            ad: adName,
+            risk: discarded_inferred ? "Alto" : (has_appointment ? "Bajo" : "Medio"),
+            last_activity: row['Last Activity'] || '',
+            has_appointment: has_appointment,
+            crm_movement: crm_movement,
+            active_recent: active_recent,
+            has_attribution: has_attribution,
+            workflow_detected: workflow_detected,
+            used_button: used_button,
+            waiting: waiting,
+            discarded_inferred: discarded_inferred,
+            custom_data_detected: custom_data_detected
           };
         });
         
         currentData.leads = currentData.leads.concat(transformedLeads);
 
-        // Auto-generate ads based on unique ad names found
-        const uniqueAds = [...new Set(transformedLeads.map(l => l.ad_name_norm))];
-        uniqueAds.forEach(ad => {
-          currentData.ads.push({
-            client: clientName,
-            currency: 'USD',
-            ad_name_norm: ad,
-            adset_norm: 'GHL Import',
-            spend: 0,
-            meta_results: 0
-          });
+        // Auto-generate ads based on unique ad+adset combinations
+        const adMap = new Map();
+        transformedLeads.forEach(l => {
+          const key = l.ad_name_norm + '||' + l.adset_norm;
+          if (!adMap.has(key)) {
+            adMap.set(key, {
+              client: clientName,
+              currency: 'USD',
+              ad_name_norm: l.ad_name_norm,
+              adset_norm: l.adset_norm,
+              spend: 0,
+              meta_results: transformedLeads.filter(x => x.ad_name_norm === l.ad_name_norm && x.adset_norm === l.adset_norm).length
+            });
+          }
         });
+        currentData.ads = currentData.ads.concat([...adMap.values()]);
 
         // Add client config if not exists
         if (!currentData.clients.find(c => c.client === clientName)) {
