@@ -305,7 +305,71 @@ function showView(v){
 function badge(cat){ return `<span class="badge ${cat}">${cat}</span>` }
 function clientCard(c){return `<div class="card client-card" onclick="openClient('${c.client}')"><div class="kpi"><div><h3>${c.client}</h3>${badge(activeCategory(c))}</div><div class="score-ring" style="--score:${activeScore(c)}"><span>${activeScore(c)}</span></div></div><div class="grid grid3" style="gap:10px;margin-top:16px"><div><strong>${fmtNum(c.leads)}</strong><div class="label">Leads</div></div><div><strong>${c.appointments}</strong><div class="label">Citas</div></div><div><strong>${fmtPct(c.appointment_rate)}</strong><div class="label">Appt.</div></div></div><p class="small" style="margin-top:12px">Problema: ${c.main_problem}</p></div>`}
 function renderAction(){const cs=[...DATA.clients].sort((a,b)=>activeScore(a)-activeScore(b)),best=[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a))[0],items=[cs[0],cs[1],best].filter(Boolean);document.getElementById('view-action').innerHTML=`${renderDateController()}${renderCurrencyController()}<div class="grid grid2"><div class="card"><h3>Acciones prioritarias</h3>${items.map((c,i)=>`<div class="action" onclick="openClient('${c.client}')"><span class="dot ${i==0?'red':i==1?'yellow':'green'}"></span><div><strong>${i==0?'<i class="ph ph-warning"></i>':i==1?'<i class="ph ph-warning-circle"></i>':'<i class="ph ph-trophy"></i>'} ${c.client}</strong><div class="small">${activeCategory(c)} · Score ${activeScore(c)} · ${c.main_problem}</div><p>${diagnosisShort(c)}</p></div></div>`).join('')}</div><div class="card"><h3>Agency Health ${tip('agency')}</h3><div class="kpi"><div><div class="metric">${activeAgencyScore()}</div><div class="label">Agency Health Score</div>${badge(activeAgencyCategory())}</div><div class="score-ring" style="--score:${activeAgencyScore()}"><span>${activeAgencyScore()}</span></div></div><div class="insight"><strong>Lectura</strong><p>TRD se evalúa como el promedio ponderado del rendimiento de sus clientes y la salud de sus etapas críticas.</p></div></div></div><div class="grid grid4" style="margin-top:18px">${[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a)).map(clientCard).join('')}</div>`}
-function renderAgency(){const b=DATA.benchmarks;document.getElementById('view-agency').innerHTML=`${renderDateController()}${renderCurrencyController()}<div class="grid grid2"><div class="card"><div class="kpi"><div><h3>Agency Health Score ${tip('agency')}</h3><div class="metric">${activeAgencyScore()}</div>${badge(activeAgencyCategory())}<p>Promedio de salud de TRD basado en clientes, citas, actividad CRM, atribución y rendimiento comercial. Si cambias pesos en Health Engine, este score se recalcula.</p></div><div class="score-ring" style="--score:${activeAgencyScore()}"><span>${activeAgencyScore()}</span></div></div></div><div class="card"><h3>Agency Snapshot</h3><span class="data-mode missing">Tendencias semanales/mensuales pendientes ${tip("dataMissing")}</span><div class="grid grid2"><div><div class="metric">${b.total_clients}</div><div class="label">Clientes</div></div><div><div class="metric">${fmtNum(b.total_leads)}</div><div class="label">Leads CRM</div></div><div><div class="metric">${b.total_appointments}</div><div class="label">Citas</div></div><div><div class="metric">${fmtPct(b.avg_appointment_rate)}</div><div class="label">Avg Appointment Rate</div></div></div></div></div><div class="card" style="margin-top:18px"><h3>Agency Health Matrix</h3><p class="small">Esta matriz muestra métricas base de agencia; el score superior sí responde a los pesos del Health Engine.</p><div class="matrix-grid">${(b.agency_stage_matrix||[]).map(m=>`<div class="matrix-card"><h4><span class="health-dot ${hClass(m.health)}"></span>${m.stage}</h4><div class="metric" style="font-size:27px">${fmtPct(m.value)}</div><div class="label">Target: ${fmtPct(m.benchmark)}</div><div class="progress" style="--w:${m.score}%;margin-top:12px"><i></i></div><p class="small">${hTxt(m.health)} · ${m.score}/100</p></div>`).join('')}</div></div>`}
+function calculateWeeklyTrends() {
+  const trends = {};
+  (DATA.leads || []).forEach(l => {
+    if (!l.created_date) return;
+    const date = new Date(l.created_date);
+    if (isNaN(date.getTime())) return;
+    const day = date.getDay();
+    const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+    const monday = new Date(date.setDate(diff));
+    const weekKey = monday.toISOString().split('T')[0];
+    
+    if (!trends[weekKey]) {
+      trends[weekKey] = { week: weekKey, leads: 0, appointments: 0 };
+    }
+    trends[weekKey].leads++;
+    if (l.has_appointment || l.status === 'agendado') {
+      trends[weekKey].appointments++;
+    }
+  });
+  return Object.values(trends).sort((a, b) => b.week.localeCompare(a.week)).slice(0, 4);
+}
+
+function renderAgency(){
+  const weeklyTrends = calculateWeeklyTrends();
+  document.getElementById('view-agency').innerHTML=`${renderDateController()}${renderCurrencyController()}
+    <div class="grid grid2">
+      <div class="card">
+        <div class="kpi">
+          <div>
+            <h3>Agency Health Score ${tip('agency')}</h3>
+            <div class="metric">${activeAgencyScore()}</div>
+            ${badge(activeAgencyCategory())}
+            <p>Promedio de salud de TRD basado en clientes, citas, actividad CRM, atribución y rendimiento comercial.</p>
+          </div>
+          <div class="score-ring" style="--score:${activeAgencyScore()}"><span>${activeAgencyScore()}</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Tendencias Semanales</h3>
+        ${weeklyTrends.length === 0 ? '<p class="small" style="margin-top:16px">No hay datos de tendencias para el rango seleccionado.</p>' : `
+          <div class="trends-list" style="margin-top:16px; display:flex; flex-direction:column; gap:12px;">
+            ${weeklyTrends.map(t => {
+              const rate = t.leads ? t.appointments / t.leads : 0;
+              return `
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:8px;">
+                  <div>
+                    <strong style="color:#fff; font-size:14px;">Semana del ${t.week}</strong>
+                    <div style="font-size:12px; color:#94a3b8; margin-top:2px;">${t.leads} Leads CRM · ${t.appointments} Citas</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <span class="badge ${rate >= 0.20 ? 'Elite' : 'Broken'}" style="font-size:11px;">${fmtPct(rate)} Citas</span>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `}
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <h3>Agency Health Matrix</h3>
+      <p class="small">Esta matriz muestra métricas base de agencia; el score superior sí responde a los pesos del Health Engine.</p>
+      <div class="matrix-grid">${(DATA.benchmarks.agency_stage_matrix||[]).map(m=>`<div class="matrix-card"><h4><span class="health-dot ${hClass(m.health)}"></span>${m.stage}</h4><div class="metric" style="font-size:27px">${fmtPct(m.value)}</div><div class="label">Target: ${fmtPct(m.benchmark)}</div><div class="progress" style="--w:${m.score}%;margin-top:12px"><i></i></div><p class="small">${hTxt(m.health)} · ${m.score}/100</p></div>`).join('')}</div>
+    </div>`;
+}
 function renderClients(){document.getElementById('view-clients').innerHTML=`<div class="client-grid">${[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a)).map(clientCard).join('')}</div>`}
 function resetAdsFilter(){ adsClassFilter='Todos'; }
 function openClient(n){selectedClient=n;currentClientTab='pipeline';resetAdsFilter();showView('client')}
