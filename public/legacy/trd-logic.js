@@ -284,7 +284,24 @@ const leadsBy = n => DATA.leads.filter(l=>l.client===n);
 const dotCat = cat => cat==="Broken"?"red":cat==="Emerging"?"yellow":cat==="Elite"?"green":"purple";
 const hClass = h => h==="green"?"h-green":h==="yellow"?"h-yellow":h==="red"?"h-red":"h-neutral";
 const hTxt = h => h==="green"?"Saludable":h==="yellow"?"En riesgo":h==="red"?"Crítico":"Pendiente";
-function showView(v){document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));document.getElementById('view-'+v).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));const map={action:0,agency:1,engine:2,clients:3,client:4,ads:5,leads:6,risks:7,alerts:8,opportunities:9,ai:10,academy:11};document.querySelectorAll('.nav button')[map[v]].classList.add('active');const t={action:["Action Center","Prioridades y decisiones del día."],agency:["Agency Health","Promedio operativo de TRD según rendimiento de todos sus clientes."],engine:["Funnel Health Engine","Motor configurable de scoring, pesos, simulación e impacto."],clients:["Clients","Clientes como entidad principal del sistema."],client:["Client Workspace","Funnel Intelligence y pipeline comercial por cliente."],ads:["Ad Intelligence","Creativos conectados a citas y movimiento CRM."],leads:["Lead Explorer","Leads filtrados por cliente, estado y riesgo."],risks:["Risks","Cuentas y etapas que requieren atención."],alerts:["Alert Engine","Alertas automáticas sobre salud, atribución, actividad y progresión."],opportunities:["Opportunities","Aprendizajes replicables y mejoras potenciales."],ai:["AI Analyst","Preguntas sobre Meta + Leadtion."],academy:["Funnel Health Academy","Glosario, interpretación y guía rápida del sistema."]}[v];document.getElementById('pageTitle').textContent=t[0];document.getElementById('pageSubtitle').textContent=t[1];renderAll();}
+window.activeViewId = window.activeViewId || 'view-action';
+function showView(v){
+  window.activeViewId = 'view-' + v;
+  document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));
+  const target = document.getElementById('view-'+v);
+  if(target) target.classList.remove('hidden');
+  document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
+  const map={action:0,agency:1,engine:2,clients:3,client:4,ads:5,leads:6,risks:7,alerts:8,opportunities:9,ai:10,academy:11};
+  if(document.querySelectorAll('.nav button')[map[v]]) {
+    document.querySelectorAll('.nav button')[map[v]].classList.add('active');
+  }
+  const t={action:["Action Center","Prioridades y decisiones del día."],agency:["Agency Health","Promedio operativo de TRD según rendimiento de todos sus clientes."],engine:["Funnel Health Engine","Motor configurable de scoring, pesos, simulación e impacto."],clients:["Clients","Clientes como entidad principal del sistema."],client:["Client Workspace","Funnel Intelligence y pipeline comercial por cliente."],ads:["Ad Intelligence","Creativos conectados a citas y movimiento CRM."],leads:["Lead Explorer","Leads filtrados por cliente, estado y riesgo."],risks:["Risks","Cuentas y etapas que requieren atención."],alerts:["Alert Engine","Alertas automáticas sobre salud, atribución, actividad y progresión."],opportunities:["Opportunities","Aprendizajes replicables y mejoras potenciales."],ai:["AI Analyst","Preguntas sobre Meta + Leadtion."],academy:["Funnel Health Academy","Glosario, interpretación y guía rápida del sistema."]}[v];
+  if(t) {
+    document.getElementById('pageTitle').textContent=t[0];
+    document.getElementById('pageSubtitle').textContent=t[1];
+  }
+  renderAll();
+}
 function badge(cat){ return `<span class="badge ${cat}">${cat}</span>` }
 function clientCard(c){return `<div class="card client-card" onclick="openClient('${c.client}')"><div class="kpi"><div><h3>${c.client}</h3>${badge(activeCategory(c))}</div><div class="score-ring" style="--score:${activeScore(c)}"><span>${activeScore(c)}</span></div></div><div class="grid grid3" style="gap:10px;margin-top:16px"><div><strong>${fmtNum(c.leads)}</strong><div class="label">Leads</div></div><div><strong>${c.appointments}</strong><div class="label">Citas</div></div><div><strong>${fmtPct(c.appointment_rate)}</strong><div class="label">Appt.</div></div></div><p class="small" style="margin-top:12px">Problema: ${c.main_problem}</p></div>`}
 function renderAction(){const cs=[...DATA.clients].sort((a,b)=>activeScore(a)-activeScore(b)),best=[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a))[0],items=[cs[0],cs[1],best].filter(Boolean);document.getElementById('view-action').innerHTML=`${renderDateController()}${renderCurrencyController()}<div class="grid grid2"><div class="card"><h3>Acciones prioritarias</h3>${items.map((c,i)=>`<div class="action" onclick="openClient('${c.client}')"><span class="dot ${i==0?'red':i==1?'yellow':'green'}"></span><div><strong>${i==0?'<i class="ph ph-warning"></i>':i==1?'<i class="ph ph-warning-circle"></i>':'<i class="ph ph-trophy"></i>'} ${c.client}</strong><div class="small">${activeCategory(c)} · Score ${activeScore(c)} · ${c.main_problem}</div><p>${diagnosisShort(c)}</p></div></div>`).join('')}</div><div class="card"><h3>Agency Health ${tip('agency')}</h3><div class="kpi"><div><div class="metric">${activeAgencyScore()}</div><div class="label">Agency Health Score</div>${badge(activeAgencyCategory())}</div><div class="score-ring" style="--score:${activeAgencyScore()}"><span>${activeAgencyScore()}</span></div></div><div class="insight"><strong>Lectura</strong><p>TRD se evalúa como el promedio ponderado del rendimiento de sus clientes y la salud de sus etapas críticas.</p></div></div></div><div class="grid grid4" style="margin-top:18px">${[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a)).map(clientCard).join('')}</div>`}
@@ -1462,25 +1479,31 @@ function applyDateRange(){
   DATA.progression_funnels=buildProgression(filtered,DATA.clients);
 }
 
-function showEmptyState() {
+function showEmptyState(activeViewId) {
+  const targetId = activeViewId || window.activeViewId || 'view-action';
   document.querySelectorAll('.view').forEach(e => e.classList.add('hidden'));
-  const actionView = document.getElementById('view-action');
-  if(!actionView) return;
-  actionView.classList.remove('hidden');
-  actionView.innerHTML = '<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:60vh; text-align:center;">' +
-    '<i class="ph ph-folder-open" style="font-size: 64px; color: var(--muted); margin-bottom: 20px;"></i>' +
-    '<h2 style="font-size: 24px; margin-bottom: 10px;">A\u00fan no hay datos</h2>' +
-    '<p style="color: var(--muted); max-width: 400px; margin: 0 auto 24px;">Sube tu archivo Excel o CSV para comenzar a visualizar los dashboards.</p>' +
-    '<button onclick="document.querySelector(\'input[type=file]\').click()" style="background:#3b82f6;color:white;border:none;padding:14px 28px;border-radius:8px;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:8px;font-weight:600;box-shadow:0 4px 12px rgba(59,130,246,0.3);">' +
-    '<i class="ph ph-upload-simple" style="font-size:20px;"></i> Cargar CSV / Excel</button></div>';
+  const targetView = document.getElementById(targetId);
+  if(!targetView) return;
+  targetView.classList.remove('hidden');
+  targetView.innerHTML = `<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:60vh; text-align:center;">
+    <div style="width:80px; height:80px; border-radius:50%; background:rgba(59,130,246,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:24px; color:#3b82f6; margin-left:auto; margin-right:auto;">
+      <i class="ph ph-upload-simple" style="font-size: 38px;"></i>
+    </div>
+    <h2 style="font-size: 26px; font-weight:600; color:#fff; margin-bottom: 12px; font-family:'Inter',sans-serif;">Carga tus datos de Funnel</h2>
+    <p style="color: #94a3b8; max-width: 420px; margin: 0 auto 28px; font-size:15px; line-height:1.6; font-family:'Inter',sans-serif;">Para visualizar las métricas y analíticas de esta sección, por favor sube tu archivo Excel o CSV exportado de GoHighLevel.</p>
+    <button onclick="document.querySelector('input[type=\\'file\\']').click()" style="background:#3b82f6;color:white;border:none;padding:16px 32px;border-radius:12px;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;box-shadow:0 10px 15px -3px rgba(59,130,246,0.3); margin-left:auto; margin-right:auto; transition:all 0.2s;">
+      <i class="ph ph-file-arrow-up" style="font-size:20px;"></i> Subir Archivo Excel / CSV
+    </button></div>`;
 }
 
 function renderAll(){
   if (!DATA || !DATA.clients || DATA.clients.length === 0) {
-    showEmptyState();
+    showEmptyState(window.activeViewId || 'view-action');
     return;
   }
   applyDateRange();recalculateEngineScores();renderAction();renderAgency();renderEngine();renderClients();renderClient();renderAds();renderLeads();renderRisks();renderAlerts();renderOps();renderAI();renderAcademy()
+  document.body.classList.toggle('learning-on',learningMode);
+  updateLearningButton();
 }
 document.body.classList.toggle('learning-on',learningMode);
 renderAll();
