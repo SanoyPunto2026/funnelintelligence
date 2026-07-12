@@ -886,8 +886,22 @@ function renderAgency(){
 }
 function renderClients(){document.getElementById('view-clients').innerHTML=`<div class="client-grid">${[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a)).map(clientCard).join('')}</div>`}
 function resetAdsFilter(){ adsClassFilter='Todos'; }
-function openClient(n){selectedClient=n;currentClientTab='pipeline';resetAdsFilter();showView('client')}
-function renderClient(){if(!selectedClient&&DATA.clients&&DATA.clients.length)selectedClient=DATA.clients[0].client;const c=cBy(selectedClient),tabs={overview:'Overview',intelligence:'Funnel Intelligence',pipeline:'Pipeline Analytics',ads:'Ads',leads:'Leads',insights:'Insights'};let body='';if(currentClientTab==='overview')body=overview(c);if(currentClientTab==='intelligence')body=funnelIntel(c);if(currentClientTab==='pipeline')body=pipelineAnalytics(c);if(currentClientTab==='ads')body=adCards(selectedClient);if(currentClientTab==='leads')body=leadTable(leadsBy(selectedClient).slice(0,100));if(currentClientTab==='insights')body=insights(c);document.getElementById('view-client').innerHTML=`${renderDateController()}${renderCurrencyController()}<div class="filters"><select onchange="selectedClient=this.value;renderClient()">${DATA.clients.map(x=>`<option ${x.client===selectedClient?'selected':''}>${x.client}</option>`).join('')}</select></div><div class="card"><div class="kpi"><div><h3 style="font-size:24px">${c.client}</h3>${badge(c.engine_category||c.category)}<p>Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong> · Motor: <strong>${activeScore(c)}/100</strong></p></div><div class="score-ring" style="--score:${activeScore(c)}"><span>${activeScore(c)}</span></div></div><div class="tabs">${Object.entries(tabs).map(([k,v])=>`<button class="${currentClientTab===k?'active':''}" onclick="currentClientTab='${k}';renderClient()">${v}</button>`).join('')}</div></div><div style="margin-top:18px">${body}</div>`}
+function openClient(n){
+  selectedClient=n;
+  currentClientTab='pipeline';
+  resetAdsFilter();
+  showView('client', true);
+  // Mantener "Clients" iluminado en el sidebar
+  document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
+  const clientsBtn = document.querySelectorAll('.nav button')[3];
+  if(clientsBtn) clientsBtn.classList.add('active');
+  // Actualizar título
+  document.getElementById('pageTitle').textContent = selectedClient;
+  document.getElementById('pageSubtitle').textContent = 'Funnel Intelligence y pipeline comercial por cliente.';
+  // Actualizar URL
+  window.history.pushState({ view: 'client' }, '', '/client-workspace');
+}
+function renderClient(){if(!selectedClient&&DATA.clients&&DATA.clients.length)selectedClient=DATA.clients[0].client;const c=cBy(selectedClient),tabs={overview:'Overview',intelligence:'Funnel Intelligence',pipeline:'Pipeline Analytics',ads:'Ads',leads:'Leads',insights:'Insights'};let body='';if(currentClientTab==='overview')body=overview(c);if(currentClientTab==='intelligence')body=funnelIntel(c);if(currentClientTab==='pipeline')body=pipelineAnalytics(c);if(currentClientTab==='ads')body=adCards(selectedClient);if(currentClientTab==='leads')body=leadTable(leadsBy(selectedClient).slice(0,100));if(currentClientTab==='insights')body=insights(c);document.getElementById('view-client').innerHTML=`${renderDateController()}${renderCurrencyController()}<div style="margin-bottom:16px;"><button onclick="showView('clients')" style="background:none; border:none; color:#38bdf8; cursor:pointer; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px; padding:8px 0; font-family:'Inter',sans-serif; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'"><i class="ph ph-arrow-left" style="font-size:18px;"></i> Volver a Clients</button></div><div class="filters"><select onchange="selectedClient=this.value;renderClient()">${DATA.clients.map(x=>`<option ${x.client===selectedClient?'selected':''}>${x.client}</option>`).join('')}</select></div><div class="card"><div class="kpi"><div><h3 style="font-size:24px">${c.client}</h3>${badge(c.engine_category||c.category)}<p>Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong> · Motor: <strong>${activeScore(c)}/100</strong></p></div><div class="score-ring" style="--score:${activeScore(c)}"><span>${activeScore(c)}</span></div></div><div class="tabs">${Object.entries(tabs).map(([k,v])=>`<button class="${currentClientTab===k?'active':''}" onclick="currentClientTab='${k}';renderClient()">${v}</button>`).join('')}</div></div><div style="margin-top:18px">${body}</div>`}
 function comp(n,v){return `<div class="component"><span>${n}</span><div class="progress" style="--w:${Math.round(v)}%"><i></i></div><strong>${Math.round(v)}</strong></div>`}
 function overview(c){
   const w=normalizeWeights();
