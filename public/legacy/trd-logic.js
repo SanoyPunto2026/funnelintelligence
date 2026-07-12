@@ -79,11 +79,11 @@ let engineWeights = JSON.parse(localStorage.getItem('trd_engine_weights') || 'nu
   acquisition: 10
 };
 const engineLabels = {
-  appointment: "Appointment Rate",
-  movement: "CRM Movement",
-  activity: "CRM Activity",
-  attribution: "Attribution Quality",
-  acquisition: "Acquisition Efficiency"
+  appointment: "Tasa de Agendamiento",
+  movement: "Tasa de Avance del Embudo",
+  activity: "Tasa de Leads Activos",
+  attribution: "Calidad de Atribución",
+  acquisition: "Tasa de Contactabilidad"
 };
 function saveEngineWeights(){ localStorage.setItem('trd_engine_weights', JSON.stringify(engineWeights)); }
 
@@ -97,12 +97,12 @@ function activeAgencyCategory(){ return DATA.benchmarks.engine_agency_category ?
 function tip(key){
   const tips={
     agency:"Mide la salud promedio de todos los clientes de TRD. Ayuda a saber si la operación general está mejorando o empeorando.",
-    funnelScore:"Puntaje de 0 a 100 que resume la salud del funnel usando citas, movimiento CRM, actividad, atribución y eficiencia de adquisición.",
-    appointment:"Porcentaje de leads CRM que llegaron a una cita. Fórmula: citas / leads CRM.",
-    movement:"Mide si los leads tuvieron avance o señales de gestión dentro del CRM.",
-    activity:"Evalúa qué porcentaje de leads tuvo actividad reciente. Sirve para detectar abandono comercial.",
-    attribution:"Mide qué porcentaje de leads puede conectarse con campaña, conjunto y anuncio.",
-    acquisition:"Evalúa eficiencia de adquisición según volumen y costo relativo.",
+    funnelScore:"Puntaje de 0 a 100 que resume la salud del funnel usando agendamiento, avance de CRM, leads activos, atribución y contactabilidad.",
+    appointment:"Porcentaje de leads CRM que llegaron a una cita (agendados / leads totales).",
+    movement:"Porcentaje de leads que salieron de la etapa inicial 'Lead Nuevo' y registraron avance en el CRM.",
+    activity:"Porcentaje de leads con interacción o gestión comercial reciente para prevenir el abandono.",
+    attribution:"Porcentaje de leads vinculados a campañas o anuncios de Meta Ads.",
+    acquisition:"Porcentaje de leads que cuentan con datos de contacto completos (teléfono y correo) para contactabilidad.",
     bottleneck:"La etapa o métrica que más limita el rendimiento del funnel.",
     leakage:"Cantidad o porcentaje de leads que no avanzan de una etapa a otra.",
     progression:"Muestra cuántos leads alcanzaron cada etapa comercial y qué porcentaje se perdió entre pasos.",
@@ -811,7 +811,7 @@ function renderAgency(){
               <th>Cliente</th>
               <th>Leads CRM</th>
               <th>Citas</th>
-              <th>Conversion Rate</th>
+              <th>Appointment Rate</th>
               <th>Actividad CRM</th>
               <th>Calidad Atribución</th>
             </tr>
@@ -1471,36 +1471,35 @@ function renderEngine(){
   const agencyCat=DATA.benchmarks.engine_agency_category;
   const top=sorted[0], bottom=sorted[sorted.length-1];
   viewHTML('view-engine', `${renderDateController()}
-    <div class="engine-layout">
-      <div class="card">
+    <div class="engine-layout" style="display:block;">
+      <div class="card" style="width:100%; box-sizing:border-box;">
         <h3>Funnel Health Engine ${tip('funnelScore')}</h3>
-        <p class="small">Ajusta los pesos del score y mira cómo cambia la salud de cada cliente y de la agencia.</p><div class="learning-note">Este motor permite al equipo cambiar la importancia de cada métrica. Por ejemplo, si TRD quiere priorizar calidad comercial, puede darle más peso a Appointment Rate.</div>
+        <p class="small">Ajusta los pesos del score y mira cómo cambia la salud de cada cliente y de la agencia.</p>
+        <div class="learning-note">Este motor permite al equipo cambiar la importancia de cada métrica. Por ejemplo, si TRD quiere priorizar la calidad de datos de contacto, puede darle más peso a Tasa de Contactabilidad.</div>
         <div class="grid grid3" style="margin:16px 0">
-          <div class="scenario-card"><div class="label">Agency Health recalculado</div><div class="metric">${agency}</div>${badge(agencyCat)}</div>
+          <div class="scenario-card"><div class="label">Agency Health recalculado</div><div class="metric">${agency}</div></div>
           <div class="scenario-card"><div class="label">Top client</div><div class="metric" style="font-size:24px">${top.client}</div><p class="small">${top.engine_score}/100 · ${top.engine_category}</p></div>
           <div class="scenario-card"><div class="label">Mayor riesgo</div><div class="metric" style="font-size:24px">${bottom.client}</div><p class="small">${bottom.engine_score}/100 · ${bottom.engine_category}</p></div>
         </div>
-        <div class="${total===100?'engine-pill engine-good':'engine-pill engine-warning'}">Total pesos: ${total}% ${total===100?'<i class="ph ph-check"></i>':'· se normaliza automáticamente'}</div>
+        <div class="${total===100?'engine-pill engine-good':'engine-pill engine-warning'}" style="margin-bottom:20px;">Total pesos: ${total}% ${total===100?'<i class="ph ph-check"></i>':'· se normaliza automáticamente'}</div>
         ${Object.keys(engineWeights).map(k=>`
-          <div class="weight-row">
-            <div><strong>${engineLabels[k]} ${tip(k==="appointment"?"appointment":k==="movement"?"movement":k==="activity"?"activity":k==="attribution"?"attribution":"acquisition")}</strong><div class="small">${k} · peso ${tip("weight")}</div></div>
+          <div class="weight-row" style="margin-bottom:15px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <strong style="font-size:14px; color:#fff;">${engineLabels[k]}</strong>
+              <div class="trd-tooltip-container">
+                <i class="ph ph-info" style="font-size:14px; color:#94a3b8; cursor:pointer;"></i>
+                <span class="trd-tooltip-text">${tip(k)}</span>
+              </div>
+            </div>
             <input type="range" min="0" max="60" value="${engineWeights[k]}" onchange="setWeight('${k}',this.value)" oninput="this.nextElementSibling.textContent=this.value+'%'">
             <strong>${engineWeights[k]}%</strong>
           </div>`).join('')}
-        <div class="tabs">
+        <div class="tabs" style="margin-top:20px;">
           <button onclick="resetWeights()">Default TRD</button>
           <button onclick="commercialWeights()">Prioridad comercial</button>
           <button onclick="acquisitionWeights()">Prioridad adquisición</button>
           <button onclick="balanceWeights()">Balanceado</button>
         </div>
-      </div>
-      <div class="card">
-        <h3>Cómo funciona</h3>
-        <div class="insight"><strong>Appointment Rate</strong><p>Premia clientes que convierten leads en citas.</p></div>
-        <div class="insight"><strong>CRM Movement</strong><p>Mide si los leads avanzan o tienen señales de gestión.</p></div>
-        <div class="insight"><strong>CRM Activity</strong><p>Evalúa actividad reciente y seguimiento.</p></div>
-        <div class="insight"><strong>Attribution Quality</strong><p>Evalúa qué tanto podemos conectar lead con campaña/anuncio.</p></div>
-        <div class="insight"><strong>Acquisition Efficiency</strong><p>Evalúa eficiencia de adquisición según CPL relativo.</p></div><div class="insight"><strong>Datos pendientes</strong><div class="missing-list"><div class="missing-item">Pipeline Stage actual</div><div class="missing-item">Stage History</div><div class="missing-item">Fecha hacer 1ra llamada</div><div class="missing-item">Fecha hacer 2da llamada</div><div class="missing-item">Cita asistida</div><div class="missing-item">Venta / cierre</div></div></div>
       </div>
     </div>
 
