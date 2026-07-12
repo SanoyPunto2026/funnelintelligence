@@ -589,7 +589,6 @@ function renderAction(){
           <div>
             <div class="metric" style="font-size:42px; font-weight:900;">${activeAgencyScore()}</div>
             <div class="label" style="font-size:11px;">Nivel de Salud General</div>
-            <span style="margin-top:4px; display:inline-block;">${badge(activeAgencyCategory())}</span>
           </div>
           <div class="score-ring" style="--score:${activeAgencyScore()}"><span>${activeAgencyScore()}</span></div>
         </div>
