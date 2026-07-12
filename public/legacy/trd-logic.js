@@ -515,7 +515,16 @@ function renderAction(){
   const filtered = rawFilteredLeads();
   const cs = [...DATA.clients].sort((a,b)=>activeScore(a)-activeScore(b));
   const best = [...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a))[0];
-  const items = [cs[0],cs[1],best].filter(Boolean);
+  
+  // Deduplicación de clientes para evitar duplicados en prioridades cuando hay pocos clientes cargados
+  const items = [];
+  const seen = new Set();
+  [cs[0], cs[1], best].filter(Boolean).forEach(c => {
+    if (!seen.has(c.client)) {
+      seen.add(c.client);
+      items.push(c);
+    }
+  });
   
   // Calcular métricas consolidadas reales basadas en los leads filtrados
   const totalLeads = filtered.length;
@@ -551,7 +560,19 @@ function renderAction(){
           <i id="priority-chevron-icon" class="${window.priorityCollapsed ? 'ph ph-caret-down' : 'ph ph-caret-up'}" style="font-size:18px;"></i>
         </div>
         <div id="priority-actions-content" style="margin-top:16px; display:${window.priorityCollapsed ? 'none' : 'block'}; max-height:220px; overflow-y:auto; padding-right:4px;">
-          ${items.map((c,i)=>`<div class="action" onclick="openClient('${c.client}')" style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.05); margin-bottom:8px; cursor:pointer;"><span class="dot ${i==0?'red':i==1?'yellow':'green'}" style="margin-right:6px;"></span><strong>${c.client}</strong><div class="small" style="font-size:11px;">${activeCategory(c)} · Score ${activeScore(c)}</div><p style="margin:4px 0 0 0; font-size:12px; line-height:1.3;">${diagnosisShort(c)}</p></div>`).join('')}
+          ${items.map(c=>{
+            const cat = activeCategory(c);
+            const dotColor = cat==="Broken"?"red":cat==="Emerging"?"yellow":cat==="Elite"?"green":"purple";
+            return `
+              <div class="action" onclick="openClient('${c.client}')" style="padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.05); display:flex; align-items:center; gap:12px; cursor:pointer;">
+                <span class="dot ${dotColor}" style="flex-shrink:0; width:12px; height:12px; border-radius:50%;"></span>
+                <div style="display:flex; flex-direction:column; gap:2px;">
+                  <strong style="color:#fff; font-size:14px;">${c.client}</strong>
+                  <span style="font-size:12px; color:#cbd5e1; font-weight:500;">${c.main_problem}</span>
+                </div>
+              </div>
+            `;
+          }).join('')}
         </div>
       </div>
       
