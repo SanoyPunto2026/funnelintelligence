@@ -625,26 +625,47 @@ function renderAction(){
       </div>
     ` : ''}`;
 }
-function calculateWeeklyTrends() {
+function calculateDynamicTrends() {
+  const filtered = rawFilteredLeads();
   const trends = {};
-  (DATA.leads || []).forEach(l => {
-    if (!l.created_date) return;
-    const date = new Date(l.created_date);
-    if (isNaN(date.getTime())) return;
-    const day = date.getDay();
-    const diff = date.getDate() - day + (day === 0 ? -6 : 1);
-    const monday = new Date(date.setDate(diff));
-    const weekKey = monday.toISOString().split('T')[0];
-    
-    if (!trends[weekKey]) {
-      trends[weekKey] = { week: weekKey, leads: 0, appointments: 0 };
-    }
-    trends[weekKey].leads++;
-    if (l.has_appointment || l.status === 'agendado') {
-      trends[weekKey].appointments++;
-    }
-  });
-  return Object.values(trends).sort((a, b) => b.week.localeCompare(a.week)).slice(0, 4);
+  
+  if (dateRange.preset === "last_7") {
+    // Group by Day
+    filtered.forEach(l => {
+      if (!l.created_date) return;
+      const dateKey = l.created_date.slice(0, 10);
+      if (!trends[dateKey]) {
+        trends[dateKey] = { label: dateKey, leads: 0, appointments: 0 };
+      }
+      trends[dateKey].leads++;
+      if (l.has_appointment || l.status === 'agendado') {
+        trends[dateKey].appointments++;
+      }
+    });
+    return Object.values(trends).sort((a, b) => a.label.localeCompare(b.label));
+  } else {
+    // Group by Week (standard)
+    filtered.forEach(l => {
+      if (!l.created_date) return;
+      const parts = l.created_date.split('-');
+      if (parts.length < 3) return;
+      const date = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]), 12, 0, 0);
+      if (isNaN(date.getTime())) return;
+      const day = date.getDay();
+      const diff = date.getDate() - day + (day === 0 ? -6 : 1);
+      const monday = new Date(date.setDate(diff));
+      const weekKey = monday.toISOString().split('T')[0];
+      
+      if (!trends[weekKey]) {
+        trends[weekKey] = { label: "Semana " + weekKey, leads: 0, appointments: 0 };
+      }
+      trends[weekKey].leads++;
+      if (l.has_appointment || l.status === 'agendado') {
+        trends[weekKey].appointments++;
+      }
+    });
+    return Object.values(trends).sort((a, b) => a.label.localeCompare(b.label));
+  }
 }
 
 function calculateGlobalCreativeStats() {
@@ -663,17 +684,19 @@ function calculateGlobalCreativeStats() {
 }
 
 function renderAgency(){
-  const weeklyTrends = calculateWeeklyTrends();
+  const dynamicTrends = calculateDynamicTrends();
   const creativeStats = calculateGlobalCreativeStats();
+  const filtered = rawFilteredLeads();
   
-  // Calcular distribución comercial del portafolio
-  const totalLeads = DATA.leads.length;
+  // Calcular distribución comercial del funnel
+  const totalLeads = filtered.length;
   const stagesCount = {
-    'lead nuevo': DATA.leads.filter(l => l.status === 'lead nuevo').length,
-    'atender dudas': DATA.leads.filter(l => l.status === 'atender dudas').length,
-    'dejo de responder-seguimiento': DATA.leads.filter(l => l.status === 'dejo de responder-seguimiento').length,
-    'agendado': DATA.leads.filter(l => l.status === 'agendado').length,
-    'lead futuro': DATA.leads.filter(l => l.status === 'lead futuro').length
+    'lead nuevo': filtered.filter(l => l.status === 'lead nuevo').length,
+    'atender dudas': filtered.filter(l => l.status === 'atender dudas').length,
+    'dejo de responder-seguimiento': filtered.filter(l => l.status === 'dejo de responder-seguimiento').length,
+    'agendado': filtered.filter(l => l.status === 'agendado').length,
+    'lead futuro': filtered.filter(l => l.status === 'lead futuro').length,
+    'custom': filtered.filter(l => l.status && !['lead nuevo', 'atender dudas', 'dejo de responder-seguimiento', 'agendado', 'lead futuro'].includes(l.status)).length
   };
 
   document.getElementById('view-agency').innerHTML=`${renderDateController()}${renderCurrencyController()}
@@ -690,17 +713,17 @@ function renderAgency(){
         </div>
       </div>
 
-      <!-- 2. Tendencias Semanales -->
+      <!-- 2. Tendencias -->
       <div class="card">
-        <h3>Tendencias Semanales</h3>
-        ${weeklyTrends.length === 0 ? '<p class="small" style="margin-top:16px">No hay datos de tendencias para el rango seleccionado.</p>' : `
-          <div class="trends-list" style="margin-top:16px; display:flex; flex-direction:column; gap:12px;">
-            ${weeklyTrends.map(t => {
+        <h3>Tendencias</h3>
+        ${dynamicTrends.length === 0 ? '<p class="small" style="margin-top:16px">No hay datos de tendencias para el rango seleccionado.</p>' : `
+          <div class="trends-list" style="margin-top:16px; display:flex; flex-direction:column; gap:12px; max-height: 250px; overflow-y: auto; padding-right: 4px;">
+            ${dynamicTrends.map(t => {
               const rate = t.leads ? t.appointments / t.leads : 0;
               return `
                 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:8px;">
                   <div>
-                    <strong style="color:#fff; font-size:14px;">Semana del ${t.week}</strong>
+                    <strong style="color:#fff; font-size:14px;">${t.label}</strong>
                     <div style="font-size:12px; color:#94a3b8; margin-top:2px;">${t.leads} Leads CRM · ${t.appointments} Citas</div>
                   </div>
                   <div style="text-align:right;">
@@ -714,23 +737,23 @@ function renderAgency(){
       </div>
     </div>
 
-    <!-- 3. Distribución Comercial del Portafolio y Estrategias Creativas -->
+    <!-- 3. Distribución Comercial del Funnel y Estrategias Creativas -->
     <div class="grid grid2" style="margin-top:18px;">
       <!-- Distribución Comercial -->
       <div class="card">
-        <h3>Distribución Comercial del Portafolio</h3>
+        <h3>Distribución Comercial del Funnel</h3>
         <p class="small" style="margin-bottom:16px;">Volumen y porcentaje de contactos de la agencia por etapa del embudo comercial.</p>
         <div style="display:flex; flex-direction:column; gap:12px;">
           ${Object.entries(stagesCount).map(([stage, count]) => {
             const pct = totalLeads ? count / totalLeads : 0;
             const barW = Math.max(4, Math.round(pct * 100));
-            // Label readable mapping
             const labelMap = {
               'lead nuevo': 'Lead Nuevo',
               'atender dudas': 'Atender Dudas',
               'dejo de responder-seguimiento': 'Dejó de Responder',
               'agendado': 'Agendado',
-              'lead futuro': 'Lead Futuro'
+              'lead futuro': 'Lead Futuro',
+              'custom': 'Etapa Personalizada de Cliente'
             };
             return `
               <div>

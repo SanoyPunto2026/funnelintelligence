@@ -56,8 +56,17 @@ export async function POST(req) {
         const transformedLeads = json.map(row => {
           let name = ((row['First Name'] || '') + ' ' + (row['Last Name'] || '')).trim() || 'Desconocido';
           let created = row['Created'] || '';
-          let dateMatch = created.match(/^(\d{4}-\d{2}-\d{2})/);
-          let created_date = dateMatch ? dateMatch[1] : created; 
+          let created_date = '';
+          try {
+            const parsedDate = new Date(created);
+            if (!isNaN(parsedDate.getTime())) {
+              created_date = parsedDate.toISOString().split('T')[0];
+            } else {
+              created_date = created;
+            }
+          } catch(e) {
+            created_date = created;
+          }
           
           let adName = row['Ad Name'] || row['Ad Set'] || 'Orgánico';
           let adsetName = row['AdSet Name'] || row['Ad Set'] || 'Sin AdSet';
