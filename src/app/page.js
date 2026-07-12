@@ -64,10 +64,18 @@ export default function Home() {
     const file = e.target.files[0];
     if (!file) return;
 
+    const defaultClientName = file.name.replace(/\.[^/.]+$/, "").replace(/^Export_Contacts_/, "");
+    const clientName = prompt("Ingresa el nombre de este cliente para asociar sus métricas:", defaultClientName);
+    if (clientName === null) {
+      e.target.value = ''; // Cancelled
+      return;
+    }
+
     setUploading(true);
     const formData = new FormData();
     formData.append('file', file);
     formData.append('type', 'all');
+    formData.append('clientName', clientName.trim());
 
     try {
       const res = await fetch('/api/upload', {

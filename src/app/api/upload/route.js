@@ -6,6 +6,7 @@ export async function POST(req) {
     const formData = await req.formData();
     const file = formData.get('file');
     const type = formData.get('type') || 'all';
+    const customClientName = formData.get('clientName');
 
     if (!file) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
@@ -29,8 +30,7 @@ export async function POST(req) {
       const isGHL = json[0]['Contact Id'] !== undefined || json[0]['First Name'] !== undefined;
 
       if (isGHL) {
-        let clientName = fileName;
-        // Clean up client name if it has " Mayo" etc. (Optional, keep it raw for now)
+        let clientName = customClientName || fileName;
         
         const transformedLeads = json.map(row => {
           let name = ((row['First Name'] || '') + ' ' + (row['Last Name'] || '')).trim() || 'Desconocido';
@@ -44,19 +44,23 @@ export async function POST(req) {
           let tagsRaw = row['Tags'] || '';
           let wfActive = (row['Workflows Active'] || '').toLowerCase();
           let wfFinished = (row['Workflows Finished'] || '').toLowerCase();
-
-          // Clasificar únicamente en base a Opportunities
+ 
+          // Clasificar únicamente en base a las 5 etapas automáticas exactas
           let status = 'lead nuevo';
           let opps = oppsRaw.toLowerCase();
           if (opps.includes('agendado') || opps.includes('cita') || opps.includes('appointment') || opps.includes('booking')) {
             status = 'agendado';
-          } else if (opps.includes('futuro') || opps.includes('future')) {
+          } else if (opps.includes('lead futuro') || opps.includes('futuro') || opps.includes('future')) {
             status = 'lead futuro';
-          } else if (opps.includes('dejo de responder') || opps.includes('dejo') || opps.includes('responder') || opps.includes('seguimiento') || opps.includes('contactado') || opps.includes('sin whatsapp') || opps.includes('esperando') || opps.includes('mensaje')) {
+          } else if (opps.includes('dejo de responder-seguimiento') || opps.includes('dejo de responder') || (opps.includes('seguimiento') && !opps.includes('contactado') && !opps.includes('mensaje'))) {
             status = 'dejo de responder-seguimiento';
-          } else if (opps.includes('dudas') || opps.includes('atender') || opps.includes('pregunta') || opps.includes('info') || opps.includes('conversacion') || opps.includes('interes')) {
+          } else if (opps.includes('atender dudas') || opps.includes('dudas') || opps.includes('atender')) {
             status = 'atender dudas';
-          } else if (opps.includes('nuevo') || opps.includes('new')) {
+          } else if (opps.includes('lead nuevo') || opps.includes('nuevo') || opps.includes('new')) {
+            status = 'lead nuevo';
+          } else {
+            // Cualquier etapa del cliente no automatizada (como "Contactado 1 Mensaje", "Sin WhatsApp")
+            // se mapea a "lead nuevo" para no sesgar las analíticas de automatización
             status = 'lead nuevo';
           }
 

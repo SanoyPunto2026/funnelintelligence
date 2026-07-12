@@ -1254,10 +1254,10 @@ function buildProgression(filtered,clients){
     const leads=filtered.filter(l=>l.client===c.client);
     const reached={
       meta: c.meta_results,
-      lead_nuevo: leads.length,
-      atender_dudas: leads.filter(l => l.status === 'atender dudas' || l.status === 'dejo de responder-seguimiento' || l.status === 'agendado' || l.status === 'lead futuro').length,
-      dejo_responder: leads.filter(l => l.status === 'dejo de responder-seguimiento' || l.status === 'agendado' || l.status === 'lead futuro').length,
-      agendado: leads.filter(l => l.status === 'agendado' || l.status === 'lead futuro').length,
+      lead_nuevo: leads.filter(l => l.status === 'lead nuevo').length,
+      atender_dudas: leads.filter(l => l.status === 'atender dudas').length,
+      dejo_responder: leads.filter(l => l.status === 'dejo de responder-seguimiento').length,
+      agendado: leads.filter(l => l.status === 'agendado').length,
       lead_futuro: leads.filter(l => l.status === 'lead futuro').length
     };
     const defs=[
