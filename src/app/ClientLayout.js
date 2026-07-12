@@ -143,11 +143,7 @@ export default function ClientLayout({ children }) {
           <button className={activePath === '/client-workspace' ? 'active' : ''} onClick={() => navigateTo('client', '/client-workspace')}><i className="ph ph-clipboard-text"></i><i className="ph-fill ph-clipboard-text"></i> Client Workspace</button>
           <button className={activePath === '/ad-intelligence' ? 'active' : ''} onClick={() => navigateTo('ads', '/ad-intelligence')}><i className="ph ph-trend-up"></i><i className="ph-fill ph-trend-up"></i> Ad Intelligence</button>
           <button className={activePath === '/lead-explorer' ? 'active' : ''} onClick={() => navigateTo('leads', '/lead-explorer')}><i className="ph ph-target"></i><i className="ph-fill ph-target"></i> Lead Explorer</button>
-          <button className={activePath === '/risks' ? 'active' : ''} onClick={() => navigateTo('risks', '/risks')}><i className="ph ph-warning"></i><i className="ph-fill ph-warning"></i> Risks</button>
           <button className={activePath === '/alert-engine' ? 'active' : ''} onClick={() => navigateTo('alerts', '/alert-engine')}><i className="ph ph-bell"></i><i className="ph-fill ph-bell"></i> Alert Engine</button>
-          <button className={activePath === '/opportunities' ? 'active' : ''} onClick={() => navigateTo('opportunities', '/opportunities')}><i className="ph ph-lightbulb"></i><i className="ph-fill ph-lightbulb"></i> Opportunities</button>
-          <button className={activePath === '/ai-analyst' ? 'active' : ''} onClick={() => navigateTo('ai', '/ai-analyst')}><i className="ph ph-brain"></i><i className="ph-fill ph-brain"></i> AI Analyst</button>
-          <button className={activePath === '/academy' ? 'active' : ''} onClick={() => navigateTo('academy', '/academy')}><i className="ph ph-book"></i><i className="ph-fill ph-book"></i> Academy</button>
         </div>
       </aside>
       <main className="main">
@@ -156,24 +152,20 @@ export default function ClientLayout({ children }) {
           <div style={{display:'flex',gap:'10px',alignItems:'center',flexWrap:'wrap'}}>
             <button className="learn-toggle" id="uploadBtn" onClick={() => window.openUploadModal()}><i className="ph ph-download-simple"></i> Cargar CSV/Excel</button>
             <button className="learn-toggle" id="clearBtn" onClick={clearData} style={{background:'#ef4444',borderColor:'#ef4444'}}><i className="ph ph-trash"></i> Eliminar Datos</button>
-            <div className="pill" onClick={() => navigateTo('ai', '/ai-analyst')} style={{cursor:'pointer'}}><i className="ph-fill ph-brain"></i> Ask TRD AI</div>
+
           </div>
         </div>
         
         {children}
         
         <section id="view-action" className="view hidden"></section>
-        <section id="view-academy" className="view hidden"></section>
         <section id="view-agency" className="view hidden"></section>
         <section id="view-engine" className="view hidden"></section>
         <section id="view-clients" className="view hidden"></section>
         <section id="view-client" className="view hidden"></section>
         <section id="view-ads" className="view hidden"></section>
         <section id="view-leads" className="view hidden"></section>
-        <section id="view-risks" className="view hidden"></section>
         <section id="view-alerts" className="view hidden"></section>
-        <section id="view-opportunities" className="view hidden"></section>
-        <section id="view-ai" className="view hidden"></section>
         
       </main>
 
