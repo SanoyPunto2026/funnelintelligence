@@ -1463,6 +1463,19 @@ function acquisitionWeights(){
 }
 function deltaClass(v){return v>0?'delta-up':v<0?'delta-down':'delta-flat'}
 function fmtDelta(v){return v>0?'+'+v:v}
+
+function tipText(key) {
+  const rawTips = {
+    appointment: "Porcentaje de leads CRM que llegaron a una cita (agendados / leads totales).",
+    movement: "Porcentaje de leads que salieron de la etapa inicial 'Lead Nuevo' y registraron avance en el CRM.",
+    activity: "Porcentaje de leads con interacción o gestión comercial reciente para prevenir el abandono.",
+    attribution: "Porcentaje de leads vinculados a campañas o anuncios de Meta Ads.",
+    acquisition: "Porcentaje de leads que cuentan con datos de contacto completos (teléfono y correo) para contactabilidad.",
+    funnelScore: "Puntaje de 0 a 100 que resume la salud del funnel usando agendamiento, avance de CRM, leads activos, atribución y contactabilidad."
+  };
+  return rawTips[key] || "Concepto del sistema Funnel Health.";
+}
+
 function renderEngine(){
   recalculateEngineScores();
   const total=Object.values(engineWeights).reduce((a,b)=>a+Number(b),0);
@@ -1473,7 +1486,13 @@ function renderEngine(){
   viewHTML('view-engine', `${renderDateController()}
     <div class="engine-layout" style="display:block;">
       <div class="card" style="width:100%; box-sizing:border-box;">
-        <h3>Funnel Health Engine ${tip('funnelScore')}</h3>
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <h3 style="margin:0; font-size:18px;">Funnel Health Engine</h3>
+          <div class="trd-tooltip-container">
+            <i class="ph ph-info" style="font-size:16px; color:#94a3b8; cursor:pointer;"></i>
+            <span class="trd-tooltip-text">${tipText('funnelScore')}</span>
+          </div>
+        </div>
         <p class="small">Ajusta los pesos del score y mira cómo cambia la salud de cada cliente y de la agencia.</p>
         <div class="learning-note">Este motor permite al equipo cambiar la importancia de cada métrica. Por ejemplo, si TRD quiere priorizar la calidad de datos de contacto, puede darle más peso a Tasa de Contactabilidad.</div>
         <div class="grid grid3" style="margin:16px 0">
@@ -1488,7 +1507,7 @@ function renderEngine(){
               <strong style="font-size:14px; color:#fff;">${engineLabels[k]}</strong>
               <div class="trd-tooltip-container">
                 <i class="ph ph-info" style="font-size:14px; color:#94a3b8; cursor:pointer;"></i>
-                <span class="trd-tooltip-text">${tip(k)}</span>
+                <span class="trd-tooltip-text">${tipText(k)}</span>
               </div>
             </div>
             <input type="range" min="0" max="60" value="${engineWeights[k]}" onchange="setWeight('${k}',this.value)" oninput="this.nextElementSibling.textContent=this.value+'%'">
