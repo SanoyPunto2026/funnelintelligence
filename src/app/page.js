@@ -144,8 +144,7 @@ export default function Home() {
         <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
           <button class="learn-toggle" id="uploadBtn" onclick="window.openUploadModal()"><i class="ph ph-download-simple"></i> Cargar CSV/Excel</button>
           <button class="learn-toggle" id="clearBtn" onclick="window.clearApp()" style="background:#ef4444;border-color:#ef4444"><i class="ph ph-trash"></i> Eliminar Datos</button>
-          <button class="learn-toggle" onclick="toggleLearning()"><i class="ph ph-graduation-cap"></i> Learning Mode</button>
-          <div class="pill"><i class="ph-fill ph-brain"></i> Ask TRD AI</div>
+          <div class="pill" onclick="showView('ai')" style="cursor:pointer;"><i class="ph-fill ph-brain"></i> Ask TRD AI</div>
         </div>
       </div>
       <section id="view-action" class="view"></section>

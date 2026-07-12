@@ -153,16 +153,35 @@ function updateLearningButton(){
   });
 }
 
+function getLatestLeadDate() {
+  if (!DATA.leads || DATA.leads.length === 0) return new Date().toISOString().split('T')[0];
+  const dates = DATA.leads.map(l => {
+    // Some entries might have created_date as string, let's extract it
+    return l.created_date;
+  }).filter(Boolean);
+  if (dates.length === 0) return new Date().toISOString().split('T')[0];
+  return dates.sort().pop();
+}
+
 function saveDateRange(){ localStorage.setItem("trd_date_range", JSON.stringify(dateRange)); }
 function setDatePreset(preset){
-  if(preset==="may_2026"){
-    dateRange={...dateRange,preset,start:PERIOD_META.available_start,end:PERIOD_META.available_end};
-  } else if(preset==="last_7"){
-    dateRange={...dateRange,preset,start:"2026-05-25",end:"2026-05-31"};
-  } else if(preset==="last_14"){
-    dateRange={...dateRange,preset,start:"2026-05-18",end:"2026-05-31"};
-  } else if(preset==="custom"){
-    dateRange={...dateRange,preset};
+  const latestDateStr = getLatestLeadDate();
+  const latest = new Date(latestDateStr + "T12:00:00"); // Use noon to avoid timezone shifts
+  
+  if (preset === "last_7") {
+    const start = new Date(latest);
+    start.setDate(latest.getDate() - 6);
+    dateRange = { ...dateRange, preset, start: start.toISOString().split('T')[0], end: latestDateStr };
+  } else if (preset === "last_15") {
+    const start = new Date(latest);
+    start.setDate(latest.getDate() - 14);
+    dateRange = { ...dateRange, preset, start: start.toISOString().split('T')[0], end: latestDateStr };
+  } else if (preset === "last_30") {
+    const start = new Date(latest);
+    start.setDate(latest.getDate() - 29);
+    dateRange = { ...dateRange, preset, start: start.toISOString().split('T')[0], end: latestDateStr };
+  } else if (preset === "custom") {
+    dateRange = { ...dateRange, preset };
   }
   saveDateRange();
   renderAll();
@@ -174,22 +193,28 @@ function currentPeriodLabel(){ return `${dateRange.start} → ${dateRange.end}`;
 function isInvalidDateRange(){ return dateRange.start>dateRange.end; }
 function isRangeFullyAvailable(){ return dateRange.start>=PERIOD_META.available_start && dateRange.end<=PERIOD_META.available_end; }
 function rangeLeadCount(){ return typeof RAW_DATE_DATA==='undefined'?null:rawFilteredLeads().length; }
+
 function renderDateController(){
-  return `<div class="date-controller">
-    <span class="date-pill"><i class="ph ph-calendar"></i> Periodo: ${currentPeriodLabel()} ${tip("dateRange")}</span>
-    <label>Preset</label>
-    <select onchange="setDatePreset(this.value)">
-      <option value="may_2026" ${dateRange.preset==="may_2026"?"selected":""}>Mayo 2026</option>
-      <option value="last_7" ${dateRange.preset==="last_7"?"selected":""}>Últimos 7 días del export</option>
-      <option value="last_14" ${dateRange.preset==="last_14"?"selected":""}>Últimos 14 días del export</option>
+  const isCustom = dateRange.preset === "custom";
+  return `<div class="date-controller" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:8px 12px; border-radius:12px; margin-bottom:16px;">
+    <span style="font-size:13px; font-weight:500; color:#fff;"><i class="ph ph-calendar" style="vertical-align:middle; margin-right:4px;"></i> Periodo:</span>
+    <select onchange="setDatePreset(this.value)" style="padding:6px 12px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; cursor:pointer;">
+      <option value="last_7" ${dateRange.preset==="last_7"?"selected":""}>Últimos 7 días</option>
+      <option value="last_15" ${dateRange.preset==="last_15"?"selected":""}>Últimos 15 días</option>
+      <option value="last_30" ${dateRange.preset==="last_30"?"selected":""}>Últimos 30 días</option>
       <option value="custom" ${dateRange.preset==="custom"?"selected":""}>Personalizado</option>
     </select>
-    <label>Desde</label><input type="date" value="${dateRange.start}" onchange="setDateStart(this.value)">
-    <label>Hasta</label><input type="date" value="${dateRange.end}" onchange="setDateEnd(this.value)">
-    <button class="ads-filter-btn ${dateRange.compare?'active':''}" onclick="toggleCompare()">Comparar periodo anterior ${tip("comparePeriod")}</button>
-    <span class="date-pill">Datos de CRM y Meta</span>
+    
+    <div id="custom-date-range-inputs" style="display:${isCustom ? 'flex' : 'none'}; align-items:center; gap:8px;">
+      <label style="font-size:12px; color:#94a3b8;">Desde</label>
+      <input type="date" value="${dateRange.start}" onchange="setDateStart(this.value)" style="padding:6px 10px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff;">
+      <label style="font-size:12px; color:#94a3b8;">Hasta</label>
+      <input type="date" value="${dateRange.end}" onchange="setDateEnd(this.value)" style="padding:6px 10px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff;">
+    </div>
+    
+    <span class="date-pill" style="margin-left:auto; font-size:12px;">Rango: ${dateRange.start} a ${dateRange.end}</span>
   </div>
-  ${isInvalidDateRange()?`<div class="historical-note"><strong>Rango inválido:</strong> La fecha inicial no puede ser mayor que la fecha final.</div>`:''}${rangeLeadCount()===0?`<div class="historical-note"><strong>Sin leads:</strong> No hay registros CRM dentro del rango seleccionado.</div>`:''}`;
+  ${isInvalidDateRange()?`<div class="historical-note"><strong>Rango inválido:</strong> La fecha inicial no puede ser mayor que la fecha final.</div>`:''}`;
 }
 function pseudoTrend(value, seed=1){
   const base=Number(value||0);
@@ -249,19 +274,7 @@ function currenciesInUse(){
 }
 function hasMixedCurrencies(){ return currenciesInUse().length>1; }
 function renderCurrencyController(){
-  const list=currenciesInUse();
-  return `<div class="currency-controller">
-    <span class="date-pill"><i class="ph ph-currency-circle-dollar"></i> Moneda base: ${currencySettings.base} ${tip("currency")}</span>
-    <label>Base</label>
-    <select onchange="setBaseCurrency(this.value)">
-      <option value="USD" ${currencySettings.base==="USD"?"selected":""}>USD</option>
-      <option value="COP" ${currencySettings.base==="COP"?"selected":""}>COP</option>
-      <option value="EUR" ${currencySettings.base==="EUR"?"selected":""}>EUR</option>
-    </select>
-    <label>COP/USD ${tip("exchangeRate")}</label><input type="number" value="${currencySettings.rates.COP}" onchange="setRate('COP',this.value)" style="width:110px">
-    <label>EUR/USD ${tip("exchangeRate")}</label><input type="number" step="0.01" value="${currencySettings.rates.EUR}" onchange="setRate('EUR',this.value)" style="width:90px">
-    ${hasMixedCurrencies()?`<span class="currency-note">Monedas detectadas: ${list.join(", ")} · totales normalizados</span>`:''}
-  </div>`;
+  return "";
 }
 function spendByCurrency(items){
   const grouped={};
@@ -461,7 +474,58 @@ function showView(v){
 }
 function badge(cat){ return `<span class="badge ${cat}">${cat}</span>` }
 function clientCard(c){return `<div class="card client-card" onclick="openClient('${c.client}')"><div class="kpi"><div><h3>${c.client}</h3>${badge(activeCategory(c))}</div><div class="score-ring" style="--score:${activeScore(c)}"><span>${activeScore(c)}</span></div></div><div class="grid grid3" style="gap:10px;margin-top:16px"><div><strong>${fmtNum(c.leads)}</strong><div class="label">Leads</div></div><div><strong>${c.appointments}</strong><div class="label">Citas</div></div><div><strong>${fmtPct(c.appointment_rate)}</strong><div class="label">Appt.</div></div></div><p class="small" style="margin-top:12px">Problema: ${c.main_problem}</p></div>`}
-function renderAction(){const cs=[...DATA.clients].sort((a,b)=>activeScore(a)-activeScore(b)),best=[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a))[0],items=[cs[0],cs[1],best].filter(Boolean);document.getElementById('view-action').innerHTML=`${renderDateController()}${renderCurrencyController()}<div class="grid grid2"><div class="card"><h3>Acciones prioritarias</h3>${items.map((c,i)=>`<div class="action" onclick="openClient('${c.client}')"><span class="dot ${i==0?'red':i==1?'yellow':'green'}"></span><div><strong>${i==0?'<i class="ph ph-warning"></i>':i==1?'<i class="ph ph-warning-circle"></i>':'<i class="ph ph-trophy"></i>'} ${c.client}</strong><div class="small">${activeCategory(c)} · Score ${activeScore(c)} · ${c.main_problem}</div><p>${diagnosisShort(c)}</p></div></div>`).join('')}</div><div class="card"><h3>Agency Health ${tip('agency')}</h3><div class="kpi"><div><div class="metric">${activeAgencyScore()}</div><div class="label">Agency Health Score</div>${badge(activeAgencyCategory())}</div><div class="score-ring" style="--score:${activeAgencyScore()}"><span>${activeAgencyScore()}</span></div></div><div class="insight"><strong>Lectura</strong><p>TRD se evalúa como el promedio ponderado del rendimiento de sus clientes y la salud de sus etapas críticas.</p></div></div></div><div class="grid grid4" style="margin-top:18px">${[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a)).map(clientCard).join('')}</div>`}
+function renderAction(){
+  const cs=[...DATA.clients].sort((a,b)=>activeScore(a)-activeScore(b));
+  const best=[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a))[0];
+  const items=[cs[0],cs[1],best].filter(Boolean);
+  
+  // Calcular métricas consolidadas reales basadas en DATA.leads
+  const totalLeads = DATA.leads.length;
+  const totalAppointments = DATA.leads.filter(l => l.status === 'agendado' || l.has_appointment).length;
+  const globalApptRate = totalLeads ? totalAppointments / totalLeads : 0;
+
+  document.getElementById('view-action').innerHTML=`${renderDateController()}${renderCurrencyController()}
+    <!-- Panel Consolidado Global de Agencia -->
+    <div class="grid grid3" style="margin-bottom:18px;">
+      <div class="card" style="display:flex; flex-direction:column; justify-content:center; padding:20px;">
+        <div class="metric" style="font-size:36px;">${fmtNum(totalLeads)}</div>
+        <div class="label" style="font-weight:600; color:#94a3b8;">Leads Totales CRM</div>
+      </div>
+      <div class="card" style="display:flex; flex-direction:column; justify-content:center; padding:20px;">
+        <div class="metric" style="font-size:36px;">${fmtNum(totalAppointments)}</div>
+        <div class="label" style="font-weight:600; color:#94a3b8;">Citas Agendadas</div>
+      </div>
+      <div class="card" style="display:flex; flex-direction:column; justify-content:center; padding:20px;">
+        <div class="metric" style="font-size:36px; background:linear-gradient(135deg,#38bdf8,#8b5cf6); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">${fmtPct(globalApptRate)}</div>
+        <div class="label" style="font-weight:600; color:#38bdf8;">Tasa de Agendamiento Global</div>
+      </div>
+    </div>
+
+    <div class="grid grid2">
+      <div class="card">
+        <h3>Acciones prioritarias</h3>
+        ${items.map((c,i)=>`<div class="action" onclick="openClient('${c.client}')"><span class="dot ${i==0?'red':i==1?'yellow':'green'}"></span><div><strong>${i==0?'<i class="ph ph-warning"></i>':i==1?'<i class="ph ph-warning-circle"></i>':'<i class="ph ph-trophy"></i>'} ${c.client}</strong><div class="small">${activeCategory(c)} · Score ${activeScore(c)} · ${c.main_problem}</div><p>${diagnosisShort(c)}</p></div></div>`).join('')}
+      </div>
+      
+      <div class="card">
+        <h3>Agency Health Score ${tip('agency')}</h3>
+        <div class="kpi">
+          <div>
+            <div class="metric" style="font-size:54px; font-weight:900;">${activeAgencyScore()}</div>
+            <div class="label">Nivel de Salud General</div>
+            <span style="margin-top:8px; display:inline-block;">${badge(activeAgencyCategory())}</span>
+          </div>
+          <div class="score-ring" style="--score:${activeAgencyScore()}"><span>${activeAgencyScore()}</span></div>
+        </div>
+        <div class="insight" style="margin-top:16px;">
+          <strong>¿Qué es Agency Health?</strong>
+          <p style="margin-top:6px; font-size:13px; line-height:1.45; color:#cbd5e1;">Es el índice ponderado de salud de tu agencia. Se calcula promediando el rendimiento de las etapas clave de todos tus clientes (Tasa de citas, actividad comercial, atribución y costos de adquisición).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid4" style="margin-top:18px">${[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a)).map(clientCard).join('')}</div>`;
+}
 function calculateWeeklyTrends() {
   const trends = {};
   (DATA.leads || []).forEach(l => {
