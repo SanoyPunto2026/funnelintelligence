@@ -614,7 +614,16 @@ function renderAction(){
       </div>
     </div>
 
-    <div class="grid grid4" style="margin-top:18px">${[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a)).map(clientCard).join('')}</div>`;
+    <div class="grid grid4" style="margin-top:18px">
+      ${[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a)).slice(0, 4).map(clientCard).join('')}
+    </div>
+    ${DATA.clients.length > 4 ? `
+      <div style="text-align:center; margin-top:24px; margin-bottom:12px;">
+        <button onclick="showView('clients')" style="background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.3); color:#38bdf8; padding:12px 24px; border-radius:12px; font-size:14px; font-weight:600; cursor:pointer; transition:all 0.2s; font-family:'Inter',sans-serif;">
+          <i class="ph ph-users" style="vertical-align:middle; margin-right:6px;"></i> Ver todos los clientes (${DATA.clients.length})
+        </button>
+      </div>
+    ` : ''}`;
 }
 function calculateWeeklyTrends() {
   const trends = {};
