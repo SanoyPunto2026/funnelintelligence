@@ -647,21 +647,50 @@ function calculateWeeklyTrends() {
   return Object.values(trends).sort((a, b) => b.week.localeCompare(a.week)).slice(0, 4);
 }
 
+function calculateGlobalCreativeStats() {
+  const stats = {};
+  (DATA.leads || []).forEach(l => {
+    const type = inferCreativeType(l.ad);
+    if (!stats[type]) {
+      stats[type] = { type, leads: 0, appointments: 0 };
+    }
+    stats[type].leads++;
+    if (l.has_appointment || l.status === 'agendado') {
+      stats[type].appointments++;
+    }
+  });
+  return Object.values(stats).sort((a,b) => b.leads - a.leads);
+}
+
 function renderAgency(){
   const weeklyTrends = calculateWeeklyTrends();
+  const creativeStats = calculateGlobalCreativeStats();
+  
+  // Calcular distribución comercial del portafolio
+  const totalLeads = DATA.leads.length;
+  const stagesCount = {
+    'lead nuevo': DATA.leads.filter(l => l.status === 'lead nuevo').length,
+    'atender dudas': DATA.leads.filter(l => l.status === 'atender dudas').length,
+    'dejo de responder-seguimiento': DATA.leads.filter(l => l.status === 'dejo de responder-seguimiento').length,
+    'agendado': DATA.leads.filter(l => l.status === 'agendado').length,
+    'lead futuro': DATA.leads.filter(l => l.status === 'lead futuro').length
+  };
+
   document.getElementById('view-agency').innerHTML=`${renderDateController()}${renderCurrencyController()}
     <div class="grid grid2">
+      <!-- 1. Agency Health Score -->
       <div class="card">
         <div class="kpi">
           <div>
             <h3>Agency Health Score ${tip('agency')}</h3>
-            <div class="metric">${activeAgencyScore()}</div>
-            ${badge(activeAgencyCategory())}
-            <p>Promedio de salud de TRD basado en clientes, citas, actividad CRM, atribución y rendimiento comercial.</p>
+            <div class="metric" style="font-size:54px; font-weight:900;">${activeAgencyScore()}</div>
+            <p style="margin-top:10px; color:#cbd5e1;">Promedio de salud operativa global de la agencia basado en citas, actividad CRM, atribución de anuncios y rendimiento de conversión comercial.</p>
           </div>
           <div class="score-ring" style="--score:${activeAgencyScore()}"><span>${activeAgencyScore()}</span></div>
         </div>
       </div>
+
+      <!-- 2. Tendencias Semanales -->
       <div class="card">
         <h3>Tendencias Semanales</h3>
         ${weeklyTrends.length === 0 ? '<p class="small" style="margin-top:16px">No hay datos de tendencias para el rango seleccionado.</p>' : `
@@ -684,10 +713,100 @@ function renderAgency(){
         `}
       </div>
     </div>
+
+    <!-- 3. Distribución Comercial del Portafolio y Estrategias Creativas -->
+    <div class="grid grid2" style="margin-top:18px;">
+      <!-- Distribución Comercial -->
+      <div class="card">
+        <h3>Distribución Comercial del Portafolio</h3>
+        <p class="small" style="margin-bottom:16px;">Volumen y porcentaje de contactos de la agencia por etapa del embudo comercial.</p>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          ${Object.entries(stagesCount).map(([stage, count]) => {
+            const pct = totalLeads ? count / totalLeads : 0;
+            const barW = Math.max(4, Math.round(pct * 100));
+            // Label readable mapping
+            const labelMap = {
+              'lead nuevo': 'Lead Nuevo',
+              'atender dudas': 'Atender Dudas',
+              'dejo de responder-seguimiento': 'Dejó de Responder',
+              'agendado': 'Agendado',
+              'lead futuro': 'Lead Futuro'
+            };
+            return `
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px; color:#cbd5e1;">
+                  <strong>${labelMap[stage] || stage}</strong>
+                  <span>${fmtNum(count)} leads (${fmtPct(pct)})</span>
+                </div>
+                <div class="progress" style="--w:${barW}%"><i></i></div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+
+      <!-- Estrategias Creativas Globales -->
+      <div class="card">
+        <h3>Estrategia Creativa Ganadora (Global)</h3>
+        <p class="small" style="margin-bottom:16px;">Rendimiento consolidado del portafolio por tipo de anuncio creativo.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tipo de Creativo</th>
+                <th>Leads CRM</th>
+                <th>Citas Agendadas</th>
+                <th>Tasa de Citas</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${creativeStats.slice(0, 5).map(c => {
+                const rate = c.leads ? c.appointments / c.leads : 0;
+                return `
+                  <tr>
+                    <td><strong style="color:#fff;">${c.type}</strong></td>
+                    <td>${fmtNum(c.leads)}</td>
+                    <td>${fmtNum(c.appointments)}</td>
+                    <td><span class="badge ${rate >= 0.15 ? 'Elite' : 'Broken'}">${fmtPct(rate)}</span></td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Ranking de Clientes (Operativo) -->
     <div class="card" style="margin-top:18px">
-      <h3>Agency Health Matrix</h3>
-      <p class="small">Esta matriz muestra métricas base de agencia; el score superior sí responde a los pesos del Health Engine.</p>
-      <div class="matrix-grid">${(DATA.benchmarks.agency_stage_matrix||[]).map(m=>`<div class="matrix-card"><h4><span class="health-dot ${hClass(m.health)}"></span>${m.stage}</h4><div class="metric" style="font-size:27px">${fmtPct(m.value)}</div><div class="label">Target: ${fmtPct(m.benchmark)}</div><div class="progress" style="--w:${m.score}%;margin-top:12px"><i></i></div><p class="small">${hTxt(m.health)} · ${m.score}/100</p></div>`).join('')}</div>
+      <h3>Ranking Comparativo de Operaciones (Clientes)</h3>
+      <p class="small" style="margin-bottom:16px;">Métricas comparativas internas para identificar cuellos de botella y oportunidades en cada cuenta.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Leads CRM</th>
+              <th>Citas</th>
+              <th>Conversion Rate</th>
+              <th>Actividad CRM</th>
+              <th>Calidad Atribución</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a)).map(c => `
+              <tr>
+                <td><strong style="color:#38bdf8; cursor:pointer;" onclick="openClient('${c.client}')">${c.client}</strong></td>
+                <td>${fmtNum(c.leads)}</td>
+                <td>${fmtNum(c.appointments)}</td>
+                <td><span class="badge ${c.appointment_rate >= 0.20 ? 'Elite' : 'Broken'}">${fmtPct(c.appointment_rate)}</span></td>
+                <td>${fmtPct(c.crm_activity)}</td>
+                <td>${fmtPct(c.attribution_quality)}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
     </div>`;
 }
 function renderClients(){document.getElementById('view-clients').innerHTML=`<div class="client-grid">${[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a)).map(clientCard).join('')}</div>`}
