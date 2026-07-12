@@ -15,7 +15,7 @@ window.updateData = function(newData) {
   if (!newData.clients || newData.clients.length === 0) {
     DATA = { clients: [], leads: [], ads: [] };
     if (typeof showEmptyState === 'function') {
-      showEmptyState();
+      showEmptyState(window.activeViewId || 'view-action');
     }
     return;
   }
@@ -312,7 +312,6 @@ function openClient(n){selectedClient=n;currentClientTab='pipeline';resetAdsFilt
 function renderClient(){if(!selectedClient&&DATA.clients&&DATA.clients.length)selectedClient=DATA.clients[0].client;const c=cBy(selectedClient),tabs={overview:'Overview',intelligence:'Funnel Intelligence',pipeline:'Pipeline Analytics',ads:'Ads',leads:'Leads',insights:'Insights'};let body='';if(currentClientTab==='overview')body=overview(c);if(currentClientTab==='intelligence')body=funnelIntel(c);if(currentClientTab==='pipeline')body=pipelineAnalytics(c);if(currentClientTab==='ads')body=adCards(selectedClient);if(currentClientTab==='leads')body=leadTable(leadsBy(selectedClient).slice(0,100));if(currentClientTab==='insights')body=insights(c);document.getElementById('view-client').innerHTML=`${renderDateController()}${renderCurrencyController()}<div class="filters"><select onchange="selectedClient=this.value;renderClient()">${DATA.clients.map(x=>`<option ${x.client===selectedClient?'selected':''}>${x.client}</option>`).join('')}</select></div><div class="card"><div class="kpi"><div><h3 style="font-size:24px">${c.client}</h3>${badge(c.engine_category||c.category)}<p>Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong> · Motor: <strong>${activeScore(c)}/100</strong></p></div><div class="score-ring" style="--score:${activeScore(c)}"><span>${activeScore(c)}</span></div></div><div class="tabs">${Object.entries(tabs).map(([k,v])=>`<button class="${currentClientTab===k?'active':''}" onclick="currentClientTab='${k}';renderClient()">${v}</button>`).join('')}</div></div><div style="margin-top:18px">${body}</div>`}
 function comp(n,v){return `<div class="component"><span>${n}</span><div class="progress" style="--w:${Math.round(v)}%"><i></i></div><strong>${Math.round(v)}</strong></div>`}
 function overview(c){return `<div class="grid grid2"><div class="card"><h3>Diagnóstico</h3><div class="insight"><strong>Lectura ejecutiva</strong><p>${diagnosisLong(c)}</p></div><div style="margin-top:16px">${comp('Appointment',c.appointment_score)}${comp('CRM Movement',c.movement_score)}${comp('CRM Activity',c.activity_score)}${comp('Attribution',c.attribution_score)}${comp('Acquisition',c.acquisition_score)}</div></div><div class="card"><h3>KPIs</h3><div class="grid grid2"><div><div class="metric">${fmtNum(c.leads)}</div><div class="label">Leads</div>${c.leads===0?'<div class="small">Sin leads en este rango</div>':''}</div><div><div class="metric">${c.appointments}</div><div class="label">Citas</div></div><div><div class="metric">${fmtPct(c.appointment_rate)}</div><div class="label">Appointment Rate</div></div><div><div class="metric">${fmtPct(c.crm_activity)}</div><div class="label">CRM Activity</div></div></div></div></div>`}
-
 function renderTagAnalytics(clientName) {
   const leads = rawFilteredLeads().filter(l => l.client === clientName);
   const tagStats = {};
@@ -351,7 +350,7 @@ function renderTagAnalytics(clientName) {
         <tbody>
           ${sortedTags.map(item => `
             <tr>
-              <td><span class="tag-pill">${item.tag}</span></td>
+              <td><span class="tag-pill" style="display:inline-block; background:#e0f2fe; color:#0369a1; padding:2px 6px; border-radius:4px; font-size:11px; margin-right:4px;">${item.tag}</span></td>
               <td><strong>${fmtNum(item.count)}</strong></td>
               <td><strong>${fmtNum(item.appointments)}</strong></td>
               <td><span class="badge ${item.appointments > 0 ? 'Elite' : 'Broken'}">${fmtPct(item.count ? item.appointments / item.count : 0)}</span></td>
@@ -760,7 +759,7 @@ function adCards(client=null){
   </div>`;
 }
 
-function renderAds(){document.getElementById('view-ads').innerHTML=`${renderDateController()}${renderCurrencyController()}<div class="filters"><select onchange="selectedAdsClient=this.value;renderAds()">${['Todos',...DATA.clients.map(c=>c.client)].map(x=>`<option ${x===selectedAdsClient?'selected':''}>${x}</option>`).join('')} </select></div>${adCards(selectedAdsClient==='Todos'?null:selectedAdsClient)}`}
+function renderAds(){document.getElementById('view-ads').innerHTML=`${renderDateController()}${renderCurrencyController()}<div class="filters"><select onchange="selectedAdsClient=this.value;renderAds()">${['Todos',...DATA.clients.map(c=>c.client)].map(x=>`<option ${x===selectedAdsClient?'selected':''}>${x}</option>`).join('')}</select></div>${adCards(selectedAdsClient==='Todos'?null:selectedAdsClient)}`}
 function leadTable(arr){if(!arr.length)return '<div class="card">Sin leads.</div>';return `<div class="table-wrap"><table><thead><tr><th>Lead</th><th>Cliente</th><th>Ad</th><th>Última actividad</th><th>Etapa</th><th>Etiquetas (Tags)</th><th>Riesgo</th></tr></thead><tbody>${arr.map(l=>`<tr><td>${l.name}</td><td>${l.client}</td><td>${l.ad}</td><td>${l.last_activity}</td><td>${l.status}</td><td><span class="tags-list">${(l.tags || '').split(',').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="tag-pill" style="display:inline-block; background:#e0f2fe; color:#0369a1; padding:2px 6px; border-radius:4px; font-size:11px; margin-right:4px; margin-bottom:4px;">${t}</span>`).join('')}</span></td><td>${l.risk}</td></tr>`).join('')}</tbody></table></div>`}
 
 let selectedLeadTag = "Todas";
@@ -1242,201 +1241,6 @@ function buildFunnelIntelligence(clients){
     for(let i=1;i<4;i++){const prev=stages[i].prev||0,val=stages[i].value||0,lost=Math.max(0,prev-val);leakages.push({from:stages[i-1].label,to:stages[i].label,lost,leak_rate:pct2(lost,prev)});}
     const health_matrix=[
       {stage:"Attribution",value:c.attribution_quality,benchmark:DATA.benchmarks.avg_attribution_quality,score:Math.round(pct2(c.attribution_quality,DATA.benchmarks.avg_attribution_quality)*100),health:"neutral"},
-const alerts=buildAlerts();
-  const critical=alerts.filter(a=>a.severity==='critical').length;
-  const warning=alerts.filter(a=>a.severity==='warning').length;
-  viewHTML('view-alerts',`${renderDateController()}
-    <div class="grid grid3" style="margin-bottom:18px">
-      <div class="card"><div class="metric">${alerts.length}</div><div class="label">Alertas totales</div></div>
-      <div class="card"><div class="metric">${critical}</div><div class="label">Críticas</div></div>
-      <div class="card"><div class="metric">${warning}</div><div class="label">Warnings</div></div>
-    </div>
-    <div class="card">
-      <h3>Alert Engine ${tip('alert')}</h3>
-      <p class="small">Alertas automáticas calculadas con los datos actuales. En la siguiente fase se pueden comparar contra semanas/meses anteriores.</p>
-      <div class="alert-grid" style="margin-top:16px">
-        ${alerts.map(a=>`
-          <div class="alert-card ${a.severity}">
-            <span class="alert-type">${a.type} ${tip(a.severity==="critical"?"criticalAlert":"warningAlert")}</span>
-            <h4>${a.client}</h4>
-            <p>${a.message}</p>
-            <div class="small"><strong>Acción:</strong> ${a.action}</div>
-          </div>`).join('')}
-      </div>
-    </div>
-  `);
-}
-
-
-function renderAcademy(){
-  viewHTML('view-academy',`
-    <div class="academy-grid">
-      <div class="academy-card">
-        <span class="term-tag">Concepto principal</span>
-        <h3>Â¿Qué es Funnel Health? ${tip("funnelScore")}</h3>
-        <p>Es una forma de medir si el funnel de un cliente está funcionando más allá de generar leads. Combina adquisición, CRM, seguimiento, atribución y citas.</p>
-      </div>
-      <div class="academy-card">
-        <span class="term-tag">KPI clave</span>
-        <h3>Appointment Rate</h3>
-        <p>Porcentaje de leads CRM que llegan a cita.</p>
-        <ul><li>Fórmula: citas / leads CRM.</li><li>Ayuda a saber si los leads están convirtiendo comercialmente.</li></ul>
-      </div>
-      <div class="academy-card">
-        <span class="term-tag">Operación CRM</span>
-        <h3>CRM Activity</h3>
-        <p>Mide si los leads tienen actividad reciente. Si es bajo, puede indicar abandono, poca gestión o problema de seguimiento.</p>
-      </div>
-      <div class="academy-card">
-        <span class="term-tag">Atribución</span>
-        <h3>Attribution Quality</h3>
-        <p>Mide qué tanto podemos conectar cada lead con campaña, conjunto y anuncio. Si falla, no sabemos qué creativo realmente genera citas.</p>
-      </div>
-      <div class="academy-card">
-        <span class="term-tag">Ads</span>
-        <h3>Tipos de anuncios</h3>
-        <ul>
-          <li><strong>Elite Winner:</strong> buen volumen y buenas citas.</li>
-          <li><strong>Funnel Winner:</strong> buen avance comercial.</li>
-          <li><strong>Volume Winner:</strong> muchos leads, pocas citas.</li>
-          <li><strong>No CRM Match:</strong> no se pudo conectar Meta con CRM.</li>
-        </ul>
-      </div>
-      <div class="academy-card">
-        <span class="term-tag">Diagnóstico</span>
-        <h3>Bottleneck y Leakage</h3>
-        <p><strong>Bottleneck</strong> es el cuello de botella principal. <strong>Leakage</strong> es la fuga entre etapas: leads que no avanzan de un paso al siguiente.</p>
-      </div>
-      <div class="academy-card">
-        <span class="term-tag">Caso práctico</span>
-        <h3>Muchos leads, pocas citas</h3>
-        <div class="case-card">Interpretación: el problema probablemente no está en pauta, sino en calidad, velocidad comercial, seguimiento o expectativa del anuncio.</div>
-      </div>
-      <div class="academy-card">
-        <span class="term-tag">Caso práctico</span>
-        <h3>Pocos leads, alta cita</h3>
-        <div class="case-card">Interpretación: el funnel comercial funciona, pero puede haber problema de volumen, presupuesto, segmentación o creatividad.</div>
-      </div>
-      <div class="academy-card">
-        <span class="term-tag">Monedas</span><h3>Currency Normalization</h3><p>Cuando hay clientes en USD, COP u otras monedas, los totales se normalizan a una moneda base. El valor original se conserva por cliente/anuncio.</p></div><div class="academy-card"><span class="term-tag">Históricos</span><h3>Rango de fechas</h3><p>El Date Range Controller permite preparar el sistema para comparar periodos. Para que sea 100% real se necesitan exports históricos o conexión API con fechas.</p></div><div class="academy-card"><span class="term-tag">Datos necesarios</span>
-        <h3>Para pasar de modelado a real</h3>
-        <ul>
-          <li>Pipeline Stage actual.</li>
-          <li>Stage History.</li>
-          <li>Fecha de llamadas.</li>
-          <li>Cita asistida.</li>
-          <li>Venta o cierre.</li>
-        </ul>
-      </div>
-    </div>
-  `);
-}
-
-
-function daysBetweenInclusive(start,end){
-  const s=new Date(start+"T00:00:00"), e=new Date(end+"T00:00:00");
-  return Math.max(0, Math.round((e-s)/(1000*60*60*24))+1);
-}
-function rangeFraction(){
-  if(typeof isInvalidDateRange==='function' && isInvalidDateRange()) return 0;
-  const s=dateRange.start>PERIOD_META.available_start?dateRange.start:PERIOD_META.available_start;
-  const e=dateRange.end<PERIOD_META.available_end?dateRange.end:PERIOD_META.available_end;
-  const overlap=daysBetweenInclusive(s,e);
-  const total=daysBetweenInclusive(PERIOD_META.available_start,PERIOD_META.available_end);
-  return total?Math.max(0,Math.min(1,overlap/total)):1;
-}
-function rawFilteredLeads(){
-  if(isInvalidDateRange()) return [];
-  return RAW_DATE_DATA.raw_leads.filter(l=>l.created_date && l.created_date>=dateRange.start && l.created_date<=dateRange.end);
-}
-function pct2(n,d){return d?Number(n||0)/Number(d||0):0}
-function classifyScore(score){return score>=85?'Elite':score>=70?'Healthy':score>=50?'Emerging':'Broken'}
-function buildClientMetrics(filtered){
-  const frac=rangeFraction();
-  let clients=RAW_DATE_DATA.client_configs.map(cfg=>{
-    const leads=filtered.filter(l=>l.client===cfg.client);
-    const ads=RAW_DATE_DATA.raw_ads.filter(a=>a.client===cfg.client);
-    const meta=ads.reduce((s,a)=>s+Number(a.meta_results||0),0)*frac;
-    const spend=ads.reduce((s,a)=>s+Number(a.spend||0),0)*frac;
-    const count=leads.length;
-    const appointments=leads.filter(l=>l.has_appointment).length;
-    const moved=leads.filter(l=>l.crm_movement).length;
-    const active=leads.filter(l=>l.active_recent).length;
-    const attributed=leads.filter(l=>l.has_attribution).length;
-    const workflow=leads.filter(l=>l.workflow_detected).length;
-    const used_button=leads.filter(l=>l.used_button).length;
-    const waiting=leads.filter(l=>l.waiting).length;
-    const discarded=leads.filter(l=>l.discarded_inferred).length;
-    const custom_data=leads.filter(l=>l.custom_data_detected).length;
-    return {client:cfg.client,currency:cfg.currency,leads:count,appointments,moved,active,attributed,stagnant:Math.max(0,count-active),workflow,used_button,waiting,discarded_inferred:discarded,custom_data,appointment_rate:pct2(appointments,count),movement_rate:pct2(moved,count),crm_activity:pct2(active,count),attribution_quality:pct2(attributed,count),meta_results:Math.round(meta),spend,avg_cpl:pct2(spend,meta),ads_count:ads.length};
-  });
-  const topApp=Math.max(...clients.map(c=>c.appointment_rate),0.001);
-  const avgApp=clients.reduce((s,c)=>s+c.appointment_rate,0)/Math.max(clients.length,1);
-  const avgMovement=clients.reduce((s,c)=>s+c.movement_rate,0)/Math.max(clients.length,1);
-  const avgActivity=clients.reduce((s,c)=>s+c.crm_activity,0)/Math.max(clients.length,1);
-  const avgAttr=clients.reduce((s,c)=>s+c.attribution_quality,0)/Math.max(clients.length,1);
-  ["USD","COP"].forEach(cur=>{
-    const group=clients.filter(c=>c.currency===cur);
-    const cpls=group.map(c=>c.avg_cpl).filter(v=>isFinite(v)&&v>0);
-    if(!cpls.length){group.forEach(c=>c.acquisition_score=75);return;}
-    const best=Math.min(...cpls), worst=Math.max(...cpls);
-    group.forEach(c=>{c.acquisition_score=(best===worst)?75:Math.max(35,Math.min(100,100-((c.avg_cpl-best)/(worst-best))*65));});
-  });
-  clients.forEach(c=>{
-    c.appointment_score=Math.max(0,Math.min(100,(c.appointment_rate/topApp)*100));
-    c.movement_score=Math.max(0,Math.min(100,c.movement_rate*100));
-    c.activity_score=Math.max(0,Math.min(100,c.crm_activity*100));
-    c.attribution_score=Math.max(0,Math.min(100,c.attribution_quality*100));
-    c.score=Math.round(c.appointment_score*.35+c.movement_score*.25+c.activity_score*.15+c.attribution_score*.15+(c.acquisition_score||75)*.10);
-    c.category=classifyScore(c.score);
-    const comps={appointment:c.appointment_score,movement:c.movement_score,activity:c.activity_score,attribution:c.attribution_score,acquisition:c.acquisition_score||75};
-    const minKey=Object.entries(comps).sort((a,b)=>a[1]-b[1])[0][0];
-    c.main_problem=(typeof engineLabels!=="undefined" && engineLabels[minKey])?engineLabels[minKey]:minKey;
-  });
-  DATA.benchmarks.total_clients=clients.length;
-  DATA.benchmarks.total_leads=clients.reduce((s,c)=>s+c.leads,0);
-  DATA.benchmarks.total_appointments=clients.reduce((s,c)=>s+c.appointments,0);
-  DATA.benchmarks.avg_appointment_rate=avgApp;
-  DATA.benchmarks.top_appointment_rate=topApp;
-  DATA.benchmarks.avg_movement_rate=avgMovement;
-  DATA.benchmarks.avg_activity_rate=avgActivity;
-  DATA.benchmarks.avg_attribution_quality=avgAttr;
-  DATA.benchmarks.healthy_clients=clients.filter(c=>["Elite","Healthy"].includes(c.category)).length;
-  DATA.benchmarks.risk_clients=clients.filter(c=>["Emerging","Broken"].includes(c.category)).length;
-  DATA.benchmarks.critical_clients=clients.filter(c=>c.category==="Broken").length;
-  return clients;
-}
-function buildAds(filtered){
-  const frac=rangeFraction();
-  const avgApp=DATA.benchmarks.avg_appointment_rate||0;
-  return RAW_DATE_DATA.raw_ads.map(a=>{
-    const leads=filtered.filter(l=>l.client===a.client && l.ad_name_norm===a.ad_name_norm && l.adset_norm===a.adset_norm);
-    const appointments=leads.filter(l=>l.has_appointment).length;
-    const moved=leads.filter(l=>l.crm_movement).length;
-    const leads_crm=leads.length;
-    const appointment_rate=pct2(appointments,leads_crm);
-    let classification="Needs Review";
-    if(appointments>=3 && appointment_rate>=avgApp) classification="Elite Winner";
-    else if(appointments>=2) classification="Funnel Winner";
-    else if(leads_crm>=8 && appointments===0) classification="Volume Winner";
-    else if(leads_crm===0) classification="No CRM Match";
-    return {...a,spend:Number(a.spend||0)*frac,meta_results:Math.round(Number(a.meta_results||0)*frac),leads_crm,appointments,moved,active:leads.filter(l=>l.active_recent).length,appointment_rate,movement_rate:pct2(moved,leads_crm),classification};
-  });
-}
-function buildFunnelIntelligence(clients){
-  const totalMoved=clients.reduce((s,c)=>s+c.moved,0), totalAppts=clients.reduce((s,c)=>s+c.appointments,0);
-  return clients.map(c=>{
-    const stages=[
-      {key:"meta",label:"Meta Results",value:c.meta_results,prev:null,rate:null,benchmark:null,health:"neutral"},
-      {key:"crm",label:"CRM Leads",value:c.leads,prev:c.meta_results,rate:pct2(c.leads,c.meta_results),benchmark:1,health:"neutral"},
-      {key:"movement",label:"CRM Movement",value:c.moved,prev:c.leads,rate:pct2(c.moved,c.leads),benchmark:DATA.benchmarks.avg_movement_rate,health:"neutral"},
-      {key:"appointments",label:"Appointments",value:c.appointments,prev:c.moved,rate:pct2(c.appointments,c.moved),benchmark:pct2(totalAppts,totalMoved),health:"neutral"},
-      {key:"sales",label:"Sales",value:null,prev:c.appointments,rate:null,benchmark:null,health:"neutral",pending:true}
-    ];
-    const leakages=[];
-    for(let i=1;i<4;i++){const prev=stages[i].prev||0,val=stages[i].value||0,lost=Math.max(0,prev-val);leakages.push({from:stages[i-1].label,to:stages[i].label,lost,leak_rate:pct2(lost,prev)});}
-    const health_matrix=[
-      {stage:"Attribution",value:c.attribution_quality,benchmark:DATA.benchmarks.avg_attribution_quality,score:Math.round(pct2(c.attribution_quality,DATA.benchmarks.avg_attribution_quality)*100),health:"neutral"},
       {stage:"CRM Movement",value:c.movement_rate,benchmark:DATA.benchmarks.avg_movement_rate,score:Math.round(pct2(c.movement_rate,DATA.benchmarks.avg_movement_rate)*100),health:"neutral"},
       {stage:"CRM Activity",value:c.crm_activity,benchmark:DATA.benchmarks.avg_activity_rate,score:Math.round(pct2(c.crm_activity,DATA.benchmarks.avg_activity_rate)*100),health:"neutral"},
       {stage:"Appointment Rate",value:c.appointment_rate,benchmark:DATA.benchmarks.avg_appointment_rate,score:Math.round(pct2(c.appointment_rate,DATA.benchmarks.avg_appointment_rate)*100),health:"neutral"}
@@ -1501,9 +1305,7 @@ function renderAll(){
     showEmptyState(window.activeViewId || 'view-action');
     return;
   }
-  applyDateRange();recalculateEngineScores();renderAction();renderAgency();renderEngine();renderClients();renderClient();renderAds();renderLeads();renderRisks();renderAlerts();renderOps();renderAI();renderAcademy()
-  document.body.classList.toggle('learning-on',learningMode);
-  updateLearningButton();
+  applyDateRange();recalculateEngineScores();renderAction();renderAgency();renderEngine();renderClients();renderClient();renderAds();renderLeads();renderRisks();renderAlerts();renderOps();renderAI();renderAcademy();
 }
 document.body.classList.toggle('learning-on',learningMode);
 renderAll();
