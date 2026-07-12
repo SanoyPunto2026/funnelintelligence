@@ -1481,6 +1481,7 @@ function tipText(key) {
 
 function renderEngine(){
   recalculateEngineScores();
+  const w=normalizeWeights();
   const total=Object.values(engineWeights).reduce((a,b)=>a+Number(b),0);
   const sorted=[...DATA.clients].sort((a,b)=>b.engine_score-a.engine_score);
   const agency=DATA.benchmarks.engine_agency_health_score;
