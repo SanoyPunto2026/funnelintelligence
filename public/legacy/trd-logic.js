@@ -284,6 +284,162 @@ const leadsBy = n => DATA.leads.filter(l=>l.client===n);
 const dotCat = cat => cat==="Broken"?"red":cat==="Emerging"?"yellow":cat==="Elite"?"green":"purple";
 const hClass = h => h==="green"?"h-green":h==="yellow"?"h-yellow":h==="red"?"h-red":"h-neutral";
 const hTxt = h => h==="green"?"Saludable":h==="yellow"?"En riesgo":h==="red"?"Crítico":"Pendiente";
+window.openUploadModal = function() {
+  let modal = document.getElementById('upload-modal-container');
+  if (modal) modal.remove();
+  
+  modal = document.createElement('div');
+  modal.id = 'upload-modal-container';
+  modal.style.position = 'fixed';
+  modal.style.top = '0';
+  modal.style.left = '0';
+  modal.style.width = '100vw';
+  modal.style.height = '100vh';
+  modal.style.background = 'rgba(3, 7, 18, 0.85)';
+  modal.style.backdropFilter = 'blur(12px)';
+  modal.style.zIndex = '100000';
+  modal.style.display = 'flex';
+  modal.style.alignItems = 'center';
+  modal.style.justifyContent = 'center';
+  
+  modal.innerHTML = `
+    <div style="background:#0b0f19; border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:32px; width:450px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.7); font-family:'Inter', sans-serif; position:relative; color:#eef2ff;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+        <h3 style="font-size:20px; font-weight:700; color:#fff; margin:0;">Cargar Reporte GoHighLevel</h3>
+        <button onclick="document.getElementById('upload-modal-container').remove()" style="background:transparent; border:none; color:#94a3b8; font-size:24px; cursor:pointer; line-height:1;">&times;</button>
+      </div>
+      
+      <div style="display:flex; flex-direction:column; gap:18px; margin-bottom:24px;">
+        <div>
+          <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:8px; font-weight:600;">Nombre del Cliente</label>
+          <input type="text" id="modal-client-name" placeholder="Ej: Andrea / Julio Proyectos" style="width:100%; padding:12px; border-radius:12px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; font-size:14px; outline:none; box-sizing:border-box;">
+        </div>
+        
+        <div>
+          <label style="display:block; font-size:13px; color:#94a3b8; margin-bottom:8px; font-weight:600;">Mes del Reporte</label>
+          <select id="modal-report-month" style="width:100%; padding:12px; border-radius:12px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; font-size:14px; outline:none; box-sizing:border-box; cursor:pointer;">
+            <option value="Enero">Enero</option>
+            <option value="Febrero">Febrero</option>
+            <option value="Marzo">Marzo</option>
+            <option value="Abril">Abril</option>
+            <option value="Mayo">Mayo</option>
+            <option value="Junio">Junio</option>
+            <option value="Julio" selected>Julio</option>
+            <option value="Agosto">Agosto</option>
+            <option value="Septiembre">Septiembre</option>
+            <option value="Octubre">Octubre</option>
+            <option value="Noviembre">Noviembre</option>
+            <option value="Diciembre">Diciembre</option>
+          </select>
+        </div>
+        
+        <div id="modal-file-info" style="display:none; padding:14px; border-radius:12px; background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.2); color:#bae6fd; font-size:13px; line-height:1.4; word-break:break-all;">
+          <strong>Archivo seleccionado:</strong> <span id="modal-file-name"></span>
+        </div>
+      </div>
+      
+      <input type="file" id="modal-file-input" accept=".csv, .xlsx, .xls" style="display:none;">
+      
+      <div style="display:flex; gap:12px;">
+        <button id="modal-select-file-btn" style="flex:1; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:14px; border-radius:12px; font-size:14px; font-weight:600; cursor:pointer; transition:all 0.2s;">
+          Seleccionar Archivo
+        </button>
+        <button id="modal-upload-btn" style="flex:1; background:#3b82f6; border:none; color:#fff; padding:14px; border-radius:12px; font-size:14px; font-weight:600; cursor:pointer; opacity:0.5; transition:all 0.2s;" disabled>
+          Subir y Cargar
+        </button>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+  
+  const fileInput = document.getElementById('modal-file-input');
+  const selectBtn = document.getElementById('modal-select-file-btn');
+  const uploadBtn = document.getElementById('modal-upload-btn');
+  const fileInfo = document.getElementById('modal-file-info');
+  const fileNameSpan = document.getElementById('modal-file-name');
+  const clientNameInput = document.getElementById('modal-client-name');
+  const reportMonthSelect = document.getElementById('modal-report-month');
+  
+  selectBtn.onclick = () => fileInput.click();
+  
+  fileInput.onchange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      fileNameSpan.textContent = file.name;
+      fileInfo.style.display = 'block';
+      uploadBtn.disabled = false;
+      uploadBtn.style.opacity = '1';
+      
+      if (!clientNameInput.value.trim()) {
+        const defaultName = file.name.replace(/\.[^/.]+$/, "").replace(/^Export_Contacts_/, "");
+        clientNameInput.value = defaultName;
+      }
+    }
+  };
+  
+  uploadBtn.onclick = async () => {
+    const file = fileInput.files[0];
+    const clientName = clientNameInput.value.trim();
+    const month = reportMonthSelect.value;
+    
+    if (!file) return;
+    if (!clientName) {
+      alert("Por favor ingresa el nombre del cliente.");
+      return;
+    }
+    
+    uploadBtn.disabled = true;
+    uploadBtn.textContent = "Procesando...";
+    
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('type', 'all');
+    formData.append('clientName', clientName + " " + month);
+    
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData
+      });
+      if (res.ok) {
+        const result = await res.json();
+        const newData = result.data;
+        const existingRaw = localStorage.getItem('trd_uploaded_data');
+        let mergedData = newData;
+        
+        if (existingRaw) {
+          try {
+            const existing = JSON.parse(existingRaw);
+            const clients = [...(existing.clients || [])];
+            (newData.clients || []).forEach(c => {
+               if (!clients.find(ec => ec.client === c.client)) clients.push(c);
+            });
+            const leads = [...(existing.leads || []), ...(newData.leads || [])];
+            const ads = [...(existing.ads || []), ...(newData.ads || [])];
+            mergedData = { clients, leads, ads };
+          } catch(e) {}
+        }
+        
+        localStorage.setItem('trd_uploaded_data', JSON.stringify(mergedData));
+        modal.remove();
+        
+        if (window.updateData) {
+          window.updateData(mergedData);
+        }
+      } else {
+        alert("Hubo un error al procesar el archivo en el servidor.");
+        uploadBtn.disabled = false;
+        uploadBtn.textContent = "Subir y Cargar";
+      }
+    } catch(e) {
+      alert("Error de conexión: " + e.message);
+      uploadBtn.disabled = false;
+      uploadBtn.textContent = "Subir y Cargar";
+    }
+  };
+};
+
 window.activeViewId = window.activeViewId || 'view-action';
 function showView(v){
   window.activeViewId = 'view-' + v;
@@ -1408,7 +1564,7 @@ function showEmptyState(activeViewId) {
     </div>
     <h2 style="font-size: 26px; font-weight:600; color:#fff; margin-bottom: 12px; font-family:'Inter',sans-serif;">Carga tus datos de Funnel</h2>
     <p style="color: #94a3b8; max-width: 420px; margin: 0 auto 28px; font-size:15px; line-height:1.6; font-family:'Inter',sans-serif;">Para visualizar las métricas y analíticas de esta sección, por favor sube tu archivo Excel o CSV exportado de GoHighLevel.</p>
-    <button onclick="document.querySelector('input[type=\\'file\\']').click()" style="background:#3b82f6;color:white;border:none;padding:16px 32px;border-radius:12px;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;box-shadow:0 10px 15px -3px rgba(59,130,246,0.3); margin-left:auto; margin-right:auto; transition:all 0.2s;">
+    <button onclick="window.openUploadModal()" style="background:#3b82f6;color:white;border:none;padding:16px 32px;border-radius:12px;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;box-shadow:0 10px 15px -3px rgba(59,130,246,0.3); margin-left:auto; margin-right:auto; transition:all 0.2s;">
       <i class="ph ph-file-arrow-up" style="font-size:20px;"></i> Subir Archivo Excel / CSV
     </button></div>`;
 }
