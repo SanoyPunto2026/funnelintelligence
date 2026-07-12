@@ -47,7 +47,7 @@ export async function POST(req) {
       
       if (json.length === 0) return;
 
-      // Detect GoHighLevel export
+      // Detect Leadtion export
       const isGHL = json[0]['Contact Id'] !== undefined || json[0]['First Name'] !== undefined;
 
       if (isGHL) {

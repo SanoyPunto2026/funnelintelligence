@@ -180,12 +180,19 @@ function setDatePreset(preset){
     const start = new Date(latest);
     start.setDate(latest.getDate() - 29);
     dateRange = { ...dateRange, preset, start: start.toISOString().split('T')[0], end: latestDateStr };
+  } else if (preset === "month") {
+    dateRange = { ...dateRange, preset, selectedMonth: dateRange.selectedMonth || "Julio" };
   } else if (preset === "custom") {
     dateRange = { ...dateRange, preset };
   }
   saveDateRange();
   renderAll();
 }
+window.setSelectedMonth = function(month) {
+  dateRange.selectedMonth = month;
+  saveDateRange();
+  renderAll();
+};
 function setDateStart(v){ dateRange.start=v; dateRange.preset="custom"; saveDateRange(); renderAll(); }
 function setDateEnd(v){ dateRange.end=v; dateRange.preset="custom"; saveDateRange(); renderAll(); }
 function toggleCompare(){ dateRange.compare=!dateRange.compare; saveDateRange(); renderAll(); }
@@ -196,14 +203,33 @@ function rangeLeadCount(){ return typeof RAW_DATE_DATA==='undefined'?null:rawFil
 
 function renderDateController(){
   const isCustom = dateRange.preset === "custom";
+  const isMonth = dateRange.preset === "month";
   return `<div class="date-controller" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:8px 12px; border-radius:12px; margin-bottom:16px;">
     <span style="font-size:13px; font-weight:500; color:#fff;"><i class="ph ph-calendar" style="vertical-align:middle; margin-right:4px;"></i> Periodo:</span>
     <select onchange="setDatePreset(this.value)" style="padding:6px 12px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; cursor:pointer;">
       <option value="last_7" ${dateRange.preset==="last_7"?"selected":""}>Últimos 7 días</option>
       <option value="last_15" ${dateRange.preset==="last_15"?"selected":""}>Últimos 15 días</option>
       <option value="last_30" ${dateRange.preset==="last_30"?"selected":""}>Últimos 30 días</option>
+      <option value="month" ${dateRange.preset==="month"?"selected":""}>Por Mes</option>
       <option value="custom" ${dateRange.preset==="custom"?"selected":""}>Personalizado</option>
     </select>
+    
+    <div id="month-select-container" style="display:${isMonth ? 'block' : 'none'};">
+      <select onchange="setSelectedMonth(this.value)" style="padding:6px 12px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; cursor:pointer;">
+        <option value="Enero" ${dateRange.selectedMonth==="Enero"?"selected":""}>Enero</option>
+        <option value="Febrero" ${dateRange.selectedMonth==="Febrero"?"selected":""}>Febrero</option>
+        <option value="Marzo" ${dateRange.selectedMonth==="Marzo"?"selected":""}>Marzo</option>
+        <option value="Abril" ${dateRange.selectedMonth==="Abril"?"selected":""}>Abril</option>
+        <option value="Mayo" ${dateRange.selectedMonth==="Mayo"?"selected":""}>Mayo</option>
+        <option value="Junio" ${dateRange.selectedMonth==="Junio"?"selected":""}>Junio</option>
+        <option value="Julio" ${dateRange.selectedMonth==="Julio" || !dateRange.selectedMonth ?"selected":""}>Julio</option>
+        <option value="Agosto" ${dateRange.selectedMonth==="Agosto"?"selected":""}>Agosto</option>
+        <option value="Septiembre" ${dateRange.selectedMonth==="Septiembre"?"selected":""}>Septiembre</option>
+        <option value="Octubre" ${dateRange.selectedMonth==="Octubre"?"selected":""}>Octubre</option>
+        <option value="Noviembre" ${dateRange.selectedMonth==="Noviembre"?"selected":""}>Noviembre</option>
+        <option value="Diciembre" ${dateRange.selectedMonth==="Diciembre"?"selected":""}>Diciembre</option>
+      </select>
+    </div>
     
     <div id="custom-date-range-inputs" style="display:${isCustom ? 'flex' : 'none'}; align-items:center; gap:8px;">
       <label style="font-size:12px; color:#94a3b8;">Desde</label>
@@ -212,9 +238,9 @@ function renderDateController(){
       <input type="date" value="${dateRange.end}" onchange="setDateEnd(this.value)" style="padding:6px 10px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff;">
     </div>
     
-    <span class="date-pill" style="margin-left:auto; font-size:12px;">Rango: ${dateRange.start} a ${dateRange.end}</span>
+    <span class="date-pill" style="margin-left:auto; font-size:12px;">Rango activo: ${isMonth ? (dateRange.selectedMonth || 'Julio') : (dateRange.start + ' a ' + dateRange.end)}</span>
   </div>
-  ${isInvalidDateRange()?`<div class="historical-note"><strong>Rango inválido:</strong> La fecha inicial no puede ser mayor que la fecha final.</div>`:''}`;
+  ${!isMonth && isInvalidDateRange()?`<div class="historical-note"><strong>Rango inválido:</strong> La fecha inicial no puede ser mayor que la fecha final.</div>`:''}`;
 }
 function pseudoTrend(value, seed=1){
   const base=Number(value||0);
@@ -318,7 +344,7 @@ window.openUploadModal = function() {
   modal.innerHTML = `
     <div style="background:#0b0f19; border:1px solid rgba(255,255,255,0.08); border-radius:24px; padding:32px; width:450px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.7); font-family:'Inter', sans-serif; position:relative; color:#eef2ff;">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
-        <h3 style="font-size:20px; font-weight:700; color:#fff; margin:0;">Cargar Reporte GoHighLevel</h3>
+        <h3 style="font-size:20px; font-weight:700; color:#fff; margin:0;">Cargar Reporte Leadtion</h3>
         <button onclick="document.getElementById('upload-modal-container').remove()" style="background:transparent; border:none; color:#94a3b8; font-size:24px; cursor:pointer; line-height:1;">&times;</button>
       </div>
       
@@ -472,17 +498,33 @@ function showView(v){
   }
   renderAll();
 }
+window.priorityCollapsed = window.priorityCollapsed !== undefined ? window.priorityCollapsed : false;
+window.togglePriorityCollapse = function() {
+  window.priorityCollapsed = !window.priorityCollapsed;
+  const content = document.getElementById('priority-actions-content');
+  const chevron = document.getElementById('priority-chevron-icon');
+  if (content && chevron) {
+    content.style.display = window.priorityCollapsed ? 'none' : 'block';
+    chevron.className = window.priorityCollapsed ? 'ph ph-caret-down' : 'ph ph-caret-up';
+  }
+};
+
 function badge(cat){ return `<span class="badge ${cat}">${cat}</span>` }
 function clientCard(c){return `<div class="card client-card" onclick="openClient('${c.client}')"><div class="kpi"><div><h3>${c.client}</h3>${badge(activeCategory(c))}</div><div class="score-ring" style="--score:${activeScore(c)}"><span>${activeScore(c)}</span></div></div><div class="grid grid3" style="gap:10px;margin-top:16px"><div><strong>${fmtNum(c.leads)}</strong><div class="label">Leads</div></div><div><strong>${c.appointments}</strong><div class="label">Citas</div></div><div><strong>${fmtPct(c.appointment_rate)}</strong><div class="label">Appt.</div></div></div><p class="small" style="margin-top:12px">Problema: ${c.main_problem}</p></div>`}
 function renderAction(){
-  const cs=[...DATA.clients].sort((a,b)=>activeScore(a)-activeScore(b));
-  const best=[...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a))[0];
-  const items=[cs[0],cs[1],best].filter(Boolean);
+  const filtered = rawFilteredLeads();
+  const cs = [...DATA.clients].sort((a,b)=>activeScore(a)-activeScore(b));
+  const best = [...DATA.clients].sort((a,b)=>activeScore(b)-activeScore(a))[0];
+  const items = [cs[0],cs[1],best].filter(Boolean);
   
-  // Calcular métricas consolidadas reales basadas en DATA.leads
-  const totalLeads = DATA.leads.length;
-  const totalAppointments = DATA.leads.filter(l => l.status === 'agendado' || l.has_appointment).length;
+  // Calcular métricas consolidadas reales basadas en los leads filtrados
+  const totalLeads = filtered.length;
+  const totalAppointments = filtered.filter(l => l.status === 'agendado' || l.has_appointment).length;
   const globalApptRate = totalLeads ? totalAppointments / totalLeads : 0;
+  
+  // Métricas del nuevo dashboard "Fugas del Embudo"
+  const stuckLeads = filtered.filter(l => l.status === 'dejo de responder-seguimiento' || l.status === 'dejo de responder').length;
+  const globalLeakageRate = totalLeads ? stuckLeads / totalLeads : 0;
 
   document.getElementById('view-action').innerHTML=`${renderDateController()}${renderCurrencyController()}
     <!-- Panel Consolidado Global de Agencia -->
@@ -501,25 +543,53 @@ function renderAction(){
       </div>
     </div>
 
-    <div class="grid grid2">
-      <div class="card">
-        <h3>Acciones prioritarias</h3>
-        ${items.map((c,i)=>`<div class="action" onclick="openClient('${c.client}')"><span class="dot ${i==0?'red':i==1?'yellow':'green'}"></span><div><strong>${i==0?'<i class="ph ph-warning"></i>':i==1?'<i class="ph ph-warning-circle"></i>':'<i class="ph ph-trophy"></i>'} ${c.client}</strong><div class="small">${activeCategory(c)} · Score ${activeScore(c)} · ${c.main_problem}</div><p>${diagnosisShort(c)}</p></div></div>`).join('')}
+    <div class="grid grid3">
+      <!-- 1. Acciones prioritarias (Colapsable/Acordeón) -->
+      <div class="card" style="display:flex; flex-direction:column; justify-content:flex-start;">
+        <div style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;" onclick="window.togglePriorityCollapse()">
+          <h3 style="margin:0; font-size:16px;"><i class="ph ph-warning" style="vertical-align:middle; margin-right:6px;"></i> Acciones prioritarias</h3>
+          <i id="priority-chevron-icon" class="${window.priorityCollapsed ? 'ph ph-caret-down' : 'ph ph-caret-up'}" style="font-size:18px;"></i>
+        </div>
+        <div id="priority-actions-content" style="margin-top:16px; display:${window.priorityCollapsed ? 'none' : 'block'}; max-height:220px; overflow-y:auto; padding-right:4px;">
+          ${items.map((c,i)=>`<div class="action" onclick="openClient('${c.client}')" style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.05); margin-bottom:8px; cursor:pointer;"><span class="dot ${i==0?'red':i==1?'yellow':'green'}" style="margin-right:6px;"></span><strong>${c.client}</strong><div class="small" style="font-size:11px;">${activeCategory(c)} · Score ${activeScore(c)}</div><p style="margin:4px 0 0 0; font-size:12px; line-height:1.3;">${diagnosisShort(c)}</p></div>`).join('')}
+        </div>
       </div>
       
+      <!-- 2. Agency Health Score (con tooltip) -->
       <div class="card">
-        <h3>Agency Health Score ${tip('agency')}</h3>
-        <div class="kpi">
+        <div style="display:flex; align-items:center; gap:6px;">
+          <h3 style="margin:0; font-size:16px;">Agency Health Score</h3>
+          <div class="trd-tooltip-container">
+            <i class="ph ph-info" style="font-size:15px; color:#94a3b8; cursor:pointer;"></i>
+            <span class="trd-tooltip-text">Índice general ponderado de salud operativa (citas, movimiento CRM, actividad comercial, atribución y eficiencia).</span>
+          </div>
+        </div>
+        <div class="kpi" style="margin-top:16px;">
           <div>
-            <div class="metric" style="font-size:54px; font-weight:900;">${activeAgencyScore()}</div>
-            <div class="label">Nivel de Salud General</div>
-            <span style="margin-top:8px; display:inline-block;">${badge(activeAgencyCategory())}</span>
+            <div class="metric" style="font-size:42px; font-weight:900;">${activeAgencyScore()}</div>
+            <div class="label" style="font-size:11px;">Nivel de Salud General</div>
+            <span style="margin-top:4px; display:inline-block;">${badge(activeAgencyCategory())}</span>
           </div>
           <div class="score-ring" style="--score:${activeAgencyScore()}"><span>${activeAgencyScore()}</span></div>
         </div>
-        <div class="insight" style="margin-top:16px;">
-          <strong>¿Qué es Agency Health?</strong>
-          <p style="margin-top:6px; font-size:13px; line-height:1.45; color:#cbd5e1;">Es el índice ponderado de salud de tu agencia. Se calcula promediando el rendimiento de las etapas clave de todos tus clientes (Tasa de citas, actividad comercial, atribución y costos de adquisición).</p>
+      </div>
+
+      <!-- 3. Fugas del Embudo (con tooltip) -->
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:6px;">
+          <h3 style="margin:0; font-size:16px;">Fugas del Embudo</h3>
+          <div class="trd-tooltip-container">
+            <i class="ph ph-info" style="font-size:15px; color:#94a3b8; cursor:pointer;"></i>
+            <span class="trd-tooltip-text">Porcentaje de leads que entraron en abandono comercial ("Dejó de responder" o "Seguimiento") sobre el total del embudo.</span>
+          </div>
+        </div>
+        <div class="kpi" style="margin-top:16px;">
+          <div>
+            <div class="metric" style="font-size:42px; font-weight:900; color:#ef4444;">${fmtPct(globalLeakageRate)}</div>
+            <div class="label" style="font-size:11px;">Leads Estancados</div>
+            <span style="margin-top:6px; display:inline-block; font-size:12px; font-weight:600; color:#cbd5e1;"><i class="ph ph-warning-circle" style="vertical-align:middle; color:#ef4444;"></i> ${fmtNum(stuckLeads)} leads inactivos</span>
+          </div>
+          <div class="score-ring" style="--score:${Math.round(globalLeakageRate*100)}; --color:#ef4444;"><span>${Math.round(globalLeakageRate*100)}%</span></div>
         </div>
       </div>
     </div>
@@ -1435,6 +1505,10 @@ function rangeFraction(){
   return total?Math.max(0,Math.min(1,overlap/total)):1;
 }
 function rawFilteredLeads(){
+  if(dateRange.preset === "month") {
+    const selMonth = dateRange.selectedMonth || "Julio";
+    return RAW_DATE_DATA.raw_leads.filter(l => l.month === selMonth);
+  }
   if(isInvalidDateRange()) return [];
   return RAW_DATE_DATA.raw_leads.filter(l=>l.created_date && l.created_date>=dateRange.start && l.created_date<=dateRange.end);
 }
@@ -1628,7 +1702,7 @@ function showEmptyState(activeViewId) {
       <i class="ph ph-upload-simple" style="font-size: 38px;"></i>
     </div>
     <h2 style="font-size: 26px; font-weight:600; color:#fff; margin-bottom: 12px; font-family:'Inter',sans-serif;">Carga tus datos de Funnel</h2>
-    <p style="color: #94a3b8; max-width: 420px; margin: 0 auto 28px; font-size:15px; line-height:1.6; font-family:'Inter',sans-serif;">Para visualizar las métricas y analíticas de esta sección, por favor sube tu archivo Excel o CSV exportado de GoHighLevel.</p>
+    <p style="color: #94a3b8; max-width: 420px; margin: 0 auto 28px; font-size:15px; line-height:1.6; font-family:'Inter',sans-serif;">Para visualizar las métricas y analíticas de esta sección, por favor sube tu archivo Excel o CSV exportado de Leadtion.</p>
     <button onclick="window.openUploadModal()" style="background:#3b82f6;color:white;border:none;padding:16px 32px;border-radius:12px;font-size:16px;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:600;box-shadow:0 10px 15px -3px rgba(59,130,246,0.3); margin-left:auto; margin-right:auto; transition:all 0.2s;">
       <i class="ph ph-file-arrow-up" style="font-size:20px;"></i> Subir Archivo Excel / CSV
     </button></div>`;
