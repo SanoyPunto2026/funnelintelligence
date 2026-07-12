@@ -1504,26 +1504,6 @@ function renderEngine(){
     </div>
 
     <div class="card" style="margin-top:18px">
-      <h3>Ranking recalculado por motor</h3>
-      <div class="engine-table">
-        <table>
-          <thead><tr><th>Cliente</th><th>Score actual</th><th>Score motor ${tip('engineScore')}</th><th>Delta ${tip('engineDelta')}</th><th>Categoría</th><th>Cuello de botella ${tip('engineBottleneck')}</th><th>Fortaleza ${tip('engineStrength')}</th></tr></thead>
-          <tbody>
-            ${sorted.map(c=>`<tr>
-              <td><strong>${c.client}</strong></td>
-              <td>${c.score}</td>
-              <td><strong>${c.engine_score}</strong></td>
-              <td class="${deltaClass(c.engine_delta)}">${fmtDelta(c.engine_delta)}</td>
-              <td>${badge(c.engine_category)}</td>
-              <td>${engineLabels[c.engine_bottleneck]}</td>
-              <td>${engineLabels[c.engine_strength]}</td>
-            </tr>`).join('')}
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card" style="margin-top:18px">
       <h3>Component Breakdown</h3>
       <div class="matrix-grid">
         ${sorted.map(c=>`
