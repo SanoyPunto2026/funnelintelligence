@@ -7,6 +7,7 @@ export async function POST(req) {
     const file = formData.get('file');
     const type = formData.get('type') || 'all';
     const customClientName = formData.get('clientName');
+    const reportMonth = formData.get('month') || 'Julio';
 
     if (!file) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
@@ -15,9 +16,29 @@ export async function POST(req) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const workbook = xlsx.read(buffer, { type: 'buffer' });
-    let currentData = { clients: [], ads: [], leads: [] };
     const fileName = file.name.replace(/\.[^/.]+$/, ""); // Remove extension
+    const isCsv = file.name.toLowerCase().endsWith('.csv');
+
+    let workbook;
+    if (isCsv) {
+      let decodedText = '';
+      if (buffer[0] === 0xEF && buffer[1] === 0xBB && buffer[2] === 0xBF) {
+        decodedText = buffer.toString('utf8');
+      } else {
+        try {
+          const decoder = new TextDecoder('utf-8', { fatal: true });
+          decodedText = decoder.decode(buffer);
+        } catch (e) {
+          const decoder = new TextDecoder('iso-8859-1');
+          decodedText = decoder.decode(buffer);
+        }
+      }
+      workbook = xlsx.read(decodedText, { type: 'string' });
+    } else {
+      workbook = xlsx.read(buffer, { type: 'buffer' });
+    }
+
+    let currentData = { clients: [], ads: [], leads: [] };
 
     const sheetNames = workbook.SheetNames;
     sheetNames.forEach(sheetName => {
@@ -79,6 +100,7 @@ export async function POST(req) {
             client: clientName,
             name: name,
             created_date: created_date,
+            month: reportMonth,
             status: status,
             tags: tagsRaw,
             ad_name_norm: adName,
@@ -119,7 +141,7 @@ export async function POST(req) {
 
         // Add client config if not exists
         if (!currentData.clients.find(c => c.client === clientName)) {
-          currentData.clients.push({ client: clientName, currency: 'USD' });
+          currentData.clients.push({ client: clientName, currency: 'USD', month: reportMonth });
         }
       } else {
         // Standard TRD format detection

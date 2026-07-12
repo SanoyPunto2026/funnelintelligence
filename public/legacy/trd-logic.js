@@ -395,7 +395,8 @@ window.openUploadModal = function() {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('type', 'all');
-    formData.append('clientName', clientName + " " + month);
+    formData.append('clientName', clientName);
+    formData.append('month', month);
     
     try {
       const res = await fetch('/api/upload', {
