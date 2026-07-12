@@ -40,37 +40,45 @@ export async function POST(req) {
           
           let adName = row['Ad Name'] || row['Ad Set'] || 'Orgánico';
           let adsetName = row['AdSet Name'] || row['Ad Set'] || 'Sin AdSet';
-          let tags = (row['Tags'] || '').toLowerCase();
-          let opps = (row['Opportunities'] || '').toLowerCase();
-          let wfActive = (row['Workflows Active'] || '').toLowerCase();
-          let wfFinished = (row['Workflows Finished'] || '').toLowerCase();
-          let lastAppt = row['Last Appointment - Confirmed/Open'] || '';
+          let oppsRaw = row['Opportunities'] || '';
+          let tagsRaw = row['Tags'] || '';
 
-          // Derive boolean fields from GHL data
-          let has_appointment = lastAppt.length > 0 || opps.includes('agendado') || tags.includes('cita agendada');
-          let crm_movement = opps.includes('seguimiento') || opps.includes('agendado') || tags.includes('usó_botón') || tags.includes('human handover');
-          let active_recent = wfActive.length > 0 || tags.includes('reactivación') || tags.includes('esperando');
+          // Clasificar únicamente en base a Opportunities
+          let status = 'lead nuevo';
+          let opps = oppsRaw.toLowerCase();
+          if (opps.includes('agendado') || opps.includes('cita') || opps.includes('appointment') || opps.includes('booking')) {
+            status = 'agendado';
+          } else if (opps.includes('futuro') || opps.includes('future')) {
+            status = 'lead futuro';
+          } else if (opps.includes('dejo de responder') || opps.includes('dejo') || opps.includes('responder') || opps.includes('seguimiento') || opps.includes('contactado') || opps.includes('sin whatsapp') || opps.includes('esperando') || opps.includes('mensaje')) {
+            status = 'dejo de responder-seguimiento';
+          } else if (opps.includes('dudas') || opps.includes('atender') || opps.includes('pregunta') || opps.includes('info') || opps.includes('conversacion') || opps.includes('interes')) {
+            status = 'atender dudas';
+          } else if (opps.includes('nuevo') || opps.includes('new')) {
+            status = 'lead nuevo';
+          }
+
+          // Derivar campos booleanos basándose en el estado
+          let has_appointment = status === 'agendado';
+          let crm_movement = status === 'atender dudas' || status === 'dejo de responder-seguimiento' || status === 'agendado' || status === 'lead futuro';
+          let active_recent = status === 'lead nuevo' || status === 'atender dudas' || status === 'dejo de responder-seguimiento';
           let has_attribution = adName !== 'Orgánico' && adName.length > 0;
           let workflow_detected = wfFinished.length > 0 || wfActive.length > 0;
-          let used_button = tags.includes('usó_botón') || tags.includes('human handover');
-          let waiting = tags.includes('esperando') || opps.includes('seguimiento');
-          let discarded_inferred = opps.includes('descartado') || opps.includes('no interesa');
+          let used_button = tagsRaw.toLowerCase().includes('usó_botón') || tagsRaw.toLowerCase().includes('human handover');
+          let waiting = status === 'dejo de responder-seguimiento';
+          let discarded_inferred = status === 'dejo de responder-seguimiento';
           let custom_data_detected = (row['Email'] || '').length > 0 && (row['Phone'] || '').length > 0;
-
-          let statusRaw = row['Opportunities'] || '';
-          let status = statusRaw.length > 0 
-            ? (statusRaw.includes('open ') ? statusRaw.replace(/^open\s+/i, '').split('|').pop().trim() : statusRaw)
-            : (tags.includes('cita agendada') ? 'Agendado' : 'Nuevo Lead');
 
           return {
             client: clientName,
             name: name,
             created_date: created_date,
             status: status,
+            tags: tagsRaw,
             ad_name_norm: adName,
             adset_norm: adsetName,
             ad: adName,
-            risk: discarded_inferred ? "Alto" : (has_appointment ? "Bajo" : "Medio"),
+            risk: status === 'dejo de responder-seguimiento' ? "Alto" : (has_appointment ? "Bajo" : "Medio"),
             last_activity: row['Last Activity'] || '',
             has_appointment: has_appointment,
             crm_movement: crm_movement,
