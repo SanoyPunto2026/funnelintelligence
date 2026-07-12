@@ -1316,23 +1316,72 @@ function buildFunnelIntelligence(clients){
 function buildProgression(filtered,clients){
   return clients.map(c=>{
     const leads=filtered.filter(l=>l.client===c.client);
-    const reached={
-      meta: c.meta_results,
-      lead_nuevo: leads.filter(l => l.status === 'lead nuevo').length,
-      atender_dudas: leads.filter(l => l.status === 'atender dudas').length,
-      dejo_responder: leads.filter(l => l.status === 'dejo de responder-seguimiento').length,
-      agendado: leads.filter(l => l.status === 'agendado').length,
-      lead_futuro: leads.filter(l => l.status === 'lead futuro').length
-    };
-    const defs=[
-      ["meta","Meta Results","Base de leads reportados por Meta."],
-      ["lead_nuevo","Lead Nuevo","Leads ingresados al sistema."],
-      ["atender_dudas","Atender Dudas","Leads que interactúan o tienen consultas."],
-      ["dejo_responder","Dejó de Responder - Seguimiento","Leads en seguimiento o inactivos."],
-      ["agendado","Agendado","Citas agendadas confirmadas."],
-      ["lead_futuro","Lead Futuro","Leads calificados para re-contacto a futuro."]
-    ];
-    let prev=null;const stages=defs.map(([key,label,description])=>{const value=reached[key];if(value===null)return{key,label,description,value:null,from_previous:null,cumulative_from_crm:null,cumulative_from_meta:null,lost_from_previous:null,leak_rate:null,health:"neutral",pending:true};const from_previous=prev===null?1:pct2(value,prev);const lost=prev===null?0:Math.max(0,prev-value);const obj={key,label,description,value,from_previous,cumulative_from_crm:pct2(value,leads.length),cumulative_from_meta:pct2(value,c.meta_results),lost_from_previous:lost,leak_rate:pct2(lost,prev),health:from_previous>=.75?"green":from_previous>=.45?"yellow":"red",pending:false};if(["meta","lead_nuevo"].includes(key))obj.health="neutral";prev=value;return obj;});
+    
+    // Core automated stages that should always exist:
+    const coreKeys = ['lead nuevo', 'atender dudas', 'dejo de responder-seguimiento', 'agendado', 'lead futuro'];
+    
+    // Find custom stages in client's leads
+    const customStagesSet = new Set();
+    leads.forEach(l => {
+      if (l.status && !coreKeys.includes(l.status)) {
+        customStagesSet.add(l.status);
+      }
+    });
+    const customStages = Array.from(customStagesSet).sort();
+
+    const allStagesDefs = [];
+    allStagesDefs.push(["lead_nuevo", "Lead Nuevo", "Leads ingresados al sistema.", false]);
+    
+    customStages.forEach(cs => {
+      const key = "custom_" + cs.toLowerCase().replace(/[^a-z0-9]/g, "_");
+      allStagesDefs.push([key, cs, "Etapa personalizada del cliente (manual).", true, cs]);
+    });
+    
+    allStagesDefs.push(["atender_dudas", "Atender Dudas", "Leads que interactúan o tienen consultas.", false]);
+    allStagesDefs.push(["dejo_responder", "Dejó de Responder - Seguimiento", "Leads en seguimiento o inactivos.", false]);
+    allStagesDefs.push(["agendado", "Agendado", "Citas agendadas confirmadas.", false]);
+    allStagesDefs.push(["lead_futuro", "Lead Futuro", "Leads calificados para re-contacto a futuro.", false]);
+
+    const reached = { meta: c.meta_results };
+    allStagesDefs.forEach(([key, label, desc, isCustom, rawStatus]) => {
+      if (isCustom) {
+        reached[key] = leads.filter(l => l.status === rawStatus).length;
+      } else {
+        const statusMap = {
+          lead_nuevo: 'lead nuevo',
+          atender_dudas: 'atender dudas',
+          dejo_responder: 'dejo de responder-seguimiento',
+          agendado: 'agendado',
+          lead_futuro: 'lead futuro'
+        };
+        reached[key] = leads.filter(l => l.status === statusMap[key]).length;
+      }
+    });
+
+    let prev=null;
+    const stages=allStagesDefs.map(([key,label,description,isCustom,rawStatus])=>{
+      const value=reached[key];
+      const from_previous=prev===null?1:pct2(value,prev);
+      const lost=prev===null?0:Math.max(0,prev-value);
+      const obj={
+        key,
+        label,
+        description,
+        value,
+        from_previous,
+        cumulative_from_crm:pct2(value,leads.length),
+        cumulative_from_meta:pct2(value,c.meta_results),
+        lost_from_previous:lost,
+        leak_rate:pct2(lost,prev),
+        health:isCustom ? "blue" : (from_previous>=.75?"green":from_previous>=.45?"yellow":"red"),
+        pending:false,
+        isCustom
+      };
+      if(key==="lead_nuevo")obj.health="neutral";
+      prev=value;
+      return obj;
+    });
+
     const leaks=stages.filter(s=>s.lost_from_previous);
     return {client:c.client,mode:"date_filtered_model",stages,biggest_drop:leaks.slice().sort((a,b)=>b.lost_from_previous-a.lost_from_previous)[0]||null,note:"",missing_fields:[]};
   });

@@ -321,3 +321,6 @@ body.learning-on .learning-note{display:block}
 .nav button i { font-size: 18px; margin-right: 6px; vertical-align: middle; }
 .pill i { margin-right: 5px; }
 .learn-toggle i { margin-right: 5px; }
+.progress-stage.blue .stage-top{border-top-color:var(--blue)!important}
+.health-dot.h-blue{background:var(--blue)!important}
+.flow-legend .h-blue{background:var(--blue)!important}
