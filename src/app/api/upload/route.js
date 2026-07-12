@@ -42,6 +42,8 @@ export async function POST(req) {
           let adsetName = row['AdSet Name'] || row['Ad Set'] || 'Sin AdSet';
           let oppsRaw = row['Opportunities'] || '';
           let tagsRaw = row['Tags'] || '';
+          let wfActive = (row['Workflows Active'] || '').toLowerCase();
+          let wfFinished = (row['Workflows Finished'] || '').toLowerCase();
 
           // Clasificar únicamente en base a Opportunities
           let status = 'lead nuevo';
