@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -8,6 +9,8 @@ export default function Home() {
   const [dataLoaded, setDataLoaded] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [toast, setToast] = useState(null);
+  const params = useParams();
+  const router = useRouter();
 
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
@@ -38,6 +41,35 @@ export default function Home() {
       document.body.removeChild(script);
     };
   }, []);
+
+  // Sincronizar ruta activa de Next.js con el viewId de trd-logic.js
+  useEffect(() => {
+    if (!dataLoaded) return;
+    
+    const viewMap = {
+      'action-center': 'action',
+      'agency-health': 'agency',
+      'health-engine': 'engine',
+      'clients': 'clients',
+      'client-workspace': 'client',
+      'ad-intelligence': 'ads',
+      'lead-explorer': 'leads',
+      'risks': 'risks',
+      'alert-engine': 'alerts',
+      'opportunities': 'opportunities',
+      'ai-analyst': 'ai',
+      'academy': 'academy'
+    };
+
+    const routeName = params.route ? params.route[0] : '';
+    const targetView = viewMap[routeName] || 'action';
+    
+    // Si la URL no coincide con la vista activa actual en window, la actualizamos
+    const currentActive = window.activeViewId ? window.activeViewId.replace('view-', '') : 'action';
+    if (currentActive !== targetView && typeof window.showView === 'function') {
+      window.showView(targetView, true); // true para prevenir duplicar el pushState
+    }
+  }, [params.route, dataLoaded]);
 
   const loadLocalData = () => {
     try {

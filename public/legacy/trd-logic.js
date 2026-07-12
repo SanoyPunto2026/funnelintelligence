@@ -480,8 +480,38 @@ window.openUploadModal = function() {
   };
 };
 
+const pathMap = {
+  action: 'action-center',
+  agency: 'agency-health',
+  engine: 'health-engine',
+  clients: 'clients',
+  client: 'client-workspace',
+  ads: 'ad-intelligence',
+  leads: 'lead-explorer',
+  risks: 'risks',
+  alerts: 'alert-engine',
+  opportunities: 'opportunities',
+  ai: 'ai-analyst',
+  academy: 'academy'
+};
+
+const viewMap = {
+  'action-center': 'action',
+  'agency-health': 'agency',
+  'health-engine': 'engine',
+  'clients': 'clients',
+  'client-workspace': 'client',
+  'ad-intelligence': 'ads',
+  'lead-explorer': 'leads',
+  'risks': 'risks',
+  'alert-engine': 'alerts',
+  'opportunities': 'opportunities',
+  'ai-analyst': 'ai',
+  'academy': 'academy'
+};
+
 window.activeViewId = window.activeViewId || 'view-action';
-function showView(v){
+function showView(v, preventPush = false){
   window.activeViewId = 'view-' + v;
   document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));
   const target = document.getElementById('view-'+v);
@@ -496,8 +526,19 @@ function showView(v){
     document.getElementById('pageTitle').textContent=t[0];
     document.getElementById('pageSubtitle').textContent=t[1];
   }
+  
+  if (!preventPush && pathMap[v]) {
+    window.history.pushState({ view: v }, '', '/' + pathMap[v]);
+  }
+
   renderAll();
 }
+
+window.addEventListener('popstate', () => {
+  const path = window.location.pathname.replace(/^\//, '');
+  const view = viewMap[path] || 'action';
+  showView(view, true);
+});
 window.priorityCollapsed = window.priorityCollapsed !== undefined ? window.priorityCollapsed : false;
 window.togglePriorityCollapse = function() {
   window.priorityCollapsed = !window.priorityCollapsed;
@@ -1889,5 +1930,7 @@ function renderAll(){
   applyDateRange();recalculateEngineScores();renderAction();renderAgency();renderEngine();renderClients();renderClient();renderAds();renderLeads();renderRisks();renderAlerts();renderOps();renderAI();renderAcademy();
 }
 document.body.classList.toggle('learning-on',learningMode);
-renderAll();
+const initialPath = window.location.pathname.replace(/^\//, '');
+const initialView = viewMap[initialPath] || 'action';
+showView(initialView, true);
 updateLearningButton();
