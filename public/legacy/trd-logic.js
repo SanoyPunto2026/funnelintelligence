@@ -1,3 +1,14 @@
+if (typeof window !== 'undefined') {
+  const _originalGetElementById = document.getElementById;
+  document.getElementById = function(id) {
+    const el = _originalGetElementById.call(document, id);
+    if (!el && id && id.startsWith('view-')) {
+      return document.createElement('div');
+    }
+    return el;
+  };
+}
+
 let DATA = window.DATA || {};
 
 let RAW_DATE_DATA = {

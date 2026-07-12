@@ -1,4 +1,5 @@
 import './globals.css';
+import ClientLayout from './ClientLayout';
 
 export const metadata = {
   title: 'Funnel Intelligence TRD',
@@ -14,7 +15,9 @@ export default function RootLayout({ children }) {
         <script src="https://unpkg.com/@phosphor-icons/web"></script>
       </head>
       <body>
-        {children}
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );
