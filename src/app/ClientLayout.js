@@ -144,6 +144,7 @@ export default function ClientLayout({ children }) {
           <button className={activePath === '/lead-explorer' ? 'active' : ''} onClick={() => navigateTo('leads', '/lead-explorer')}><i className="ph ph-target"></i><i className="ph-fill ph-target"></i> Lead Explorer</button>
           <button className={activePath === '/alert-engine' ? 'active' : ''} onClick={() => navigateTo('alerts', '/alert-engine')}><i className="ph ph-bell"></i><i className="ph-fill ph-bell"></i> Alert Engine</button>
         </div>
+        <div id="sidebar-widget" style={{marginTop: 'auto', paddingTop: '20px'}}></div>
       </aside>
       <main className="main">
         <div className="topbar">

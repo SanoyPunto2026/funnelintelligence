@@ -528,7 +528,7 @@ function showView(v, preventPush = false){
   const target = document.getElementById('view-'+v);
   if(target) target.classList.remove('hidden');
   document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
-  const map={action:0,agency:1,engine:2,clients:3,client:4,ads:5,leads:6,risks:7,alerts:8,opportunities:9,ai:10,academy:11};
+  const map={action:0,agency:1,engine:2,clients:3,client:3,ads:4,leads:5,alerts:6};
   if(document.querySelectorAll('.nav button')[map[v]]) {
     document.querySelectorAll('.nav button')[map[v]].classList.add('active');
   }
@@ -1947,12 +1947,43 @@ function showEmptyState(activeViewId) {
     </button></div>`;
 }
 
+function updateSidebarWidget() {
+  const widget = document.getElementById('sidebar-widget');
+  if (!widget) return;
+  if (!DATA || !DATA.clients || DATA.clients.length === 0) {
+    widget.innerHTML = '';
+    return;
+  }
+  const score = activeAgencyScore();
+  const category = activeAgencyCategory();
+  const color = category === 'Elite' ? 'var(--green)' : category === 'Healthy' ? 'var(--purple)' : category === 'Emerging' ? 'var(--yellow)' : 'var(--red)';
+  const badgeCls = category === 'Elite' ? 'Elite' : category === 'Healthy' ? 'Healthy' : category === 'Emerging' ? 'Emerging' : 'Broken';
+  
+  widget.innerHTML = `
+    <div style="background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:18px; padding:16px; display:flex; flex-direction:column; gap:12px; backdrop-filter:blur(8px);">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:12px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Salud de Agencia</span>
+        <span class="badge ${badgeCls}" style="padding:3px 8px; font-size:10px; border-radius:999px;">${category}</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div style="font-size:32px; font-weight:900; color:#fff; line-height:1; font-family:'Inter',sans-serif;">${score}<span style="font-size:14px; color:var(--muted); font-weight:500;">/100</span></div>
+        <div style="flex-grow:1; height:6px; background:#202a3d; border-radius:999px; overflow:hidden;">
+          <div style="height:100%; width:${score}%; background:linear-gradient(90deg, ${color}, var(--blue)); border-radius:999px;"></div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function renderAll(){
   if (!DATA || !DATA.clients || DATA.clients.length === 0) {
     showEmptyState(window.activeViewId || 'view-action');
+    const widget = document.getElementById('sidebar-widget');
+    if (widget) widget.innerHTML = '';
     return;
   }
   applyDateRange();recalculateEngineScores();renderAction();renderAgency();renderEngine();renderClients();renderClient();renderAds();renderLeads();renderRisks();renderAlerts();renderOps();renderAI();renderAcademy();
+  updateSidebarWidget();
 }
 document.body.classList.toggle('learning-on',learningMode);
 const initialPath = window.location.pathname.replace(/^\//, '');
