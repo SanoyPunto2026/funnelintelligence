@@ -1033,10 +1033,10 @@ function pipelineAnalytics(c){
   const agendadoObj = p.stages.find(s=>s.key==='agendado') || {value:0};
   const leadFuturo = p.stages.find(s=>s.key==='lead_futuro') || {value:0};
 
-  const tasaInteres = leadNuevo.value ? atenderDudas.value / leadNuevo.value : 0;
-  const tasaAbandono = leadNuevo.value ? dejoResponder.value / leadNuevo.value : 0;
-  const tasaAgendamiento = leadNuevo.value ? agendadoObj.value / leadNuevo.value : 0;
-  const tasaFuturo = leadNuevo.value ? leadFuturo.value / leadNuevo.value : 0;
+  const tasaInteres = c.leads ? atenderDudas.value / c.leads : 0;
+  const tasaAbandono = c.leads ? dejoResponder.value / c.leads : 0;
+  const tasaAgendamiento = c.leads ? agendadoObj.value / c.leads : 0;
+  const tasaFuturo = c.leads ? leadFuturo.value / c.leads : 0;
 
   const allFilteredLeads = rawFilteredLeads();
   const totalAgencyLeads = allFilteredLeads.length;
