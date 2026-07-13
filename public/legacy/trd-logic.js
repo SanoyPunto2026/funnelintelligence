@@ -645,39 +645,33 @@ function renderAction(){
       </div>
       
       <!-- 2. Agency Health Score (con tooltip) -->
-      <div class="card">
-        <div style="display:flex; align-items:center; gap:6px;">
+      <div class="card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px;">
+        <div style="display:flex; align-items:center; gap:6px; justify-content: center;">
           <h3 style="margin:0; font-size:16px;">Agency Health Score</h3>
           <div class="trd-tooltip-container">
             <i class="ph ph-info" style="font-size:15px; color:#94a3b8; cursor:pointer;"></i>
             <span class="trd-tooltip-text">Índice general ponderado de salud operativa (citas, movimiento CRM, actividad comercial, atribución y eficiencia).</span>
           </div>
         </div>
-        <div class="kpi" style="margin-top:16px;">
-          <div>
-            <div class="metric" style="font-size:42px; font-weight:900;">${activeAgencyScore()}</div>
-            <div class="label" style="font-size:11px;">Nivel de Salud General</div>
-          </div>
-          <div class="score-ring" style="--score:${activeAgencyScore()}"><span>${activeAgencyScore()}</span></div>
+        <div style="margin-top:20px;">
+          <div class="metric" style="font-size:48px; font-weight:900; color: #fff; line-height: 1;">${activeAgencyScore()}%</div>
+          <div class="label" style="font-size:12px; color: var(--muted); margin-top: 8px;">Nivel de Salud General</div>
         </div>
       </div>
 
       <!-- 3. Fugas del Embudo (con tooltip) -->
-      <div class="card">
-        <div style="display:flex; align-items:center; gap:6px;">
+      <div class="card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px;">
+        <div style="display:flex; align-items:center; gap:6px; justify-content: center;">
           <h3 style="margin:0; font-size:16px;">Fugas del Embudo</h3>
           <div class="trd-tooltip-container">
             <i class="ph ph-info" style="font-size:15px; color:#94a3b8; cursor:pointer;"></i>
             <span class="trd-tooltip-text">Porcentaje de leads que entraron en abandono comercial ("Dejó de responder" o "Seguimiento") sobre el total del embudo.</span>
           </div>
         </div>
-        <div class="kpi" style="margin-top:16px;">
-          <div>
-            <div class="metric" style="font-size:42px; font-weight:900; color:#ef4444;">${fmtPct(globalLeakageRate)}</div>
-            <div class="label" style="font-size:11px;">Leads Estancados</div>
-            <span style="margin-top:6px; display:inline-block; font-size:12px; font-weight:600; color:#cbd5e1;"><i class="ph ph-warning-circle" style="vertical-align:middle; color:#ef4444;"></i> ${fmtNum(stuckLeads)} leads inactivos</span>
-          </div>
-          <div class="score-ring" style="--score:${Math.round(globalLeakageRate*100)}; --color:#ef4444;"><span>${Math.round(globalLeakageRate*100)}%</span></div>
+        <div style="margin-top:20px;">
+          <div class="metric" style="font-size:48px; font-weight:900; color:#ef4444; line-height: 1;">${fmtPct(globalLeakageRate)}</div>
+          <div class="label" style="font-size:12px; color: var(--muted); margin-top: 8px;">Leads Estancados</div>
+          <span style="margin-top:8px; display:inline-block; font-size:12px; font-weight:600; color:#cbd5e1;"><i class="ph ph-warning-circle" style="vertical-align:middle; color:#ef4444;"></i> ${fmtNum(stuckLeads)} leads inactivos</span>
         </div>
       </div>
     </div>
