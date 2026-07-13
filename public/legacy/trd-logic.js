@@ -2221,7 +2221,7 @@ function buildClientMetrics(filtered){
     const count=leads.length;
     const appointments=leads.filter(l=>l.has_appointment).length;
     const moved=leads.filter(l=>l.crm_movement).length;
-    const active=leads.filter(l=>l.active_recent).length;
+    const active=leads.filter(l=>l.status && ['atender dudas', 'agendado', 'lead futuro'].includes(l.status.toLowerCase().trim())).length;
     const attributed=leads.filter(l=>l.has_attribution).length;
     const workflow=leads.filter(l=>l.workflow_detected).length;
     const used_button=leads.filter(l=>l.used_button).length;
@@ -2280,7 +2280,7 @@ function buildAds(filtered){
     else if(appointments>=2) classification="Funnel Winner";
     else if(leads_crm>=8 && appointments===0) classification="Volume Winner";
     else if(leads_crm===0) classification="No CRM Match";
-    return {...a,spend:Number(a.spend||0)*frac,meta_results:Math.round(Number(a.meta_results||0)*frac),leads_crm,appointments,moved,active:leads.filter(l=>l.active_recent).length,appointment_rate,movement_rate:pct2(moved,leads_crm),classification};
+    return {...a,spend:Number(a.spend||0)*frac,meta_results:Math.round(Number(a.meta_results||0)*frac),leads_crm,appointments,moved,active:leads.filter(l=>l.status && ['atender dudas', 'agendado', 'lead futuro'].includes(l.status.toLowerCase().trim())).length,appointment_rate,movement_rate:pct2(moved,leads_crm),classification};
   });
 }
 function buildFunnelIntelligence(clients){
