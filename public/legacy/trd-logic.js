@@ -1253,11 +1253,11 @@ function downloadPipelinePDF() {
   container.innerHTML = `
     <div style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0f172a; line-height: 1.5; background: #ffffff;">
       <style>
-        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #7c3aed; padding-bottom: 16px; margin-bottom: 24px; }
-        .logo { font-size: 26px; font-weight: 900; color: #7c3aed; letter-spacing: -0.5px; }
-        .logo span { color: #0f172a; }
-        .title { font-size: 26px; font-weight: 850; margin: 0 0 6px; color: #0f172a; }
-        .subtitle { font-size: 13px; color: #64748b; margin: 0; }
+        .pdf-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #7c3aed; padding-bottom: 16px; margin-bottom: 24px; }
+        .pdf-logo { font-size: 26px; font-weight: 900; color: #7c3aed; letter-spacing: -0.5px; line-height: 1.1; margin: 0; padding: 0; background: none; border: none; }
+        .pdf-logo span { color: #0f172a; }
+        .pdf-title { font-size: 26px; font-weight: 850; margin: 0 0 6px; color: #0f172a; }
+        .pdf-subtitle { font-size: 13px; color: #64748b; margin: 0; }
         
         .score-card { background: #ffffff; border: 1px solid #7c3aed; border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 20px; }
         .score-info { flex: 1; }
@@ -1285,14 +1285,14 @@ function downloadPipelinePDF() {
         .footer { text-align: center; margin-top: 40px; font-size: 10px; color: #94a3b8; border-top: 1px solid #f3e8ff; padding-top: 16px; }
       </style>
       
-      <div class="header">
+      <div class="pdf-header">
         <div>
-          <h1 class="title">Reporte Leadtion - ${c.client}</h1>
-          <p class="subtitle">Análisis Operativo del Pipeline Comercial · <strong>${periodLabel}</strong></p>
+          <h1 class="pdf-title">Reporte Leadtion - ${c.client}</h1>
+          <p class="pdf-subtitle">Análisis Operativo del Pipeline Comercial · <strong>${periodLabel}</strong></p>
         </div>
-        <div class="logo">Lead<span>tion</span></div>
+        <div class="pdf-logo">Lead<span>tion</span></div>
       </div>
-
+ 
       <div class="score-card">
         <div class="score-info">
           <h3>Diagnóstico General: ${c.engine_category || c.category}</h3>
@@ -1322,7 +1322,7 @@ function downloadPipelinePDF() {
           </div>
         </div>
       </div>
-
+ 
       <h2 class="section-title">Indicadores Clave del Cliente</h2>
       <div class="grid">
         <div class="tile">
@@ -1346,7 +1346,7 @@ function downloadPipelinePDF() {
           <div class="tile-sub">${fmtNum(leadFuturo.value)} de ${fmtNum(totalLeads)} leads</div>
         </div>
       </div>
-
+ 
       <h2 class="section-title">Avance del Pipeline (Distribución y Comparativo)</h2>
       <table>
         <thead>
@@ -1377,29 +1377,29 @@ function downloadPipelinePDF() {
           }).join('')}
         </tbody>
       </table>
-
+ 
       <div class="recs">
         <h2>Acciones Recomendadas & Próximos Pasos</h2>
         <ul>
           ${recs.map(r => `<li>${r}</li>`).join('')}
         </ul>
       </div>
-
+ 
       <div class="footer">
         Leadtion Funnel Intelligence · Reporte de Desempeño Comercial Confidencial
       </div>
     </div>
   `;
-
+ 
   const opt = {
     margin:       15,
     filename:     `Reporte_Leadtion_${c.client.replace(/\s+/g, '_')}.pdf`,
     image:        { type: 'jpeg', quality: 0.98 },
-    html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+    html2canvas:  { scale: 4, useCORS: true, letterRendering: true },
     jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
     pagebreak:    { mode: ['avoid-all', 'css'] }
   };
-
+ 
   if (typeof html2pdf !== 'undefined') {
     html2pdf().set(opt).from(container).save();
   } else {
@@ -1410,7 +1410,6 @@ function downloadPipelinePDF() {
     setTimeout(() => { printWindow.print(); }, 500);
   }
 }
-
 
 function funnelIntel(c){
   const fi=fiBy(c.client);
