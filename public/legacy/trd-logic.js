@@ -212,10 +212,10 @@ function isInvalidDateRange(){ return dateRange.start>dateRange.end; }
 function isRangeFullyAvailable(){ return dateRange.start>=PERIOD_META.available_start && dateRange.end<=PERIOD_META.available_end; }
 function rangeLeadCount(){ return typeof RAW_DATE_DATA==='undefined'?null:rawFilteredLeads().length; }
 
-function renderDateController(){
+function renderDateController(isWorkspace = false){
   const isCustom = dateRange.preset === "custom";
   const isMonth = dateRange.preset === "month";
-  return `<div class="date-controller" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:8px 12px; border-radius:12px; margin-bottom:16px;">
+  const innerHTML = `
     <span style="font-size:13px; font-weight:500; color:#fff;"><i class="ph ph-calendar" style="vertical-align:middle; margin-right:4px;"></i> Periodo:</span>
     <select onchange="setDatePreset(this.value)" style="padding:6px 12px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; cursor:pointer;">
       <option value="last_7" ${dateRange.preset==="last_7"?"selected":""}>Últimos 7 días</option>
@@ -249,7 +249,15 @@ function renderDateController(){
       <input type="date" value="${dateRange.end}" onchange="setDateEnd(this.value)" style="padding:6px 10px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff;">
     </div>
     
-    <span class="date-pill" style="margin-left:auto; font-size:12px;">Rango activo: ${isMonth ? (dateRange.selectedMonth || 'Julio') : (dateRange.start + ' a ' + dateRange.end)}</span>
+    <span class="date-pill" style="${isWorkspace ? '' : 'margin-left:auto;'} font-size:12px;">Rango activo: ${isMonth ? (dateRange.selectedMonth || 'Julio') : (dateRange.start + ' a ' + dateRange.end)}</span>
+  `;
+
+  if (isWorkspace) {
+    return innerHTML + `${!isMonth && isInvalidDateRange()?`<div class="historical-note" style="margin:0; padding:4px 8px; font-size:11px;"><strong>Inválido</strong></div>`:''}`;
+  }
+
+  return `<div class="date-controller" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); padding:8px 12px; border-radius:12px; margin-bottom:16px;">
+    ${innerHTML}
   </div>
   ${!isMonth && isInvalidDateRange()?`<div class="historical-note"><strong>Rango inválido:</strong> La fecha inicial no puede ser mayor que la fecha final.</div>`:''}`;
 }
@@ -523,6 +531,14 @@ const viewMap = {
 
 window.activeViewId = window.activeViewId || 'view-action';
 function showView(v, preventPush = false){
+  const topbar = document.querySelector('.topbar');
+  if (topbar) {
+    if (v === 'client') {
+      topbar.style.display = 'none';
+    } else {
+      topbar.style.display = 'flex';
+    }
+  }
   window.activeViewId = 'view-' + v;
   document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));
   const target = document.getElementById('view-'+v);
@@ -901,7 +917,7 @@ function openClient(n){
   // Actualizar URL
   window.history.pushState({ view: 'client' }, '', '/client-workspace');
 }
-function renderClient(){if(!selectedClient&&DATA.clients&&DATA.clients.length)selectedClient=DATA.clients[0].client;const c=cBy(selectedClient),tabs={overview:'Overview',pipeline:'Pipeline Analytics'};if(!tabs[currentClientTab])currentClientTab='pipeline';let body='';if(currentClientTab==='overview')body=overview(c);if(currentClientTab==='pipeline')body=pipelineAnalytics(c);document.getElementById('view-client').innerHTML=`${renderDateController()}${renderCurrencyController()}<div style="margin-bottom:16px;"><button onclick="showView('clients')" style="background:none; border:none; color:#38bdf8; cursor:pointer; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px; padding:8px 0; font-family:'Inter',sans-serif; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'"><i class="ph ph-arrow-left" style="font-size:18px;"></i> Volver a Clients</button></div><div class="filters"><select onchange="selectedClient=this.value;renderClient()">${DATA.clients.map(x=>`<option ${x.client===selectedClient?'selected':''}>${x.client}</option>`).join('')}</select></div><div class="card"><div class="kpi"><div><h3 style="font-size:24px">${c.client}</h3>${badge(c.engine_category||c.category)}<p>Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong> · Motor: <strong>${activeScore(c)}/100</strong></p></div><div class="score-ring" style="--score:${activeScore(c)}"><span>${activeScore(c)}</span></div></div><div class="tabs" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin:16px 0;"><div>${Object.entries(tabs).map(([k,v])=>`<button class="${currentClientTab===k?'active':''}" onclick="currentClientTab='${k}';renderClient()">${v}</button>`).join('')}</div>${currentClientTab==='pipeline'?`<button onclick="downloadPipelinePDF()" style="background:#10b981; border:1px solid #059669; color:white; padding:9px 16px; border-radius:11px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:13px; font-family:'Inter',sans-serif; transition:background 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'"><i class="ph ph-file-pdf" style="font-size:16px;"></i> Descargar PDF</button>`:''}</div></div><div style="margin-top:18px">${body}</div>`}
+function renderClient(){if(!selectedClient&&DATA.clients&&DATA.clients.length)selectedClient=DATA.clients[0].client;const c=cBy(selectedClient),tabs={overview:'Overview',pipeline:'Pipeline Analytics'};if(!tabs[currentClientTab])currentClientTab='pipeline';let body='';if(currentClientTab==='overview')body=overview(c);if(currentClientTab==='pipeline')body=pipelineAnalytics(c);document.getElementById('view-client').innerHTML=`<div style="margin-bottom:12px;"><button onclick="showView('clients')" style="background:none; border:none; color:#38bdf8; cursor:pointer; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px; padding:8px 0; font-family:'Inter',sans-serif; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'"><i class="ph ph-arrow-left" style="font-size:18px;"></i> Volver a Clients</button></div><div class="client-workspace-control-bar" style="display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom: 20px; background:var(--panel); border:1px solid var(--line); padding:10px 16px; border-radius:14px;"><div class="filters" style="margin:0; padding:0;"><select onchange="selectedClient=this.value;renderClient()" style="padding:6px 12px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; cursor:pointer; font-weight: 600; font-family:'Inter',sans-serif;">${DATA.clients.map(x=>`<option value="${x.client}" ${x.client===selectedClient?'selected':''}>${x.client}</option>`).join('')}</select></div><div style="height: 20px; width: 1px; background: rgba(255,255,255,0.12);"></div><div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">${renderDateController(true)}</div></div><div class="card"><div class="kpi"><div><h3 style="font-size:24px">${c.client}</h3>${badge(c.engine_category||c.category)}<p style="margin-top:4px;">Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong> · Motor: <strong>${activeScore(c)}/100</strong></p></div><div class="score-ring" style="--score:${activeScore(c)}"><span>${activeScore(c)}</span></div></div><div class="tabs" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin:16px 0;"><div>${Object.entries(tabs).map(([k,v])=>`<button class="${currentClientTab===k?'active':''}" onclick="currentClientTab='${k}';renderClient()">${v}</button>`).join('')}</div>${currentClientTab==='pipeline'?`<button onclick="downloadPipelinePDF()" style="background:#10b981; border:1px solid #059669; color:white; padding:9px 16px; border-radius:11px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:13px; font-family:'Inter',sans-serif; transition:background 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'"><i class="ph ph-file-pdf" style="font-size:16px;"></i> Descargar PDF</button>`:''}</div></div><div style="margin-top:18px">${body}</div>`}
 function comp(n,v){return `<div class="component"><span>${n}</span><div class="progress" style="--w:${Math.round(v)}%"><i></i></div><strong>${Math.round(v)}</strong></div>`}
 function compVal(n,wVal,lbl){return `<div class="component"><span>${n}</span><div class="progress" style="--w:${Math.round(wVal)}%"><i></i></div><strong>${lbl}</strong></div>`}
 function overview(c){
