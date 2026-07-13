@@ -1245,7 +1245,10 @@ function downloadPipelinePDF() {
     recs.push("<strong>Escalar Adquisición:</strong> Conversión a cita excelente (" + fmtPct(tasaAgendamiento) + "). Recomendamos aumentar el presupuesto en las campañas de Meta Ads.");
   }
   if (tasaInteres < 0.4) {
-    recs.push("<strong>Ajuste de Creativos:</strong> La tasa de interé  const container = document.createElement('div');
+    recs.push("<strong>Ajuste de Creativos:</strong> La tasa de interés inicial es del " + fmtPct(tasaInteres) + ". Se recomienda optimizar la segmentación de Meta Ads o el copy inicial.");
+  }
+
+  const container = document.createElement('div');
   container.style.padding = '20px';
   container.innerHTML = `
     <div style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0f172a; line-height: 1.5; background: #ffffff;">
