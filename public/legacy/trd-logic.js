@@ -1301,11 +1301,22 @@ function downloadPipelinePDF() {
           <div class="score-info">
             <h3>Diagnóstico General: ${c.engine_category || c.category}</h3>
             <p style="margin-bottom: 12px;">Total Leads en Periodo: <strong>${fmtNum(totalLeads)} leads</strong> · Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong></p>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; padding-top: 12px; border-top: 1px dashed #e2e8f0; font-size: 11px; color: #64748b;">
-              <div><span style="font-weight: 700; color: #16a34a;">🟢 Elite (85-100):</span> Desempeño óptimo de conversión.</div>
-              <div><span style="font-weight: 700; color: #6d28d9;">🟣 Healthy (70-84):</span> Flujo de leads estable y saludable.</div>
-              <div><span style="font-weight: 700; color: #d97706;">🟡 Emerging (50-69):</span> Oportunidades claras de optimización.</div>
-              <div><span style="font-weight: 700; color: #dc2626;">🔴 Broken (&lt;50):</span> Fugas severas que requieren acción inmediata.</div>
+            <div style="padding-top: 12px; border-top: 1px dashed #e2e8f0; font-size: 13px; color: #334155; text-align: justify; line-height: 1.6;">
+              ${(() => {
+                const catName = c.engine_category || c.category || "";
+                const normalized = catName.toLowerCase().trim();
+                const score = activeScore(c);
+                if (normalized.includes('elite')) {
+                  return `El cliente se encuentra clasificado en la categoría <strong>Elite</strong> con una calificación de ${score}/100. Esto indica que el funnel de ventas mantiene un desempeño sobresaliente, caracterizado por una alta tasa de agendamiento y transiciones fluidas entre etapas. Las interacciones iniciales se convierten eficazmente en oportunidades concretas, demostrando un acoplamiento óptimo entre las campañas de adquisición y la gestión del equipo comercial. El enfoque primordial en esta etapa es sostener y escalar este volumen operativo de manera controlada.`;
+                }
+                if (normalized.includes('healthy') || normalized.includes('saludable')) {
+                  return `El cliente se encuentra clasificado en la categoría <strong>Healthy</strong> con una calificación de ${score}/100. Esta calificación refleja un embudo comercial estable, donde la mayoría de los leads progresan de forma regular y predecible. Si bien la operación comercial avanza sin fricciones críticas, existen pequeñas áreas de mejora específicas para maximizar el retorno de inversión, principalmente a través del ajuste fino de guiones comerciales o la reactivación de contactos estancados. Se trata de una base sólida orientada al crecimiento y refinamiento continuo.`;
+                }
+                if (normalized.includes('emerging') || normalized.includes('emergente')) {
+                  return `El cliente se encuentra clasificado en la categoría <strong>Emerging</strong> con una calificación de ${score}/100. Esta posición indica que el flujo de adquisición y conversión comercial cuenta con un potencial latente, pero registra etapas con oportunidades claras de optimización. Típicamente, el embudo presenta una tracción inicial favorable que se ralentiza debido a tiempos de respuesta comercial mejorables o al enfriamiento de prospectos en el seguimiento intermedio. El diagnóstico sugiere que implementar ajustes estructurados en el seguimiento aumentará el volumen final de agendamientos sin requerir mayor pauta publicitaria.`;
+                }
+                return `El cliente se encuentra clasificado en la categoría <strong>Broken</strong> con una calificación de ${score}/100. Esto señala la presencia de desviaciones significativas o interrupciones en el flujo de progresión comercial de los leads. Comúnmente, se experimenta un volumen alto de interés inicial que no logra consolidarse en conversaciones activas o agendamientos debido a cuellos de botella en la atención de dudas o altas tasas de abandono. Es imperativo revisar y reestructurar el protocolo de contacto comercial inicial para asegurar que la inversión publicitaria no se disipe en las etapas de entrada.`;
+              })()}
             </div>
           </div>
           <div class="score-circle">
