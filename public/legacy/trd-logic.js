@@ -1394,8 +1394,8 @@ function downloadPipelinePDF() {
   const opt = {
     margin:       15,
     filename:     `Reporte_Leadtion_${c.client.replace(/\s+/g, '_')}.pdf`,
-    image:        { type: 'jpeg', quality: 0.98 },
-    html2canvas:  { scale: 4, useCORS: true, letterRendering: true },
+    image:        { type: 'png' },
+    html2canvas:  { scale: 5, useCORS: true, letterRendering: true },
     jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
     pagebreak:    { mode: ['avoid-all', 'css'] }
   };
