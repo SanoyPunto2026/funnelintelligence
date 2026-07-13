@@ -1010,7 +1010,13 @@ function pipelineAnalytics(c){
       <div class="summary-tile">
         <div class="summary-label" style="display:flex; align-items:center; gap:5px; justify-content:center;">
           Tasa de Interés (Dudas) 
-          <i class="ph ph-info" style="cursor:help; font-size:14px; color:var(--muted);" title="Mide la proporción de leads que interactuaron o hicieron consultas sobre el total de leads CRM.&#10;&#10;Fórmula: Leads en Atender Dudas / Total de Leads CRM"></i>
+          <span class="trd-tooltip-container">
+            <i class="ph ph-info" style="cursor:pointer; font-size:14px; color:var(--muted);"></i>
+            <span class="trd-tooltip-text">
+              Mide la proporción de leads que interactuaron o hicieron consultas sobre el total de leads CRM.<br><br>
+              <strong>Fórmula:</strong> Leads en Atender Dudas / Total de Leads CRM
+            </span>
+          </span>
         </div>
         <div class="summary-value">${fmtPct(tasaInteres)}</div>
         <div class="label">${fmtNum(atenderDudas.value)} leads</div>
@@ -1018,7 +1024,13 @@ function pipelineAnalytics(c){
       <div class="summary-tile">
         <div class="summary-label" style="display:flex; align-items:center; gap:5px; justify-content:center;">
           Tasa de Abandono 
-          <i class="ph ph-info" style="cursor:help; font-size:14px; color:var(--muted);" title="Mide el porcentaje de leads que dejaron de responder al seguimiento sobre el total de leads CRM.&#10;&#10;Fórmula: Leads en Dejó de Responder / Total de Leads CRM"></i>
+          <span class="trd-tooltip-container">
+            <i class="ph ph-info" style="cursor:pointer; font-size:14px; color:var(--muted);"></i>
+            <span class="trd-tooltip-text">
+              Mide el porcentaje de leads que dejaron de responder al seguimiento sobre el total de leads CRM.<br><br>
+              <strong>Fórmula:</strong> Leads en Dejó de Responder / Total de Leads CRM
+            </span>
+          </span>
         </div>
         <div class="summary-value" style="color: ${tasaAbandono > 0.3 ? 'var(--red)' : '#fff'};">${fmtPct(tasaAbandono)}</div>
         <div class="label">${fmtNum(dejoResponder.value)} leads</div>
@@ -1026,7 +1038,13 @@ function pipelineAnalytics(c){
       <div class="summary-tile">
         <div class="summary-label" style="display:flex; align-items:center; gap:5px; justify-content:center;">
           Tasa de Agendamiento 
-          <i class="ph ph-info" style="cursor:help; font-size:14px; color:var(--muted);" title="Mide el porcentaje de leads del total que concretaron una cita comercial confirmada.&#10;&#10;Fórmula: Leads en Agendado / Total de Leads CRM"></i>
+          <span class="trd-tooltip-container">
+            <i class="ph ph-info" style="cursor:pointer; font-size:14px; color:var(--muted);"></i>
+            <span class="trd-tooltip-text">
+              Mide el porcentaje de leads del total que concretaron una cita comercial confirmada.<br><br>
+              <strong>Fórmula:</strong> Leads en Agendado / Total de Leads CRM
+            </span>
+          </span>
         </div>
         <div class="summary-value">${fmtPct(tasaAgendamiento)}</div>
         <div class="label">${fmtNum(agendadoObj.value)} leads</div>
@@ -1034,7 +1052,13 @@ function pipelineAnalytics(c){
       <div class="summary-tile">
         <div class="summary-label" style="display:flex; align-items:center; gap:5px; justify-content:center;">
           Tasa de Leads a Futuro 
-          <i class="ph ph-info" style="cursor:help; font-size:14px; color:var(--muted);" title="Mide el porcentaje de leads calificados para re-contacto a futuro del total de leads CRM.&#10;&#10;Fórmula: Leads en Lead Futuro / Total de Leads CRM"></i>
+          <span class="trd-tooltip-container">
+            <i class="ph ph-info" style="cursor:pointer; font-size:14px; color:var(--muted);"></i>
+            <span class="trd-tooltip-text">
+              Mide el porcentaje de leads calificados para re-contacto a futuro del total de leads CRM.<br><br>
+              <strong>Fórmula:</strong> Leads en Lead Futuro / Total de Leads CRM
+            </span>
+          </span>
         </div>
         <div class="summary-value">${fmtPct(tasaFuturo)}</div>
         <div class="label">${fmtNum(leadFuturo.value)} leads</div>
