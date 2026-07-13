@@ -917,7 +917,7 @@ function openClient(n){
   // Actualizar URL
   window.history.pushState({ view: 'client' }, '', '/client-workspace');
 }
-function renderClient(){if(!selectedClient&&DATA.clients&&DATA.clients.length)selectedClient=DATA.clients[0].client;const c=cBy(selectedClient),tabs={overview:'Overview',pipeline:'Pipeline Analytics'};if(!tabs[currentClientTab])currentClientTab='pipeline';let body='';if(currentClientTab==='overview')body=overview(c);if(currentClientTab==='pipeline')body=pipelineAnalytics(c);document.getElementById('view-client').innerHTML=`<div style="margin-bottom:12px;"><button onclick="showView('clients')" style="background:none; border:none; color:#38bdf8; cursor:pointer; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px; padding:8px 0; font-family:'Inter',sans-serif; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'"><i class="ph ph-arrow-left" style="font-size:18px;"></i> Volver a Clients</button></div><div class="client-workspace-control-bar" style="display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom: 20px; background:var(--panel); border:1px solid var(--line); padding:10px 16px; border-radius:14px;"><div class="filters" style="margin:0; padding:0;"><select onchange="selectedClient=this.value;renderClient()" style="padding:6px 12px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; cursor:pointer; font-weight: 600; font-family:'Inter',sans-serif;">${DATA.clients.map(x=>`<option value="${x.client}" ${x.client===selectedClient?'selected':''}>${x.client}</option>`).join('')}</select></div><div style="height: 20px; width: 1px; background: rgba(255,255,255,0.12);"></div><div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">${renderDateController(true)}</div></div><div class="card" style="padding: 20px 24px;"><div class="kpi" style="display:flex; align-items:center; gap:16px; width:100%; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.06);"><div class="score-ring" style="--score:${activeScore(c)}; width:76px; height:76px;"><span style="font-size:20px;">${activeScore(c)}</span></div><div><div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;"><h3 style="font-size:26px; font-weight:800; margin:0;">${c.client}</h3>${badge(c.engine_category||c.category)}</div><p style="margin:0; font-size:13px; color:var(--muted); font-family:'Inter',sans-serif;">Calificación general basada en el desempeño de conversión y salud del funnel comercial.</p></div></div><div class="tabs" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin:16px 0 0 0; padding-top:4px;"><div style="display:flex; gap:8px;">${Object.entries(tabs).map(([k,v])=>`<button class="${currentClientTab===k?'active':''}" onclick="currentClientTab='${k}';renderClient()" style="padding: 8px 16px; border-radius: 999px; font-weight: 500; font-family:'Inter',sans-serif;">${v}</button>`).join('')}</div>${currentClientTab==='pipeline'?`<button onclick="downloadPipelinePDF()" style="background:#10b981; border:none; color:white; padding:8px 18px; border-radius:999px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:13px; font-family:'Inter',sans-serif; transition:background 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'"><i class="ph ph-file-pdf" style="font-size:16px;"></i> Descargar PDF</button>`:''}</div></div><div style="margin-top:18px">${body}</div>`}
+function renderClient(){if(!selectedClient&&DATA.clients&&DATA.clients.length)selectedClient=DATA.clients[0].client;const c=cBy(selectedClient),tabs={overview:'Overview',pipeline:'Pipeline Analytics'};if(!tabs[currentClientTab])currentClientTab='pipeline';let body='';if(currentClientTab==='overview')body=overview(c);if(currentClientTab==='pipeline')body=pipelineAnalytics(c);document.getElementById('view-client').innerHTML=`<div style="margin-bottom:12px;"><button onclick="showView('clients')" style="background:none; border:none; color:#38bdf8; cursor:pointer; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px; padding:8px 0; font-family:'Inter',sans-serif; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'"><i class="ph ph-arrow-left" style="font-size:18px;"></i> Volver a Clients</button></div><div class="client-workspace-control-bar" style="display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom: 20px; background:var(--panel); border:1px solid var(--line); padding:10px 16px; border-radius:14px;"><div class="filters" style="margin:0; padding:0;"><select onchange="selectedClient=this.value;renderClient()" style="padding:6px 12px; border-radius:8px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); color:#fff; cursor:pointer; font-weight: 600; font-family:'Inter',sans-serif;">${DATA.clients.map(x=>`<option value="${x.client}" ${x.client===selectedClient?'selected':''}>${x.client}</option>`).join('')}</select></div><div style="height: 20px; width: 1px; background: rgba(255,255,255,0.12);"></div><div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">${renderDateController(true)}</div></div><div class="card" style="padding: 20px 24px;"><div class="kpi" style="display:flex; justify-content:space-between; align-items:center; width:100%; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.06);"><div><div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;"><h3 style="font-size:26px; font-weight:800; margin:0;">${c.client}</h3>${badge(c.engine_category||c.category)}</div><p style="margin:0; font-size:13px; color:var(--muted); font-family:'Inter',sans-serif;">Calificación general basada en el desempeño de conversión y salud del funnel comercial.</p></div><div class="score-ring" style="--score:${activeScore(c)}; width:76px; height:76px; flex-shrink:0;"><span style="font-size:20px;">${activeScore(c)}</span></div></div><div class="tabs" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin:16px 0 0 0; padding-top:4px;"><div style="display:flex; gap:8px;">${Object.entries(tabs).map(([k,v])=>`<button class="${currentClientTab===k?'active':''}" onclick="currentClientTab='${k}';renderClient()" style="padding: 8px 16px; border-radius: 999px; font-weight: 500; font-family:'Inter',sans-serif;">${v}</button>`).join('')}</div>${currentClientTab==='pipeline'?`<button onclick="downloadPipelinePDF()" style="background:#10b981; border:none; color:white; padding:8px 18px; border-radius:999px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:13px; font-family:'Inter',sans-serif; transition:background 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'"><i class="ph ph-file-pdf" style="font-size:16px;"></i> Descargar PDF</button>`:''}</div></div><div style="margin-top:18px">${body}</div>`}
 function comp(n,v){return `<div class="component"><span>${n}</span><div class="progress" style="--w:${Math.round(v)}%"><i></i></div><strong>${Math.round(v)}</strong></div>`}
 function compVal(n,wVal,lbl){return `<div class="component"><span>${n}</span><div class="progress" style="--w:${Math.round(wVal)}%"><i></i></div><strong>${lbl}</strong></div>`}
 function overview(c){
@@ -1010,6 +1010,21 @@ function renderTagAnalytics(clientName) {
   </div>`;
 }
 
+function renderMetricRing(rate, health) {
+  const score = Math.round(rate * 100);
+  let color = '#64748b'; // default gray
+  if (health === 'green') color = 'var(--green)';
+  if (health === 'yellow') color = 'var(--yellow)';
+  if (health === 'red') color = 'var(--red)';
+  
+  return `
+    <div class="mini-score-ring" style="background: conic-gradient(${color} ${score}%, #1e293b 0); width: 68px; height: 68px; border-radius: 50%; display: grid; place-items: center; position: relative; flex-shrink: 0; margin: 12px auto 6px;">
+      <div style="content: ''; position: absolute; width: 50px; height: 50px; border-radius: 50%; background: #111827; z-index: 1;"></div>
+      <span style="position: relative; z-index: 2; font-size: 15px; font-weight: 850; color: #fff;">${score}%</span>
+    </div>
+  `;
+}
+
 function pipelineAnalytics(c){
   const p=DATA.progression_funnels.find(x=>x.client===c.client); if(!p){return `<div class="card"><h3>Sequential Pipeline Progression</h3><p>No hay datos de progresión para este cliente.</p></div>`;}
   const leadNuevo = p.stages.find(s=>s.key==='lead_nuevo') || {value:c.leads};
@@ -1045,11 +1060,11 @@ function pipelineAnalytics(c){
           </div>
           <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 4px;">
             <span style="color:var(--muted);">Desde CRM total:</span>
-            <strong style="color: #cbd5e1;">${s.pending ? '-' : fmtPct(s.cumulative_from_crm)}</strong>
+            <strong style="color: #fff;">${fmtPct(s.cumulative_from_crm)}</strong>
           </div>
           <div style="display: flex; justify-content: space-between;">
-            <span style="color:var(--muted);">Fuga en etapa:</span>
-            <strong style="color: ${hasLeak ? 'var(--red)' : 'var(--muted)'};">${leakTxt}</strong>
+            <span style="color:var(--muted); display:flex; align-items:center; gap:4px;">Fuga en etapa: ${hasLeak ? `<i class="ph ph-warning-octagon" style="color:var(--red); font-size:14px;" title="Caída fuerte detectada"></i>`:''}</span>
+            <strong style="color: ${hasLeak ? 'var(--red)' : '#fff'};">${leakTxt}</strong>
           </div>
         </div>
       </div>
@@ -1071,8 +1086,8 @@ function pipelineAnalytics(c){
             </span>
           </span>
         </div>
-        <div class="summary-value">${fmtPct(tasaInteres)}</div>
-        <div class="label">${fmtNum(atenderDudas.value)} leads</div>
+        ${renderMetricRing(tasaInteres, atenderDudas.health)}
+        <div class="label" style="color: var(--muted); font-size:12px;">${fmtNum(atenderDudas.value)} leads</div>
       </div>
       <div class="summary-tile">
         <div class="summary-label" style="display:flex; align-items:center; gap:5px; justify-content:center;">
@@ -1085,8 +1100,8 @@ function pipelineAnalytics(c){
             </span>
           </span>
         </div>
-        <div class="summary-value" style="color: ${tasaAbandono > 0.3 ? 'var(--red)' : '#fff'};">${fmtPct(tasaAbandono)}</div>
-        <div class="label">${fmtNum(dejoResponder.value)} leads</div>
+        ${renderMetricRing(tasaAbandono, dejoResponder.health)}
+        <div class="label" style="color: var(--muted); font-size:12px;">${fmtNum(dejoResponder.value)} leads</div>
       </div>
       <div class="summary-tile">
         <div class="summary-label" style="display:flex; align-items:center; gap:5px; justify-content:center;">
@@ -1099,8 +1114,8 @@ function pipelineAnalytics(c){
             </span>
           </span>
         </div>
-        <div class="summary-value">${fmtPct(tasaAgendamiento)}</div>
-        <div class="label">${fmtNum(agendadoObj.value)} leads</div>
+        ${renderMetricRing(tasaAgendamiento, agendadoObj.health)}
+        <div class="label" style="color: var(--muted); font-size:12px;">${fmtNum(agendadoObj.value)} leads</div>
       </div>
       <div class="summary-tile">
         <div class="summary-label" style="display:flex; align-items:center; gap:5px; justify-content:center;">
@@ -1113,8 +1128,8 @@ function pipelineAnalytics(c){
             </span>
           </span>
         </div>
-        <div class="summary-value">${fmtPct(tasaFuturo)}</div>
-        <div class="label">${fmtNum(leadFuturo.value)} leads</div>
+        ${renderMetricRing(tasaFuturo, leadFuturo.health)}
+        <div class="label" style="color: var(--muted); font-size:12px;">${fmtNum(leadFuturo.value)} leads</div>
       </div>
     </div>
     <div class="progression-board" style="margin-top:16px;">${stagesHTML}</div>
