@@ -371,13 +371,19 @@ body.learning-on .learning-note{display:block}
 }
 
 .ai-chat-expanded {
-  margin-top: 16px;
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  height: calc(100vh - 480px);
+  min-height: 180px;
+  max-height: 250px; /* Low profile so it never expands too high */
   background: #0b0f19;
   border: 1px solid #7c3aed;
   border-radius: 18px;
   display: flex;
   flex-direction: column;
-  height: 350px; /* Fixed height under nav links */
+  z-index: 100;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   overflow: hidden;
   animation: slideUp 0.25s ease-out;
