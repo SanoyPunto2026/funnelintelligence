@@ -1134,12 +1134,6 @@ function pipelineAnalytics(c){
     </div>
     <div class="progression-board" style="margin-top:16px;">${stagesHTML}</div>
   </div>
-  <div class="pipeline-analysis-grid" style="margin-top: 18px;">
-    <div class="card">
-      <h3>Lectura rápida</h3>
-      <div class="insight" style="margin-top:10px;"><strong>Conversión principal</strong><p>${fmtNum(agendadoObj.value)} leads llegaron a cita, lo que equivale al <strong>${fmtPct(tasaAgendamiento)}</strong> del embudo inicial.</p></div>
-    </div>
-  </div>
   ${renderTagAnalytics(c.client)}`;
 }
 
