@@ -2153,28 +2153,61 @@ function buildFunnelIntelligence(clients){
     return {client:c.client,stages,health_matrix,leakages,biggest_leak:leakages.slice().sort((a,b)=>b.lost-a.lost)[0]||{from:'N/A',to:'N/A',lost:0,leak_rate:0},bottleneck,benchmark_appointments:Math.round(c.leads*(DATA.benchmarks.avg_appointment_rate||0)),opportunity_appointments:Math.max(0,Math.round(c.leads*(DATA.benchmarks.avg_appointment_rate||0))-c.appointments),economics:[{stage:"Meta Results",value:c.meta_results,cost_per:pct2(c.spend,c.meta_results)},{stage:"CRM Leads",value:c.leads,cost_per:pct2(c.spend,c.leads)},{stage:"CRM Movement",value:c.moved,cost_per:pct2(c.spend,c.moved)},{stage:"Appointments",value:c.appointments,cost_per:pct2(c.spend,c.appointments)}],note_crm_exceeds_meta:c.leads>c.meta_results&&c.meta_results>0};
   });
 }
+function getStageHealth(key, value, totalLeads) {
+  if (key === 'lead_nuevo') return 'neutral';
+  if (totalLeads === 0) return 'neutral';
+  const rate = value / totalLeads;
+  
+  if (key === 'atender_dudas') {
+    if (rate >= 0.50) return 'green';
+    if (rate >= 0.35) return 'yellow';
+    return 'red';
+  }
+  if (key === 'dejo_responder') {
+    if (rate < 0.25) return 'green';
+    if (rate <= 0.40) return 'yellow';
+    return 'red';
+  }
+  if (key === 'agendado') {
+    if (rate > 0.30) return 'green';
+    if (rate >= 0.15) return 'yellow';
+    return 'red';
+  }
+  if (key === 'lead_futuro') {
+    if (rate > 0.15) return 'green';
+    if (rate >= 0.08) return 'yellow';
+    return 'red';
+  }
+  return 'blue'; // custom stages
+}
+
 function buildProgression(filtered,clients){
   return clients.map(c=>{
     const leads=filtered.filter(l=>l.client===c.client);
     const coreKeys = ['lead nuevo', 'atender dudas', 'dejo de responder-seguimiento', 'agendado', 'lead futuro'];
+    const hasCustomLeads = leads.some(l => l.status && !coreKeys.includes(l.status.toLowerCase().trim()));
 
     const allStagesDefs = [
-      ["lead_nuevo", "Lead Nuevo", "Leads ingresados al sistema.", false],
-      ["custom_client_stage", "Etapa personalizada del cliente", "Etapas manuales personalizadas por el cliente.", true],
+      ["lead_nuevo", "Lead Nuevo", "Leads ingresados al sistema.", false]
+    ];
+    if (hasCustomLeads) {
+      allStagesDefs.push(["custom_client_stage", "Etapa personalizada del cliente", "Etapas manuales personalizadas por el cliente.", true]);
+    }
+    allStagesDefs.push(
       ["atender_dudas", "Atender Dudas", "Leads que interactúan o tienen consultas.", false],
       ["dejo_responder", "Dejó de Responder - Seguimiento", "Leads en seguimiento o inactivos.", false],
       ["agendado", "Agendado", "Citas agendadas confirmadas.", false],
       ["lead_futuro", "Lead Futuro", "Leads calificados para re-contacto a futuro.", false]
-    ];
+    );
 
     const getStageIndex = (status) => {
       if (!status) return 0;
       const norm = status.toLowerCase().trim();
       if (norm === 'lead nuevo') return 0;
-      if (norm === 'atender dudas') return 2;
-      if (norm === 'dejo de responder-seguimiento') return 3;
-      if (norm === 'agendado') return 4;
-      if (norm === 'lead futuro') return 5;
+      if (norm === 'atender dudas') return hasCustomLeads ? 2 : 1;
+      if (norm === 'dejo de responder-seguimiento') return hasCustomLeads ? 3 : 2;
+      if (norm === 'agendado') return hasCustomLeads ? 4 : 3;
+      if (norm === 'lead futuro') return hasCustomLeads ? 5 : 4;
       return 1; // custom client stage
     };
 
@@ -2202,7 +2235,7 @@ function buildProgression(filtered,clients){
         cumulative_from_meta:pct2(value,c.meta_results),
         lost_from_previous:lost,
         leak_rate:pct2(lost,prev),
-        health:isCustom ? "blue" : (from_previous>=.75?"green":from_previous>=.45?"yellow":"red"),
+        health:getStageHealth(key, value, leads.length),
         pending:false,
         isCustom
       };
