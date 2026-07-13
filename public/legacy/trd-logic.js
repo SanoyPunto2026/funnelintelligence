@@ -1078,16 +1078,34 @@ function pipelineAnalytics(c){
         <div class="big-number">${valueTxt} <span style="font-size:13px; font-weight:normal; color:var(--muted);">leads</span></div>
         <div class="stage-progress" style="--w:${barW}%; margin-top:8px;"><i></i></div>
         <div style="margin-top: 14px; font-size: 12px; display: flex; flex-direction: column; gap: 6px;">
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 4px;">
-            <span style="color:var(--muted);">% del Cliente:</span>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 4px; align-items: center;">
+            <span style="color:var(--muted); display:flex; align-items:center; gap:4px;">
+              % del Cliente
+              <span class="trd-tooltip-container">
+                <i class="ph ph-info" style="cursor:pointer; font-size:12px; color:var(--muted);"></i>
+                <span class="trd-tooltip-text" style="width: 200px;">Proporción de los leads de este cliente que se encuentran en esta etapa específica sobre su total de leads.</span>
+              </span>
+            </span>
             <strong style="color: #fff;">${fmtPct(clientPct)}</strong>
           </div>
-          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 4px;">
-            <span style="color:var(--muted);">Media Agencia:</span>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 4px; align-items: center;">
+            <span style="color:var(--muted); display:flex; align-items:center; gap:4px;">
+              Media Agencia
+              <span class="trd-tooltip-container">
+                <i class="ph ph-info" style="cursor:pointer; font-size:12px; color:var(--muted);"></i>
+                <span class="trd-tooltip-text" style="width: 200px;">Porcentaje promedio global de leads de toda la agencia en esta misma etapa para el periodo seleccionado.</span>
+              </span>
+            </span>
             <strong style="color: #cbd5e1;">${fmtPct(agencyPct)}</strong>
           </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span style="color:var(--muted);">Comparativo:</span>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="color:var(--muted); display:flex; align-items:center; gap:4px;">
+              Comparativo
+              <span class="trd-tooltip-container">
+                <i class="ph ph-info" style="cursor:pointer; font-size:12px; color:var(--muted);"></i>
+                <span class="trd-tooltip-text" style="width: 200px;">Diferencia (desviación) entre el porcentaje del cliente y el promedio global de la agencia. Verde si supera la media, rojo si es inferior.</span>
+              </span>
+            </span>
             <strong style="color: ${deviation >= 0 ? 'var(--green)' : 'var(--red)'};">
               ${deviation >= 0 ? '+' : ''}${fmtPct(deviation)}
             </strong>
