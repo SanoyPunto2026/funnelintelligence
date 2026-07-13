@@ -2486,32 +2486,129 @@ function showEmptyState(activeViewId) {
     </button></div>`;
 }
 
+let aiChatExpanded = false;
+let aiChatMessages = [
+  { role: 'bot', text: '¡Hola! Soy tu Asistente de IA de Leadtion. Pregúntame sobre el rendimiento comercial, tus leads o las tasas de conversión de la agencia.' }
+];
+let aiChatLoading = false;
+
 function updateSidebarWidget() {
   const widget = document.getElementById('sidebar-widget');
   if (!widget) return;
-  if (!DATA || !DATA.clients || DATA.clients.length === 0) {
-    widget.innerHTML = '';
+  
+  if (!aiChatExpanded) {
+    widget.innerHTML = `
+      <div class="ai-chat-collapsed" onclick="toggleAIChat(true)">
+        <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.15); display: grid; place-items: center; flex-shrink: 0; position: relative;">
+          <i class="ph-fill ph-cpu" style="font-size: 20px; color: white; animation: spin-glow 4s linear infinite;"></i>
+        </div>
+        <div style="flex: 1; text-align: left;">
+          <div style="font-size: 13px; font-weight: 700; color: white; line-height: 1.2;">TRD AI Assistant</div>
+          <div style="font-size: 10px; color: rgba(255,255,255,0.8); margin-top: 2px;">Analista listo para chatear</div>
+        </div>
+        <i class="ph ph-chat-circle" style="font-size: 18px; color: white;"></i>
+      </div>
+    `;
     return;
   }
-  const score = activeAgencyScore();
-  const category = activeAgencyCategory();
-  const color = category === 'Elite' ? 'var(--green)' : category === 'Healthy' ? 'var(--purple)' : category === 'Emerging' ? 'var(--yellow)' : 'var(--red)';
-  const badgeCls = category === 'Elite' ? 'Elite' : category === 'Healthy' ? 'Healthy' : category === 'Emerging' ? 'Emerging' : 'Broken';
   
+  const messagesHTML = aiChatMessages.map(m => `
+    <div class="ai-chat-msg ${m.role}">
+      ${m.text}
+    </div>
+  `).join('');
+  
+  const typingIndicatorHTML = aiChatLoading ? `
+    <div class="ai-typing-indicator">
+      <div class="ai-typing-dot"></div>
+      <div class="ai-typing-dot"></div>
+      <div class="ai-typing-dot"></div>
+    </div>
+  ` : '';
+
   widget.innerHTML = `
-    <div style="background:rgba(255,255,255,0.02); border:1px solid var(--line); border-radius:18px; padding:16px; display:flex; flex-direction:column; gap:12px; backdrop-filter:blur(8px);">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-size:12px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Salud de Agencia</span>
-        <span class="badge ${badgeCls}" style="padding:3px 8px; font-size:10px; border-radius:999px;">${category}</span>
-      </div>
-      <div style="display:flex; align-items:center; gap:14px;">
-        <div style="font-size:32px; font-weight:900; color:#fff; line-height:1; font-family:'Inter',sans-serif;">${score}<span style="font-size:14px; color:var(--muted); font-weight:500;">/100</span></div>
-        <div style="flex-grow:1; height:6px; background:#202a3d; border-radius:999px; overflow:hidden;">
-          <div style="height:100%; width:${score}%; background:linear-gradient(90deg, ${color}, var(--blue)); border-radius:999px;"></div>
+    <div class="ai-chat-expanded">
+      <div class="ai-chat-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <i class="ph-fill ph-cpu" style="font-size: 16px; color: #7c3aed;"></i>
+          <span style="font-size: 12.5px; font-weight: 700; color: #fff;">TRD AI Assistant</span>
         </div>
+        <button onclick="toggleAIChat(false)" style="background:none; border:none; color:var(--muted); cursor:pointer; font-size:16px; padding:2px; display:flex; align-items:center;"><i class="ph ph-x"></i></button>
+      </div>
+      <div class="ai-chat-messages" id="ai-chat-msgs-container">
+        ${messagesHTML}
+        ${typingIndicatorHTML}
+      </div>
+      <div class="ai-chat-input-area">
+        <input type="text" id="ai-chat-input-el" class="ai-chat-input" placeholder="Pregúntame sobre el funnel..." onkeydown="if(event.key==='Enter') sendAIChatMessage()" />
+        <button onclick="sendAIChatMessage()" class="ai-chat-send"><i class="ph ph-paper-plane-right" style="font-size:14px;"></i></button>
       </div>
     </div>
   `;
+  
+  // Auto scroll to bottom
+  const container = document.getElementById('ai-chat-msgs-container');
+  if (container) {
+    container.scrollTop = container.scrollHeight;
+  }
+  
+  // Auto focus input
+  const inputEl = document.getElementById('ai-chat-input-el');
+  if (inputEl) {
+    inputEl.focus();
+  }
+}
+
+function toggleAIChat(open) {
+  aiChatExpanded = open;
+  updateSidebarWidget();
+}
+
+async function sendAIChatMessage() {
+  const inputEl = document.getElementById('ai-chat-input-el');
+  if (!inputEl) return;
+  const val = inputEl.value.trim();
+  if (!val || aiChatLoading) return;
+  
+  // Append user message
+  aiChatMessages.push({ role: 'user', text: val });
+  aiChatLoading = true;
+  updateSidebarWidget();
+  
+  // Build context
+  const context = {
+    activeClient: selectedClient,
+    totalLeads: DATA.leads.length,
+    totalClients: DATA.clients.length,
+    clients: DATA.clients.map(c => ({
+      name: c.client,
+      leads: c.leads,
+      appointments: c.appointments,
+      crm_activity: c.crm_activity,
+      avg_cpl: c.avg_cpl,
+      category: c.category || c.engine_category
+    })).slice(0, 10)
+  };
+  
+  try {
+    const res = await fetch('/api/gemini', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: val, context })
+    });
+    
+    if (res.ok) {
+      const data = await res.json();
+      aiChatMessages.push({ role: 'bot', text: data.reply });
+    } else {
+      aiChatMessages.push({ role: 'bot', text: 'Lo siento, ha ocurrido un error al conectar con TRD AI.' });
+    }
+  } catch (e) {
+    aiChatMessages.push({ role: 'bot', text: 'Error de red al conectar con el analista.' });
+  } finally {
+    aiChatLoading = false;
+    updateSidebarWidget();
+  }
 }
 
 function renderAll(){
