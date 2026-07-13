@@ -371,17 +371,13 @@ body.learning-on .learning-note{display:block}
 }
 
 .ai-chat-expanded {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
-  top: 310px; /* Leaves the top nav items visible, covers from Alert Engine down */
+  margin-top: 16px;
   background: #0b0f19;
   border: 1px solid #7c3aed;
   border-radius: 18px;
   display: flex;
   flex-direction: column;
-  z-index: 100;
+  height: 350px; /* Fixed height under nav links */
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   overflow: hidden;
   animation: slideUp 0.25s ease-out;
