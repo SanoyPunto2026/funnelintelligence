@@ -901,11 +901,11 @@ function openClient(n){
   // Actualizar URL
   window.history.pushState({ view: 'client' }, '', '/client-workspace');
 }
-function renderClient(){if(!selectedClient&&DATA.clients&&DATA.clients.length)selectedClient=DATA.clients[0].client;const c=cBy(selectedClient),tabs={overview:'Overview',intelligence:'Funnel Intelligence',pipeline:'Pipeline Analytics',ads:'Ads',leads:'Leads',insights:'Insights'};let body='';if(currentClientTab==='overview')body=overview(c);if(currentClientTab==='intelligence')body=funnelIntel(c);if(currentClientTab==='pipeline')body=pipelineAnalytics(c);if(currentClientTab==='ads')body=adCards(selectedClient);if(currentClientTab==='leads')body=leadTable(leadsBy(selectedClient).slice(0,100));if(currentClientTab==='insights')body=insights(c);document.getElementById('view-client').innerHTML=`${renderDateController()}${renderCurrencyController()}<div style="margin-bottom:16px;"><button onclick="showView('clients')" style="background:none; border:none; color:#38bdf8; cursor:pointer; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px; padding:8px 0; font-family:'Inter',sans-serif; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'"><i class="ph ph-arrow-left" style="font-size:18px;"></i> Volver a Clients</button></div><div class="filters"><select onchange="selectedClient=this.value;renderClient()">${DATA.clients.map(x=>`<option ${x.client===selectedClient?'selected':''}>${x.client}</option>`).join('')}</select></div><div class="card"><div class="kpi"><div><h3 style="font-size:24px">${c.client}</h3>${badge(c.engine_category||c.category)}<p>Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong> · Motor: <strong>${activeScore(c)}/100</strong></p></div><div class="score-ring" style="--score:${activeScore(c)}"><span>${activeScore(c)}</span></div></div><div class="tabs">${Object.entries(tabs).map(([k,v])=>`<button class="${currentClientTab===k?'active':''}" onclick="currentClientTab='${k}';renderClient()">${v}</button>`).join('')}</div></div><div style="margin-top:18px">${body}</div>`}
+function renderClient(){if(!selectedClient&&DATA.clients&&DATA.clients.length)selectedClient=DATA.clients[0].client;const c=cBy(selectedClient),tabs={overview:'Overview',intelligence:'Funnel Intelligence',pipeline:'Pipeline Analytics'};let body='';if(currentClientTab==='overview')body=overview(c);if(currentClientTab==='intelligence')body=funnelIntel(c);if(currentClientTab==='pipeline')body=pipelineAnalytics(c);document.getElementById('view-client').innerHTML=`${renderDateController()}${renderCurrencyController()}<div style="margin-bottom:16px;"><button onclick="showView('clients')" style="background:none; border:none; color:#38bdf8; cursor:pointer; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px; padding:8px 0; font-family:'Inter',sans-serif; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'"><i class="ph ph-arrow-left" style="font-size:18px;"></i> Volver a Clients</button></div><div class="filters"><select onchange="selectedClient=this.value;renderClient()">${DATA.clients.map(x=>`<option ${x.client===selectedClient?'selected':''}>${x.client}</option>`).join('')}</select></div><div class="card"><div class="kpi"><div><h3 style="font-size:24px">${c.client}</h3>${badge(c.engine_category||c.category)}<p>Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong> · Motor: <strong>${activeScore(c)}/100</strong></p></div><div class="score-ring" style="--score:${activeScore(c)}"><span>${activeScore(c)}</span></div></div><div class="tabs" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin:16px 0;"><div>${Object.entries(tabs).map(([k,v])=>`<button class="${currentClientTab===k?'active':''}" onclick="currentClientTab='${k}';renderClient()">${v}</button>`).join('')}</div>${currentClientTab==='pipeline'?`<button onclick="downloadPipelinePDF()" style="background:#10b981; border:1px solid #059669; color:white; padding:9px 16px; border-radius:11px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:13px; font-family:'Inter',sans-serif; transition:background 0.2s;" onmouseover="this.style.background='#059669'" onmouseout="this.style.background='#10b981'"><i class="ph ph-file-pdf" style="font-size:16px;"></i> Descargar PDF</button>`:''}</div></div><div style="margin-top:18px">${body}</div>`}
 function comp(n,v){return `<div class="component"><span>${n}</span><div class="progress" style="--w:${Math.round(v)}%"><i></i></div><strong>${Math.round(v)}</strong></div>`}
+function compVal(n,wVal,lbl){return `<div class="component"><span>${n}</span><div class="progress" style="--w:${Math.round(wVal)}%"><i></i></div><strong>${lbl}</strong></div>`}
 function overview(c){
-  const w=normalizeWeights();
-  return `<div class="grid grid2"><div class="card"><h3>Diagnóstico</h3><div class="insight"><strong>Lectura ejecutiva</strong><p>${diagnosisLong(c)}</p></div><div style="margin-top:16px">${comp('Tasa de Agendamiento',c.appointment_score * w.appointment)}${comp('Tasa de Avance del Embudo',c.movement_score * w.movement)}${comp('Tasa de Leads Activos',c.activity_score * w.activity)}${comp('Calidad de Atribución',c.attribution_score * w.attribution)}${comp('Tasa de Contactabilidad',(c.acquisition_score||75) * w.acquisition)}</div></div><div class="card"><h3>KPIs</h3><div class="grid grid2"><div><div class="metric">${fmtNum(c.leads)}</div><div class="label">Leads</div>${c.leads===0?'<div class="small">Sin leads en este rango</div>':''}</div><div><div class="metric">${c.appointments}</div><div class="label">Citas</div></div><div><div class="metric">${fmtPct(c.appointment_rate)}</div><div class="label">Appointment Rate</div></div><div><div class="metric">${fmtPct(c.crm_activity)}</div><div class="label">CRM Activity</div></div></div></div></div>`;
+  return `<div class="grid grid2"><div class="card"><h3>Diagnóstico</h3><div class="insight"><strong>Lectura ejecutiva</strong><p>${diagnosisLong(c)}</p></div><div style="margin-top:16px">${compVal('Tasa de Agendamiento',c.appointment_rate*100,fmtPct(c.appointment_rate))}${compVal('Tasa de Avance del Embudo',c.movement_rate*100,fmtPct(c.movement_rate))}${compVal('Tasa de Leads Activos',c.crm_activity*100,fmtPct(c.crm_activity))}${compVal('Calidad de Atribución',c.attribution_quality*100,fmtPct(c.attribution_quality))}${compVal('Tasa de Contactabilidad',c.acquisition_score||75,(c.acquisition_score||75)+'%')}</div></div><div class="card"><h3>KPIs</h3><div class="grid grid2"><div><div class="metric">${fmtNum(c.leads)}</div><div class="label">Leads</div>${c.leads===0?'<div class="small">Sin leads en este rango</div>':''}</div><div><div class="metric">${c.appointments}</div><div class="label">Citas</div></div><div><div class="metric">${fmtPct(c.appointment_rate)}</div><div class="label">Appointment Rate</div></div><div><div class="metric">${fmtPct(c.crm_activity)}</div><div class="label">CRM Activity</div></div></div></div></div>`;
 }
 function renderTagAnalytics(clientName) {
   const leads = rawFilteredLeads().filter(l => l.client === clientName);
@@ -973,26 +973,31 @@ function pipelineAnalytics(c){
   const stagesHTML = p.stages.map((s,i)=>{
     const cls = s.pending ? 'pending neutral' : s.health;
     const valueTxt = s.pending ? '-' : fmtNum(s.value);
-    const convTxt = s.pending ? 'Pendiente' : (i===0 ? 'Base' : `${fmtPct(s.from_previous)} del paso anterior`);
-    const crmTxt = s.pending ? '-' : (s.key==='meta' ? 'Base Meta' : fmtPct(s.cumulative_from_crm));
-    const lossTxt = s.lost_from_previous ? `-${fmtNum(s.lost_from_previous)} no avanzaron` : 'Sin pérdida';
+    const convTxt = s.pending ? 'Pendiente' : (i===0 ? 'Base' : `${fmtPct(s.from_previous)}`);
     const barW = s.pending ? 4 : Math.min(100, Math.max(4, Math.round((s.cumulative_from_crm||0)*100)));
+    const leakTxt = s.leak_rate === null ? '0%' : fmtPct(s.leak_rate);
+    const hasLeak = s.leak_rate > 0.35;
+    
     return `<div class="progress-stage ${cls}">
-      <div class="stage-top">
+      <div class="stage-top" style="padding: 12px 14px;">
         <h4><span class="health-dot ${hClass(s.health)}"></span>${s.label}</h4>
-        <div class="small">${s.description}</div>
       </div>
-      <div class="stage-body">
-        <div class="big-number">${valueTxt}</div>
-        <div class="label">leads que alcanzaron esta etapa</div>
-        <span class="conversion-pill">${convTxt}</span>
-        <div class="stage-progress" style="--w:${barW}%"><i></i></div>
-        <div class="grid grid2" style="gap:10px;margin-top:12px">
-          <div><strong>${crmTxt}</strong><div class="label">desde CRM</div></div>
-        </div>
-        <div class="stage-loss">
-          <strong>${lossTxt}</strong>
-          <div class="label">${s.leak_rate===null?'':fmtPct(s.leak_rate)+' de fuga del paso'}</div>
+      <div class="stage-body" style="padding: 12px 14px; min-height: 180px;">
+        <div class="big-number">${valueTxt} <span style="font-size:13px; font-weight:normal; color:var(--muted);">leads</span></div>
+        <div class="stage-progress" style="--w:${barW}%; margin-top:8px;"><i></i></div>
+        <div style="margin-top: 14px; font-size: 12px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 4px;">
+            <span style="color:var(--muted);">De paso anterior:</span>
+            <strong style="color: #fff;">${convTxt}</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 4px;">
+            <span style="color:var(--muted);">Desde CRM total:</span>
+            <strong style="color: #cbd5e1;">${s.pending ? '-' : fmtPct(s.cumulative_from_crm)}</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color:var(--muted);">Fuga en etapa:</span>
+            <strong style="color: ${hasLeak ? 'var(--red)' : 'var(--muted)'};">${leakTxt}</strong>
+          </div>
         </div>
       </div>
     </div>`;
@@ -1003,7 +1008,7 @@ function pipelineAnalytics(c){
     <p class="small">Flujo secuencial de conversión basado en las etapas del embudo.</p>
     <div class="progression-summary">
       <div class="summary-tile"><div class="summary-label">Tasa de Interés (Dudas)</div><div class="summary-value">${fmtPct(tasaInteres)}</div><div class="label">${fmtNum(atenderDudas.value)} leads</div></div>
-      <div class="summary-tile"><div class="summary-label">Tasa de Abandono</div><div class="summary-value">${fmtPct(tasaAbandono)}</div><div class="label">${fmtNum(dejoResponder.value)} leads</div></div>
+      <div class="summary-tile"><div class="summary-label">Tasa de Abandono</div><div class="summary-value" style="color: ${tasaAbandono > 0.3 ? 'var(--red)' : '#fff'};">${fmtPct(tasaAbandono)}</div><div class="label">${fmtNum(dejoResponder.value)} leads</div></div>
       <div class="summary-tile"><div class="summary-label">Tasa de Agendamiento</div><div class="summary-value">${fmtPct(tasaAgendamiento)}</div><div class="label">${fmtNum(agendadoObj.value)} leads</div></div>
       <div class="summary-tile"><div class="summary-label">Tasa de Leads a Futuro</div><div class="summary-value">${fmtPct(tasaFuturo)}</div><div class="label">${fmtNum(leadFuturo.value)} leads</div></div>
     </div>
@@ -1013,15 +1018,180 @@ function pipelineAnalytics(c){
       <span><span class="health-dot h-red"></span> Caída fuerte</span>
       <span><span class="health-dot h-neutral"></span> Base / pendiente</span>
     </div>
-    <div class="progression-board">${stagesHTML}</div>
+    <div class="progression-board" style="margin-top:16px;">${stagesHTML}</div>
   </div>
-  <div class="pipeline-analysis-grid">
+  <div class="pipeline-analysis-grid" style="margin-top: 18px;">
     <div class="card">
       <h3>Lectura rápida</h3>
-      <div class="insight"><strong>Conversión principal</strong><p>${fmtNum(agendadoObj.value)} leads llegaron a cita, lo que equivale al ${fmtPct(tasaAgendamiento)} del embudo.</p></div>
+      <div class="insight" style="margin-top:10px;"><strong>Conversión principal</strong><p>${fmtNum(agendadoObj.value)} leads llegaron a cita, lo que equivale al <strong>${fmtPct(tasaAgendamiento)}</strong> del embudo inicial.</p></div>
     </div>
   </div>
   ${renderTagAnalytics(c.client)}`;
+}
+
+function downloadPipelinePDF() {
+  const c = cBy(selectedClient);
+  const p = DATA.progression_funnels.find(x => x.client === c.client);
+  if (!p) return;
+  const leadNuevo = p.stages.find(s => s.key === 'lead_nuevo') || { value: c.leads };
+  const atenderDudas = p.stages.find(s => s.key === 'atender_dudas') || { value: 0 };
+  const dejoResponder = p.stages.find(s => s.key === 'dejo_responder') || { value: 0 };
+  const agendadoObj = p.stages.find(s => s.key === 'agendado') || { value: 0 };
+  const leadFuturo = p.stages.find(s => s.key === 'lead_futuro') || { value: 0 };
+
+  const tasaInteres = leadNuevo.value ? atenderDudas.value / leadNuevo.value : 0;
+  const tasaAbandono = leadNuevo.value ? dejoResponder.value / leadNuevo.value : 0;
+  const tasaAgendamiento = leadNuevo.value ? agendadoObj.value / leadNuevo.value : 0;
+  const tasaFuturo = leadNuevo.value ? leadFuturo.value / leadNuevo.value : 0;
+
+  let recs = [];
+  if (tasaAbandono > 0.3) {
+    recs.push("<strong>Automatización de Seguimiento:</strong> Se detecta una alta tasa de abandono (" + fmtPct(tasaAbandono) + "). Sugerimos activar respuestas y recordatorios automatizados inmediatos vía WhatsApp.");
+    recs.push("<strong>Reducción de Latencia:</strong> El equipo comercial debe contactar a los nuevos leads en un lapso menor a 5 minutos para evitar enfriamiento de leads.");
+  } else {
+    recs.push("<strong>Mantenimiento de Protocolo:</strong> La tasa de abandono está controlada (" + fmtPct(tasaAbandono) + "). Continuar con el esquema de seguimiento actual.");
+  }
+  if (tasaAgendamiento < 0.2) {
+    recs.push("<strong>Estrategia de Agendamiento:</strong> Tasa de citas baja (" + fmtPct(tasaAgendamiento) + "). Proponer ganchos de valor claros (auditoría gratuita, llamada de diagnóstico rápida) en el primer contacto.");
+    recs.push("<strong>Script Comercial:</strong> Evaluar y optimizar el libreto de llamada del setter comercial, enfocándose en agendar la sesión principal.");
+  } else {
+    recs.push("<strong>Escalar Adquisición:</strong> Conversión a cita excelente (" + fmtPct(tasaAgendamiento) + "). Recomendamos aumentar el presupuesto en las campañas de Meta Ads.");
+  }
+  if (tasaInteres < 0.4) {
+    recs.push("<strong>Ajuste de Creativos:</strong> La tasa de interés inicial es del " + fmtPct(tasaInteres) + ". Se recomienda optimizar la segmentación de Meta Ads o el copy inicial.");
+  }
+
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(`
+    <html>
+      <head>
+        <title>Reporte Pipeline - ${c.client}</title>
+        <style>
+          body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; padding: 40px; margin: 0; line-height: 1.5; }
+          .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; margin-bottom: 30px; }
+          .logo { font-size: 24px; font-weight: 800; color: #2563eb; }
+          .title { font-size: 28px; font-weight: 850; margin: 0 0 6px; }
+          .subtitle { font-size: 14px; color: #64748b; margin: 0; }
+          .score-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+          .score-info h3 { margin: 0 0 6px; font-size: 20px; }
+          .score-info p { margin: 0; color: #64748b; font-size: 13px; }
+          .score-circle { width: 70px; height: 70px; border-radius: 50%; background: #2563eb; color: white; display: grid; place-items: center; font-size: 24px; font-weight: 800; }
+          .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 30px; }
+          .tile { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; text-align: center; }
+          .tile-val { font-size: 26px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+          .tile-lbl { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; }
+          .tile-sub { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+          .section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; border-left: 4px solid #2563eb; padding-left: 10px; }
+          table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+          th { text-align: left; padding: 12px; background: #f1f5f9; font-size: 12px; text-transform: uppercase; color: #475569; border-bottom: 2px solid #e2e8f0; }
+          td { padding: 12px; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+          .badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+          .badge-green { background: #dcfce7; color: #15803d; }
+          .badge-yellow { background: #fef9c3; color: #a16207; }
+          .badge-red { background: #fee2e2; color: #b91c1c; }
+          .badge-neutral { background: #f1f5f9; color: #475569; }
+          .recs { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 20px; }
+          .recs ul { margin: 0; padding-left: 20px; }
+          .recs li { margin-bottom: 10px; font-size: 13px; color: #1e3a8a; }
+          .footer { text-align: center; margin-top: 40px; font-size: 11px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+          @media print {
+            body { padding: 0; }
+            button { display: none; }
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <div>
+            <h1 class="title">${c.client}</h1>
+            <p class="subtitle">Análisis Operativo del Pipeline Comercial</p>
+          </div>
+          <div class="logo">Funnel Intelligence</div>
+        </div>
+
+        <div class="score-card">
+          <div class="score-info">
+            <h3>Diagnóstico General: ${c.engine_category || c.category}</h3>
+            <p>Principal oportunidad identificada: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong></p>
+          </div>
+          <div class="score-circle">${activeScore(c)}</div>
+        </div>
+
+        <h2 class="section-title">Indicadores Clave de Conversión</h2>
+        <div class="grid">
+          <div class="tile">
+            <div class="tile-val">${fmtPct(tasaInteres)}</div>
+            <div class="tile-lbl">Tasa de Interés</div>
+            <div class="tile-sub">${fmtNum(atenderDudas.value)} de ${fmtNum(leadNuevo.value)} leads</div>
+          </div>
+          <div class="tile">
+            <div class="tile-val">${fmtPct(tasaAbandono)}</div>
+            <div class="tile-lbl">Tasa de Abandono</div>
+            <div class="tile-sub">${fmtNum(dejoResponder.value)} de ${fmtNum(leadNuevo.value)} leads</div>
+          </div>
+          <div class="tile">
+            <div class="tile-val">${fmtPct(tasaAgendamiento)}</div>
+            <div class="tile-lbl">Tasa de Agendamiento</div>
+            <div class="tile-sub">${fmtNum(agendadoObj.value)} de ${fmtNum(leadNuevo.value)} leads</div>
+          </div>
+          <div class="tile">
+            <div class="tile-val">${fmtPct(tasaFuturo)}</div>
+            <div class="tile-lbl">Leads Futuros</div>
+            <div class="tile-sub">${fmtNum(leadFuturo.value)} de ${fmtNum(leadNuevo.value)} leads</div>
+          </div>
+        </div>
+
+        <h2 class="section-title">Avance del Pipeline (Etapas CRM)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Etapa</th>
+              <th>Leads en Etapa</th>
+              <th>% de Avance del CRM</th>
+              <th>Conversión del Paso Anterior</th>
+              <th>Pérdida (Fuga) de la Etapa</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${p.stages.map(s => {
+              const lostTxt = s.lost_from_previous ? `${fmtNum(s.lost_from_previous)} leads` : '0';
+              const leakTxt = s.leak_rate === null ? '0%' : fmtPct(s.leak_rate);
+              const healthCls = s.health === 'green' ? 'badge-green' : s.health === 'yellow' ? 'badge-yellow' : s.health === 'red' ? 'badge-red' : 'badge-neutral';
+              return `
+                <tr>
+                  <td><strong>${s.label}</strong></td>
+                  <td>${fmtNum(s.value)}</td>
+                  <td>${fmtPct(s.cumulative_from_crm)}</td>
+                  <td>${s.key === 'lead_nuevo' ? 'Base' : fmtPct(s.from_previous)}</td>
+                  <td><span class="badge ${healthCls}">${leakTxt} de fuga (${lostTxt})</span></td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+
+        <div class="recs">
+          <h2 class="section-title" style="margin-top:0; border-left-color: #2563eb; color: #1e3a8a;">Acciones Recomendadas & Próximos Pasos</h2>
+          <ul>
+            ${recs.map(r => `<li>${r}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="footer">
+          Funnel Intelligence TRD · Reporte Confidencial del Cliente · Generado automáticamente el ${new Date().toLocaleDateString('es-ES')}
+        </div>
+
+        <script>
+          window.onload = function() {
+            setTimeout(function() {
+              window.print();
+            }, 500);
+          }
+        </script>
+      </body>
+    </html>
+  `);
+  printWindow.document.close();
 }
 
 function funnelIntel(c){const fi=fiBy(c.client),bot=fi.bottleneck,leak=fi.biggest_leak;return `<div class="grid grid2"><div class="card"><h3>Funnel Flow Ejecutivo</h3><div class="flow-grid" style="margin-top:16px">${fi.stages.map((s,i)=>`<div class="flow-stage ${s.pending?'pending':''}"><h4><span class="health-dot ${hClass(s.health)}"></span>${s.label}</h4><div class="metric">${s.pending?'-':fmtNum(s.value)}</div><div class="label">${s.pending?'Integración pendiente':i===0?'Base Meta':`Conversión: ${fmtPct(s.rate)}`}</div><p class="small">${s.benchmark==null?'':`Benchmark: ${fmtPct(s.benchmark)}`}</p></div>`).join('')}</div></div><div class="card"><h3>Bottleneck Detector ${tip('bottleneck')}</h3><div class="insight"><strong>${bot.stage}</strong><p>Etapa más débil frente al benchmark interno.</p></div><div class="grid grid2"><div><div class="metric">${fmtPct(bot.value)}</div><div class="label">Actual</div></div><div><div class="metric">${fmtPct(bot.benchmark)}</div><div class="label">Benchmark</div></div></div></div></div><div class="grid grid2" style="margin-top:18px"><div class="card"><h3>Leakage Analysis ${tip('leakage')}</h3>${fi.leakages.map(l=>`<div class="leak-card" style="margin-top:10px"><strong>${l.from} → ${l.to}</strong><div class="kpi"><span class="small">Perdidos</span><strong>${fmtNum(l.lost)}</strong></div><div class="leak-bar" style="--w:${Math.round(l.leak_rate*100)}%"><i></i></div><p class="small">Leakage: ${fmtPct(l.leak_rate)}</p></div>`).join('')}<div class="insight"><strong>Mayor fuga</strong><p>${leak.from} → ${leak.to} con ${fmtNum(leak.lost)} registros perdidos.</p></div></div><div class="card"><h3>Opportunity Simulator ${tip('opportunitySimulator')}</h3><div class="grid grid3"><div><div class="metric">${c.appointments}</div><div class="label">Citas actuales</div></div><div><div class="metric">${fi.benchmark_appointments}</div><div class="label">Si alcanza benchmark</div></div><div><div class="metric">+${fi.opportunity_appointments}</div><div class="label">Citas potenciales</div></div></div></div></div>`}
