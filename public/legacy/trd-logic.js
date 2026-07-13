@@ -1194,7 +1194,143 @@ function downloadPipelinePDF() {
   printWindow.document.close();
 }
 
-function funnelIntel(c){const fi=fiBy(c.client),bot=fi.bottleneck,leak=fi.biggest_leak;return `<div class="grid grid2"><div class="card"><h3>Funnel Flow Ejecutivo</h3><div class="flow-grid" style="margin-top:16px">${fi.stages.map((s,i)=>`<div class="flow-stage ${s.pending?'pending':''}"><h4><span class="health-dot ${hClass(s.health)}"></span>${s.label}</h4><div class="metric">${s.pending?'-':fmtNum(s.value)}</div><div class="label">${s.pending?'Integración pendiente':i===0?'Base Meta':`Conversión: ${fmtPct(s.rate)}`}</div><p class="small">${s.benchmark==null?'':`Benchmark: ${fmtPct(s.benchmark)}`}</p></div>`).join('')}</div></div><div class="card"><h3>Bottleneck Detector ${tip('bottleneck')}</h3><div class="insight"><strong>${bot.stage}</strong><p>Etapa más débil frente al benchmark interno.</p></div><div class="grid grid2"><div><div class="metric">${fmtPct(bot.value)}</div><div class="label">Actual</div></div><div><div class="metric">${fmtPct(bot.benchmark)}</div><div class="label">Benchmark</div></div></div></div></div><div class="grid grid2" style="margin-top:18px"><div class="card"><h3>Leakage Analysis ${tip('leakage')}</h3>${fi.leakages.map(l=>`<div class="leak-card" style="margin-top:10px"><strong>${l.from} → ${l.to}</strong><div class="kpi"><span class="small">Perdidos</span><strong>${fmtNum(l.lost)}</strong></div><div class="leak-bar" style="--w:${Math.round(l.leak_rate*100)}%"><i></i></div><p class="small">Leakage: ${fmtPct(l.leak_rate)}</p></div>`).join('')}<div class="insight"><strong>Mayor fuga</strong><p>${leak.from} → ${leak.to} con ${fmtNum(leak.lost)} registros perdidos.</p></div></div><div class="card"><h3>Opportunity Simulator ${tip('opportunitySimulator')}</h3><div class="grid grid3"><div><div class="metric">${c.appointments}</div><div class="label">Citas actuales</div></div><div><div class="metric">${fi.benchmark_appointments}</div><div class="label">Si alcanza benchmark</div></div><div><div class="metric">+${fi.opportunity_appointments}</div><div class="label">Citas potenciales</div></div></div></div></div>`}
+function funnelIntel(c){
+  const fi=fiBy(c.client);
+  const bot=fi.bottleneck;
+  const leak=fi.biggest_leak;
+  
+  const stageLabels = {
+    "Meta Results": "Resultados Meta Ads",
+    "CRM Leads": "Leads en CRM",
+    "CRM Movement": "Avance en CRM",
+    "Appointments": "Citas Agendadas",
+    "Sales": "Ventas Realizadas"
+  };
+  
+  const stageDescs = {
+    "Meta Results": "Leads registrados en anuncios de Meta.",
+    "CRM Leads": "Leads ingresados en Leadtion.",
+    "CRM Movement": "Leads contactados o con seguimiento.",
+    "Appointments": "Citas comerciales programadas.",
+    "Sales": "Integración de cierre comercial final."
+  };
+
+  const botLabels = {
+    "Attribution": "Calidad de Atribución",
+    "CRM Movement": "Avance en CRM",
+    "CRM Activity": "Actividad del CRM",
+    "Appointment Rate": "Tasa de Agendamiento"
+  };
+
+  const cleanBotStage = botLabels[bot.stage] || bot.stage;
+
+  return `<div class="grid grid2">
+    <div class="card">
+      <h3>Funnel Flow Ejecutivo</h3>
+      <p class="small" style="margin-bottom:18px;">Paso a paso de la conversión comercial desde el anuncio hasta la venta.</p>
+      <div class="flow-grid" style="margin-top:16px">
+        ${fi.stages.map((s,i)=>{
+          const displayName = stageLabels[s.label] || s.label;
+          const desc = stageDescs[s.label] || "";
+          let conversionTxt = "";
+          if (s.pending) {
+            conversionTxt = "Pendiente";
+          } else if (i === 0) {
+            conversionTxt = "Base Meta Ads";
+          } else {
+            conversionTxt = `${fmtPct(s.rate)} de conversión`;
+          }
+          
+          return `
+            <div class="flow-stage ${s.pending?'pending':''}" style="padding: 12px; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h4 style="font-size: 13px; font-weight:700; margin-bottom: 4px; display:flex; align-items:center; gap:6px;">
+                  <span class="health-dot ${hClass(s.health)}"></span>${displayName}
+                </h4>
+                <div class="small" style="font-size: 11px; line-height:1.3; margin-top:2px;">${desc}</div>
+              </div>
+              <div>
+                <div class="metric" style="font-size: 28px; font-weight:900; margin: 12px 0 4px;">${s.pending?'-':fmtNum(s.value)}</div>
+                <div class="label" style="font-size: 11px; color:#cbd5e1; font-weight:600;">${conversionTxt}</div>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+    
+    <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+      <div>
+        <h3>Detector de Cuellos de Botella (Bottleneck)</h3>
+        <p class="small" style="margin-bottom:16px;">Identifica en qué etapa de la operación comercial se está perdiendo la mayor eficiencia.</p>
+        <div class="insight" style="margin-top: 10px; background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.2);">
+          <strong style="color:var(--red); font-size:15px;"><i class="ph ph-warning-octagon"></i> ${cleanBotStage}</strong>
+          <p style="margin-top:6px; font-size:13px; color:#cbd5e1;">Esta etapa presenta el rendimiento más bajo en comparación con los promedios de la agencia.</p>
+        </div>
+      </div>
+      <div class="grid grid2" style="margin-top:14px;">
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius:12px; padding:12px; text-align:center;">
+          <div class="metric" style="font-size:28px; font-weight:800; color:#fff;">${fmtPct(bot.value)}</div>
+          <div class="label" style="font-size:11px;">Rendimiento Actual</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius:12px; padding:12px; text-align:center;">
+          <div class="metric" style="font-size:28px; font-weight:800; color:var(--muted);">${fmtPct(bot.benchmark)}</div>
+          <div class="label" style="font-size:11px;">Meta de la Agencia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="grid grid2" style="margin-top:18px">
+    <div class="card">
+      <h3>Análisis de Fugas (Leakage)</h3>
+      <p class="small" style="margin-bottom:16px;">Visualización de leads perdidos en las transiciones del embudo.</p>
+      ${fi.leakages.map(l=>{
+        const cleanFrom = stageLabels[l.from] || l.from;
+        const cleanTo = stageLabels[l.to] || l.to;
+        return `
+          <div class="leak-card" style="margin-top:10px; background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius:14px; padding:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <strong style="font-size:13px; color:#fff;">${cleanFrom} → ${cleanTo}</strong>
+              <span class="small" style="color:var(--muted); font-size:11px;">Fuga: <strong style="color:var(--orange); font-size:12px;">${fmtPct(l.leak_rate)}</strong></span>
+            </div>
+            <div class="leak-bar" style="--w:${Math.round(l.leak_rate*100)}%; height:6px; background:#202a3d; border-radius:99px; overflow:hidden;">
+              <i style="display:block; height:100%; background:linear-gradient(90deg, var(--orange), var(--red)); width:var(--w);"></i>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:8px; font-size:11px; color:var(--muted);">
+              <span>Leads perdidos en este paso:</span>
+              <strong style="color:#cbd5e1;">${fmtNum(l.lost)} leads</strong>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+    
+    <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
+      <div>
+        <h3>Simulador de Oportunidad Comercial</h3>
+        <p class="small" style="margin-bottom:16px;">Impacto estimado en volumen de citas comerciales si se optimiza el funnel a los estándares promedio de la agencia.</p>
+        <div class="insight" style="margin-top: 10px; background: rgba(56,189,248,0.08); border-color: rgba(56,189,248,0.22);">
+          <strong>Citas comerciales potenciales</strong>
+          <p style="margin-top:4px;">Optimizando el cuello de botella actual, este cliente podría conseguir <strong style="color:var(--blue);">+${fi.opportunity_appointments} citas adicionales</strong>.</p>
+        </div>
+      </div>
+      <div class="grid grid3" style="margin-top:14px;">
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius:12px; padding:12px; text-align:center;">
+          <div class="metric" style="font-size:28px; font-weight:800; color:#fff;">${c.appointments}</div>
+          <div class="label" style="font-size:11px;">Citas Actuales</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line); border-radius:12px; padding:12px; text-align:center;">
+          <div class="metric" style="font-size:28px; font-weight:800; color:var(--muted);">${fi.benchmark_appointments}</div>
+          <div class="label" style="font-size:11px;">Meta Promedio</div>
+        </div>
+        <div style="background: rgba(56,189,248,0.05); border: 1px solid rgba(56,189,248,0.2); border-radius:12px; padding:12px; text-align:center;">
+          <div class="metric" style="font-size:28px; font-weight:800; color:var(--blue);">+${fi.opportunity_appointments}</div>
+          <div class="label" style="font-size:11px;">Potencial</div>
+        </div>
+      </div>
+    </div>
+  </div>`}
 function adKey(a){ return `${a.client}__${a.adset_norm||''}__${a.ad_name_norm||''}`; }
 function adSafeId(a){ return encodeURIComponent(adKey(a)); }
 function adKeyFromSafeId(id){
