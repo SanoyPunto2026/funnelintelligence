@@ -1196,15 +1196,45 @@ function downloadPipelinePDF() {
   const agendadoObj = p.stages.find(s => s.key === 'agendado') || { value: 0 };
   const leadFuturo = p.stages.find(s => s.key === 'lead_futuro') || { value: 0 };
 
-  const tasaInteres = leadNuevo.value ? atenderDudas.value / leadNuevo.value : 0;
-  const tasaAbandono = leadNuevo.value ? dejoResponder.value / leadNuevo.value : 0;
-  const tasaAgendamiento = leadNuevo.value ? agendadoObj.value / leadNuevo.value : 0;
-  const tasaFuturo = leadNuevo.value ? leadFuturo.value / leadNuevo.value : 0;
+  const totalLeads = c.leads;
+  const tasaInteres = totalLeads ? atenderDudas.value / totalLeads : 0;
+  const tasaAbandono = totalLeads ? dejoResponder.value / totalLeads : 0;
+  const tasaAgendamiento = totalLeads ? agendadoObj.value / totalLeads : 0;
+  const tasaFuturo = totalLeads ? leadFuturo.value / totalLeads : 0;
+
+  let periodLabel = "";
+  if (dateRange.preset === "month") {
+    periodLabel = `Mes de ${dateRange.selectedMonth || "Julio"}`;
+  } else if (dateRange.preset === "custom") {
+    periodLabel = `Periodo: ${dateRange.start} al ${dateRange.end}`;
+  } else {
+    periodLabel = `${dateRange.preset.charAt(0).toUpperCase() + dateRange.preset.slice(1)}`;
+  }
+
+  const allFilteredLeads = rawFilteredLeads();
+  const totalAgencyLeads = allFilteredLeads.length;
+
+  const getAgencyStagePct = (stageKey) => {
+    if (!totalAgencyLeads) return 0;
+    const coreKeys = ['lead nuevo', 'atender dudas', 'dejo de responder-seguimiento', 'agendado', 'lead futuro'];
+    const count = allFilteredLeads.filter(l => {
+      if (!l.status) return stageKey === 'lead_nuevo';
+      const norm = l.status.toLowerCase().trim();
+      if (stageKey === 'lead_nuevo' && norm === 'lead nuevo') return true;
+      if (stageKey === 'atender_dudas' && norm === 'atender dudas') return true;
+      if (stageKey === 'dejo_responder' && norm === 'dejo de responder-seguimiento') return true;
+      if (stageKey === 'agendado' && norm === 'agendado') return true;
+      if (stageKey === 'lead_futuro' && norm === 'lead futuro') return true;
+      if (stageKey === 'custom_client_stage' && !coreKeys.includes(norm)) return true;
+      return false;
+    }).length;
+    return count / totalAgencyLeads;
+  };
 
   let recs = [];
   if (tasaAbandono > 0.3) {
     recs.push("<strong>Automatización de Seguimiento:</strong> Se detecta una alta tasa de abandono (" + fmtPct(tasaAbandono) + "). Sugerimos activar respuestas y recordatorios automatizados inmediatos vía WhatsApp.");
-    recs.push("<strong>Reducción de Latencia:</strong> El equipo comercial debe contactar a los nuevos leads en un lapso menor a 5 minutos para evitar enfriamiento de leads.");
+    recs.push("<strong>Reducción de Latencia:</strong> El equipo comercial debe contactar a los nuevos leads en un lapso menor a 5 minutos para evitar enfriamiento.");
   } else {
     recs.push("<strong>Mantenimiento de Protocolo:</strong> La tasa de abandono está controlada (" + fmtPct(tasaAbandono) + "). Continuar con el esquema de seguimiento actual.");
   }
@@ -1222,35 +1252,32 @@ function downloadPipelinePDF() {
   printWindow.document.write(`
     <html>
       <head>
-        <title>Reporte Pipeline - ${c.client}</title>
+        <title>Leadtion Reporte - ${c.client}</title>
         <style>
-          body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b; padding: 40px; margin: 0; line-height: 1.5; }
-          .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; margin-bottom: 30px; }
-          .logo { font-size: 24px; font-weight: 800; color: #2563eb; }
-          .title { font-size: 28px; font-weight: 850; margin: 0 0 6px; }
+          body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0f172a; padding: 40px; margin: 0; line-height: 1.5; background: #ffffff; }
+          .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #7c3aed; padding-bottom: 20px; margin-bottom: 30px; }
+          .logo { font-size: 26px; font-weight: 900; color: #7c3aed; letter-spacing: -0.5px; }
+          .logo span { color: #0f172a; }
+          .title { font-size: 28px; font-weight: 850; margin: 0 0 6px; color: #0f172a; }
           .subtitle { font-size: 14px; color: #64748b; margin: 0; }
-          .score-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-          .score-info h3 { margin: 0 0 6px; font-size: 20px; }
+          .score-card { background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; page-break-inside: avoid; break-inside: avoid; }
+          .score-info h3 { margin: 0 0 6px; font-size: 20px; color: #5b21b6; }
           .score-info p { margin: 0; color: #64748b; font-size: 13px; }
-          .score-circle { width: 70px; height: 70px; border-radius: 50%; background: #2563eb; color: white; display: grid; place-items: center; font-size: 24px; font-weight: 800; }
-          .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 30px; }
-          .tile { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; text-align: center; }
-          .tile-val { font-size: 26px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
-          .tile-lbl { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; }
+          .score-circle { width: 70px; height: 70px; border-radius: 50%; background: #7c3aed; color: white; display: grid; place-items: center; font-size: 24px; font-weight: 800; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25); }
+          .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 30px; page-break-inside: avoid; break-inside: avoid; }
+          .tile { background: #fcfbfe; border: 1px solid #f3e8ff; border-radius: 12px; padding: 16px; text-align: center; }
+          .tile-val { font-size: 26px; font-weight: 800; color: #5b21b6; margin-bottom: 4px; }
+          .tile-lbl { font-size: 11px; color: #475569; text-transform: uppercase; font-weight: 600; }
           .tile-sub { font-size: 11px; color: #94a3b8; margin-top: 4px; }
-          .section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; border-left: 4px solid #2563eb; padding-left: 10px; }
-          table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
-          th { text-align: left; padding: 12px; background: #f1f5f9; font-size: 12px; text-transform: uppercase; color: #475569; border-bottom: 2px solid #e2e8f0; }
-          td { padding: 12px; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
-          .badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 11px; font-weight: 700; }
-          .badge-green { background: #dcfce7; color: #15803d; }
-          .badge-yellow { background: #fef9c3; color: #a16207; }
-          .badge-red { background: #fee2e2; color: #b91c1c; }
-          .badge-neutral { background: #f1f5f9; color: #475569; }
-          .recs { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 16px; padding: 20px; }
+          .section-title { font-size: 18px; font-weight: 700; margin-top: 30px; margin-bottom: 16px; border-left: 4px solid #7c3aed; padding-left: 10px; color: #0f172a; page-break-after: avoid; break-after: avoid; }
+          table { width: 100%; border-collapse: collapse; margin-bottom: 30px; page-break-inside: avoid; break-inside: avoid; }
+          th { text-align: left; padding: 12px; background: #f5f3ff; font-size: 12px; text-transform: uppercase; color: #5b21b6; border-bottom: 2px solid #ddd6fe; }
+          td { padding: 12px; border-bottom: 1px solid #f3e8ff; font-size: 13px; }
+          .recs { background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 16px; padding: 20px; page-break-inside: avoid; break-inside: avoid; }
+          .recs h2 { border: 0; padding: 0; margin-top: 0; color: #5b21b6; font-size: 18px; }
           .recs ul { margin: 0; padding-left: 20px; }
-          .recs li { margin-bottom: 10px; font-size: 13px; color: #1e3a8a; }
-          .footer { text-align: center; margin-top: 40px; font-size: 11px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+          .recs li { margin-bottom: 10px; font-size: 13px; color: #4b5563; line-height: 1.5; }
+          .footer { text-align: center; margin-top: 50px; font-size: 11px; color: #94a3b8; border-top: 1px solid #f3e8ff; padding-top: 20px; page-break-inside: avoid; break-inside: avoid; }
           @media print {
             body { padding: 0; }
             button { display: none; }
@@ -1261,66 +1288,68 @@ function downloadPipelinePDF() {
         <div class="header">
           <div>
             <h1 class="title">${c.client}</h1>
-            <p class="subtitle">Análisis Operativo del Pipeline Comercial</p>
+            <p class="subtitle">Análisis Operativo del Pipeline Comercial · <strong>${periodLabel}</strong></p>
           </div>
-          <div class="logo">Funnel Intelligence</div>
+          <div class="logo">Lead<span>tion</span></div>
         </div>
 
         <div class="score-card">
           <div class="score-info">
             <h3>Diagnóstico General: ${c.engine_category || c.category}</h3>
-            <p>Principal oportunidad identificada: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong></p>
+            <p>Total Leads en Periodo: <strong>${fmtNum(totalLeads)} leads</strong> · Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong></p>
           </div>
           <div class="score-circle">${activeScore(c)}</div>
         </div>
 
-        <h2 class="section-title">Indicadores Clave de Conversión</h2>
+        <h2 class="section-title">Indicadores Clave del Cliente</h2>
         <div class="grid">
           <div class="tile">
             <div class="tile-val">${fmtPct(tasaInteres)}</div>
-            <div class="tile-lbl">Tasa de Interés</div>
-            <div class="tile-sub">${fmtNum(atenderDudas.value)} de ${fmtNum(leadNuevo.value)} leads</div>
+            <div class="tile-lbl">Tasa de Interés (Dudas)</div>
+            <div class="tile-sub">${fmtNum(atenderDudas.value)} de ${fmtNum(totalLeads)} leads</div>
           </div>
           <div class="tile">
             <div class="tile-val">${fmtPct(tasaAbandono)}</div>
             <div class="tile-lbl">Tasa de Abandono</div>
-            <div class="tile-sub">${fmtNum(dejoResponder.value)} de ${fmtNum(leadNuevo.value)} leads</div>
+            <div class="tile-sub">${fmtNum(dejoResponder.value)} de ${fmtNum(totalLeads)} leads</div>
           </div>
           <div class="tile">
             <div class="tile-val">${fmtPct(tasaAgendamiento)}</div>
             <div class="tile-lbl">Tasa de Agendamiento</div>
-            <div class="tile-sub">${fmtNum(agendadoObj.value)} de ${fmtNum(leadNuevo.value)} leads</div>
+            <div class="tile-sub">${fmtNum(agendadoObj.value)} de ${fmtNum(totalLeads)} leads</div>
           </div>
           <div class="tile">
             <div class="tile-val">${fmtPct(tasaFuturo)}</div>
-            <div class="tile-lbl">Leads Futuros</div>
-            <div class="tile-sub">${fmtNum(leadFuturo.value)} de ${fmtNum(leadNuevo.value)} leads</div>
+            <div class="tile-lbl">Tasa Leads a Futuro</div>
+            <div class="tile-sub">${fmtNum(leadFuturo.value)} de ${fmtNum(totalLeads)} leads</div>
           </div>
         </div>
 
-        <h2 class="section-title">Avance del Pipeline (Etapas CRM)</h2>
+        <h2 class="section-title">Avance del Pipeline (Distribución y Comparativo)</h2>
         <table>
           <thead>
             <tr>
-              <th>Etapa</th>
+              <th>Etapa del Pipeline</th>
               <th>Leads en Etapa</th>
-              <th>% de Avance del CRM</th>
-              <th>Conversión del Paso Anterior</th>
-              <th>Pérdida (Fuga) de la Etapa</th>
+              <th>% del Cliente</th>
+              <th>Media Agencia</th>
+              <th>Comparativo (Desviación)</th>
             </tr>
           </thead>
           <tbody>
             ${p.stages.map(s => {
-              const lostTxt = s.lost_from_previous ? `${fmtNum(s.lost_from_previous)} leads` : '0';
-              const leakTxt = s.leak_rate === null ? '0%' : fmtPct(s.leak_rate);
-              const healthCls = s.health === 'green' ? 'badge-green' : s.health === 'yellow' ? 'badge-yellow' : s.health === 'red' ? 'badge-red' : 'badge-neutral';
+              const clientPct = totalLeads ? s.value / totalLeads : 0;
+              const agencyPct = getAgencyStagePct(s.key);
+              const deviation = clientPct - agencyPct;
+              const devColor = deviation >= 0 ? '#16a34a' : '#dc2626';
+              const devTxt = (deviation >= 0 ? '+' : '') + fmtPct(deviation);
               return `
                 <tr>
                   <td><strong>${s.label}</strong></td>
-                  <td>${fmtNum(s.value)}</td>
-                  <td>${fmtPct(s.cumulative_from_crm)}</td>
-                  <td>${s.key === 'lead_nuevo' ? 'Base' : fmtPct(s.from_previous)}</td>
-                  <td><span class="badge ${healthCls}">${leakTxt} de fuga (${lostTxt})</span></td>
+                  <td>${fmtNum(s.value)} leads</td>
+                  <td><strong>${fmtPct(clientPct)}</strong></td>
+                  <td>${fmtPct(agencyPct)}</td>
+                  <td><strong style="color: ${devColor};">${devTxt}</strong></td>
                 </tr>
               `;
             }).join('')}
@@ -1328,14 +1357,14 @@ function downloadPipelinePDF() {
         </table>
 
         <div class="recs">
-          <h2 class="section-title" style="margin-top:0; border-left-color: #2563eb; color: #1e3a8a;">Acciones Recomendadas & Próximos Pasos</h2>
+          <h2>Acciones Recomendadas & Próximos Pasos</h2>
           <ul>
             ${recs.map(r => `<li>${r}</li>`).join('')}
           </ul>
         </div>
 
         <div class="footer">
-          Funnel Intelligence TRD · Reporte Confidencial del Cliente · Generado automáticamente el ${new Date().toLocaleDateString('es-ES')}
+          Leadtion Funnel Intelligence · Reporte de Desempeño Comercial Confidencial · ${new Date().toLocaleDateString('es-ES')}
         </div>
 
         <script>
