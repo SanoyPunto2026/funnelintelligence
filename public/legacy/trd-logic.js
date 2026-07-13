@@ -1012,12 +1012,6 @@ function pipelineAnalytics(c){
       <div class="summary-tile"><div class="summary-label">Tasa de Agendamiento</div><div class="summary-value">${fmtPct(tasaAgendamiento)}</div><div class="label">${fmtNum(agendadoObj.value)} leads</div></div>
       <div class="summary-tile"><div class="summary-label">Tasa de Leads a Futuro</div><div class="summary-value">${fmtPct(tasaFuturo)}</div><div class="label">${fmtNum(leadFuturo.value)} leads</div></div>
     </div>
-    <div class="flow-legend">
-      <span><span class="health-dot h-green"></span> Buen avance</span>
-      <span><span class="health-dot h-yellow"></span> Avance medio</span>
-      <span><span class="health-dot h-red"></span> Caída fuerte</span>
-      <span><span class="health-dot h-neutral"></span> Base / pendiente</span>
-    </div>
     <div class="progression-board" style="margin-top:16px;">${stagesHTML}</div>
   </div>
   <div class="pipeline-analysis-grid" style="margin-top: 18px;">
