@@ -952,7 +952,7 @@ function overview(c){
       </div>
     </div>
   </div>
-  ${renderTagAnalytics(c.client)}`;
+  `;
 }
 function renderTagAnalytics(clientName) {
   const leads = rawFilteredLeads().filter(l => l.client === clientName);
