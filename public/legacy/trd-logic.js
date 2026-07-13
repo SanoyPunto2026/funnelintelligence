@@ -1038,13 +1038,37 @@ function pipelineAnalytics(c){
   const tasaAgendamiento = leadNuevo.value ? agendadoObj.value / leadNuevo.value : 0;
   const tasaFuturo = leadNuevo.value ? leadFuturo.value / leadNuevo.value : 0;
 
+  const allFilteredLeads = rawFilteredLeads();
+  const totalAgencyLeads = allFilteredLeads.length;
+
+  const getAgencyStagePct = (stageKey) => {
+    if (!totalAgencyLeads) return 0;
+    const coreKeys = ['lead nuevo', 'atender dudas', 'dejo de responder-seguimiento', 'agendado', 'lead futuro'];
+    const count = allFilteredLeads.filter(l => {
+      if (!l.status) return stageKey === 'lead_nuevo';
+      const norm = l.status.toLowerCase().trim();
+      if (stageKey === 'lead_nuevo' && norm === 'lead nuevo') return true;
+      if (stageKey === 'atender_dudas' && norm === 'atender dudas') return true;
+      if (stageKey === 'dejo_responder' && norm === 'dejo de responder-seguimiento') return true;
+      if (stageKey === 'agendado' && norm === 'agendado') return true;
+      if (stageKey === 'lead_futuro' && norm === 'lead futuro') return true;
+      if (stageKey === 'custom_client_stage' && !coreKeys.includes(norm)) return true;
+      return false;
+    }).length;
+    return count / totalAgencyLeads;
+  };
+
+  const totalClientLeads = c.leads;
+
   const stagesHTML = p.stages.map((s,i)=>{
     const cls = s.pending ? 'pending neutral' : s.health;
     const valueTxt = s.pending ? '-' : fmtNum(s.value);
-    const convTxt = s.pending ? 'Pendiente' : (i===0 ? 'Base' : `${fmtPct(s.from_previous)}`);
-    const barW = s.pending ? 4 : Math.min(100, Math.max(4, Math.round((s.cumulative_from_crm||0)*100)));
-    const leakTxt = s.leak_rate === null ? '0%' : fmtPct(s.leak_rate);
-    const hasLeak = s.leak_rate > 0.35;
+    
+    const clientPct = totalClientLeads ? s.value / totalClientLeads : 0;
+    const agencyPct = getAgencyStagePct(s.key);
+    const deviation = clientPct - agencyPct;
+    
+    const barW = s.pending ? 4 : Math.min(100, Math.max(4, Math.round(clientPct * 100)));
     
     return `<div class="progress-stage ${cls}">
       <div class="stage-top" style="padding: 12px 14px;">
@@ -1055,16 +1079,18 @@ function pipelineAnalytics(c){
         <div class="stage-progress" style="--w:${barW}%; margin-top:8px;"><i></i></div>
         <div style="margin-top: 14px; font-size: 12px; display: flex; flex-direction: column; gap: 6px;">
           <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 4px;">
-            <span style="color:var(--muted);">De paso anterior:</span>
-            <strong style="color: #fff;">${convTxt}</strong>
+            <span style="color:var(--muted);">% del Cliente:</span>
+            <strong style="color: #fff;">${fmtPct(clientPct)}</strong>
           </div>
           <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 4px;">
-            <span style="color:var(--muted);">Desde CRM total:</span>
-            <strong style="color: #fff;">${fmtPct(s.cumulative_from_crm)}</strong>
+            <span style="color:var(--muted);">Media Agencia:</span>
+            <strong style="color: #cbd5e1;">${fmtPct(agencyPct)}</strong>
           </div>
           <div style="display: flex; justify-content: space-between;">
-            <span style="color:var(--muted); display:flex; align-items:center; gap:4px;">Fuga en etapa: ${hasLeak ? `<i class="ph ph-warning-octagon" style="color:var(--red); font-size:14px;" title="Caída fuerte detectada"></i>`:''}</span>
-            <strong style="color: ${hasLeak ? 'var(--red)' : '#fff'};">${leakTxt}</strong>
+            <span style="color:var(--muted);">Comparativo:</span>
+            <strong style="color: ${deviation >= 0 ? 'var(--green)' : 'var(--red)'};">
+              ${deviation >= 0 ? '+' : ''}${fmtPct(deviation)}
+            </strong>
           </div>
         </div>
       </div>
@@ -2323,7 +2349,7 @@ function buildProgression(filtered,clients){
     allStagesDefs.forEach(([key, label, desc, isCustom], idx) => {
       const matchingLeads = leads.filter(l => {
         const leadStageIdx = getStageIndex(l.status);
-        return leadStageIdx >= idx || idx === 0;
+        return leadStageIdx === idx;
       });
       reached[key] = matchingLeads.length;
     });
