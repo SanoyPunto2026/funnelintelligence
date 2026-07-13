@@ -326,3 +326,28 @@ body.learning-on .learning-note{display:block}
 .trd-tooltip-container{position:relative;display:inline-block}
 .trd-tooltip-container .trd-tooltip-text{visibility:hidden;width:220px;background-color:#0b0f19;color:#e2e8f0;text-align:left;border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:8px 12px;font-size:11px;line-height:1.4;position:absolute;z-index:1000;bottom:125%;left:50%;transform:translateX(-50%);opacity:0;transition:opacity .2s;box-shadow:0 10px 15px -3px rgba(0,0,0,0.5);font-family:'Inter',sans-serif;font-weight:normal}
 .trd-tooltip-container:hover .trd-tooltip-text{visibility:visible;opacity:1}
+
+.workspace-score-ring {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+.workspace-score-ring::after {
+  content: "";
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #101827;
+  z-index: 1;
+}
+.workspace-score-ring span {
+  position: relative;
+  z-index: 2;
+  font-size: 20px;
+  font-weight: 900;
+}
