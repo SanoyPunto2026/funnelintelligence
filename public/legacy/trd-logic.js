@@ -980,7 +980,7 @@ function pipelineAnalytics(c){
     
     return `<div class="progress-stage ${cls}">
       <div class="stage-top" style="padding: 12px 14px;">
-        <h4><span class="health-dot ${hClass(s.health)}"></span>${s.label}</h4>
+        <h4>${s.label}</h4>
       </div>
       <div class="stage-body" style="padding: 12px 14px; min-height: 180px;">
         <div class="big-number">${valueTxt} <span style="font-size:13px; font-weight:normal; color:var(--muted);">leads</span></div>
@@ -2189,7 +2189,7 @@ function buildProgression(filtered,clients){
     }
     allStagesDefs.push(
       ["atender_dudas", "Atender Dudas", "Leads que interactúan o tienen consultas.", false],
-      ["dejo_responder", "Dejó de Responder - Seguimiento", "Leads en seguimiento o inactivos.", false],
+      ["dejo_responder", "Dejó de Responder", "Leads en seguimiento o inactivos.", false],
       ["agendado", "Agendado", "Citas agendadas confirmadas.", false],
       ["lead_futuro", "Lead Futuro", "Leads calificados para re-contacto a futuro.", false]
     );
