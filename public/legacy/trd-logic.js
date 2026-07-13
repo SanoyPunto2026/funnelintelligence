@@ -1245,166 +1245,169 @@ function downloadPipelinePDF() {
     recs.push("<strong>Escalar Adquisición:</strong> Conversión a cita excelente (" + fmtPct(tasaAgendamiento) + "). Recomendamos aumentar el presupuesto en las campañas de Meta Ads.");
   }
   if (tasaInteres < 0.4) {
-    recs.push("<strong>Ajuste de Creativos:</strong> La tasa de interés inicial es del " + fmtPct(tasaInteres) + ". Se recomienda optimizar la segmentación de Meta Ads o el copy inicial.");
-  }
+    recs.push("<strong>Ajuste de Creativos:</strong> La tasa de interé  const container = document.createElement('div');
+  container.style.padding = '20px';
+  container.innerHTML = `
+    <div style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0f172a; line-height: 1.5; background: #ffffff;">
+      <style>
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #7c3aed; padding-bottom: 16px; margin-bottom: 24px; }
+        .logo { font-size: 26px; font-weight: 900; color: #7c3aed; letter-spacing: -0.5px; }
+        .logo span { color: #0f172a; }
+        .title { font-size: 26px; font-weight: 850; margin: 0 0 6px; color: #0f172a; }
+        .subtitle { font-size: 13px; color: #64748b; margin: 0; }
+        
+        .score-card { background: #ffffff; border: 1px solid #7c3aed; border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 20px; }
+        .score-info { flex: 1; }
+        .score-info h3 { margin: 0 0 8px; font-size: 20px; color: #7c3aed; }
+        .score-info p { margin: 0; color: #475569; font-size: 13px; }
+        .score-circle { width: 80px; height: 80px; border-radius: 50%; background: #7c3aed; color: white; display: grid; place-items: center; text-align: center; font-size: 18px; font-weight: 900; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2); line-height: 1.1; flex-shrink: 0; }
+        
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .tile { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; text-align: center; }
+        .tile-val { font-size: 26px; font-weight: 800; color: #7c3aed; margin-bottom: 4px; }
+        .tile-lbl { font-size: 11px; color: #475569; text-transform: uppercase; font-weight: 600; }
+        .tile-sub { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+        
+        .section-title { font-size: 16px; font-weight: 700; margin-top: 24px; margin-bottom: 12px; border-left: 4px solid #7c3aed; padding-left: 10px; color: #0f172a; }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+        th { text-align: left; padding: 10px 12px; background: #faf5ff; font-size: 11px; text-transform: uppercase; color: #7c3aed; border-bottom: 2px solid #e9d5ff; }
+        td { padding: 10px 12px; border-bottom: 1px solid #f3e8ff; font-size: 13px; }
+        
+        .recs { background: #ffffff; border: 1px solid #e9d5ff; border-radius: 16px; padding: 20px; }
+        .recs h2 { border: 0; padding: 0; margin-top: 0; color: #7c3aed; font-size: 16px; margin-bottom: 12px; }
+        .recs ul { margin: 0; padding-left: 20px; }
+        .recs li { margin-bottom: 8px; font-size: 13px; color: #334155; line-height: 1.5; }
+        
+        .footer { text-align: center; margin-top: 40px; font-size: 10px; color: #94a3b8; border-top: 1px solid #f3e8ff; padding-top: 16px; }
+      </style>
+      
+      <div class="header">
+        <div>
+          <h1 class="title">Reporte Leadtion - ${c.client}</h1>
+          <p class="subtitle">Análisis Operativo del Pipeline Comercial · <strong>${periodLabel}</strong></p>
+        </div>
+        <div class="logo">Lead<span>tion</span></div>
+      </div>
 
-  const printWindow = window.open('', '_blank');
-  printWindow.document.write(`
-    <html>
-      <head>
-        <title>Reporte Leadtion - ${c.client}</title>
-        <style>
-          @page { size: auto; margin: 1.6cm; }
-          body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0f172a; padding: 0; margin: 0; line-height: 1.5; background: #ffffff; }
-          .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #7c3aed; padding-bottom: 16px; margin-bottom: 24px; }
-          .logo { font-size: 26px; font-weight: 900; color: #7c3aed; letter-spacing: -0.5px; }
-          .logo span { color: #0f172a; }
-          .title { font-size: 26px; font-weight: 850; margin: 0 0 6px; color: #0f172a; }
-          .subtitle { font-size: 13px; color: #64748b; margin: 0; }
-          
-          .score-card { background: #ffffff; border: 1px solid #7c3aed; border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 20px; page-break-inside: avoid; break-inside: avoid; }
-          .score-info { flex: 1; }
-          .score-info h3 { margin: 0 0 8px; font-size: 20px; color: #7c3aed; }
-          .score-info p { margin: 0; color: #475569; font-size: 13px; }
-          .score-circle { width: 80px; height: 80px; border-radius: 50%; background: #7c3aed; color: white; display: grid; place-items: center; text-align: center; font-size: 18px; font-weight: 900; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2); line-height: 1.1; flex-shrink: 0; }
-          
-          .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; page-break-inside: avoid; break-inside: avoid; }
-          .tile { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; text-align: center; }
-          .tile-val { font-size: 26px; font-weight: 800; color: #7c3aed; margin-bottom: 4px; }
-          .tile-lbl { font-size: 11px; color: #475569; text-transform: uppercase; font-weight: 600; }
-          .tile-sub { font-size: 11px; color: #94a3b8; margin-top: 4px; }
-          
-          .section-title { font-size: 16px; font-weight: 700; margin-top: 24px; margin-bottom: 12px; border-left: 4px solid #7c3aed; padding-left: 10px; color: #0f172a; page-break-after: avoid; break-after: avoid; }
-          
-          table { width: 100%; border-collapse: collapse; margin-bottom: 24px; page-break-inside: avoid; break-inside: avoid; }
-          th { text-align: left; padding: 10px 12px; background: #faf5ff; font-size: 11px; text-transform: uppercase; color: #7c3aed; border-bottom: 2px solid #e9d5ff; }
-          td { padding: 10px 12px; border-bottom: 1px solid #f3e8ff; font-size: 13px; }
-          
-          .recs { background: #ffffff; border: 1px solid #e9d5ff; border-radius: 16px; padding: 20px; page-break-inside: avoid; break-inside: avoid; }
-          .recs h2 { border: 0; padding: 0; margin-top: 0; color: #7c3aed; font-size: 16px; margin-bottom: 12px; }
-          .recs ul { margin: 0; padding-left: 20px; }
-          .recs li { margin-bottom: 8px; font-size: 13px; color: #334155; line-height: 1.5; }
-          
-          .footer { text-align: center; margin-top: 40px; font-size: 10px; color: #94a3b8; border-top: 1px solid #f3e8ff; padding-top: 16px; page-break-inside: avoid; break-inside: avoid; }
-        </style>
-      </head>
-      <body>
-        <div class="header">
+      <div class="score-card">
+        <div class="score-info">
+          <h3>Diagnóstico General: ${c.engine_category || c.category}</h3>
+          <p style="margin-bottom: 12px;">Total Leads en Periodo: <strong>${fmtNum(totalLeads)} leads</strong> · Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong></p>
+          <div style="padding-top: 12px; border-top: 1px dashed #e2e8f0; font-size: 13px; color: #334155; text-align: justify; line-height: 1.6;">
+            ${(() => {
+              const catName = c.engine_category || c.category || "";
+              const normalized = catName.toLowerCase().trim();
+              const score = activeScore(c);
+              if (normalized.includes('elite')) {
+                return `El cliente se encuentra clasificado en la categoría <strong>Elite</strong> con una calificación de ${score}/100. Esto indica que el funnel de ventas mantiene un desempeño sobresaliente, caracterizado por una alta tasa de agendamiento y transiciones fluidas entre etapas. Las interacciones iniciales se convierten eficazmente en oportunidades concretas, demostrando un acoplamiento óptimo entre las campañas de adquisición y la gestión del equipo comercial. El enfoque primordial en esta etapa es sostener y escalar este volumen operativo de manera controlada.`;
+              }
+              if (normalized.includes('healthy') || normalized.includes('saludable')) {
+                return `El cliente se encuentra clasificado en la categoría <strong>Healthy</strong> con una calificación de ${score}/100. Esta calificación refleja un embudo comercial estable, donde la mayoría de los leads progresan de forma regular y predecible. Si bien la operación comercial avanza sin fricciones críticas, existen pequeñas áreas de mejora específicas para maximizar el retorno de inversión, principalmente a través del ajuste fino de guiones comerciales o la reactivación de contactos estancados. Se trata de una base sólida orientada al crecimiento y refinamiento continuo.`;
+              }
+              if (normalized.includes('emerging') || normalized.includes('emergente')) {
+                return `El cliente se encuentra clasificado en la categoría <strong>Emerging</strong> con una calificación de ${score}/100. Esta posición indica que el flujo de adquisición y conversión comercial cuenta con un potencial latente, pero registra etapas con oportunidades claras de optimización. Típicamente, el embudo presenta una tracción inicial favorable que se ralentiza debido a tiempos de respuesta comercial mejorables o al enfriamiento de prospectos en el seguimiento intermedio. El diagnóstico sugiere que implementar ajustes estructurados en el seguimiento aumentará el volumen final de agendamientos sin requerir mayor pauta publicitaria.`;
+              }
+              return `El cliente se encuentra clasificado en la categoría <strong>Broken</strong> con una calificación de ${score}/100. Esto señala la presencia de desviaciones significativas o interrupciones en el flujo de progresión comercial de los leads. Comúnmente, se experimenta un volumen alto de interés inicial que no logra consolidarse en conversaciones activas o agendamientos debido a cuellos de botella en la atención de dudas o altas tasas de abandono. Es imperativo revisar y reestructurar el protocolo de contacto comercial inicial para asegurar que la inversión publicitaria no se disipe en las etapas de entrada.`;
+            })()}
+          </div>
+        </div>
+        <div class="score-circle">
           <div>
-            <h1 class="title">Reporte Leadtion - ${c.client}</h1>
-            <p class="subtitle">Análisis Operativo del Pipeline Comercial · <strong>${periodLabel}</strong></p>
-          </div>
-          <div class="logo">Lead<span>tion</span></div>
-        </div>
-
-        <div class="score-card">
-          <div class="score-info">
-            <h3>Diagnóstico General: ${c.engine_category || c.category}</h3>
-            <p style="margin-bottom: 12px;">Total Leads en Periodo: <strong>${fmtNum(totalLeads)} leads</strong> · Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong></p>
-            <div style="padding-top: 12px; border-top: 1px dashed #e2e8f0; font-size: 13px; color: #334155; text-align: justify; line-height: 1.6;">
-              ${(() => {
-                const catName = c.engine_category || c.category || "";
-                const normalized = catName.toLowerCase().trim();
-                const score = activeScore(c);
-                if (normalized.includes('elite')) {
-                  return `El cliente se encuentra clasificado en la categoría <strong>Elite</strong> con una calificación de ${score}/100. Esto indica que el funnel de ventas mantiene un desempeño sobresaliente, caracterizado por una alta tasa de agendamiento y transiciones fluidas entre etapas. Las interacciones iniciales se convierten eficazmente en oportunidades concretas, demostrando un acoplamiento óptimo entre las campañas de adquisición y la gestión del equipo comercial. El enfoque primordial en esta etapa es sostener y escalar este volumen operativo de manera controlada.`;
-                }
-                if (normalized.includes('healthy') || normalized.includes('saludable')) {
-                  return `El cliente se encuentra clasificado en la categoría <strong>Healthy</strong> con una calificación de ${score}/100. Esta calificación refleja un embudo comercial estable, donde la mayoría de los leads progresan de forma regular y predecible. Si bien la operación comercial avanza sin fricciones críticas, existen pequeñas áreas de mejora específicas para maximizar el retorno de inversión, principalmente a través del ajuste fino de guiones comerciales o la reactivación de contactos estancados. Se trata de una base sólida orientada al crecimiento y refinamiento continuo.`;
-                }
-                if (normalized.includes('emerging') || normalized.includes('emergente')) {
-                  return `El cliente se encuentra clasificado en la categoría <strong>Emerging</strong> con una calificación de ${score}/100. Esta posición indica que el flujo de adquisición y conversión comercial cuenta con un potencial latente, pero registra etapas con oportunidades claras de optimización. Típicamente, el embudo presenta una tracción inicial favorable que se ralentiza debido a tiempos de respuesta comercial mejorables o al enfriamiento de prospectos en el seguimiento intermedio. El diagnóstico sugiere que implementar ajustes estructurados en el seguimiento aumentará el volumen final de agendamientos sin requerir mayor pauta publicitaria.`;
-                }
-                return `El cliente se encuentra clasificado en la categoría <strong>Broken</strong> con una calificación de ${score}/100. Esto señala la presencia de desviaciones significativas o interrupciones en el flujo de progresión comercial de los leads. Comúnmente, se experimenta un volumen alto de interés inicial que no logra consolidarse en conversaciones activas o agendamientos debido a cuellos de botella en la atención de dudas o altas tasas de abandono. Es imperativo revisar y reestructurar el protocolo de contacto comercial inicial para asegurar que la inversión publicitaria no se disipe en las etapas de entrada.`;
-              })()}
-            </div>
-          </div>
-          <div class="score-circle">
-            <div>
-              <span style="font-size: 24px; font-weight: 900; display: block;">${activeScore(c)}</span>
-              <span style="font-size: 10px; font-weight: 500; opacity: 0.85; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1px; display: block; margin-top: 1px;">de 100</span>
-            </div>
+            <span style="font-size: 24px; font-weight: 900; display: block;">${activeScore(c)}</span>
+            <span style="font-size: 10px; font-weight: 500; opacity: 0.85; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1px; display: block; margin-top: 1px;">de 100</span>
           </div>
         </div>
+      </div>
 
-        <h2 class="section-title">Indicadores Clave del Cliente</h2>
-        <div class="grid">
-          <div class="tile">
-            <div class="tile-val">${fmtPct(tasaInteres)}</div>
-            <div class="tile-lbl">Tasa de Interés (Dudas)</div>
-            <div class="tile-sub">${fmtNum(atenderDudas.value)} de ${fmtNum(totalLeads)} leads</div>
-          </div>
-          <div class="tile">
-            <div class="tile-val">${fmtPct(tasaAbandono)}</div>
-            <div class="tile-lbl">Tasa de Abandono</div>
-            <div class="tile-sub">${fmtNum(dejoResponder.value)} de ${fmtNum(totalLeads)} leads</div>
-          </div>
-          <div class="tile">
-            <div class="tile-val">${fmtPct(tasaAgendamiento)}</div>
-            <div class="tile-lbl">Tasa de Agendamiento</div>
-            <div class="tile-sub">${fmtNum(agendadoObj.value)} de ${fmtNum(totalLeads)} leads</div>
-          </div>
-          <div class="tile">
-            <div class="tile-val">${fmtPct(tasaFuturo)}</div>
-            <div class="tile-lbl">Tasa Leads a Futuro</div>
-            <div class="tile-sub">${fmtNum(leadFuturo.value)} de ${fmtNum(totalLeads)} leads</div>
-          </div>
+      <h2 class="section-title">Indicadores Clave del Cliente</h2>
+      <div class="grid">
+        <div class="tile">
+          <div class="tile-val">${fmtPct(tasaInteres)}</div>
+          <div class="tile-lbl">Tasa de Interés (Dudas)</div>
+          <div class="tile-sub">${fmtNum(atenderDudas.value)} de ${fmtNum(totalLeads)} leads</div>
         </div>
-
-        <h2 class="section-title">Avance del Pipeline (Distribución y Comparativo)</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Etapa del Pipeline</th>
-              <th>Leads en Etapa</th>
-              <th>% del Cliente</th>
-              <th>Media Agencia</th>
-              <th>Comparativo (Desviación)</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${p.stages.map(s => {
-              const clientPct = totalLeads ? s.value / totalLeads : 0;
-              const agencyPct = getAgencyStagePct(s.key);
-              const deviation = clientPct - agencyPct;
-              const devColor = deviation >= 0 ? '#16a34a' : '#dc2626';
-              const devTxt = (deviation >= 0 ? '+' : '') + fmtPct(deviation);
-              return `
-                <tr>
-                  <td><strong>${s.label}</strong></td>
-                  <td>${fmtNum(s.value)} leads</td>
-                  <td><strong>${fmtPct(clientPct)}</strong></td>
-                  <td>${fmtPct(agencyPct)}</td>
-                  <td><strong style="color: ${devColor};">${devTxt}</strong></td>
-                </tr>
-              `;
-            }).join('')}
-          </tbody>
-        </table>
-
-        <div class="recs">
-          <h2>Acciones Recomendadas & Próximos Pasos</h2>
-          <ul>
-            ${recs.map(r => `<li>${r}</li>`).join('')}
-          </ul>
+        <div class="tile">
+          <div class="tile-val">${fmtPct(tasaAbandono)}</div>
+          <div class="tile-lbl">Tasa de Abandono</div>
+          <div class="tile-sub">${fmtNum(dejoResponder.value)} de ${fmtNum(totalLeads)} leads</div>
         </div>
-
-        <div class="footer">
-          Leadtion Funnel Intelligence · Reporte de Desempeño Comercial Confidencial
+        <div class="tile">
+          <div class="tile-val">${fmtPct(tasaAgendamiento)}</div>
+          <div class="tile-lbl">Tasa de Agendamiento</div>
+          <div class="tile-sub">${fmtNum(agendadoObj.value)} de ${fmtNum(totalLeads)} leads</div>
         </div>
+        <div class="tile">
+          <div class="tile-val">${fmtPct(tasaFuturo)}</div>
+          <div class="tile-lbl">Tasa Leads a Futuro</div>
+          <div class="tile-sub">${fmtNum(leadFuturo.value)} de ${fmtNum(totalLeads)} leads</div>
+        </div>
+      </div>
 
-        <script>
-          window.onload = function() {
-            setTimeout(function() {
-              window.print();
-            }, 500);
-          }
-        </script>
-      </body>
-    </html>
-  `);
-  printWindow.document.close();
+      <h2 class="section-title">Avance del Pipeline (Distribución y Comparativo)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Etapa del Pipeline</th>
+            <th>Leads en Etapa</th>
+            <th>% del Cliente</th>
+            <th>Media Agencia</th>
+            <th>Comparativo (Desviación)</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${p.stages.map(s => {
+            const clientPct = totalLeads ? s.value / totalLeads : 0;
+            const agencyPct = getAgencyStagePct(s.key);
+            const deviation = clientPct - agencyPct;
+            const devColor = deviation >= 0 ? '#16a34a' : '#dc2626';
+            const devTxt = (deviation >= 0 ? '+' : '') + fmtPct(deviation);
+            return `
+              <tr>
+                <td><strong>${s.label}</strong></td>
+                <td>${fmtNum(s.value)} leads</td>
+                <td><strong>${fmtPct(clientPct)}</strong></td>
+                <td>${fmtPct(agencyPct)}</td>
+                <td><strong style="color: ${devColor};">${devTxt}</strong></td>
+              </tr>
+            `;
+          }).join('')}
+        </tbody>
+      </table>
+
+      <div class="recs">
+        <h2>Acciones Recomendadas & Próximos Pasos</h2>
+        <ul>
+          ${recs.map(r => `<li>${r}</li>`).join('')}
+        </ul>
+      </div>
+
+      <div class="footer">
+        Leadtion Funnel Intelligence · Reporte de Desempeño Comercial Confidencial
+      </div>
+    </div>
+  `;
+
+  const opt = {
+    margin:       15,
+    filename:     `Reporte_Leadtion_${c.client.replace(/\s+/g, '_')}.pdf`,
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak:    { mode: ['avoid-all', 'css'] }
+  };
+
+  if (typeof html2pdf !== 'undefined') {
+    html2pdf().set(opt).from(container).save();
+  } else {
+    // Fallback simple si no ha cargado el script
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`<html><head><title>Reporte Leadtion - ${c.client}</title></head><body>${container.innerHTML}</body></html>`);
+    printWindow.document.close();
+    setTimeout(() => { printWindow.print(); }, 500);
+  }
 }
+
 
 function funnelIntel(c){
   const fi=fiBy(c.client);
