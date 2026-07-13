@@ -40,9 +40,9 @@
 @media(max-width:720px){.pipeline-summary-strip,.pipeline-analysis-grid{grid-template-columns:1fr}}
 
 
-.progression-board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,245px);gap:14px;align-items:start;overflow-x:auto;padding-bottom:16px}
-.progress-stage{background:var(--panel);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:20px;min-height:310px;position:relative;overflow:hidden}
-.progress-stage:not(:last-child):after{content:"→";position:absolute;right:-15px;top:44%;color:#64748b;font-size:22px;z-index:2}
+.progression-board{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;align-items:start;padding-bottom:16px}
+.progress-stage{background:var(--panel);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:20px;min-height:220px;position:relative;overflow:hidden}
+.progress-stage:not(:last-child):after{content:"→";position:absolute;right:-12px;top:44%;color:#51627e;font-size:18px;z-index:2}
 .progress-stage .stage-top{border-top:4px solid #64748b;background:#0d1424;padding:14px;border-bottom:1px solid var(--line)}
 .progress-stage.green .stage-top{border-top-color:var(--green)}
 .progress-stage.yellow .stage-top{border-top-color:var(--yellow)}
@@ -73,7 +73,7 @@
 .stage-loss strong{word-break:break-word}
 .pipeline-analysis-grid .insight p{line-height:1.45}
 @media(max-width:720px){
-  .progression-board{grid-auto-columns:minmax(260px,1fr)}
+  .progression-board{grid-template-columns:1fr}
   .progress-stage:not(:last-child):after{display:none}
 }
 

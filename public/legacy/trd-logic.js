@@ -2156,50 +2156,39 @@ function buildFunnelIntelligence(clients){
 function buildProgression(filtered,clients){
   return clients.map(c=>{
     const leads=filtered.filter(l=>l.client===c.client);
-    
-    // Core automated stages that should always exist:
     const coreKeys = ['lead nuevo', 'atender dudas', 'dejo de responder-seguimiento', 'agendado', 'lead futuro'];
-    
-    // Find custom stages in client's leads
-    const customStagesSet = new Set();
-    leads.forEach(l => {
-      if (l.status && !coreKeys.includes(l.status)) {
-        customStagesSet.add(l.status);
-      }
-    });
-    const customStages = Array.from(customStagesSet).sort();
 
-    const allStagesDefs = [];
-    allStagesDefs.push(["lead_nuevo", "Lead Nuevo", "Leads ingresados al sistema.", false]);
-    
-    customStages.forEach(cs => {
-      const key = "custom_" + cs.toLowerCase().replace(/[^a-z0-9]/g, "_");
-      allStagesDefs.push([key, cs, "Etapa personalizada del cliente (manual).", true, cs]);
-    });
-    
-    allStagesDefs.push(["atender_dudas", "Atender Dudas", "Leads que interactúan o tienen consultas.", false]);
-    allStagesDefs.push(["dejo_responder", "Dejó de Responder - Seguimiento", "Leads en seguimiento o inactivos.", false]);
-    allStagesDefs.push(["agendado", "Agendado", "Citas agendadas confirmadas.", false]);
-    allStagesDefs.push(["lead_futuro", "Lead Futuro", "Leads calificados para re-contacto a futuro.", false]);
+    const allStagesDefs = [
+      ["lead_nuevo", "Lead Nuevo", "Leads ingresados al sistema.", false],
+      ["custom_client_stage", "Etapa personalizada del cliente", "Etapas manuales personalizadas por el cliente.", true],
+      ["atender_dudas", "Atender Dudas", "Leads que interactúan o tienen consultas.", false],
+      ["dejo_responder", "Dejó de Responder - Seguimiento", "Leads en seguimiento o inactivos.", false],
+      ["agendado", "Agendado", "Citas agendadas confirmadas.", false],
+      ["lead_futuro", "Lead Futuro", "Leads calificados para re-contacto a futuro.", false]
+    ];
+
+    const getStageIndex = (status) => {
+      if (!status) return 0;
+      const norm = status.toLowerCase().trim();
+      if (norm === 'lead nuevo') return 0;
+      if (norm === 'atender dudas') return 2;
+      if (norm === 'dejo de responder-seguimiento') return 3;
+      if (norm === 'agendado') return 4;
+      if (norm === 'lead futuro') return 5;
+      return 1; // custom client stage
+    };
 
     const reached = { meta: c.meta_results };
-    allStagesDefs.forEach(([key, label, desc, isCustom, rawStatus]) => {
-      if (isCustom) {
-        reached[key] = leads.filter(l => l.status === rawStatus).length;
-      } else {
-        const statusMap = {
-          lead_nuevo: 'lead nuevo',
-          atender_dudas: 'atender dudas',
-          dejo_responder: 'dejo de responder-seguimiento',
-          agendado: 'agendado',
-          lead_futuro: 'lead futuro'
-        };
-        reached[key] = leads.filter(l => l.status === statusMap[key]).length;
-      }
+    allStagesDefs.forEach(([key, label, desc, isCustom], idx) => {
+      const matchingLeads = leads.filter(l => {
+        const leadStageIdx = getStageIndex(l.status);
+        return leadStageIdx >= idx || idx === 0;
+      });
+      reached[key] = matchingLeads.length;
     });
 
     let prev=null;
-    const stages=allStagesDefs.map(([key,label,description,isCustom,rawStatus])=>{
+    const stages=allStagesDefs.map(([key,label,description,isCustom])=>{
       const value=reached[key];
       const from_previous=prev===null?1:pct2(value,prev);
       const lost=prev===null?0:Math.max(0,prev-value);
