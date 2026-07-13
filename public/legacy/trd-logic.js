@@ -1252,42 +1252,46 @@ function downloadPipelinePDF() {
   printWindow.document.write(`
     <html>
       <head>
-        <title>Leadtion Reporte - ${c.client}</title>
+        <title>Reporte Leadtion - ${c.client}</title>
         <style>
-          body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0f172a; padding: 40px; margin: 0; line-height: 1.5; background: #ffffff; }
-          .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #7c3aed; padding-bottom: 20px; margin-bottom: 30px; }
+          @page { size: auto; margin: 1.6cm; }
+          body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0f172a; padding: 0; margin: 0; line-height: 1.5; background: #ffffff; }
+          .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #7c3aed; padding-bottom: 16px; margin-bottom: 24px; }
           .logo { font-size: 26px; font-weight: 900; color: #7c3aed; letter-spacing: -0.5px; }
           .logo span { color: #0f172a; }
-          .title { font-size: 28px; font-weight: 850; margin: 0 0 6px; color: #0f172a; }
-          .subtitle { font-size: 14px; color: #64748b; margin: 0; }
-          .score-card { background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; page-break-inside: avoid; break-inside: avoid; }
-          .score-info h3 { margin: 0 0 6px; font-size: 20px; color: #5b21b6; }
-          .score-info p { margin: 0; color: #64748b; font-size: 13px; }
-          .score-circle { width: 70px; height: 70px; border-radius: 50%; background: #7c3aed; color: white; display: grid; place-items: center; font-size: 24px; font-weight: 800; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25); }
-          .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 30px; page-break-inside: avoid; break-inside: avoid; }
-          .tile { background: #fcfbfe; border: 1px solid #f3e8ff; border-radius: 12px; padding: 16px; text-align: center; }
-          .tile-val { font-size: 26px; font-weight: 800; color: #5b21b6; margin-bottom: 4px; }
+          .title { font-size: 26px; font-weight: 850; margin: 0 0 6px; color: #0f172a; }
+          .subtitle { font-size: 13px; color: #64748b; margin: 0; }
+          
+          .score-card { background: #ffffff; border: 1px solid #7c3aed; border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; gap: 20px; page-break-inside: avoid; break-inside: avoid; }
+          .score-info { flex: 1; }
+          .score-info h3 { margin: 0 0 8px; font-size: 20px; color: #7c3aed; }
+          .score-info p { margin: 0; color: #475569; font-size: 13px; }
+          .score-circle { width: 80px; height: 80px; border-radius: 50%; background: #7c3aed; color: white; display: grid; place-items: center; text-align: center; font-size: 18px; font-weight: 900; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2); line-height: 1.1; flex-shrink: 0; }
+          
+          .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; page-break-inside: avoid; break-inside: avoid; }
+          .tile { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; text-align: center; }
+          .tile-val { font-size: 26px; font-weight: 800; color: #7c3aed; margin-bottom: 4px; }
           .tile-lbl { font-size: 11px; color: #475569; text-transform: uppercase; font-weight: 600; }
           .tile-sub { font-size: 11px; color: #94a3b8; margin-top: 4px; }
-          .section-title { font-size: 18px; font-weight: 700; margin-top: 30px; margin-bottom: 16px; border-left: 4px solid #7c3aed; padding-left: 10px; color: #0f172a; page-break-after: avoid; break-after: avoid; }
-          table { width: 100%; border-collapse: collapse; margin-bottom: 30px; page-break-inside: avoid; break-inside: avoid; }
-          th { text-align: left; padding: 12px; background: #f5f3ff; font-size: 12px; text-transform: uppercase; color: #5b21b6; border-bottom: 2px solid #ddd6fe; }
-          td { padding: 12px; border-bottom: 1px solid #f3e8ff; font-size: 13px; }
-          .recs { background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 16px; padding: 20px; page-break-inside: avoid; break-inside: avoid; }
-          .recs h2 { border: 0; padding: 0; margin-top: 0; color: #5b21b6; font-size: 18px; }
+          
+          .section-title { font-size: 16px; font-weight: 700; margin-top: 24px; margin-bottom: 12px; border-left: 4px solid #7c3aed; padding-left: 10px; color: #0f172a; page-break-after: avoid; break-after: avoid; }
+          
+          table { width: 100%; border-collapse: collapse; margin-bottom: 24px; page-break-inside: avoid; break-inside: avoid; }
+          th { text-align: left; padding: 10px 12px; background: #faf5ff; font-size: 11px; text-transform: uppercase; color: #7c3aed; border-bottom: 2px solid #e9d5ff; }
+          td { padding: 10px 12px; border-bottom: 1px solid #f3e8ff; font-size: 13px; }
+          
+          .recs { background: #ffffff; border: 1px solid #e9d5ff; border-radius: 16px; padding: 20px; page-break-inside: avoid; break-inside: avoid; }
+          .recs h2 { border: 0; padding: 0; margin-top: 0; color: #7c3aed; font-size: 16px; margin-bottom: 12px; }
           .recs ul { margin: 0; padding-left: 20px; }
-          .recs li { margin-bottom: 10px; font-size: 13px; color: #4b5563; line-height: 1.5; }
-          .footer { text-align: center; margin-top: 50px; font-size: 11px; color: #94a3b8; border-top: 1px solid #f3e8ff; padding-top: 20px; page-break-inside: avoid; break-inside: avoid; }
-          @media print {
-            body { padding: 0; }
-            button { display: none; }
-          }
+          .recs li { margin-bottom: 8px; font-size: 13px; color: #334155; line-height: 1.5; }
+          
+          .footer { text-align: center; margin-top: 40px; font-size: 10px; color: #94a3b8; border-top: 1px solid #f3e8ff; padding-top: 16px; page-break-inside: avoid; break-inside: avoid; }
         </style>
       </head>
       <body>
         <div class="header">
           <div>
-            <h1 class="title">${c.client}</h1>
+            <h1 class="title">Reporte Leadtion - ${c.client}</h1>
             <p class="subtitle">Análisis Operativo del Pipeline Comercial · <strong>${periodLabel}</strong></p>
           </div>
           <div class="logo">Lead<span>tion</span></div>
@@ -1296,9 +1300,20 @@ function downloadPipelinePDF() {
         <div class="score-card">
           <div class="score-info">
             <h3>Diagnóstico General: ${c.engine_category || c.category}</h3>
-            <p>Total Leads en Periodo: <strong>${fmtNum(totalLeads)} leads</strong> · Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong></p>
+            <p style="margin-bottom: 12px;">Total Leads en Periodo: <strong>${fmtNum(totalLeads)} leads</strong> · Principal oportunidad: <strong>${engineLabels[c.engine_bottleneck] || c.main_problem}</strong></p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; padding-top: 12px; border-top: 1px dashed #e2e8f0; font-size: 11px; color: #64748b;">
+              <div><span style="font-weight: 700; color: #16a34a;">🟢 Elite (85-100):</span> Desempeño óptimo de conversión.</div>
+              <div><span style="font-weight: 700; color: #6d28d9;">🟣 Healthy (70-84):</span> Flujo de leads estable y saludable.</div>
+              <div><span style="font-weight: 700; color: #d97706;">🟡 Emerging (50-69):</span> Oportunidades claras de optimización.</div>
+              <div><span style="font-weight: 700; color: #dc2626;">🔴 Broken (&lt;50):</span> Fugas severas que requieren acción inmediata.</div>
+            </div>
           </div>
-          <div class="score-circle">${activeScore(c)}</div>
+          <div class="score-circle">
+            <div>
+              <span style="font-size: 24px; font-weight: 900; display: block;">${activeScore(c)}</span>
+              <span style="font-size: 10px; font-weight: 500; opacity: 0.85; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1px; display: block; margin-top: 1px;">de 100</span>
+            </div>
+          </div>
         </div>
 
         <h2 class="section-title">Indicadores Clave del Cliente</h2>
@@ -1364,7 +1379,7 @@ function downloadPipelinePDF() {
         </div>
 
         <div class="footer">
-          Leadtion Funnel Intelligence · Reporte de Desempeño Comercial Confidencial · ${new Date().toLocaleDateString('es-ES')}
+          Leadtion Funnel Intelligence · Reporte de Desempeño Comercial Confidencial
         </div>
 
         <script>
