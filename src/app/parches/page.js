@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import './parches.css';
 
-const SLIDES_COUNT = 10;
+const SLIDES_COUNT = 11;
 
 export default function ParchesPresentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -321,6 +321,7 @@ export default function ParchesPresentation() {
                   </div>
                 </div>
               </div>
+              
               {/* Right Column: Embedded Instagram Reel */}
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
                 <iframe 
@@ -338,10 +339,111 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 7: ANATOMÍA DE UN VIDEO VIRAL */}
+        {/* NEW SLIDE 7: FLYWHEEL / PROCESO DE CREACIÓN DE CONTENIDO */}
         <div className={`parches-slide ${currentSlide === 6 ? 'active' : ''}`}>
+          <div className="parches-glass-card animate-fade-in" style={{ padding: '45px 50px', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+            <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 06. WORKFLOW DE CREACIÓN</span>
+            
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <h2 className="parches-slide-title" style={{ fontSize: '42px', margin: 0 }}>Flywheel Creativo</h2>
+              <span className="parches-footer-tip" style={{ color: 'var(--neon-emerald)' }}>DEMO EN VIVO // DE LA IDEA AL POST</span>
+            </div>
+
+            {/* Cyclical Flywheel Timeline Grid */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '25px', width: '100%' }}>
+              
+              {/* Steps row 1 (1 to 4) */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr auto 1fr auto 1fr', alignItems: 'center', gap: '10px' }}>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 1</div>
+                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>💡 IDEA</div>
+                </div>
+                <div style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
+                
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 2</div>
+                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>🪐 ANTIGRAVITY</div>
+                </div>
+                <div style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
+
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 3</div>
+                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>🍌 NANO BANANA</div>
+                </div>
+                <div style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
+
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 4</div>
+                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>⚡ FLOW (VIDEO)</div>
+                </div>
+              </div>
+
+              {/* Steps row 2 (5 to 7) + Loop Connector */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1.4fr auto 1fr auto 1fr auto 1fr', alignItems: 'center', gap: '10px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--neon-purple)', fontSize: '16px', fontWeight: 'bold', fontFamily: 'var(--font-mono)' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transform: 'rotate(90deg)' }}><path d="M17 18H7a4 4 0 0 1-4-4V5" /><polyline points="3 8 7 4 11 8" /></svg>
+                  <span>IA GENERATION</span>
+                </div>
+                <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
+
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 5</div>
+                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>🎬 ENSAMBLE</div>
+                </div>
+                <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
+
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 6</div>
+                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>✂️ CAPCUT</div>
+                </div>
+                <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
+
+                <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.25)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-emerald)' }}>PASO 7</div>
+                  <div style={{ fontSize: '20px', fontWeight: '900', color: 'var(--neon-emerald)', marginTop: '4px' }}>🚀 PUBLICAR</div>
+                </div>
+              </div>
+
+              {/* Horizontal Tech Stack Bar */}
+              <div style={{ marginTop: '20px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '20px', padding: '15px 30px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--text-secondary)', fontWeight: 'bold' }}>⚡ TECH STACK //</div>
+                <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
+                  {/* YouTube/Instagram */}
+                  <span style={{ fontSize: '14px', fontWeight: '800', color: '#fff', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>
+                    Ideas
+                  </span>
+                  {/* Antigravity */}
+                  <span style={{ fontSize: '14px', fontWeight: '800', color: 'var(--neon-purple)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /><path d="M2 12h20" /></svg>
+                    Antigravity
+                  </span>
+                  {/* Nano Banana */}
+                  <span style={{ fontSize: '14px', fontWeight: '800', color: 'var(--neon-emerald)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 0 5.5-2 2-3.5 1-8 3.5A7 7 0 0 1 11 20z" /><path d="M19 2L9.8 11.2" /></svg>
+                    Nano Banana
+                  </span>
+                  {/* Google Flow */}
+                  <span style={{ fontSize: '14px', fontWeight: '800', color: 'var(--neon-cyan)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+                    Google Flow
+                  </span>
+                  {/* CapCut */}
+                  <span style={{ fontSize: '14px', fontWeight: '800', color: 'var(--neon-purple)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" /><line x1="7" y1="2" x2="7" y2="22" /><line x1="17" y1="2" x2="17" y2="22" /><line x1="2" y1="12" x2="22" y2="12" /><line x1="2" y1="7" x2="7" y2="7" /><line x1="2" y1="17" x2="7" y2="17" /><line x1="17" y1="17" x2="22" y2="17" /><line x1="17" y1="7" x2="22" y2="7" /></svg>
+                    CapCut
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        {/* SLIDE 8: ANATOMÍA DE UN VIDEO VIRAL */}
+        <div className={`parches-slide ${currentSlide === 7 ? 'active' : ''}`}>
           <div className="parches-glass-card animate-fade-in" style={{ padding: '60px' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 06. ESTRUCTURACIÓN DE GUION</span>
+            <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 07. ESTRUCTURACIÓN DE GUION</span>
             <h2 className="parches-slide-title" style={{ fontSize: '44px', marginBottom: '40px' }}>Anatomía del Video (30 Segundos)</h2>
             
             <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '30px', width: '100%' }}>
@@ -360,10 +462,10 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 8: 3 FRAMEWORKS DE INDUSTRIA */}
-        <div className={`parches-slide ${currentSlide === 7 ? 'active' : ''}`}>
+        {/* SLIDE 9: 3 FRAMEWORKS DE INDUSTRIA */}
+        <div className={`parches-slide ${currentSlide === 8 ? 'active' : ''}`}>
           <div className="animate-fade-in" style={{ width: '100%' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 07. MOLDES DE INDUSTRIA</span>
+            <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 08. MOLDES DE INDUSTRIA</span>
             <h2 className="parches-slide-title" style={{ fontSize: '42px', marginBottom: '45px' }}>3 Frameworks de Contenido</h2>
             
             <div className="parches-grid-3">
@@ -388,10 +490,10 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 9: DINAMICA INTERACTIVA - EL CONSULTORIO */}
-        <div className={`parches-slide ${currentSlide === 8 ? 'active' : ''}`}>
+        {/* SLIDE 10: DINAMICA INTERACTIVA - EL CONSULTORIO */}
+        <div className={`parches-slide ${currentSlide === 9 ? 'active' : ''}`}>
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 08. INTERACCIÓN Y DEBATE</span>
+            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 09. INTERACCIÓN Y DEBATE</span>
             <h2 className="parches-slide-title" style={{ textAlign: 'center', fontSize: '46px' }}>El Consultorio en Vivo</h2>
             
             {/* Question Card Box */}
@@ -419,12 +521,12 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 10: EL REGALO */}
-        <div className={`parches-slide ${currentSlide === 9 ? 'active' : ''}`}>
+        {/* SLIDE 11: EL REGALO */}
+        <div className={`parches-slide ${currentSlide === 10 ? 'active' : ''}`}>
           <div className="parches-grid-2-layout animate-fade-in" style={{ alignItems: 'center' }}>
             {/* Left Info Column */}
             <div style={{ textAlign: 'left' }}>
-              <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 09. CONCLUIR & REGALO</span>
+              <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 10. CONCLUIR & REGALO</span>
               <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '40px' }}>Llévate Mi Framework Viral</h2>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '25px', marginBottom: '30px' }}>
