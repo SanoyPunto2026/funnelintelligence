@@ -173,18 +173,24 @@ export default function ParchesPresentation() {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
-              {/* Two Column Profiles */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', width: '100%', maxWidth: '850px' }}>
+              {/* Three Column Results Display */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr 1fr', gap: '25px', width: '100%', maxWidth: '1050px' }}>
                 {/* Instagram Profile Card */}
-                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--neon-purple)', marginBottom: '10px', letterSpacing: '0.1em' }}>// INSTAGRAM PROFILE // @sanoypunto.app</div>
-                  <img src="/sano_instagram.png" alt="Sano & Punto Instagram Profile" style={{ width: '100%', height: 'auto', maxHeight: '350px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} />
+                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--neon-purple)', marginBottom: '10px', letterSpacing: '0.05em' }}>// INSTAGRAM // @sanoypunto.app</div>
+                  <img src="/sano_instagram.png" alt="Instagram Profile" style={{ width: '100%', height: 'auto', maxHeight: '310px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 25px rgba(0,0,0,0.4)' }} />
                 </div>
                 
+                {/* Real Meta Results Chart */}
+                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--neon-cyan)', marginBottom: '10px', letterSpacing: '0.05em' }}>// META SUITE // 25.4 MILLONES DE VISUALIZACIONES</div>
+                  <img src="/sano_results_chart.png" alt="Meta Suite Results Chart" style={{ width: '100%', height: 'auto', maxHeight: '310px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 25px rgba(0,0,0,0.4)' }} />
+                </div>
+
                 {/* Facebook Profile Card */}
-                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--neon-emerald)', marginBottom: '10px', letterSpacing: '0.1em' }}>// FACEBOOK PROFILE // Sano & Punto</div>
-                  <img src="/sano_facebook.png" alt="Sano & Punto Facebook Profile" style={{ width: '100%', height: 'auto', maxHeight: '350px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} />
+                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--neon-emerald)', marginBottom: '10px', letterSpacing: '0.05em' }}>// FACEBOOK // Sano & Punto</div>
+                  <img src="/sano_facebook.png" alt="Facebook Profile" style={{ width: '100%', height: 'auto', maxHeight: '310px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 25px rgba(0,0,0,0.4)' }} />
                 </div>
               </div>
             </div>
