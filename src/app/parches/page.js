@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import './parches.css';
 
-const SLIDES_COUNT = 9;
+const SLIDES_COUNT = 10;
 
 export default function ParchesPresentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -343,8 +343,54 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* NEW SLIDE 7: FLYWHEEL / PROCESO DE CREACIÓN DE CONTENIDO */}
+        {/* SLIDE 7: EL PROMPT MAESTRO */}
         <div className={`parches-slide ${currentSlide === 6 ? 'active' : ''}`}>
+          <div className="parches-glass-card animate-fade-in" style={{ padding: '45px 50px', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 06. INSTRUCCIÓN DEL AGENTE</span>
+            
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <h2 className="parches-slide-title" style={{ fontSize: '42px', margin: 0 }}>El Prompt Maestro</h2>
+              <span className="parches-footer-tip" style={{ color: 'var(--neon-purple)', fontWeight: 'bold' }}>FÓRMULA DE REDACCIÓN EN ANTIGRAVITY</span>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '30px', width: '100%', alignItems: 'center' }}>
+              {/* Left Column: Code/Prompt box */}
+              <div style={{ background: 'rgba(5, 5, 10, 0.8)', border: '1px solid var(--glass-border)', padding: '25px', borderRadius: '16px', fontFamily: 'var(--font-mono)', fontSize: '14px', color: '#f8fafc', overflowX: 'auto', borderLeft: '4px solid var(--neon-purple)' }}>
+                <div style={{ color: 'var(--text-muted)', marginBottom: '8px' }}># prompt_sano_y_punto.txt</div>
+                <div style={{ color: 'var(--neon-purple)' }}>ACTÚA COMO:</div>
+                <div style={{ paddingLeft: '15px', marginBottom: '12px' }}>Redactor Creativo Experto en Sano y Punto</div>
+                
+                <div style={{ color: 'var(--neon-purple)' }}>APLICA FRAMEWORK:</div>
+                <div style={{ paddingLeft: '15px', marginBottom: '12px' }}>Estructura Pixar (Gancho integrado en el cuerpo)</div>
+                
+                <div style={{ color: 'var(--neon-purple)' }}>INPUTS VARIABLES:</div>
+                <div style={{ paddingLeft: '15px', marginBottom: '12px' }}>[Alimentos / Órganos a incluir en la escena]</div>
+                
+                <div style={{ color: 'var(--neon-purple)' }}>RESTRICCIONES:</div>
+                <div style={{ paddingLeft: '15px' }}>CTA extremadamente breve (máximo 5 segundos al final)</div>
+              </div>
+
+              {/* Right Column: Key takeaways */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', padding: '20px', borderRadius: '16px' }}>
+                  <div style={{ fontSize: '28px', fontWeight: '950', color: 'var(--neon-emerald)' }}>1. Cero Creatividad</div>
+                  <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '4px' }}>La IA decide la narrativa exacta escena por escena.</div>
+                </div>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', padding: '20px', borderRadius: '16px' }}>
+                  <div style={{ fontSize: '28px', fontWeight: '950', color: 'var(--neon-cyan)' }}>2. Estructura Rígida</div>
+                  <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '4px' }}>Mantiene el estilo viral sin espacio a la improvisación.</div>
+                </div>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', padding: '20px', borderRadius: '16px' }}>
+                  <div style={{ fontSize: '28px', fontWeight: '950', color: 'var(--neon-purple)' }}>3. Output Consistente</div>
+                  <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '4px' }}>Entrega guiones listos + prompts de imágenes para cada escena.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* SLIDE 8: FLYWHEEL / PROCESO DE CREACIÓN DE CONTENIDO */}
+        <div className={`parches-slide ${currentSlide === 7 ? 'active' : ''}`}>
           <div className="parches-glass-card animate-fade-in" style={{ padding: '40px 50px', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 06. WORKFLOW DE CREACIÓN</span>
             
@@ -493,10 +539,10 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 8: DINAMICA INTERACTIVA - EL CONSULTORIO */}
-        <div className={`parches-slide ${currentSlide === 7 ? 'active' : ''}`}>
+        {/* SLIDE 9: DINAMICA INTERACTIVA - EL CONSULTORIO */}
+        <div className={`parches-slide ${currentSlide === 8 ? 'active' : ''}`}>
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 07. CLINICA DE MARCAS</span>
+            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 08. CLINICA DE MARCAS</span>
             <h2 className="parches-slide-title" style={{ textAlign: 'center', fontSize: '46px' }}>Hot Seat: Consultoría de Oferta</h2>
             
             {/* Question Card Box */}
@@ -524,12 +570,12 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 9: EL REGALO */}
-        <div className={`parches-slide ${currentSlide === 8 ? 'active' : ''}`}>
+        {/* SLIDE 10: EL REGALO */}
+        <div className={`parches-slide ${currentSlide === 9 ? 'active' : ''}`}>
           <div className="parches-grid-2-layout animate-fade-in" style={{ alignItems: 'center' }}>
             {/* Left Info Column */}
             <div style={{ textAlign: 'left' }}>
-              <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 08. CONCLUIR & REGALO</span>
+              <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 09. CONCLUIR & REGALO</span>
               <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '40px' }}>Llévate Mi Framework Viral</h2>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '25px', marginBottom: '30px' }}>
