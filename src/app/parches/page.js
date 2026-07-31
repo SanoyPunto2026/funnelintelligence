@@ -590,87 +590,34 @@ export default function ParchesPresentation() {
               </div>
             </div>
 
-            {/* Right Form / QR Column */}
-            <div className="parches-form-card" style={{ padding: '40px' }}>
-              {!formSubmitted ? (
-                <form onSubmit={handleFormSubmit} className="space-y-4">
-                  <h3 className="parches-form-title" style={{ fontSize: '24px' }}>Regístrate y Descarga</h3>
-                  
-                  <div className="parches-form-group">
-                    <label className="parches-form-label">Nombre Completo</label>
-                    <input 
-                      type="text" 
-                      required
-                      placeholder="Tu nombre" 
-                      value={formData.name}
-                      onChange={e => setFormData({ ...formData, name: e.target.value })}
-                      className="parches-form-input"
-                    />
-                  </div>
-                  
-                  <div className="parches-form-group">
-                    <label className="parches-form-label">Correo Electrónico</label>
-                    <input 
-                      type="email" 
-                      required
-                      placeholder="tu@correo.com" 
-                      value={formData.email}
-                      onChange={e => setFormData({ ...formData, email: e.target.value })}
-                      className="parches-form-input"
-                    />
-                  </div>
+            {/* Right Column: QR Code */}
+            <div className="parches-form-card" style={{ padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+              <h3 className="parches-form-title" style={{ fontSize: '24px', marginBottom: '5px' }}>Escanea el QR</h3>
+              <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 25px' }}>Regístrate y descarga el framework gratis</p>
+              
+              {/* QR Code via API */}
+              <div style={{ 
+                background: '#fff', 
+                padding: '16px', 
+                borderRadius: '20px', 
+                display: 'inline-block',
+                boxShadow: '0 10px 40px rgba(16, 185, 129, 0.3), 0 0 60px rgba(16, 185, 129, 0.1)',
+              }}>
+                <img 
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://funnelintelligence.vercel.app/parches/registro&color=0a0a0f&bgcolor=ffffff&margin=0"
+                  alt="QR Code - Escanea para registrarte"
+                  width={220}
+                  height={220}
+                  style={{ display: 'block', borderRadius: '8px' }}
+                />
+              </div>
 
-                  <div className="parches-form-group">
-                    <label className="parches-form-label">Usuario Instagram (Opcional)</label>
-                    <input 
-                      type="text" 
-                      placeholder="@usuario" 
-                      value={formData.instagram}
-                      onChange={e => setFormData({ ...formData, instagram: e.target.value })}
-                      className="parches-form-input"
-                    />
-                  </div>
-
-                  <button 
-                    type="submit"
-                    disabled={loading}
-                    className="parches-form-submit-btn"
-                    style={{ fontSize: '14px', fontWeight: '900', padding: '18px' }}
-                  >
-                    {loading ? 'Guardando...' : 'Obtener Framework'}
-                  </button>
-                </form>
-              ) : (
-                <div className="parches-success-container">
-                  <div className="parches-success-icon">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-emerald)', margin: '0 auto 10px' }}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
-                  </div>
-                  <h3 className="parches-success-title" style={{ fontSize: '26px' }}>¡Inscripción Exitosa!</h3>
-                  <p className="parches-success-desc" style={{ fontSize: '14px' }}>
-                    ¡Gracias, {formData.name}! Tus datos se guardaron localmente en el servidor. Te hemos enviado el Framework a **{formData.email}**.
-                  </p>
-                  
-                  <div className="parches-qr-wrapper" style={{ margin: '0 auto', width: '180px', height: '180px' }}>
-                    <div className="parches-qr-square">
-                      <div className="parches-qr-corner-top">
-                        <div className="parches-qr-eye"></div>
-                        <div className="parches-qr-eye"></div>
-                      </div>
-                      <div className="parches-qr-center-label">SANO</div>
-                      <div className="parches-qr-corner-bottom">
-                        <div className="parches-qr-eye"></div>
-                        <div className="parches-qr-dots-chunk">
-                          <div className="parches-qr-dot"></div>
-                          <div className="parches-qr-dot"></div>
-                          <div className="parches-qr-dot"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="parches-qr-caption" style={{ fontSize: '10px' }}>Escanea para ir a la Web App</p>
-                  <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--neon-emerald)', marginTop: '8px', margin: '8px 0 0 0' }}>Leads totales: {leadsCount}</p>
-                </div>
-              )}
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--neon-emerald)', marginTop: '20px', letterSpacing: '0.05em' }}>
+                funnelintelligence.vercel.app/parches/registro
+              </p>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--text-muted)', marginTop: '5px' }}>
+                📥 Framework Estándar para Reels / TikTok con IA
+              </p>
             </div>
           </div>
         </div>
