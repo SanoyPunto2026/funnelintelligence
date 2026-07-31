@@ -172,26 +172,31 @@ export default function ParchesPresentation() {
               </span>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
-              {/* Three Column Results Display */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr 1fr', gap: '25px', width: '100%', maxWidth: '1050px' }}>
-                {/* Instagram Profile Card */}
-                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--neon-purple)', marginBottom: '10px', letterSpacing: '0.05em' }}>// INSTAGRAM // @sanoypunto.app</div>
-                  <img src="/sano_instagram.png" alt="Instagram Profile" style={{ width: '100%', height: 'auto', maxHeight: '310px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 25px rgba(0,0,0,0.4)' }} />
-                </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', width: '100%' }}>
+              {/* Asymmetrical Column Layout */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1.1fr', gap: '30px', width: '100%', maxWidth: '1200px', alignItems: 'center' }}>
                 
-                {/* Real Meta Results Chart */}
-                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--neon-cyan)', marginBottom: '10px', letterSpacing: '0.05em' }}>// META SUITE // 25.4 MILLONES DE VISUALIZACIONES</div>
-                  <img src="/sano_results_chart.png" alt="Meta Suite Results Chart" style={{ width: '100%', height: 'auto', maxHeight: '310px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 25px rgba(0,0,0,0.4)' }} />
+                {/* Left Column: Huge Meta Suite Results Chart */}
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--neon-cyan)', marginBottom: '12px', letterSpacing: '0.1em', alignSelf: 'start' }}>// META BUSINESS SUITE // 25.4 MILLONES DE REPRODUCCIONES</div>
+                  <img src="/sano_results_chart.png" alt="Meta Suite Results Chart" style={{ width: '100%', height: 'auto', maxHeight: '420px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 15px 35px rgba(0,0,0,0.6)' }} />
                 </div>
 
-                {/* Facebook Profile Card */}
-                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--neon-emerald)', marginBottom: '10px', letterSpacing: '0.05em' }}>// FACEBOOK // Sano & Punto</div>
-                  <img src="/sano_facebook.png" alt="Facebook Profile" style={{ width: '100%', height: 'auto', maxHeight: '310px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 25px rgba(0,0,0,0.4)' }} />
+                {/* Right Column: Profiles side-by-side */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', width: '100%' }}>
+                  {/* Instagram Profile */}
+                  <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '20px', padding: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--neon-purple)', marginBottom: '8px', letterSpacing: '0.05em' }}>// INSTAGRAM</div>
+                    <img src="/sano_instagram.png" alt="Instagram Profile" style={{ width: '100%', height: 'auto', maxHeight: '380px', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 10px 25px rgba(0,0,0,0.5)' }} />
+                  </div>
+                  
+                  {/* Facebook Profile */}
+                  <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '20px', padding: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--neon-emerald)', marginBottom: '8px', letterSpacing: '0.05em' }}>// FACEBOOK</div>
+                    <img src="/sano_facebook.png" alt="Facebook Profile" style={{ width: '100%', height: 'auto', maxHeight: '380px', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 10px 25px rgba(0,0,0,0.5)' }} />
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
