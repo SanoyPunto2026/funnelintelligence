@@ -4,7 +4,7 @@ import { useState } from 'react';
 import '../parches.css';
 
 export default function RegistroParches() {
-  const [formData, setFormData] = useState({ name: '', email: '', instagram: '' });
+  const [formData, setFormData] = useState({ name: '', email: '' });
   const [loading, setLoading] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -75,17 +75,6 @@ export default function RegistroParches() {
                   placeholder="tu@correo.com" 
                   value={formData.email}
                   onChange={e => setFormData({ ...formData, email: e.target.value })}
-                  className="parches-form-input"
-                />
-              </div>
-
-              <div className="parches-form-group">
-                <label className="parches-form-label">Usuario Instagram (Opcional)</label>
-                <input 
-                  type="text" 
-                  placeholder="@usuario" 
-                  value={formData.instagram}
-                  onChange={e => setFormData({ ...formData, instagram: e.target.value })}
                   className="parches-form-input"
                 />
               </div>

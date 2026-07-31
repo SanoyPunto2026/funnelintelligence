@@ -128,7 +128,7 @@ export default function ClientLayout({ children }) {
 
   const activePath = pathname || '/action-center';
 
-  if (pathname === '/parches') {
+  if (pathname === '/parches' || pathname.startsWith('/parches/')) {
     return <>{children}</>;
   }
 
