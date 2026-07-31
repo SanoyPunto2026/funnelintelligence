@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import './parches.css';
 
-const SLIDES_COUNT = 11;
+const SLIDES_COUNT = 9;
 
 export default function ParchesPresentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -339,179 +339,10 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* NEW SLIDE 7: FLYWHEEL / PROCESO DE CREACIÓN DE CONTENIDO */}
+        {/* SLIDE 7: 3 FRAMEWORKS DE INDUSTRIA */}
         <div className={`parches-slide ${currentSlide === 6 ? 'active' : ''}`}>
-          <div className="parches-glass-card animate-fade-in" style={{ padding: '40px 50px', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 06. WORKFLOW DE CREACIÓN</span>
-            
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
-              <h2 className="parches-slide-title" style={{ fontSize: '42px', margin: 0 }}>Flywheel Creativo</h2>
-              <span className="parches-footer-tip" style={{ color: 'var(--neon-emerald)', fontWeight: 'bold' }}>DEMO EN VIVO // DE LA IDEA AL POST</span>
-            </div>
-
-            {/* Cyclical Flywheel Timeline Grid - Winding loop pipeline */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', width: '100%', position: 'relative' }}>
-              
-              {/* Row 1: Steps 1 to 4 */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr auto 1fr auto 1fr', alignItems: 'center', gap: '15px' }}>
-                {/* Step 1: Idea */}
-                <div style={{ background: 'linear-gradient(135deg, rgba(6,182,212,0.1), rgba(6,182,212,0.02))', border: '1px solid rgba(6,182,212,0.25)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
-                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-cyan)', fontWeight: 'bold' }}>PASO 1</div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '10px' }}>
-                    <img src="/youtube_logo.svg" style={{ width: '22px', height: '22px' }} alt="YouTube" />
-                    <img src="/instagram_logo.png" style={{ width: '20px', height: '20px' }} alt="Instagram" />
-                  </div>
-                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>IDEA</div>
-                </div>
-                <div style={{ color: 'var(--neon-cyan)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(6,182,212,0.5)' }}>»</div>
-                
-                {/* Step 2: Antigravity */}
-                <div style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.1), rgba(139,92,246,0.02))', border: '1px solid rgba(139,92,246,0.25)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
-                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-purple)', fontWeight: 'bold' }}>PASO 2</div>
-                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
-                    <img src="/antigravity_logo.png" style={{ height: '28px', objectFit: 'contain' }} alt="Antigravity" />
-                  </div>
-                  <div style={{ fontSize: '18px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>ANTIGRAVITY</div>
-                </div>
-                <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(139,92,246,0.5)' }}>»</div>
-
-                {/* Step 3: Nano Banana */}
-                <div style={{ background: 'linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.02))', border: '1px solid rgba(16,185,129,0.25)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
-                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-emerald)', fontWeight: 'bold' }}>PASO 3</div>
-                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
-                    <img src="/banana_logo.png" style={{ height: '24px', width: '24px', objectFit: 'contain' }} alt="Nano Banana" />
-                  </div>
-                  <div style={{ fontSize: '18px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>NANO BANANA</div>
-                </div>
-                <div style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(16,185,129,0.5)' }}>»</div>
-
-                {/* Step 4: Flow Video */}
-                <div style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
-                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)', fontWeight: 'bold' }}>PASO 4</div>
-                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
-                    <span style={{ fontFamily: 'var(--font-display)', fontWeight: '900', color: '#fff', fontSize: '22px', textShadow: '0 0 8px rgba(255,255,255,0.8)', letterSpacing: '0.05em' }}>Flow</span>
-                  </div>
-                  <div style={{ fontSize: '18px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>FLOW (VIDEO)</div>
-                </div>
-              </div>
-
-              {/* Row 2: Connecting label & Steps 5 to 7 */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1.4fr auto 1fr auto 1fr auto 1fr', alignItems: 'center', gap: '15px' }}>
-                {/* Visual Connector label for looping back */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--neon-purple)', fontSize: '16px', fontWeight: 'bold', fontFamily: 'var(--font-mono)' }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transform: 'rotate(90deg)', color: 'var(--neon-purple)', filter: 'drop-shadow(0 0 5px var(--neon-purple))' }}><path d="M17 18H7a4 4 0 0 1-4-4V5" /><polyline points="3 8 7 4 11 8" /></svg>
-                  <span style={{ letterSpacing: '0.1em' }}>IA GENERATION</span>
-                </div>
-                <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(139,92,246,0.5)' }}>»</div>
-
-                {/* Step 5: Ensamble */}
-                <div style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
-                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)', fontWeight: 'bold' }}>PASO 5</div>
-                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
-                    <span style={{ fontFamily: 'var(--font-display)', fontWeight: '900', color: '#fff', fontSize: '22px', textShadow: '0 0 8px rgba(255,255,255,0.8)', letterSpacing: '0.05em' }}>Flow</span>
-                  </div>
-                  <div style={{ fontSize: '18px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>ENSAMBLE</div>
-                </div>
-                <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(139,92,246,0.5)' }}>»</div>
-
-                {/* Step 6: CapCut */}
-                <div style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.1), rgba(139,92,246,0.02))', border: '1px solid rgba(139,92,246,0.25)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
-                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-purple)', fontWeight: 'bold' }}>PASO 6</div>
-                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
-                    <img src="/capcut_logo.png" style={{ height: '26px', objectFit: 'contain' }} alt="CapCut" />
-                  </div>
-                  <div style={{ fontSize: '18px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>CAPCUT</div>
-                </div>
-                <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(139,92,246,0.5)' }}>»</div>
-
-                {/* Step 7: Publicar */}
-                <div style={{ background: 'linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.03))', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 10px 35px rgba(16,185,129,0.2)' }}>
-                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-emerald)', fontWeight: 'bold' }}>PASO 7</div>
-                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
-                    <img src="/instagram_logo.png" style={{ height: '24px', width: '24px', objectFit: 'contain' }} alt="Instagram" />
-                  </div>
-                  <div style={{ fontSize: '18px', fontWeight: '900', color: 'var(--neon-emerald)', marginTop: '10px' }}>PUBLICAR</div>
-                </div>
-              </div>
-
-              {/* Graphical Circular Tech Stack Section */}
-              <div style={{ marginTop: '25px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--text-secondary)', fontWeight: 'bold', letterSpacing: '0.15em' }}>🛠️ HERRAMIENTAS UTILIZADAS</div>
-                
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 40px' }}>
-                  {/* YouTube/Instagram (Ideas) */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '2px solid var(--neon-cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(6,182,212,0.3)', gap: '4px' }}>
-                      <img src="/youtube_logo.svg" style={{ width: '22px', height: '22px' }} alt="YouTube" />
-                      <img src="/instagram_logo.png" style={{ width: '18px', height: '18px' }} alt="Instagram" />
-                    </div>
-                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>Ideas</span>
-                  </div>
-
-                  {/* Antigravity */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '2px solid var(--neon-purple)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(139,92,246,0.3)' }}>
-                      <img src="/antigravity_logo.png" style={{ height: '34px', objectFit: 'contain' }} alt="Antigravity" />
-                    </div>
-                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>Antigravity</span>
-                  </div>
-
-                  {/* Nano Banana */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '2px solid var(--neon-emerald)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(16,185,129,0.3)' }}>
-                      <img src="/banana_logo.png" style={{ height: '28px', objectFit: 'contain' }} alt="Banana" />
-                    </div>
-                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>Nano Banana</span>
-                  </div>
-
-                  {/* Google Flow */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '2px solid var(--neon-cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(6,182,212,0.3)' }}>
-                      <span style={{ fontFamily: 'var(--font-display)', fontWeight: '900', color: '#fff', fontSize: '16px', textShadow: '0 0 6px rgba(255,255,255,0.8)' }}>Flow</span>
-                    </div>
-                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>Google Flow</span>
-                  </div>
-
-                  {/* CapCut */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '2px solid var(--neon-purple)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(139,92,246,0.3)' }}>
-                      <img src="/capcut_logo.png" style={{ height: '28px', objectFit: 'contain' }} alt="CapCut" />
-                    </div>
-                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>CapCut</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        {/* SLIDE 8: ANATOMÍA DE UN VIDEO VIRAL */}
-        <div className={`parches-slide ${currentSlide === 7 ? 'active' : ''}`}>
-          <div className="parches-glass-card animate-fade-in" style={{ padding: '60px' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 07. ESTRUCTURACIÓN DE GUION</span>
-            <h2 className="parches-slide-title" style={{ fontSize: '44px', marginBottom: '40px' }}>Anatomía del Video (30 Segundos)</h2>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '30px', width: '100%' }}>
-              {/* Cuerpo Card */}
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '50px 30px', borderRadius: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '20px', color: 'var(--neon-emerald)', fontWeight: 'bold', marginBottom: '15px' }}>01 // EL CUERPO (Gancho Integrado)</div>
-                <h4 style={{ fontSize: '56px', fontWeight: '950', color: '#fff', margin: 0 }}>0 a 25 seg</h4>
-              </div>
-              
-              {/* CTA Card */}
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '50px 30px', borderRadius: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '20px', color: 'var(--neon-cyan)', fontWeight: 'bold', marginBottom: '15px' }}>02 // CTA (Breve - 5s)</div>
-                <h4 style={{ fontSize: '56px', fontWeight: '950', color: '#fff', margin: 0 }}>25 a 30 seg</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* SLIDE 9: 3 FRAMEWORKS DE INDUSTRIA */}
-        <div className={`parches-slide ${currentSlide === 8 ? 'active' : ''}`}>
           <div className="animate-fade-in" style={{ width: '100%' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 08. MOLDES DE INDUSTRIA</span>
+            <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 07. MOLDES DE INDUSTRIA</span>
             <h2 className="parches-slide-title" style={{ fontSize: '42px', marginBottom: '45px' }}>3 Frameworks de Contenido</h2>
             
             <div className="parches-grid-3">
@@ -536,10 +367,10 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 10: DINAMICA INTERACTIVA - EL CONSULTORIO */}
-        <div className={`parches-slide ${currentSlide === 9 ? 'active' : ''}`}>
+        {/* SLIDE 8: DINAMICA INTERACTIVA - EL CONSULTORIO */}
+        <div className={`parches-slide ${currentSlide === 7 ? 'active' : ''}`}>
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 09. INTERACCIÓN Y DEBATE</span>
+            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 07. INTERACCIÓN Y DEBATE</span>
             <h2 className="parches-slide-title" style={{ textAlign: 'center', fontSize: '46px' }}>El Consultorio en Vivo</h2>
             
             {/* Question Card Box */}
@@ -567,12 +398,12 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 11: EL REGALO */}
-        <div className={`parches-slide ${currentSlide === 10 ? 'active' : ''}`}>
+        {/* SLIDE 9: EL REGALO */}
+        <div className={`parches-slide ${currentSlide === 8 ? 'active' : ''}`}>
           <div className="parches-grid-2-layout animate-fade-in" style={{ alignItems: 'center' }}>
             {/* Left Info Column */}
             <div style={{ textAlign: 'left' }}>
-              <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 10. CONCLUIR & REGALO</span>
+              <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 08. CONCLUIR & REGALO</span>
               <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '40px' }}>Llévate Mi Framework Viral</h2>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '25px', marginBottom: '30px' }}>
