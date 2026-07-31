@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import './parches.css';
 
-const SLIDES_COUNT = 6;
+const SLIDES_COUNT = 12;
 
 export default function ParchesPresentation() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -175,8 +175,30 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 2: AUTORIDAD / RESULTADOS */}
+        {/* SLIDE 2: PRESENTACIÓN PERSONAL */}
         <div className={`parches-slide ${currentSlide === 1 ? 'active' : ''}`}>
+          <div className="parches-glass-card animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', maxWidth: '850px', margin: '0 auto' }}>
+            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)', borderColor: 'rgba(139,92,246,0.15)' }}>// ¿Quién soy?</span>
+            <h2 className="parches-title-main" style={{ fontSize: '56px', marginBottom: '15px' }}>Alejandro Ruiz</h2>
+            <p className="parches-desc-main" style={{ fontSize: '20px', maxWidth: '650px', marginBottom: '30px' }}>
+              Creador, hacedor (builder) y optimista de la tecnología.
+            </p>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', width: '100%', textAlign: 'left', marginTop: '10px' }}>
+              <div style={{ padding: '20px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '16px' }}>
+                <h4 style={{ color: 'var(--neon-emerald)', fontSize: '16px', fontWeight: 'bold', margin: '0 0 8px 0' }}>El enfoque práctico</h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0, lineHeight: '1.4' }}>No vengo a darte una clase teórica de marketing de universidad. Vengo a mostrarte lo que construí en mi cuarto con herramientas de IA y que hoy está funcionando en la calle.</p>
+              </div>
+              <div style={{ padding: '20px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '16px' }}>
+                <h4 style={{ color: 'var(--neon-purple)', fontSize: '16px', fontWeight: 'bold', margin: '0 0 8px 0' }}>Sano y Punto</h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0, lineHeight: '1.4' }}>Una aplicación móvil de nutrición nacida con un dolor muy claro: ayudar a las personas a comer saludable de forma rápida, barata y sin complicaciones.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* SLIDE 3: CASO DE ESTUDIO (SANO Y PUNTO METRICS) */}
+        <div className={`parches-slide ${currentSlide === 2 ? 'active' : ''}`}>
           <div className="animate-fade-in" style={{ width: '100%' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)', borderColor: 'rgba(16,185,129,0.15)' }}>// 01. EL IMPACTO REAL</span>
             <h2 className="parches-slide-title">Caso de Estudio: Sano y Punto</h2>
@@ -200,75 +222,252 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 3: EL CIMIENTO (OFERTA, PASIÓN Y COMPETENCIA) */}
-        <div className={`parches-slide ${currentSlide === 2 ? 'active' : ''}`}>
+        {/* SLIDE 4: EL CIMIENTO INVISIBLE (OFERTA Y PRODUCTO) */}
+        <div className={`parches-slide ${currentSlide === 3 ? 'active' : ''}`}>
           <div className="parches-grid-2-layout animate-fade-in">
             <div>
-              <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)', borderColor: 'rgba(139,92,246,0.15)' }}>// 02. LA ESTRATEGIA INVISIBLE</span>
-              <h2 className="parches-slide-title">El Cimiento Invisible:<br />Oferta, Pasión y Competencia</h2>
-              <p className="parches-desc-main" style={{ fontSize: '15px', marginBottom: '24px', lineHeight: '1.4' }}>
-                Antes de presionar el botón de grabar, debes construir una base sólida. La viralidad sin estructura es tráfico desperdiciado y aburrimiento asegurado.
+              <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)', borderColor: 'rgba(139,92,246,0.15)' }}>// 02. EL CIMIENTO INVISIBLE</span>
+              <h2 className="parches-slide-title">La Oferta y el Producto</h2>
+              <p className="parches-desc-main" style={{ fontSize: '18px', marginBottom: '24px', lineHeight: '1.4' }}>
+                Antes de pulsar "grabar" o preocuparte por el algoritmo, necesitas saber **qué ofreces** y **cuál es el destino** del usuario.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'start' }}>
+                  <div style={{ color: 'var(--neon-emerald)', fontSize: '18px', fontWeight: 'bold' }}>✓</div>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>El contenido es el vehículo; la oferta es el destino final.</p>
+                </div>
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'start' }}>
+                  <div style={{ color: 'var(--neon-emerald)', fontSize: '18px', fontWeight: 'bold' }}>✓</div>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>No te sirve acumular 1 millón de visitas de personas que no necesitan tu producto.</p>
+                </div>
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'start' }}>
+                  <div style={{ color: 'var(--neon-emerald)', fontSize: '18px', fontWeight: 'bold' }}>✓</div>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>La viralidad sin oferta estructurada es solo una métrica de ego.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="parches-glass-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '30px' }}>
+              <div style={{ fontSize: '48px', marginBottom: '15px' }}>🎯</div>
+              <h4 style={{ fontSize: '18px', fontWeight: 'bold', margin: '0 0 10px 0', color: '#fff' }}>¿Cuál es tu objetivo?</h4>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0, lineHeight: '1.4' }}>Tu video debe guiar al espectador a una única acción específica: registrarse, comentar una palabra clave, o descargar una aplicación.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* SLIDE 5: NICHO Y PASIÓN (LA REGLA DE LOS 50 POSTS) */}
+        <div className={`parches-slide ${currentSlide === 4 ? 'active' : ''}`}>
+          <div className="parches-grid-2-layout animate-fade-in">
+            <div>
+              <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)', borderColor: 'rgba(16,185,129,0.15)' }}>// 03. LA LEY DE LA CONSTANCIA</span>
+              <h2 className="parches-slide-title">Nicho y Pasión</h2>
+              <p className="parches-desc-main" style={{ fontSize: '18px', marginBottom: '24px', lineHeight: '1.4' }}>
+                Crear contenido orgánico es una carrera de largo aliento. Si el tema no te apasiona, la consistencia te ganará.
               </p>
               
               <div className="parches-steps-container">
                 <div className="parches-step-row">
                   <div className="parches-step-num">1</div>
                   <div>
-                    <h4 className="parches-step-headline">Nicho + Producto + Pasión</h4>
-                    <p className="parches-step-body">Debes elegir algo que te guste genuinamente. Crear contenido requiere constancia (puedes subir 50 posts sin resultados inmediatos). Sin pasión, abandonarás antes de tiempo.</p>
+                    <h4 className="parches-step-headline">Elige algo que te guste genuinamente</h4>
+                    <p className="parches-step-body">Si el nicho no te divierte, vas a cansarte antes de que el algoritmo empiece a recomendarte.</p>
                   </div>
                 </div>
                 <div className="parches-step-row">
                   <div className="parches-step-num">2</div>
                   <div>
-                    <h4 className="parches-step-headline">El Target es tu Brújula (Ej. Mujeres 35-45)</h4>
-                    <p className="parches-step-body">Los frameworks de tus videos deben hablarle a sus dolores específicos (falta de tiempo, recetas rápidas). Audita que las métricas le estén llegando a ellos.</p>
+                    <h4 className="parches-step-headline">La prueba de fuego (50 Posts)</h4>
+                    <p className="parches-step-body">Tienes que estar dispuesto a publicar hasta 50 veces sin ver resultados favorables inmediatos. La consistencia es lo que adiestra al algoritmo.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="parches-sidebar-checklist" style={{ padding: '25px' }}>
+              <div className="parches-checklist-badge" style={{ background: '#f87171', color: '#000' }}>ADVERTENCIA</div>
+              <h3 className="parches-checklist-title" style={{ color: '#f87171' }}>⚠️ El filtro del aburrimiento</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: '1.5', margin: 0 }}>
+                El 90% de los creadores y marcas que usan IA fracasan no por falta de herramientas, sino porque eligen nichos por moda y se aburren tras la primera semana sin visitas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* SLIDE 6: TARGET Y COMPETENCIA */}
+        <div className={`parches-slide ${currentSlide === 5 ? 'active' : ''}`}>
+          <div className="parches-grid-2-layout animate-fade-in">
+            <div>
+              <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)', borderColor: 'rgba(6,182,212,0.15)' }}>// 04. LA BRÚJULA DIGITAL</span>
+              <h2 className="parches-slide-title">Target y Competencia</h2>
+              <p className="parches-desc-main" style={{ fontSize: '16px', marginBottom: '24px' }}>
+                Tu contenido debe ser diseñado para el dolor exacto de tu cliente ideal, apalancado en lo que ya está funcionando en el mercado.
+              </p>
+              
+              <div className="parches-steps-container">
+                <div className="parches-step-row">
+                  <div className="parches-step-num">✓</div>
+                  <div>
+                    <h4 className="parches-step-headline">Háblale a una persona (Target Avatar)</h4>
+                    <p className="parches-step-body">Ejemplo Sano y Punto: Mujeres de 35-45 años con falta de tiempo. Tus guiones se enfocan en ganchos de cocina rápida y saludable.</p>
                   </div>
                 </div>
                 <div className="parches-step-row">
-                  <div className="parches-step-num">3</div>
+                  <div className="parches-step-num">✓</div>
                   <div>
-                    <h4 className="parches-step-headline">Estudio de Competencia (Con y Sin IA)</h4>
-                    <p className="parches-step-body">Investiga a quienes ya tienen tracción en tu nicho. Compara sus mejores videos y extrae ganchos o estructuras para testear, en lugar de improvisar al azar.</p>
+                    <h4 className="parches-step-headline">Estudia y compara competidores</h4>
+                    <p className="parches-step-body">Analiza a los creadores de tu nicho (con y sin IA). Identifica qué videos retienen más y qué ganchos repiten para crear tus primeras hipótesis de frameworks.</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="parches-sidebar-checklist">
-              <div className="parches-checklist-badge">CHECKLIST</div>
-              <h3 className="parches-checklist-title">📋 El Diagnóstico Inicial</h3>
+              <div className="parches-checklist-badge">MÉTRICAS</div>
+              <h3 className="parches-checklist-title">📊 El Control Demográfico</h3>
               <div className="parches-check-item">
-                <span className="parches-check-label">¿Qué ofreces?</span>
-                <span className="parches-check-value emerald">App Sano y Punto</span>
+                <span className="parches-check-label">Target Ideal</span>
+                <span className="parches-check-value emerald">Mujeres 35-45 años</span>
               </div>
               <div className="parches-check-item">
-                <span className="parches-check-label">¿Te apasiona?</span>
-                <span className="parches-check-value">Sí, Nutrición Práctica</span>
+                <span className="parches-check-label">Estudio de Competencia</span>
+                <span className="parches-check-value">Mapeado en 3 nichos</span>
               </div>
               <div className="parches-check-item">
-                <span className="parches-check-label">¿Quién es el Target?</span>
-                <span className="parches-check-value">Mujeres 35-45 años</span>
-              </div>
-              <div className="parches-check-item">
-                <span className="parches-check-label">¿Competidores?</span>
-                <span className="parches-check-value purple">Mapeados y validados</span>
-              </div>
-              <div className="parches-check-item">
-                <span className="parches-check-label">Regla de oro:</span>
-                <span className="parches-check-value red text-red-400">Prueba antes de publicar</span>
+                <span className="parches-check-label">Regla operativa</span>
+                <span className="parches-check-value purple">Auditar demografía semanal</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* SLIDE 4: QUÉ ES UN FRAMEWORK / LOS 3 DE INDUSTRIAS */}
-        <div className={`parches-slide ${currentSlide === 3 ? 'active' : ''}`}>
+        {/* SLIDE 7: ¿QUÉ ES UN FRAMEWORK? */}
+        <div className={`parches-slide ${currentSlide === 6 ? 'active' : ''}`}>
+          <div className="parches-grid-2-layout animate-fade-in">
+            <div>
+              <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)', borderColor: 'rgba(139,92,246,0.15)' }}>// 05. SISTEMAS VS CREATIVIDAD</span>
+              <h2 className="parches-slide-title">¿Qué es un Framework?</h2>
+              <p className="parches-desc-main" style={{ fontSize: '18px', marginBottom: '24px', lineHeight: '1.4' }}>
+                Es una estructura fija y probada que te permite generar ideas infinitas variando únicamente el tema.
+              </p>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'start' }}>
+                  <div style={{ color: 'var(--neon-purple)', fontSize: '18px', fontWeight: 'bold' }}>•</div>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>**No improvises:** Yo no me despierto cada mañana pensando qué tipo de video diferente inventar hoy.</p>
+                </div>
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'start' }}>
+                  <div style={{ color: 'var(--neon-purple)', fontSize: '18px', fontWeight: 'bold' }}>•</div>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>**Repetición estratégica:** Elige 2 o 3 estructuras y mantente constante con ellas.</p>
+                </div>
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'start' }}>
+                  <div style={{ color: 'var(--neon-purple)', fontSize: '18px', fontWeight: 'bold' }}>•</div>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>**Apalancamiento:** Deja que el algoritmo reconozca el formato y que ChatGPT genere los guiones.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="parches-glass-card" style={{ padding: '30px' }}>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--neon-cyan)', marginBottom: '10px' }}>// LA VENTAJA DE UN FRAMEWORK</div>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: '1.5', margin: 0 }}>
+                Reduce el tiempo de producción en un 80% y te permite enfocar tu energía en el análisis de métricas y la conversión, en lugar de sufrir por "falta de inspiración".
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* SLIDE 8: CASO REAL - ORGANOS PIXAR (SANO Y PUNTO) */}
+        <div className={`parches-slide ${currentSlide === 7 ? 'active' : ''}`}>
+          <div className="parches-grid-2-layout animate-fade-in">
+            <div>
+              <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)', borderColor: 'rgba(16,185,129,0.15)' }}>// 06. CASO SANO Y PUNTO</span>
+              <h2 className="parches-slide-title">El Framework "Órganos Pixar"</h2>
+              <p className="parches-desc-main" style={{ fontSize: '16px', marginBottom: '24px', lineHeight: '1.4' }}>
+                La anatomía del formato exacto que viralizó nuestra marca.
+              </p>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '15px', borderRadius: '12px' }}>
+                  <h4 style={{ fontSize: '14px', fontWeight: 'bold', margin: '0 0 4px 0', color: '#fff' }}>1. La Estructura Fija</h4>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '12px', margin: 0 }}>Órganos animados 3D (Pixar-style) comiendo alimentos y reaccionando positiva/negativamente, con un caption explicativo científico.</p>
+                </div>
+                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '15px', borderRadius: '12px' }}>
+                  <h4 style={{ fontSize: '14px', fontWeight: 'bold', margin: '0 0 4px 0', color: '#fff' }}>2. Las Variables</h4>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '12px', margin: 0 }}>Lo único que cambia es el alimento, el tipo de órgano (hígado, estómago) y si la reacción final es de felicidad o dolor.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="parches-sidebar-checklist" style={{ padding: '25px' }}>
+              <div className="parches-checklist-badge">EJEMPLO</div>
+              <h3 className="parches-checklist-title">🧠 Órgano + Comida</h3>
+              <div className="parches-check-item">
+                <span className="parches-check-label">Hígado</span>
+                <span className="parches-check-value emerald">Grasa saturada ➡️ Dolor</span>
+              </div>
+              <div className="parches-check-item">
+                <span className="parches-check-label">Estómago</span>
+                <span className="parches-check-value cyan">Kéfir/Probióticos ➡️ Corazón</span>
+              </div>
+              <div className="parches-check-item">
+                <span className="parches-check-label">Riñón</span>
+                <span className="parches-check-value">Agua de coco ➡️ Energía</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* SLIDE 9: ANATOMÍA DE UN VIDEO VIRAL */}
+        <div className={`parches-slide ${currentSlide === 8 ? 'active' : ''}`}>
+          <div className="parches-grid-2-layout animate-fade-in">
+            <div>
+              <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)', borderColor: 'rgba(6,182,212,0.15)' }}>// 07. ESTRUCTURACIÓN DE GUION</span>
+              <h2 className="parches-slide-title">Anatomía de un Video</h2>
+              <p className="parches-desc-main" style={{ fontSize: '15px', marginBottom: '24px' }}>
+                Un video de 30 segundos se divide en tres bloques narrativos precisos e innegociables:
+              </p>
+              
+              <div className="parches-steps-container">
+                <div className="parches-step-row">
+                  <div className="parches-step-num">H</div>
+                  <div>
+                    <h4 className="parches-step-headline">El Hook (0 - 3 seg)</h4>
+                    <p className="parches-step-body">Captura la atención del target (audio/visual). Ej: "Esto pasa cuando comes..."</p>
+                  </div>
+                </div>
+                <div className="parches-step-row">
+                  <div className="parches-step-num">C</div>
+                  <div>
+                    <h4 className="parches-step-headline">El Cuerpo (3 - 20 seg)</h4>
+                    <p className="parches-step-body">Entrega la promesa al grano. Sin rodeos. Reacción dinámica y explicación visual.</p>
+                  </div>
+                </div>
+                <div className="parches-step-row">
+                  <div className="parches-step-num">C</div>
+                  <div>
+                    <h4 className="parches-step-headline">El CTA (20 - 30 seg)</h4>
+                    <p className="parches-step-body">Llamado a la acción. "Comenta RECETA para enviarte la lista de compras".</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="parches-sidebar-checklist" style={{ fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
+              <div className="parches-checklist-badge">CHATGPT</div>
+              <h3 className="parches-checklist-title" style={{ fontFamily: 'var(--font-display)', fontSize: '18px' }}>🤖 Prompt Estandarizado</h3>
+              <div style={{ color: 'var(--text-secondary)', lineHeight: '1.6', background: 'rgba(0,0,0,0.2)', padding: '15px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.02)' }}>
+                "Genera 10 guiones para Instagram Reels usando el framework [Órganos Pixar]. El Hook debe durar 3 segundos e iniciar con 'Esto pasa...'..."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* SLIDE 10: 3 FRAMEWORKS DE INDUSTRIA */}
+        <div className={`parches-slide ${currentSlide === 9 ? 'active' : ''}`}>
           <div className="animate-fade-in" style={{ width: '100%' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)', borderColor: 'rgba(6,182,212,0.15)' }}>// 03. EL MOTOR DE LA CONSTANCIA</span>
-            <h2 className="parches-slide-title">¿Qué es un Framework?</h2>
+            <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)', borderColor: 'rgba(6,182,212,0.15)' }}>// 08. MOLDES LISTOS PARA USAR</span>
+            <h2 className="parches-slide-title">3 Frameworks de Industria</h2>
             <p className="parches-desc-main" style={{ fontSize: '16px', marginBottom: '32px' }}>
-              No improvises ideas nuevas cada día. Apaláncate en **2 o 3 frameworks testeados y probados** donde solo varías el contenido temático dentro de esa estructura fija.
+              Plantillas pre-diseñadas y validadas para tres de los sectores más habituales en redes.
             </p>
             
             <div className="parches-grid-3">
@@ -311,10 +510,10 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 5: DINAMICA INTERACTIVA - EL CONSULTORIO */}
-        <div className={`parches-slide ${currentSlide === 4 ? 'active' : ''}`}>
+        {/* SLIDE 11: DINAMICA INTERACTIVA - EL CONSULTORIO */}
+        <div className={`parches-slide ${currentSlide === 10 ? 'active' : ''}`}>
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)', borderColor: 'rgba(139,92,246,0.15)' }}>// 04. INTERACCIÓN Y DEBATE</span>
+            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)', borderColor: 'rgba(139,92,246,0.15)' }}>// 09. INTERACCIÓN Y DEBATE</span>
             <h2 className="parches-slide-title" style={{ textAlign: 'center' }}>El Consultorio en Vivo</h2>
             <p className="parches-desc-main" style={{ fontSize: '15px', marginBottom: '24px', textAlign: 'center', maxWidth: '500px' }}>
               ¡Hablemos de tus proyectos! Gira la ruleta para proponer un tema de debate en grupo.
@@ -349,12 +548,12 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 6: EL REGALO */}
-        <div className={`parches-slide ${currentSlide === 5 ? 'active' : ''}`}>
+        {/* SLIDE 12: EL REGALO */}
+        <div className={`parches-slide ${currentSlide === 11 ? 'active' : ''}`}>
           <div className="parches-grid-2-layout animate-fade-in">
             {/* Left Info Column */}
             <div style={{ textAlign: 'left' }}>
-              <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)', borderColor: 'rgba(16,185,129,0.15)' }}>// 05. REGALO EXCLUSIVO</span>
+              <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)', borderColor: 'rgba(16,185,129,0.15)' }}>// 10. REGALO EXCLUSIVO</span>
               <h2 className="parches-slide-title" style={{ fontSize: '42px' }}>Obtén Mi Framework de Contenido</h2>
               <p className="parches-desc-main" style={{ fontSize: '15px', marginBottom: '24px', lineHeight: '1.4' }}>
                 Regístrate para probar **Sano y Punto** hoy y te enviaré directamente a tu correo el framework de ChatGPT que utilizo para generar guiones y videos virales personalizados a tu nicho.
