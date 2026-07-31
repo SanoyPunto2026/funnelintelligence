@@ -173,23 +173,18 @@ export default function ParchesPresentation() {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
-              {/* Metrics Banner */}
-              <div style={{ width: '100%', maxWidth: '850px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '8px', overflow: 'hidden', display: 'flex', justifyContent: 'center' }}>
-                <img src="/sano_metrics_banner.png" alt="Sano & Punto Metrics Banner" style={{ width: '100%', height: 'auto', maxHeight: '60px', objectFit: 'contain', borderRadius: '8px' }} />
-              </div>
-              
               {/* Two Column Profiles */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', width: '100%', maxWidth: '850px' }}>
                 {/* Instagram Profile Card */}
                 <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--neon-purple)', marginBottom: '10px', letterSpacing: '0.1em' }}>// INSTAGRAM PROFILE // @sanoypunto.app</div>
-                  <img src="/sano_instagram.png" alt="Sano & Punto Instagram Profile" style={{ width: '100%', height: 'auto', maxHeight: '280px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} />
+                  <img src="/sano_instagram.png" alt="Sano & Punto Instagram Profile" style={{ width: '100%', height: 'auto', maxHeight: '350px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} />
                 </div>
                 
                 {/* Facebook Profile Card */}
                 <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--neon-emerald)', marginBottom: '10px', letterSpacing: '0.1em' }}>// FACEBOOK PROFILE // Sano & Punto</div>
-                  <img src="/sano_facebook.png" alt="Sano & Punto Facebook Profile" style={{ width: '100%', height: 'auto', maxHeight: '280px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} />
+                  <img src="/sano_facebook.png" alt="Sano & Punto Facebook Profile" style={{ width: '100%', height: 'auto', maxHeight: '350px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} />
                 </div>
               </div>
             </div>
