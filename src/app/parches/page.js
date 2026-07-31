@@ -151,11 +151,11 @@ export default function ParchesPresentation() {
           <div className="parches-glass-card animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '70px' }}>
             <span className="parches-badge">Caso de Estudio Real</span>
             <h1 className="parches-title-main" style={{ fontSize: '80px', margin: '10px 0 30px' }}>
-              Crecer una Marca <br />
-              <span className="parches-gradient-span">con IA y Consistencia</span>
+              Crecer y Automatizar <br />
+              <span className="parches-gradient-span">una Marca con IA</span>
             </h1>
-            <p className="parches-desc-main" style={{ fontSize: '26px', maxWidth: '800px', margin: '0 auto 10px', fontWeight: '400' }}>
-              De la artesanía manual a la escala viral en redes sociales.
+            <p className="parches-desc-main" style={{ fontSize: '26px', maxWidth: '900px', margin: '0 auto 10px', fontWeight: '400' }}>
+              Cómo crecer 100k en 3 meses con framework y consistencia.
             </p>
           </div>
         </div>
