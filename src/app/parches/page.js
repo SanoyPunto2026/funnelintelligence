@@ -158,7 +158,7 @@ export default function ParchesPresentation() {
               Crecer una Marca <br />
               <span className="parches-gradient-span">con IA y Consistencia</span>
             </h1>
-            <p className="parches-desc-main" style={{ fontSize: '24px', maxWidth: '800px', margin: '0 auto 40px', fontWeight: '400' }}>
+            <p className="parches-desc-main" style={{ fontSize: '26px', maxWidth: '800px', margin: '0 auto 40px', fontWeight: '400' }}>
               De la artesanía manual a la escala viral en redes sociales.
             </p>
             <div className="parches-profile-card" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)' }}>
@@ -173,7 +173,7 @@ export default function ParchesPresentation() {
 
         {/* SLIDE 2: PRESENTACIÓN PERSONAL */}
         <div className={`parches-slide ${currentSlide === 1 ? 'active' : ''}`}>
-          <div className="parches-glass-card animate-fade-in" style={{ padding: '50px', maxWidth: '1000px', margin: '0 auto' }}>
+          <div className="parches-glass-card animate-fade-in" style={{ padding: '60px', maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// Quién soy</span>
             
             <div className="parches-grid-2-layout" style={{ gap: '60px', alignItems: 'center' }}>
@@ -187,19 +187,17 @@ export default function ParchesPresentation() {
                 <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--neon-cyan)', marginTop: '5px', uppercase: 'true', letterSpacing: '0.1em' }}>BUILDER & CREATOR</p>
               </div>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
-                <div style={{ display: 'flex', gap: '15px', alignItems: 'start' }}>
-                  <span style={{ fontSize: '24px', color: 'var(--neon-emerald)' }}>⚡</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+                  <span style={{ fontSize: '32px', color: 'var(--neon-emerald)' }}>⚡</span>
                   <div>
-                    <h4 style={{ fontSize: '22px', fontWeight: '800', color: '#fff', margin: '0 0 5px 0' }}>Práctica &gt; Teoría</h4>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '15px', margin: 0 }}>Lo que construí en mi cuarto con IA, funcionando en la calle.</p>
+                    <h4 style={{ fontSize: '32px', fontWeight: '900', color: '#fff', margin: 0 }}>Práctica &gt; Teoría</h4>
                   </div>
                 </div>
-                <div style={{ display: 'flex', gap: '15px', alignItems: 'start' }}>
-                  <span style={{ fontSize: '24px', color: 'var(--neon-purple)' }}>🚀</span>
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+                  <span style={{ fontSize: '32px', color: 'var(--neon-purple)' }}>🚀</span>
                   <div>
-                    <h4 style={{ fontSize: '22px', fontWeight: '800', color: '#fff', margin: '0 0 5px 0' }}>Sano y Punto</h4>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '15px', margin: 0 }}>La app móvil de nutrición creada para comer sano, rápido y sin estrés.</p>
+                    <h4 style={{ fontSize: '32px', fontWeight: '900', color: '#fff', margin: 0 }}>Sano y Punto</h4>
                   </div>
                 </div>
               </div>
@@ -214,51 +212,39 @@ export default function ParchesPresentation() {
             <h2 className="parches-slide-title" style={{ fontSize: '50px', marginBottom: '40px' }}>Caso de Estudio: Sano y Punto</h2>
             
             <div className="parches-grid-3">
-              <div className="parches-metric-card" style={{ padding: '40px' }}>
-                <div className="parches-metric-label" style={{ fontSize: '12px' }}>// Comunidad</div>
-                <div className="parches-metric-value emerald" style={{ fontSize: '72px' }}>+18K</div>
-                <p className="parches-metric-desc" style={{ fontSize: '15px' }}>Seguidores calificados y altamente activos ganados en 3 meses.</p>
+              <div className="parches-metric-card" style={{ padding: '50px 40px', textCenter: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div className="parches-metric-label" style={{ fontSize: '14px', marginBottom: '15px' }}>// Comunidad</div>
+                <div className="parches-metric-value emerald" style={{ fontSize: '80px', margin: 0 }}>+18K</div>
               </div>
-              <div className="parches-metric-card" style={{ padding: '40px' }}>
-                <div className="parches-metric-label" style={{ fontSize: '12px' }}>// Alcance Orgánico</div>
-                <div className="parches-metric-value purple" style={{ fontSize: '72px' }}>1.5M+</div>
-                <p className="parches-metric-desc" style={{ fontSize: '15px' }}>Reproducciones virales de videos creados con IA, sin pauta.</p>
+              <div className="parches-metric-card" style={{ padding: '50px 40px', textCenter: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div className="parches-metric-label" style={{ fontSize: '14px', marginBottom: '15px' }}>// Alcance Orgánico</div>
+                <div className="parches-metric-value purple" style={{ fontSize: '80px', margin: 0 }}>1.5M+</div>
               </div>
-              <div className="parches-metric-card" style={{ padding: '40px' }}>
-                <div className="parches-metric-label" style={{ fontSize: '12px' }}>// Conversión en App</div>
-                <div className="parches-metric-value cyan" style={{ fontSize: '72px' }}>+2.5K</div>
-                <p className="parches-metric-desc" style={{ fontSize: '15px' }}>Usuarios reales descargando e inscribiéndose en la App.</p>
+              <div className="parches-metric-card" style={{ padding: '50px 40px', textCenter: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div className="parches-metric-label" style={{ fontSize: '14px', marginBottom: '15px' }}>// Conversión en App</div>
+                <div className="parches-metric-value cyan" style={{ fontSize: '80px', margin: 0 }}>+2.5K</div>
               </div>
             </div>
-            
-            {/* Visual Metric placeholder when they upload it */}
-            <div style={{ marginTop: '30px', height: '10px', background: 'linear-gradient(90deg, var(--neon-emerald), var(--neon-purple))', opacity: 0.1, borderRadius: '5px' }}></div>
           </div>
         </div>
 
         {/* SLIDE 4: EL CIMIENTO INVISIBLE (OFERTA Y PRODUCTO) */}
         <div className={`parches-slide ${currentSlide === 3 ? 'active' : ''}`}>
-          <div className="parches-glass-card animate-fade-in" style={{ padding: '50px' }}>
+          <div className="parches-glass-card animate-fade-in" style={{ padding: '60px' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 02. ESTRATEGIA ANTES DE GRABAR</span>
-            <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '30px' }}>La Oferta y el Producto</h2>
+            <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '40px' }}>La Oferta y el Producto</h2>
             
-            <div className="parches-grid-2-layout" style={{ gap: '40px', alignItems: 'center' }}>
+            <div className="parches-grid-2-layout" style={{ gap: '50px', alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-                <div style={{ fontSize: '28px', fontWeight: '800', color: '#fff', leading: '1.2' }}>
+                <div style={{ fontSize: '40px', fontWeight: '900', color: '#fff', lineHeight: '1.2' }}>
                   El contenido es el <span style={{ color: 'var(--neon-emerald)' }}>vehículo</span>,<br />
                   la oferta es el <span style={{ color: 'var(--neon-cyan)' }}>destino final</span>.
                 </div>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '18px', margin: 0, lineHeight: '1.5' }}>
-                  Sin un producto o servicio claro, la viralidad en redes es simplemente una métrica de ego. Debes saber a dónde enviar el tráfico.
-                </p>
               </div>
               
-              <div style={{ background: 'rgba(5, 5, 10, 0.5)', border: '1px solid var(--glass-border)', padding: '40px', borderRadius: '24px', textAlign: 'center' }}>
-                <div style={{ fontSize: '60px', marginBottom: '10px' }}>🎯</div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '24px', fontWeight: '900', color: '#fff', uppercase: 'true' }}>OFERTA CLARA</div>
-                <div style={{ fontSize: '20px', color: 'var(--neon-emerald)', fontWeight: 'bold', marginTop: '10px' }}>
-                  Foco ➡️ Conversión
-                </div>
+              <div style={{ background: 'rgba(5, 5, 10, 0.5)', border: '1px solid var(--glass-border)', padding: '50px 40px', borderRadius: '24px', textAlign: 'center' }}>
+                <div style={{ fontSize: '80px', marginBottom: '15px' }}>🎯</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: '900', color: '#fff', letterSpacing: '0.05em' }}>OFERTA CLARA</div>
               </div>
             </div>
           </div>
@@ -266,26 +252,20 @@ export default function ParchesPresentation() {
 
         {/* SLIDE 5: NICHO Y PASIÓN (LA REGLA DE LOS 50 POSTS) */}
         <div className={`parches-slide ${currentSlide === 4 ? 'active' : ''}`}>
-          <div className="parches-glass-card animate-fade-in" style={{ padding: '50px' }}>
+          <div className="parches-glass-card animate-fade-in" style={{ padding: '60px' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 03. LA LEY DE LA CONSTANCIA</span>
             
-            <div className="parches-grid-2-layout" style={{ gap: '50px', alignItems: 'center' }}>
+            <div className="parches-grid-2-layout" style={{ gap: '60px', alignItems: 'center' }}>
               <div>
-                <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '20px' }}>Nicho y Pasión</h2>
-                <div style={{ fontSize: '28px', fontWeight: '800', color: 'var(--neon-emerald)', marginBottom: '15px' }}>
+                <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '25px' }}>Nicho y Pasión</h2>
+                <div style={{ fontSize: '42px', fontWeight: '950', color: 'var(--neon-emerald)', marginBottom: '15px', letterSpacing: '-0.02em' }}>
                   "La Regla de los 50 Posts"
                 </div>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '16px', lineHeight: '1.5', margin: 0 }}>
-                  Crear contenido orgánico requiere constancia absoluta. Puedes publicar 50 videos sin ver resultados. Si no te apasiona el nicho, abandonarás por aburrimiento.
-                </p>
               </div>
               
-              <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.25)', padding: '30px', borderRadius: '24px', textAlign: 'left' }}>
-                <div style={{ fontSize: '32px', marginBottom: '10px' }}>⚠️</div>
-                <h4 style={{ fontSize: '18px', fontWeight: 'bold', color: '#f87171', margin: '0 0 10px 0' }}>El filtro del aburrimiento</h4>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0, lineHeight: '1.5' }}>
-                  Elegir un nicho solo por moda o dinero rápido te garantiza tirar la toalla en la primera semana sin reproducciones. El algoritmo premia la constancia.
-                </p>
+              <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.25)', padding: '40px', borderRadius: '24px', textAlign: 'center' }}>
+                <div style={{ fontSize: '60px', marginBottom: '15px' }}>⚠️</div>
+                <h4 style={{ fontSize: '24px', fontWeight: '900', color: '#f87171', margin: 0 }}>El filtro del aburrimiento</h4>
               </div>
             </div>
           </div>
@@ -293,35 +273,33 @@ export default function ParchesPresentation() {
 
         {/* SLIDE 6: TARGET Y COMPETENCIA */}
         <div className={`parches-slide ${currentSlide === 5 ? 'active' : ''}`}>
-          <div className="parches-glass-card animate-fade-in" style={{ padding: '50px' }}>
+          <div className="parches-glass-card animate-fade-in" style={{ padding: '60px' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 04. LA BRÚJULA DEL CONTENIDO</span>
             
-            <div className="parches-grid-2-layout" style={{ gap: '50px', alignItems: 'start' }}>
-              <div>
-                <h2 className="parches-slide-title" style={{ fontSize: '44px', marginBottom: '20px' }}>Target y Competencia</h2>
+            <div className="parches-grid-2-layout" style={{ gap: '60px', alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                <h2 className="parches-slide-title" style={{ fontSize: '48px', margin: 0 }}>Target y Competencia</h2>
                 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
                   <div>
-                    <h4 style={{ fontSize: '18px', fontWeight: 'bold', color: 'var(--neon-cyan)', margin: '0 0 5px 0' }}>🎯 Target Fiel (Mujeres 35-45)</h4>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>Tus videos deben atacar sus dolores diarios (falta de tiempo, estrés al cocinar), no generalidades del gimnasio.</p>
+                    <h4 style={{ fontSize: '26px', fontWeight: '900', color: 'var(--neon-cyan)', margin: 0 }}>🎯 Target Fiel (Mujeres 35-45)</h4>
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '18px', fontWeight: 'bold', color: 'var(--neon-cyan)', margin: '0 0 5px 0' }}>🔍 Benchmarking Activo</h4>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '14px', margin: 0 }}>Investiga competidores (con y sin IA). Identifica qué videos funcionan y replica los patrones de ganchos que ya tienen éxito.</p>
+                    <h4 style={{ fontSize: '26px', fontWeight: '900', color: 'var(--neon-cyan)', margin: 0 }}>🔍 Benchmarking Activo</h4>
                   </div>
                 </div>
               </div>
               
-              <div className="parches-sidebar-checklist" style={{ padding: '30px' }}>
+              <div className="parches-sidebar-checklist" style={{ padding: '35px 30px' }}>
                 <div className="parches-checklist-badge">MÉTRICAS</div>
-                <h3 className="parches-checklist-title">📋 Ajustes de Target</h3>
+                <h3 className="parches-checklist-title" style={{ fontSize: '20px', marginBottom: '25px' }}>📋 Ajustes</h3>
                 <div className="parches-check-item">
                   <span className="parches-check-label">Target Ideal</span>
                   <span className="parches-check-value emerald">Mujeres 35-45</span>
                 </div>
                 <div className="parches-check-item">
                   <span className="parches-check-label">Enfoque</span>
-                  <span className="parches-check-value">Dolores Cotidianos</span>
+                  <span className="parches-check-value">Dolor Cotidiano</span>
                 </div>
                 <div className="parches-check-item">
                   <span className="parches-check-label">Competidores</span>
@@ -334,26 +312,23 @@ export default function ParchesPresentation() {
 
         {/* SLIDE 7: ¿QUÉ ES UN FRAMEWORK? */}
         <div className={`parches-slide ${currentSlide === 6 ? 'active' : ''}`}>
-          <div className="parches-glass-card animate-fade-in" style={{ padding: '50px' }}>
+          <div className="parches-glass-card animate-fade-in" style={{ padding: '60px' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 05. SISTEMAS VS CREATIVIDAD</span>
             
-            <div className="parches-grid-2-layout" style={{ gap: '40px', alignItems: 'center' }}>
+            <div className="parches-grid-2-layout" style={{ gap: '50px', alignItems: 'center' }}>
               <div>
                 <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '25px' }}>¿Qué es un Framework?</h2>
-                <div style={{ fontSize: '28px', fontWeight: '900', color: 'var(--neon-purple)', fontStyle: 'italic', marginBottom: '20px' }}>
+                <div style={{ fontSize: '38px', fontWeight: '950', color: 'var(--neon-purple)', fontStyle: 'italic', margin: 0 }}>
                   "No improvises, sistematiza"
                 </div>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '16px', lineHeight: '1.5', margin: 0 }}>
-                  Yo no me despierto cada mañana pensando qué tipo de video diferente inventar. Utilizo 2 o 3 plantillas probadas y varío los temas dentro de ellas.
-                </p>
               </div>
               
-              <div style={{ background: 'rgba(5, 5, 10, 0.6)', border: '1px solid var(--glass-border)', padding: '30px', borderRadius: '24px', textAlign: 'center' }}>
+              <div style={{ background: 'rgba(5, 5, 10, 0.6)', border: '1px solid var(--glass-border)', padding: '40px', borderRadius: '24px', textAlign: 'center' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--neon-cyan)', marginBottom: '15px' }}>FÓRMULA DE ESCALA</div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '32px', fontWeight: '900', color: '#fff', leading: '1.1' }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '38px', fontWeight: '900', color: '#fff', lineHeight: '1.1' }}>
                   ESTRUCTURA<br />
                   <span style={{ color: 'var(--neon-emerald)' }}>+ VARIABLE</span><br />
-                  <span style={{ color: 'var(--neon-purple)', fontSize: '22px' }}>= CONSISTENCIA</span>
+                  <span style={{ color: 'var(--neon-purple)', fontSize: '24px' }}>= CONSISTENCIA</span>
                 </div>
               </div>
             </div>
@@ -362,22 +337,26 @@ export default function ParchesPresentation() {
 
         {/* SLIDE 8: CASO REAL - ORGANOS PIXAR (SANO Y PUNTO) */}
         <div className={`parches-slide ${currentSlide === 7 ? 'active' : ''}`}>
-          <div className="parches-glass-card animate-fade-in" style={{ padding: '50px' }}>
+          <div className="parches-glass-card animate-fade-in" style={{ padding: '60px' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 06. CASO SANO Y PUNTO</span>
             
-            <div className="parches-grid-2-layout" style={{ gap: '50px', alignItems: 'center' }}>
-              <div>
-                <h2 className="parches-slide-title" style={{ fontSize: '44px', marginBottom: '20px' }}>Framework "Órganos Pixar"</h2>
+            <div className="parches-grid-2-layout" style={{ gap: '60px', alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                <h2 className="parches-slide-title" style={{ fontSize: '48px', margin: 0 }}>Framework "Órganos Pixar"</h2>
                 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', color: 'var(--text-secondary)', fontSize: '15px' }}>
-                  <p style={{ margin: 0 }}><strong>Estructura Fija:</strong> Órganos animados Pixar comiendo alimentos y reaccionando con dolor o felicidad, sumado a un caption científico nutricional.</p>
-                  <p style={{ margin: 0 }}><strong>La Variable:</strong> Cambia el alimento, el tipo de órgano (hígado, riñones) y si le hace bien o mal.</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  <div style={{ fontSize: '24px', fontWeight: '800', color: '#fff' }}>
+                    1. Estructura Pixar Fija 🤖
+                  </div>
+                  <div style={{ fontSize: '24px', fontWeight: '800', color: 'var(--neon-emerald)' }}>
+                    2. Variación de Comida/Órgano 🥦
+                  </div>
                 </div>
               </div>
               
               <div className="parches-sidebar-checklist" style={{ padding: '30px' }}>
                 <div className="parches-checklist-badge">SANO Y PUNTO</div>
-                <h3 className="parches-checklist-title">🧠 Órgano + Alimento</h3>
+                <h3 className="parches-checklist-title" style={{ fontSize: '18px' }}>🧠 Estructura</h3>
                 <div className="parches-check-item">
                   <span className="parches-check-label">Hígado</span>
                   <span className="parches-check-value emerald">Grasa ➡️ Reacción Dolor</span>
@@ -397,25 +376,22 @@ export default function ParchesPresentation() {
 
         {/* SLIDE 9: ANATOMÍA DE UN VIDEO VIRAL */}
         <div className={`parches-slide ${currentSlide === 8 ? 'active' : ''}`}>
-          <div className="parches-glass-card animate-fade-in" style={{ padding: '50px' }}>
+          <div className="parches-glass-card animate-fade-in" style={{ padding: '60px' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 07. ESTRUCTURACIÓN DE GUION</span>
-            <h2 className="parches-slide-title" style={{ fontSize: '40px', marginBottom: '30px' }}>Anatomía de un Video de 30 Segundos</h2>
+            <h2 className="parches-slide-title" style={{ fontSize: '44px', marginBottom: '40px' }}>Anatomía del Video (30 Segundos)</h2>
             
-            <div className="parches-grid-3">
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '24px', borderRadius: '20px' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--neon-emerald)', fontWeight: 'bold', marginBottom: '10px' }}>01 // HOOK</div>
-                <h4 style={{ fontSize: '20px', fontWeight: '800', color: '#fff', margin: '0 0 5px 0' }}>0 a 3 segundos</h4>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0 }}>Captura la atención inmediata del target enfocado en su dolor.</p>
+            <div className="parches-grid-3" style={{ gap: '30px' }}>
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '35px 25px', borderRadius: '24px', textAlignment: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '15px', color: 'var(--neon-emerald)', fontWeight: 'bold', marginBottom: '15px' }}>01 // HOOK</div>
+                <h4 style={{ fontSize: '28px', fontWeight: '900', color: '#fff', margin: 0 }}>0 a 3 seg</h4>
               </div>
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '24px', borderRadius: '20px' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--neon-purple)', fontWeight: 'bold', marginBottom: '10px' }}>02 // CUERPO</div>
-                <h4 style={{ fontSize: '20px', fontWeight: '800', color: '#fff', margin: '0 0 5px 0' }}>3 a 20 segundos</h4>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0 }}>Entrega la promesa del gancho de manera rápida y sin rodeos.</p>
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '35px 25px', borderRadius: '24px', textAlignment: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '15px', color: 'var(--neon-purple)', fontWeight: 'bold', marginBottom: '15px' }}>02 // CUERPO</div>
+                <h4 style={{ fontSize: '28px', fontWeight: '900', color: '#fff', margin: 0 }}>3 a 20 seg</h4>
               </div>
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '24px', borderRadius: '20px' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--neon-cyan)', fontWeight: 'bold', marginBottom: '10px' }}>03 // CTA</div>
-                <h4 style={{ fontSize: '20px', fontWeight: '800', color: '#fff', margin: '0 0 5px 0' }}>20 a 30 segundos</h4>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '13px', margin: 0 }}>Llamado a la acción específico: Comentar palabra clave para automatizar entrega.</p>
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '35px 25px', borderRadius: '24px', textAlignment: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '15px', color: 'var(--neon-cyan)', fontWeight: 'bold', marginBottom: '15px' }}>03 // CTA</div>
+                <h4 style={{ fontSize: '28px', fontWeight: '900', color: '#fff', margin: 0 }}>20 a 30 seg</h4>
               </div>
             </div>
           </div>
@@ -428,37 +404,22 @@ export default function ParchesPresentation() {
             <h2 className="parches-slide-title" style={{ fontSize: '42px', marginBottom: '35px' }}>3 Frameworks de Contenido</h2>
             
             <div className="parches-grid-3">
-              <div className="parches-framework-card emerald" style={{ padding: '30px' }}>
+              <div className="parches-framework-card emerald" style={{ padding: '35px 30px' }}>
                 <div className="parches-framework-num">01</div>
-                <h3 className="parches-framework-title" style={{ fontSize: '22px' }}>Belleza y Estética</h3>
-                <p className="parches-framework-subtitle" style={{ fontSize: '11px' }}>"El Ingrediente Héroe / El Proceso Visual"</p>
-                <div className="parches-framework-preview-box" style={{ fontSize: '11px' }}>
-                  <strong>Hook:</strong> "Si sufres de [problema], deja de usar..."<br/>
-                  <strong>Cuerpo:</strong> Mostrar textura/antes-después y activo.<br/>
-                  <strong>CTA:</strong> "Comenta [PIEL] para la rutina."
-                </div>
+                <h3 className="parches-framework-title" style={{ fontSize: '24px', marginBottom: '10px' }}>Belleza y Estética</h3>
+                <p className="parches-framework-subtitle" style={{ fontSize: '12px' }}>"El Ingrediente Héroe / El Proceso Visual"</p>
               </div>
 
-              <div className="parches-framework-card purple" style={{ padding: '30px' }}>
+              <div className="parches-framework-card purple" style={{ padding: '35px 30px' }}>
                 <div className="parches-framework-num">02</div>
-                <h3 className="parches-framework-title" style={{ fontSize: '22px' }}>Moda y Ropa</h3>
-                <p className="parches-framework-subtitle" style={{ fontSize: '11px' }}>"Duelo de Outfits / Corrección"</p>
-                <div className="parches-framework-preview-box" style={{ fontSize: '11px' }}>
-                  <strong>Hook:</strong> "No combines [prenda] así si vas a..."<br/>
-                  <strong>Cuerpo:</strong> Visualización rápido Incorrecto vs Correcto.<br/>
-                  <strong>CTA:</strong> "Comenta [ESTILO] para los links."
-                </div>
+                <h3 className="parches-framework-title" style={{ fontSize: '24px', marginBottom: '10px' }}>Moda y Ropa</h3>
+                <p className="parches-framework-subtitle" style={{ fontSize: '12px' }}>"Duelo de Outfits / Corrección Rápida"</p>
               </div>
 
-              <div className="parches-framework-card cyan" style={{ padding: '30px' }}>
+              <div className="parches-framework-card cyan" style={{ padding: '35px 30px' }}>
                 <div className="parches-framework-num">03</div>
-                <h3 className="parches-framework-title" style={{ fontSize: '22px' }}>Servicios y Consultores</h3>
-                <p className="parches-framework-subtitle" style={{ fontSize: '11px' }}>"El Rompe-Mitos / Solución al Dolor"</p>
-                <div className="parches-framework-preview-box" style={{ fontSize: '11px' }}>
-                  <strong>Hook:</strong> "La gran mentira que te dijeron sobre..."<br/>
-                  <strong>Cuerpo:</strong> Hablar directo a cámara y dar 3 pasos reales.<br/>
-                  <strong>CTA:</strong> "Comenta [GUIA] para enviarte el PDF."
-                </div>
+                <h3 className="parches-framework-title" style={{ fontSize: '24px', marginBottom: '10px' }}>Servicios y Consultores</h3>
+                <p className="parches-framework-subtitle" style={{ fontSize: '12px' }}>"El Rompe-Mitos / Solución al Dolor"</p>
               </div>
             </div>
           </div>
@@ -469,7 +430,7 @@ export default function ParchesPresentation() {
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 09. INTERACCIÓN Y DEBATE</span>
             <h2 className="parches-slide-title" style={{ textAlign: 'center', fontSize: '46px' }}>El Consultorio en Vivo</h2>
-            <p className="parches-desc-main" style={{ fontSize: '16px', marginBottom: '24px', textAlign: 'center', maxWidth: '600px' }}>
+            <p className="parches-desc-main" style={{ fontSize: '18px', marginBottom: '24px', textAlign: 'center', maxWidth: '600px' }}>
               ¡Hablemos de tus proyectos! Gira la ruleta para proponer un tema de debate en grupo.
             </p>
 
@@ -509,18 +470,15 @@ export default function ParchesPresentation() {
             <div style={{ textAlign: 'left' }}>
               <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 10. CONCLUIR & REGALO</span>
               <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '24px' }}>Llévate Mi Framework Viral</h2>
-              <p className="parches-desc-main" style={{ fontSize: '18px', marginBottom: '28px', lineHeight: '1.4' }}>
-                Regístrate y recibe la plantilla con prompts de ChatGPT directa a tu correo.
-              </p>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '30px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', fontSize: '15px', color: 'var(--text-secondary)' }}>
-                  <span style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '18px' }}>✓</span>
-                  <span><strong>Regla de oro:</strong> Primero manual, luego automatizado.</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', fontSize: '18px', color: 'var(--text-secondary)' }}>
+                  <span style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '22px' }}>✓</span>
+                  <span>Primero manual, luego automatizado.</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', fontSize: '15px', color: 'var(--text-secondary)' }}>
-                  <span style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '18px' }}>✓</span>
-                  <span><strong>Recursividad:</strong> Optimiza costos y escala paso a paso.</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', fontSize: '18px', color: 'var(--text-secondary)' }}>
+                  <span style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '22px' }}>✓</span>
+                  <span>Recursividad al poder.</span>
                 </div>
               </div>
             </div>
