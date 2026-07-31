@@ -128,6 +128,10 @@ export default function ClientLayout({ children }) {
 
   const activePath = pathname || '/action-center';
 
+  if (pathname === '/parches') {
+    return <>{children}</>;
+  }
+
   return (
     <div className="app">
       <aside className="sidebar">
