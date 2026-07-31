@@ -166,7 +166,10 @@ export default function ParchesPresentation() {
             
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '35px' }}>
               <h2 className="parches-slide-title" style={{ fontSize: '48px', margin: 0 }}>Alejandro Ruiz // Sano y Punto</h2>
-              <span className="parches-footer-tip" style={{ color: 'var(--neon-cyan)' }}>ORGANIC TRAFFIC apalancado en IA</span>
+              <span className="parches-footer-tip" style={{ color: 'var(--neon-cyan)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
+                ORGANIC TRAFFIC apalancado en IA
+              </span>
             </div>
 
             <div className="parches-grid-3">
@@ -198,17 +201,20 @@ export default function ParchesPresentation() {
                   El contenido es el <span style={{ color: 'var(--neon-emerald)' }}>vehículo</span>,<br />
                   la oferta es el <span style={{ color: 'var(--neon-cyan)' }}>destino final</span>.
                 </div>
-                <div style={{ fontSize: '24px', fontWeight: '800', color: 'var(--neon-purple)', fontStyle: 'italic', marginTop: '10px' }}>
+                <div style={{ fontSize: '24px', fontWeight: '800', color: 'var(--neon-purple)', fontStyle: 'italic', marginTop: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--neon-purple)' }}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
                   "No improvises sin producto"
                 </div>
               </div>
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <div style={{ background: 'rgba(5, 5, 10, 0.5)', border: '1px solid var(--glass-border)', padding: '30px', borderRadius: '20px', textAlign: 'center' }}>
+                <div style={{ background: 'rgba(5, 5, 10, 0.5)', border: '1px solid var(--glass-border)', padding: '30px', borderRadius: '20px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--neon-emerald)', marginBottom: '10px' }}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
                   <div style={{ fontSize: '32px', fontWeight: '950', color: 'var(--neon-emerald)' }}>"La Regla de los 50 Posts"</div>
                 </div>
-                <div style={{ background: 'rgba(239, 68, 68, 0.04)', border: '1px solid rgba(239, 68, 68, 0.2)', padding: '25px', borderRadius: '20px', textAlign: 'center' }}>
-                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#f87171' }}>⚠️ El filtro del aburrimiento</div>
+                <div style={{ background: 'rgba(239, 68, 68, 0.04)', border: '1px solid rgba(239, 68, 68, 0.2)', padding: '25px', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#f87171' }}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /><line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" /></svg>
+                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#f87171' }}>El filtro del aburrimiento</div>
                 </div>
               </div>
             </div>
@@ -225,11 +231,13 @@ export default function ParchesPresentation() {
                 <h2 className="parches-slide-title" style={{ fontSize: '48px', margin: 0 }}>Target y Competencia</h2>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-                  <div>
-                    <h4 style={{ fontSize: '32px', fontWeight: '900', color: 'var(--neon-cyan)', margin: 0 }}>🎯 Target Fiel (Mujeres 35-45)</h4>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-cyan)' }}><circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" /></svg>
+                    <h4 style={{ fontSize: '32px', fontWeight: '900', color: 'var(--neon-cyan)', margin: 0 }}>Target Fiel (Mujeres 35-45)</h4>
                   </div>
-                  <div>
-                    <h4 style={{ fontSize: '32px', fontWeight: '900', color: 'var(--neon-cyan)', margin: 0 }}>🔍 Benchmarking Activo</h4>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-cyan)' }}><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                    <h4 style={{ fontSize: '32px', fontWeight: '900', color: 'var(--neon-cyan)', margin: 0 }}>Benchmarking Activo</h4>
                   </div>
                 </div>
               </div>
@@ -262,7 +270,8 @@ export default function ParchesPresentation() {
             <div className="parches-grid-2-layout" style={{ gap: '50px', alignItems: 'center' }}>
               <div>
                 <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '25px' }}>¿Qué es un Framework?</h2>
-                <div style={{ fontSize: '42px', fontWeight: '950', color: 'var(--neon-purple)', fontStyle: 'italic', margin: 0 }}>
+                <div style={{ fontSize: '42px', fontWeight: '950', color: 'var(--neon-purple)', fontStyle: 'italic', margin: 0, display: 'flex', alignItems: 'center', gap: '15px' }}>
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-purple)' }}><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z" /><path d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z" /><path d="M12 8v8" /></svg>
                   "No improvises, sistematiza"
                 </div>
               </div>
@@ -289,18 +298,20 @@ export default function ParchesPresentation() {
                 <h2 className="parches-slide-title" style={{ fontSize: '48px', margin: 0 }}>Framework "Órganos Pixar"</h2>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-                  <div style={{ fontSize: '32px', fontWeight: '900', color: '#fff' }}>
-                    1. Estructura Pixar Fija 🤖
+                  <div style={{ fontSize: '32px', fontWeight: '900', color: '#fff', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-emerald)' }}><rect x="3" y="11" width="18" height="10" rx="2" /><circle cx="12" cy="5" r="2" /><path d="M12 7v4" /><line x1="8" y1="16" x2="8.01" y2="16" /><line x1="16" y1="16" x2="16.01" y2="16" /></svg>
+                    1. Estructura Pixar Fija
                   </div>
-                  <div style={{ fontSize: '32px', fontWeight: '900', color: 'var(--neon-emerald)' }}>
-                    2. Variación de Comida / Órgano 🥦
+                  <div style={{ fontSize: '32px', fontWeight: '900', color: 'var(--neon-emerald)', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-emerald)' }}><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+                    2. Variación de Comida / Órgano
                   </div>
                 </div>
               </div>
               
               <div className="parches-sidebar-checklist" style={{ padding: '30px' }}>
                 <div className="parches-checklist-badge">SANO Y PUNTO</div>
-                <h3 className="parches-checklist-title" style={{ fontSize: '18px' }}>🧠 Estructura</h3>
+                <h3 className="parches-checklist-title" style={{ fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>🧠 Estructura</h3>
                 <div className="parches-check-item">
                   <span className="parches-check-label">Hígado</span>
                   <span className="parches-check-value emerald">Grasa ➡️ Reacción Dolor</span>
@@ -395,7 +406,7 @@ export default function ParchesPresentation() {
               disabled={isSpinning}
               className="parches-neon-btn"
             >
-              <span>{isSpinning ? 'Girando...' : 'Girar Pregunta 🎰'}</span>
+              <span>{isSpinning ? 'Girando...' : 'Girar Pregunta'}</span>
             </button>
           </div>
         </div>
@@ -410,11 +421,11 @@ export default function ParchesPresentation() {
               
               <div style={{ display: 'flex', flexDirection: 'column', gap: '25px', marginBottom: '30px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '15px', fontSize: '22px', color: 'var(--text-secondary)', fontWeight: 'bold' }}>
-                  <span style={{ color: 'var(--neon-emerald)', fontSize: '26px' }}>✓</span>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ color: 'var(--neon-emerald)' }}><polyline points="20 6 9 17 4 12" /></svg>
                   <span>Primero manual, luego automatizado.</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '15px', fontSize: '22px', color: 'var(--text-secondary)', fontWeight: 'bold' }}>
-                  <span style={{ color: 'var(--neon-emerald)', fontSize: '26px' }}>✓</span>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ color: 'var(--neon-emerald)' }}><polyline points="20 6 9 17 4 12" /></svg>
                   <span>Recursividad al poder.</span>
                 </div>
               </div>
@@ -472,7 +483,9 @@ export default function ParchesPresentation() {
                 </form>
               ) : (
                 <div className="parches-success-container">
-                  <div className="parches-success-icon">🎉</div>
+                  <div className="parches-success-icon">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-emerald)', margin: '0 auto 10px' }}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+                  </div>
                   <h3 className="parches-success-title" style={{ fontSize: '26px' }}>¡Inscripción Exitosa!</h3>
                   <p className="parches-success-desc" style={{ fontSize: '14px' }}>
                     ¡Gracias, {formData.name}! Tus datos se guardaron localmente en el servidor. Te hemos enviado el Framework a **{formData.email}**.
