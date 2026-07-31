@@ -321,22 +321,18 @@ export default function ParchesPresentation() {
                   </div>
                 </div>
               </div>
-              
-              <div className="parches-sidebar-checklist" style={{ padding: '30px' }}>
-                <div className="parches-checklist-badge">SANO Y PUNTO</div>
-                <h3 className="parches-checklist-title" style={{ fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px' }}>🧠 Estructura</h3>
-                <div className="parches-check-item">
-                  <span className="parches-check-label">Hígado</span>
-                  <span className="parches-check-value emerald">Grasa ➡️ Reacción Dolor</span>
-                </div>
-                <div className="parches-check-item">
-                  <span className="parches-check-label">Estómago</span>
-                  <span className="parches-check-value cyan">Kéfir ➡️ Reacción Corazón</span>
-                </div>
-                <div className="parches-check-item">
-                  <span className="parches-check-label">Riñón</span>
-                  <span className="parches-check-value">Agua ➡️ Reacción Energía</span>
-                </div>
+              {/* Right Column: Embedded Instagram Reel */}
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                <iframe 
+                  src="https://www.instagram.com/reel/DbO57JGR2ft/embed/" 
+                  width="328" 
+                  height="480" 
+                  frameBorder="0" 
+                  scrolling="no" 
+                  allowtransparency="true" 
+                  allow="encrypted-media"
+                  style={{ borderRadius: '20px', border: '1px solid var(--glass-border)', boxShadow: '0 15px 35px rgba(0,0,0,0.6)', background: 'rgba(0,0,0,0.2)' }}
+                ></iframe>
               </div>
             </div>
           </div>
