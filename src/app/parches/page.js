@@ -187,18 +187,14 @@ export default function ParchesPresentation() {
                 <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--neon-cyan)', marginTop: '5px', uppercase: 'true', letterSpacing: '0.1em' }}>BUILDER & CREATOR</p>
               </div>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '35px' }}>
                 <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-                  <span style={{ fontSize: '32px', color: 'var(--neon-emerald)' }}>⚡</span>
-                  <div>
-                    <h4 style={{ fontSize: '32px', fontWeight: '900', color: '#fff', margin: 0 }}>Práctica &gt; Teoría</h4>
-                  </div>
+                  <span style={{ fontSize: '36px', color: 'var(--neon-emerald)' }}>⚡</span>
+                  <h4 style={{ fontSize: '36px', fontWeight: '900', color: '#fff', margin: 0 }}>Práctica &gt; Teoría</h4>
                 </div>
                 <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-                  <span style={{ fontSize: '32px', color: 'var(--neon-purple)' }}>🚀</span>
-                  <div>
-                    <h4 style={{ fontSize: '32px', fontWeight: '900', color: '#fff', margin: 0 }}>Sano y Punto</h4>
-                  </div>
+                  <span style={{ fontSize: '36px', color: 'var(--neon-purple)' }}>🚀</span>
+                  <h4 style={{ fontSize: '36px', fontWeight: '900', color: '#fff', margin: 0 }}>Sano y Punto</h4>
                 </div>
               </div>
             </div>
@@ -212,17 +208,17 @@ export default function ParchesPresentation() {
             <h2 className="parches-slide-title" style={{ fontSize: '50px', marginBottom: '40px' }}>Caso de Estudio: Sano y Punto</h2>
             
             <div className="parches-grid-3">
-              <div className="parches-metric-card" style={{ padding: '50px 40px', textCenter: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div className="parches-metric-label" style={{ fontSize: '14px', marginBottom: '15px' }}>// Comunidad</div>
-                <div className="parches-metric-value emerald" style={{ fontSize: '80px', margin: 0 }}>+18K</div>
+              <div className="parches-metric-card" style={{ padding: '60px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="parches-metric-label" style={{ fontSize: '16px', marginBottom: '20px' }}>// Comunidad</div>
+                <div className="parches-metric-value emerald" style={{ fontSize: '90px', margin: 0 }}>+18K</div>
               </div>
-              <div className="parches-metric-card" style={{ padding: '50px 40px', textCenter: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div className="parches-metric-label" style={{ fontSize: '14px', marginBottom: '15px' }}>// Alcance Orgánico</div>
-                <div className="parches-metric-value purple" style={{ fontSize: '80px', margin: 0 }}>1.5M+</div>
+              <div className="parches-metric-card" style={{ padding: '60px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="parches-metric-label" style={{ fontSize: '16px', marginBottom: '20px' }}>// Alcance Orgánico</div>
+                <div className="parches-metric-value purple" style={{ fontSize: '90px', margin: 0 }}>1.5M+</div>
               </div>
-              <div className="parches-metric-card" style={{ padding: '50px 40px', textCenter: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div className="parches-metric-label" style={{ fontSize: '14px', marginBottom: '15px' }}>// Conversión en App</div>
-                <div className="parches-metric-value cyan" style={{ fontSize: '80px', margin: 0 }}>+2.5K</div>
+              <div className="parches-metric-card" style={{ padding: '60px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="parches-metric-label" style={{ fontSize: '16px', marginBottom: '20px' }}>// Conversión en App</div>
+                <div className="parches-metric-value cyan" style={{ fontSize: '90px', margin: 0 }}>+2.5K</div>
               </div>
             </div>
           </div>
@@ -236,15 +232,15 @@ export default function ParchesPresentation() {
             
             <div className="parches-grid-2-layout" style={{ gap: '50px', alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-                <div style={{ fontSize: '40px', fontWeight: '900', color: '#fff', lineHeight: '1.2' }}>
+                <div style={{ fontSize: '42px', fontWeight: '900', color: '#fff', lineHeight: '1.2' }}>
                   El contenido es el <span style={{ color: 'var(--neon-emerald)' }}>vehículo</span>,<br />
                   la oferta es el <span style={{ color: 'var(--neon-cyan)' }}>destino final</span>.
                 </div>
               </div>
               
               <div style={{ background: 'rgba(5, 5, 10, 0.5)', border: '1px solid var(--glass-border)', padding: '50px 40px', borderRadius: '24px', textAlign: 'center' }}>
-                <div style={{ fontSize: '80px', marginBottom: '15px' }}>🎯</div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '28px', fontWeight: '900', color: '#fff', letterSpacing: '0.05em' }}>OFERTA CLARA</div>
+                <div style={{ fontSize: '90px', marginBottom: '15px' }}>🎯</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '32px', fontWeight: '900', color: '#fff', letterSpacing: '0.05em' }}>OFERTA CLARA</div>
               </div>
             </div>
           </div>
@@ -256,16 +252,16 @@ export default function ParchesPresentation() {
             <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 03. LA LEY DE LA CONSTANCIA</span>
             
             <div className="parches-grid-2-layout" style={{ gap: '60px', alignItems: 'center' }}>
-              <div>
-                <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '25px' }}>Nicho y Pasión</h2>
-                <div style={{ fontSize: '42px', fontWeight: '950', color: 'var(--neon-emerald)', marginBottom: '15px', letterSpacing: '-0.02em' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                <h2 className="parches-slide-title" style={{ fontSize: '48px', margin: 0 }}>Nicho y Pasión</h2>
+                <div style={{ fontSize: '46px', fontWeight: '950', color: 'var(--neon-emerald)', margin: 0, letterSpacing: '-0.02em' }}>
                   "La Regla de los 50 Posts"
                 </div>
               </div>
               
-              <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.25)', padding: '40px', borderRadius: '24px', textAlign: 'center' }}>
-                <div style={{ fontSize: '60px', marginBottom: '15px' }}>⚠️</div>
-                <h4 style={{ fontSize: '24px', fontWeight: '900', color: '#f87171', margin: 0 }}>El filtro del aburrimiento</h4>
+              <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.25)', padding: '50px 40px', borderRadius: '24px', textAlign: 'center' }}>
+                <div style={{ fontSize: '70px', marginBottom: '15px' }}>⚠️</div>
+                <h4 style={{ fontSize: '28px', fontWeight: '900', color: '#f87171', margin: 0 }}>El filtro del aburrimiento</h4>
               </div>
             </div>
           </div>
@@ -277,15 +273,15 @@ export default function ParchesPresentation() {
             <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 04. LA BRÚJULA DEL CONTENIDO</span>
             
             <div className="parches-grid-2-layout" style={{ gap: '60px', alignItems: 'center' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
                 <h2 className="parches-slide-title" style={{ fontSize: '48px', margin: 0 }}>Target y Competencia</h2>
                 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
                   <div>
-                    <h4 style={{ fontSize: '26px', fontWeight: '900', color: 'var(--neon-cyan)', margin: 0 }}>🎯 Target Fiel (Mujeres 35-45)</h4>
+                    <h4 style={{ fontSize: '32px', fontWeight: '900', color: 'var(--neon-cyan)', margin: 0 }}>🎯 Target Fiel (Mujeres 35-45)</h4>
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '26px', fontWeight: '900', color: 'var(--neon-cyan)', margin: 0 }}>🔍 Benchmarking Activo</h4>
+                    <h4 style={{ fontSize: '32px', fontWeight: '900', color: 'var(--neon-cyan)', margin: 0 }}>🔍 Benchmarking Activo</h4>
                   </div>
                 </div>
               </div>
@@ -318,14 +314,14 @@ export default function ParchesPresentation() {
             <div className="parches-grid-2-layout" style={{ gap: '50px', alignItems: 'center' }}>
               <div>
                 <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '25px' }}>¿Qué es un Framework?</h2>
-                <div style={{ fontSize: '38px', fontWeight: '950', color: 'var(--neon-purple)', fontStyle: 'italic', margin: 0 }}>
+                <div style={{ fontSize: '42px', fontWeight: '950', color: 'var(--neon-purple)', fontStyle: 'italic', margin: 0 }}>
                   "No improvises, sistematiza"
                 </div>
               </div>
               
               <div style={{ background: 'rgba(5, 5, 10, 0.6)', border: '1px solid var(--glass-border)', padding: '40px', borderRadius: '24px', textAlign: 'center' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--neon-cyan)', marginBottom: '15px' }}>FÓRMULA DE ESCALA</div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '38px', fontWeight: '900', color: '#fff', lineHeight: '1.1' }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '38px', fontWeight: '900', color: '#fff', leading: '1.1' }}>
                   ESTRUCTURA<br />
                   <span style={{ color: 'var(--neon-emerald)' }}>+ VARIABLE</span><br />
                   <span style={{ color: 'var(--neon-purple)', fontSize: '24px' }}>= CONSISTENCIA</span>
@@ -341,15 +337,15 @@ export default function ParchesPresentation() {
             <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 06. CASO SANO Y PUNTO</span>
             
             <div className="parches-grid-2-layout" style={{ gap: '60px', alignItems: 'center' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
                 <h2 className="parches-slide-title" style={{ fontSize: '48px', margin: 0 }}>Framework "Órganos Pixar"</h2>
                 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                  <div style={{ fontSize: '24px', fontWeight: '800', color: '#fff' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                  <div style={{ fontSize: '32px', fontWeight: '900', color: '#fff' }}>
                     1. Estructura Pixar Fija 🤖
                   </div>
-                  <div style={{ fontSize: '24px', fontWeight: '800', color: 'var(--neon-emerald)' }}>
-                    2. Variación de Comida/Órgano 🥦
+                  <div style={{ fontSize: '32px', fontWeight: '900', color: 'var(--neon-emerald)' }}>
+                    2. Variación de Comida / Órgano 🥦
                   </div>
                 </div>
               </div>
@@ -381,17 +377,17 @@ export default function ParchesPresentation() {
             <h2 className="parches-slide-title" style={{ fontSize: '44px', marginBottom: '40px' }}>Anatomía del Video (30 Segundos)</h2>
             
             <div className="parches-grid-3" style={{ gap: '30px' }}>
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '35px 25px', borderRadius: '24px', textAlignment: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '15px', color: 'var(--neon-emerald)', fontWeight: 'bold', marginBottom: '15px' }}>01 // HOOK</div>
-                <h4 style={{ fontSize: '28px', fontWeight: '900', color: '#fff', margin: 0 }}>0 a 3 seg</h4>
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '45px 30px', borderRadius: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', color: 'var(--neon-emerald)', fontWeight: 'bold', marginBottom: '15px' }}>01 // HOOK</div>
+                <h4 style={{ fontSize: '36px', fontWeight: '900', color: '#fff', margin: 0 }}>0 a 3 seg</h4>
               </div>
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '35px 25px', borderRadius: '24px', textAlignment: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '15px', color: 'var(--neon-purple)', fontWeight: 'bold', marginBottom: '15px' }}>02 // CUERPO</div>
-                <h4 style={{ fontSize: '28px', fontWeight: '900', color: '#fff', margin: 0 }}>3 a 20 seg</h4>
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '45px 30px', borderRadius: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', color: 'var(--neon-purple)', fontWeight: 'bold', marginBottom: '15px' }}>02 // CUERPO</div>
+                <h4 style={{ fontSize: '36px', fontWeight: '900', color: '#fff', margin: 0 }}>3 a 20 seg</h4>
               </div>
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '35px 25px', borderRadius: '24px', textAlignment: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '15px', color: 'var(--neon-cyan)', fontWeight: 'bold', marginBottom: '15px' }}>03 // CTA</div>
-                <h4 style={{ fontSize: '28px', fontWeight: '900', color: '#fff', margin: 0 }}>20 a 30 seg</h4>
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '45px 30px', borderRadius: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', color: 'var(--neon-cyan)', fontWeight: 'bold', marginBottom: '15px' }}>03 // CTA</div>
+                <h4 style={{ fontSize: '36px', fontWeight: '900', color: '#fff', margin: 0 }}>20 a 30 seg</h4>
               </div>
             </div>
           </div>
@@ -401,25 +397,25 @@ export default function ParchesPresentation() {
         <div className={`parches-slide ${currentSlide === 9 ? 'active' : ''}`}>
           <div className="animate-fade-in" style={{ width: '100%' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 08. MOLDES DE INDUSTRIA</span>
-            <h2 className="parches-slide-title" style={{ fontSize: '42px', marginBottom: '35px' }}>3 Frameworks de Contenido</h2>
+            <h2 className="parches-slide-title" style={{ fontSize: '42px', marginBottom: '45px' }}>3 Frameworks de Contenido</h2>
             
             <div className="parches-grid-3">
-              <div className="parches-framework-card emerald" style={{ padding: '35px 30px' }}>
+              <div className="parches-framework-card emerald" style={{ padding: '50px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
                 <div className="parches-framework-num">01</div>
-                <h3 className="parches-framework-title" style={{ fontSize: '24px', marginBottom: '10px' }}>Belleza y Estética</h3>
-                <p className="parches-framework-subtitle" style={{ fontSize: '12px' }}>"El Ingrediente Héroe / El Proceso Visual"</p>
+                <h3 className="parches-framework-title" style={{ fontSize: '28px', marginBottom: '10px' }}>Belleza y Estética</h3>
+                <p className="parches-framework-subtitle" style={{ fontSize: '13px', color: 'var(--neon-emerald)', margin: 0 }}>"El Ingrediente Héroe"</p>
               </div>
 
-              <div className="parches-framework-card purple" style={{ padding: '35px 30px' }}>
+              <div className="parches-framework-card purple" style={{ padding: '50px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
                 <div className="parches-framework-num">02</div>
-                <h3 className="parches-framework-title" style={{ fontSize: '24px', marginBottom: '10px' }}>Moda y Ropa</h3>
-                <p className="parches-framework-subtitle" style={{ fontSize: '12px' }}>"Duelo de Outfits / Corrección Rápida"</p>
+                <h3 className="parches-framework-title" style={{ fontSize: '28px', marginBottom: '10px' }}>Moda y Ropa</h3>
+                <p className="parches-framework-subtitle" style={{ fontSize: '13px', color: 'var(--neon-purple)', margin: 0 }}>"Duelo de Outfits"</p>
               </div>
 
-              <div className="parches-framework-card cyan" style={{ padding: '35px 30px' }}>
+              <div className="parches-framework-card cyan" style={{ padding: '50px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
                 <div className="parches-framework-num">03</div>
-                <h3 className="parches-framework-title" style={{ fontSize: '24px', marginBottom: '10px' }}>Servicios y Consultores</h3>
-                <p className="parches-framework-subtitle" style={{ fontSize: '12px' }}>"El Rompe-Mitos / Solución al Dolor"</p>
+                <h3 className="parches-framework-title" style={{ fontSize: '28px', marginBottom: '10px' }}>Servicios y Consultores</h3>
+                <p className="parches-framework-subtitle" style={{ fontSize: '13px', color: 'var(--neon-cyan)', margin: 0 }}>"El Rompe-Mitos"</p>
               </div>
             </div>
           </div>
@@ -430,25 +426,18 @@ export default function ParchesPresentation() {
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 09. INTERACCIÓN Y DEBATE</span>
             <h2 className="parches-slide-title" style={{ textAlign: 'center', fontSize: '46px' }}>El Consultorio en Vivo</h2>
-            <p className="parches-desc-main" style={{ fontSize: '18px', marginBottom: '24px', textAlign: 'center', maxWidth: '600px' }}>
-              ¡Hablemos de tus proyectos! Gira la ruleta para proponer un tema de debate en grupo.
-            </p>
-
+            
             {/* Question Card Box */}
-            <div className="parches-hotseat-card" style={{ maxWidth: '650px', minHeight: '340px' }}>
+            <div className="parches-hotseat-card" style={{ maxWidth: '650px', minHeight: '320px', marginTop: '20px' }}>
               <div className="parches-hotseat-tag">TARJETA DE DEBATE {hotSeatIndex + 1}</div>
               
               <div className={`parches-spin-transition ${isSpinning ? 'opacity-20 scale-95 blur-xs' : 'opacity-100 scale-100'}`} style={{ transition: 'all 0.12s ease-in-out' }}>
                 <h3 className="parches-hotseat-title" style={{ fontSize: '18px' }}>
                   {hotSeatQuestions[hotSeatIndex].title}
                 </h3>
-                <p className="parches-hotseat-question" style={{ fontSize: '28px' }}>
+                <p className="parches-hotseat-question" style={{ fontSize: '32px', margin: 0 }}>
                   "{hotSeatQuestions[hotSeatIndex].question}"
                 </p>
-                <div className="parches-hotseat-tip-box" style={{ margin: '0 auto', fontSize: '13px' }}>
-                  <strong style={{ color: 'var(--neon-purple)' }}>RECOMENDACIÓN: </strong> 
-                  {hotSeatQuestions[hotSeatIndex].tip}
-                </div>
               </div>
             </div>
 
@@ -469,15 +458,15 @@ export default function ParchesPresentation() {
             {/* Left Info Column */}
             <div style={{ textAlign: 'left' }}>
               <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 10. CONCLUIR & REGALO</span>
-              <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '24px' }}>Llévate Mi Framework Viral</h2>
+              <h2 className="parches-slide-title" style={{ fontSize: '48px', marginBottom: '40px' }}>Llévate Mi Framework Viral</h2>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '30px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', fontSize: '18px', color: 'var(--text-secondary)' }}>
-                  <span style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '22px' }}>✓</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '25px', marginBottom: '30px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', fontSize: '22px', color: 'var(--text-secondary)', fontWeight: 'bold' }}>
+                  <span style={{ color: 'var(--neon-emerald)', fontSize: '26px' }}>✓</span>
                   <span>Primero manual, luego automatizado.</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', fontSize: '18px', color: 'var(--text-secondary)' }}>
-                  <span style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '22px' }}>✓</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', fontSize: '22px', color: 'var(--text-secondary)', fontWeight: 'bold' }}>
+                  <span style={{ color: 'var(--neon-emerald)', fontSize: '26px' }}>✓</span>
                   <span>Recursividad al poder.</span>
                 </div>
               </div>
@@ -488,7 +477,6 @@ export default function ParchesPresentation() {
               {!formSubmitted ? (
                 <form onSubmit={handleFormSubmit} className="space-y-4">
                   <h3 className="parches-form-title" style={{ fontSize: '24px' }}>Regístrate y Descarga</h3>
-                  <p className="parches-form-desc" style={{ marginBottom: '20px' }}>Ingresa tus datos para registrarte y descargar la plantilla.</p>
                   
                   <div className="parches-form-group">
                     <label className="parches-form-label">Nombre Completo</label>
