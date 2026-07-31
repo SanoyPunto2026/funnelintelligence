@@ -161,29 +161,36 @@ export default function ParchesPresentation() {
 
         {/* SLIDE 2: QUIEN SOY + RESULTADOS SANO Y PUNTO */}
         <div className={`parches-slide ${currentSlide === 1 ? 'active' : ''}`}>
-          <div className="animate-fade-in" style={{ width: '100%' }}>
+          <div className="animate-fade-in" style={{ width: '100%', maxWidth: '950px', margin: '0 auto' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// Quién soy & Resultados</span>
             
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '35px' }}>
-              <h2 className="parches-slide-title" style={{ fontSize: '48px', margin: 0 }}>Alejandro Ruiz // Sano y Punto</h2>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
+              <h2 className="parches-slide-title" style={{ fontSize: '48px', margin: 0 }}>Alejandro Ruiz</h2>
               <span className="parches-footer-tip" style={{ color: 'var(--neon-cyan)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
                 ORGANIC TRAFFIC apalancado en IA
               </span>
             </div>
 
-            <div className="parches-grid-3">
-              <div className="parches-metric-card" style={{ padding: '50px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <div className="parches-metric-label" style={{ fontSize: '16px', marginBottom: '20px' }}>// Comunidad</div>
-                <div className="parches-metric-value emerald" style={{ fontSize: '80px', margin: 0 }}>+18K</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
+              {/* Metrics Banner */}
+              <div style={{ width: '100%', maxWidth: '850px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '8px', overflow: 'hidden', display: 'flex', justifyContent: 'center' }}>
+                <img src="/sano_metrics_banner.png" alt="Sano & Punto Metrics Banner" style={{ width: '100%', height: 'auto', maxHeight: '60px', objectFit: 'contain', borderRadius: '8px' }} />
               </div>
-              <div className="parches-metric-card" style={{ padding: '50px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <div className="parches-metric-label" style={{ fontSize: '16px', marginBottom: '20px' }}>// Alcance Orgánico</div>
-                <div className="parches-metric-value purple" style={{ fontSize: '80px', margin: 0 }}>1.5M+</div>
-              </div>
-              <div className="parches-metric-card" style={{ padding: '50px 40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <div className="parches-metric-label" style={{ fontSize: '16px', marginBottom: '20px' }}>// Conversión en App</div>
-                <div className="parches-metric-value cyan" style={{ fontSize: '80px', margin: 0 }}>+2.5K</div>
+              
+              {/* Two Column Profiles */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', width: '100%', maxWidth: '850px' }}>
+                {/* Instagram Profile Card */}
+                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--neon-purple)', marginBottom: '10px', letterSpacing: '0.1em' }}>// INSTAGRAM PROFILE // @sanoypunto.app</div>
+                  <img src="/sano_instagram.png" alt="Sano & Punto Instagram Profile" style={{ width: '100%', height: 'auto', maxHeight: '280px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} />
+                </div>
+                
+                {/* Facebook Profile Card */}
+                <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--neon-emerald)', marginBottom: '10px', letterSpacing: '0.1em' }}>// FACEBOOK PROFILE // Sano & Punto</div>
+                  <img src="/sano_facebook.png" alt="Sano & Punto Facebook Profile" style={{ width: '100%', height: 'auto', maxHeight: '280px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} />
+                </div>
               </div>
             </div>
           </div>
