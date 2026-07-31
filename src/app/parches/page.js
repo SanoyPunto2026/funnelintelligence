@@ -344,18 +344,17 @@ export default function ParchesPresentation() {
             <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 06. ESTRUCTURACIÓN DE GUION</span>
             <h2 className="parches-slide-title" style={{ fontSize: '44px', marginBottom: '40px' }}>Anatomía del Video (30 Segundos)</h2>
             
-            <div className="parches-grid-3" style={{ gap: '30px' }}>
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '45px 30px', borderRadius: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', color: 'var(--neon-emerald)', fontWeight: 'bold', marginBottom: '15px' }}>01 // HOOK</div>
-                <h4 style={{ fontSize: '36px', fontWeight: '900', color: '#fff', margin: 0 }}>0 a 3 seg</h4>
+            <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '30px', width: '100%' }}>
+              {/* Cuerpo Card */}
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '50px 30px', borderRadius: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '20px', color: 'var(--neon-emerald)', fontWeight: 'bold', marginBottom: '15px' }}>01 // EL CUERPO (Gancho Integrado)</div>
+                <h4 style={{ fontSize: '56px', fontWeight: '950', color: '#fff', margin: 0 }}>0 a 25 seg</h4>
               </div>
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '45px 30px', borderRadius: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', color: 'var(--neon-purple)', fontWeight: 'bold', marginBottom: '15px' }}>02 // CUERPO</div>
-                <h4 style={{ fontSize: '36px', fontWeight: '900', color: '#fff', margin: 0 }}>3 a 20 seg</h4>
-              </div>
-              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '45px 30px', borderRadius: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '18px', color: 'var(--neon-cyan)', fontWeight: 'bold', marginBottom: '15px' }}>03 // CTA</div>
-                <h4 style={{ fontSize: '36px', fontWeight: '900', color: '#fff', margin: 0 }}>20 a 30 seg</h4>
+              
+              {/* CTA Card */}
+              <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', padding: '50px 30px', borderRadius: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '20px', color: 'var(--neon-cyan)', fontWeight: 'bold', marginBottom: '15px' }}>02 // CTA (Breve - 5s)</div>
+                <h4 style={{ fontSize: '56px', fontWeight: '950', color: '#fff', margin: 0 }}>25 a 30 seg</h4>
               </div>
             </div>
           </div>
