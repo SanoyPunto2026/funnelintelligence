@@ -291,10 +291,14 @@ export default function ParchesPresentation() {
               
               <div style={{ background: 'rgba(5, 5, 10, 0.6)', border: '1px solid var(--glass-border)', padding: '40px', borderRadius: '24px', textAlign: 'center' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--neon-cyan)', marginBottom: '15px' }}>FÓRMULA DE ESCALA</div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '38px', fontWeight: '900', color: '#fff', leading: '1.1' }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '38px', fontWeight: '900', color: '#fff', leading: '1.1', marginBottom: '20px' }}>
                   ESTRUCTURA<br />
                   <span style={{ color: 'var(--neon-emerald)' }}>+ VARIABLE</span><br />
                   <span style={{ color: 'var(--neon-purple)', fontSize: '24px' }}>= CONSISTENCIA</span>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', borderTop: '1px solid var(--glass-border)', paddingTop: '15px', fontSize: '13px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)', textAlign: 'left' }}>
+                  <div>🛡️ ESTRUCTURA = Estrategia Humana</div>
+                  <div>⚡ VARIABLE = Ejecución con IA</div>
                 </div>
               </div>
             </div>
@@ -454,6 +458,7 @@ export default function ParchesPresentation() {
                       <img src="/antigravity_logo.png" style={{ height: '34px', objectFit: 'contain' }} alt="Antigravity" />
                     </div>
                     <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>Antigravity</span>
+                    <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: 'var(--neon-purple)', marginTop: '-8px' }}>// Copywriter</span>
                   </div>
 
                   {/* Nano Banana */}
@@ -462,6 +467,7 @@ export default function ParchesPresentation() {
                       <span style={{ fontSize: '28px' }}>🍌</span>
                     </div>
                     <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>Nano Banana</span>
+                    <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: 'var(--neon-emerald)', marginTop: '-8px' }}>// Illustrator</span>
                   </div>
 
                   {/* Google Flow */}
@@ -470,6 +476,7 @@ export default function ParchesPresentation() {
                       <span style={{ fontFamily: 'var(--font-display)', fontWeight: '900', color: '#fff', fontSize: '16px', textShadow: '0 0 6px rgba(255,255,255,0.8)' }}>Flow</span>
                     </div>
                     <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>Google Flow</span>
+                    <span style={{ fontSize: '9px', fontFamily: 'var(--font-mono)', color: 'var(--neon-cyan)', marginTop: '-8px' }}>// Video Editor</span>
                   </div>
 
                   {/* CapCut */}
@@ -489,8 +496,8 @@ export default function ParchesPresentation() {
         {/* SLIDE 8: DINAMICA INTERACTIVA - EL CONSULTORIO */}
         <div className={`parches-slide ${currentSlide === 7 ? 'active' : ''}`}>
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 07. INTERACCIÓN Y DEBATE</span>
-            <h2 className="parches-slide-title" style={{ textAlign: 'center', fontSize: '46px' }}>El Consultorio en Vivo</h2>
+            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// 07. CLINICA DE MARCAS</span>
+            <h2 className="parches-slide-title" style={{ textAlign: 'center', fontSize: '46px' }}>Hot Seat: Consultoría de Oferta</h2>
             
             {/* Question Card Box */}
             <div className="parches-hotseat-card" style={{ maxWidth: '650px', minHeight: '320px', marginTop: '20px' }}>
