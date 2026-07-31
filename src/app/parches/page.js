@@ -354,27 +354,40 @@ export default function ParchesPresentation() {
               
               {/* Steps row 1 (1 to 4) */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr auto 1fr auto 1fr', alignItems: 'center', gap: '10px' }}>
-                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 1</div>
-                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>💡 IDEA</div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '6px' }}>
+                    <img src="/youtube_logo.svg" style={{ width: '22px', height: '22px' }} alt="YouTube" />
+                    <img src="/instagram_logo.png" style={{ width: '20px', height: '20px' }} alt="Instagram" />
+                    <span style={{ fontSize: '20px', fontWeight: '900', color: '#fff' }}>IDEA</span>
+                  </div>
                 </div>
                 <div style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
                 
-                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 2</div>
-                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>🪐 ANTIGRAVITY</div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '6px' }}>
+                    <img src="/google_antigravity_logo.svg" style={{ width: '22px', height: '22px' }} alt="Antigravity" />
+                    <span style={{ fontSize: '20px', fontWeight: '900', color: '#fff' }}>ANTIGRAVITY</span>
+                  </div>
                 </div>
                 <div style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
 
-                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 3</div>
-                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>🍌 NANO BANANA</div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '6px' }}>
+                    <img src="/banana_logo.png" style={{ width: '22px', height: '22px' }} alt="Nano Banana" />
+                    <span style={{ fontSize: '20px', fontWeight: '900', color: '#fff' }}>NANO BANANA</span>
+                  </div>
                 </div>
                 <div style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
 
-                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 4</div>
-                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>⚡ FLOW (VIDEO)</div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '6px' }}>
+                    <img src="/google_flow_logo.svg" style={{ width: '22px', height: '22px' }} alt="Google Flow" />
+                    <span style={{ fontSize: '20px', fontWeight: '900', color: '#fff' }}>FLOW (VIDEO)</span>
+                  </div>
                 </div>
               </div>
 
@@ -386,21 +399,30 @@ export default function ParchesPresentation() {
                 </div>
                 <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
 
-                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 5</div>
-                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>🎬 ENSAMBLE</div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '6px' }}>
+                    <img src="/google_flow_logo.svg" style={{ width: '22px', height: '22px' }} alt="Google Flow" />
+                    <span style={{ fontSize: '20px', fontWeight: '900', color: '#fff' }}>ENSAMBLE</span>
+                  </div>
                 </div>
                 <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
 
-                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '16px', padding: '15px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-muted)' }}>PASO 6</div>
-                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '4px' }}>✂️ CAPCUT</div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '6px' }}>
+                    <img src="/capcut_logo.png" style={{ width: '22px', height: '22px' }} alt="CapCut" />
+                    <span style={{ fontSize: '20px', fontWeight: '900', color: '#fff' }}>CAPCUT</span>
+                  </div>
                 </div>
                 <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '20px' }}>➡️</div>
 
-                <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.25)', borderRadius: '16px', padding: '15px 10px', textAlign: 'center' }}>
+                <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.25)', borderRadius: '16px', padding: '15px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-emerald)' }}>PASO 7</div>
-                  <div style={{ fontSize: '20px', fontWeight: '900', color: 'var(--neon-emerald)', marginTop: '4px' }}>🚀 PUBLICAR</div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '6px' }}>
+                    <img src="/instagram_logo.png" style={{ width: '22px', height: '22px' }} alt="Instagram" />
+                    <span style={{ fontSize: '20px', fontWeight: '900', color: 'var(--neon-emerald)' }}>PUBLICAR</span>
+                  </div>
                 </div>
               </div>
 
@@ -410,27 +432,28 @@ export default function ParchesPresentation() {
                 <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
                   {/* YouTube/Instagram */}
                   <span style={{ fontSize: '14px', fontWeight: '800', color: '#fff', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>
+                    <img src="/youtube_logo.svg" style={{ width: '22px', height: '22px' }} alt="YouTube" />
+                    <img src="/instagram_logo.png" style={{ width: '20px', height: '20px' }} alt="Instagram" />
                     Ideas
                   </span>
                   {/* Antigravity */}
                   <span style={{ fontSize: '14px', fontWeight: '800', color: 'var(--neon-purple)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /><path d="M2 12h20" /></svg>
+                    <img src="/google_antigravity_logo.svg" style={{ width: '22px', height: '22px' }} alt="Google Antigravity" />
                     Antigravity
                   </span>
                   {/* Nano Banana */}
                   <span style={{ fontSize: '14px', fontWeight: '800', color: 'var(--neon-emerald)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 0 5.5-2 2-3.5 1-8 3.5A7 7 0 0 1 11 20z" /><path d="M19 2L9.8 11.2" /></svg>
+                    <img src="/banana_logo.png" style={{ width: '22px', height: '22px' }} alt="Nano Banana" />
                     Nano Banana
                   </span>
                   {/* Google Flow */}
                   <span style={{ fontSize: '14px', fontWeight: '800', color: 'var(--neon-cyan)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" /></svg>
+                    <img src="/google_flow_logo.svg" style={{ width: '22px', height: '22px' }} alt="Google Flow" />
                     Google Flow
                   </span>
                   {/* CapCut */}
                   <span style={{ fontSize: '14px', fontWeight: '800', color: 'var(--neon-purple)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" /><line x1="7" y1="2" x2="7" y2="22" /><line x1="17" y1="2" x2="17" y2="22" /><line x1="2" y1="12" x2="22" y2="12" /><line x1="2" y1="7" x2="7" y2="7" /><line x1="2" y1="17" x2="7" y2="17" /><line x1="17" y1="17" x2="22" y2="17" /><line x1="17" y1="7" x2="22" y2="7" /></svg>
+                    <img src="/capcut_logo.png" style={{ width: '22px', height: '22px' }} alt="CapCut" />
                     CapCut
                   </span>
                 </div>
