@@ -339,30 +339,149 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
-        {/* SLIDE 7: 3 FRAMEWORKS DE INDUSTRIA */}
+        {/* NEW SLIDE 7: FLYWHEEL / PROCESO DE CREACIÓN DE CONTENIDO */}
         <div className={`parches-slide ${currentSlide === 6 ? 'active' : ''}`}>
-          <div className="animate-fade-in" style={{ width: '100%' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-cyan)', background: 'rgba(6, 182, 212, 0.05)' }}>// 07. MOLDES DE INDUSTRIA</span>
-            <h2 className="parches-slide-title" style={{ fontSize: '42px', marginBottom: '45px' }}>3 Frameworks de Contenido</h2>
+          <div className="parches-glass-card animate-fade-in" style={{ padding: '40px 50px', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+            <span className="parches-badge" style={{ color: 'var(--neon-emerald)', background: 'rgba(16, 185, 129, 0.05)' }}>// 06. WORKFLOW DE CREACIÓN</span>
             
-            <div className="parches-grid-3">
-              <div className="parches-framework-card emerald" style={{ padding: '50px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-                <div className="parches-framework-num">01</div>
-                <h3 className="parches-framework-title" style={{ fontSize: '28px', marginBottom: '10px' }}>Belleza y Estética</h3>
-                <p className="parches-framework-subtitle" style={{ fontSize: '13px', color: 'var(--neon-emerald)', margin: 0 }}>"El Ingrediente Héroe"</p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
+              <h2 className="parches-slide-title" style={{ fontSize: '42px', margin: 0 }}>Flywheel Creativo</h2>
+              <span className="parches-footer-tip" style={{ color: 'var(--neon-emerald)', fontWeight: 'bold' }}>DEMO EN VIVO // DE LA IDEA AL POST</span>
+            </div>
+
+            {/* Cyclical Flywheel Timeline Grid - Winding loop pipeline */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', width: '100%', position: 'relative' }}>
+              
+              {/* Row 1: Steps 1 to 4 */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr auto 1fr auto 1fr', alignItems: 'center', gap: '15px' }}>
+                {/* Step 1: Idea */}
+                <div style={{ background: 'linear-gradient(135deg, rgba(6,182,212,0.1), rgba(6,182,212,0.02))', border: '1px solid rgba(6,182,212,0.25)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-cyan)', fontWeight: 'bold' }}>PASO 1</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '10px' }}>
+                    <img src="/youtube_logo.svg" style={{ width: '22px', height: '22px' }} alt="YouTube" />
+                    <img src="/instagram_logo.png" style={{ width: '20px', height: '20px' }} alt="Instagram" />
+                  </div>
+                  <div style={{ fontSize: '20px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>IDEA</div>
+                </div>
+                <div style={{ color: 'var(--neon-cyan)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(6,182,212,0.5)' }}>»</div>
+                
+                {/* Step 2: Antigravity */}
+                <div style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.1), rgba(139,92,246,0.02))', border: '1px solid rgba(139,92,246,0.25)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-purple)', fontWeight: 'bold' }}>PASO 2</div>
+                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
+                    <img src="/antigravity_logo.png" style={{ height: '28px', objectFit: 'contain' }} alt="Antigravity" />
+                  </div>
+                  <div style={{ fontSize: '18px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>ANTIGRAVITY</div>
+                </div>
+                <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(139,92,246,0.5)' }}>»</div>
+
+                {/* Step 3: Nano Banana */}
+                <div style={{ background: 'linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.02))', border: '1px solid rgba(16,185,129,0.25)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-emerald)', fontWeight: 'bold' }}>PASO 3</div>
+                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
+                    <span style={{ fontSize: '24px' }}>🍌</span>
+                  </div>
+                  <div style={{ fontSize: '18px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>NANO BANANA</div>
+                </div>
+                <div style={{ color: 'var(--neon-emerald)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(16,185,129,0.5)' }}>»</div>
+
+                {/* Step 4: Flow Video */}
+                <div style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)', fontWeight: 'bold' }}>PASO 4</div>
+                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
+                    <span style={{ fontFamily: 'var(--font-display)', fontWeight: '900', color: '#fff', fontSize: '22px', textShadow: '0 0 8px rgba(255,255,255,0.8)', letterSpacing: '0.05em' }}>Flow</span>
+                  </div>
+                  <div style={{ fontSize: '18px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>FLOW (VIDEO)</div>
+                </div>
               </div>
 
-              <div className="parches-framework-card purple" style={{ padding: '50px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-                <div className="parches-framework-num">02</div>
-                <h3 className="parches-framework-title" style={{ fontSize: '28px', marginBottom: '10px' }}>Moda y Ropa</h3>
-                <p className="parches-framework-subtitle" style={{ fontSize: '13px', color: 'var(--neon-purple)', margin: 0 }}>"Duelo de Outfits"</p>
+              {/* Row 2: Connecting label & Steps 5 to 7 */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1.4fr auto 1fr auto 1fr auto 1fr', alignItems: 'center', gap: '15px' }}>
+                {/* Visual Connector label for looping back */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--neon-purple)', fontSize: '16px', fontWeight: 'bold', fontFamily: 'var(--font-mono)' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transform: 'rotate(90deg)', color: 'var(--neon-purple)', filter: 'drop-shadow(0 0 5px var(--neon-purple))' }}><path d="M17 18H7a4 4 0 0 1-4-4V5" /><polyline points="3 8 7 4 11 8" /></svg>
+                  <span style={{ letterSpacing: '0.1em' }}>IA GENERATION</span>
+                </div>
+                <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(139,92,246,0.5)' }}>»</div>
+
+                {/* Step 5: Ensamble */}
+                <div style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)', fontWeight: 'bold' }}>PASO 5</div>
+                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
+                    <span style={{ fontFamily: 'var(--font-display)', fontWeight: '900', color: '#fff', fontSize: '22px', textShadow: '0 0 8px rgba(255,255,255,0.8)', letterSpacing: '0.05em' }}>Flow</span>
+                  </div>
+                  <div style={{ fontSize: '18px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>ENSAMBLE</div>
+                </div>
+                <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(139,92,246,0.5)' }}>»</div>
+
+                {/* Step 6: CapCut */}
+                <div style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.1), rgba(139,92,246,0.02))', border: '1px solid rgba(139,92,246,0.25)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 8px 32px rgba(0,0,0,0.4)' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-purple)', fontWeight: 'bold' }}>PASO 6</div>
+                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
+                    <img src="/capcut_logo.png" style={{ height: '26px', objectFit: 'contain' }} alt="CapCut" />
+                  </div>
+                  <div style={{ fontSize: '18px', fontWeight: '900', color: '#fff', marginTop: '10px' }}>CAPCUT</div>
+                </div>
+                <div style={{ color: 'var(--neon-purple)', fontWeight: 'bold', fontSize: '26px', textShadow: '0 0 10px rgba(139,92,246,0.5)' }}>»</div>
+
+                {/* Step 7: Publicar */}
+                <div style={{ background: 'linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.03))', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '24px', padding: '20px 15px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: '0 10px 35px rgba(16,185,129,0.2)' }}>
+                  <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--neon-emerald)', fontWeight: 'bold' }}>PASO 7</div>
+                  <div style={{ display: 'flex', alignItems: 'center', height: '24px', marginTop: '8px' }}>
+                    <img src="/instagram_logo.png" style={{ height: '24px', width: '24px', objectFit: 'contain' }} alt="Instagram" />
+                  </div>
+                  <div style={{ fontSize: '18px', fontWeight: '900', color: 'var(--neon-emerald)', marginTop: '10px' }}>PUBLICAR</div>
+                </div>
               </div>
 
-              <div className="parches-framework-card cyan" style={{ padding: '50px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-                <div className="parches-framework-num">03</div>
-                <h3 className="parches-framework-title" style={{ fontSize: '28px', marginBottom: '10px' }}>Servicios y Consultores</h3>
-                <p className="parches-framework-subtitle" style={{ fontSize: '13px', color: 'var(--neon-cyan)', margin: 0 }}>"El Rompe-Mitos"</p>
+              {/* Graphical Circular Tech Stack Section */}
+              <div style={{ marginTop: '25px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--text-secondary)', fontWeight: 'bold', letterSpacing: '0.15em' }}>🛠️ HERRAMIENTAS UTILIZADAS</div>
+                
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 40px' }}>
+                  {/* YouTube/Instagram (Ideas) */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '2px solid var(--neon-cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(6,182,212,0.3)', gap: '4px' }}>
+                      <img src="/youtube_logo.svg" style={{ width: '22px', height: '22px' }} alt="YouTube" />
+                      <img src="/instagram_logo.png" style={{ width: '18px', height: '18px' }} alt="Instagram" />
+                    </div>
+                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>Ideas</span>
+                  </div>
+
+                  {/* Antigravity */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '2px solid var(--neon-purple)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(139,92,246,0.3)' }}>
+                      <img src="/antigravity_logo.png" style={{ height: '34px', objectFit: 'contain' }} alt="Antigravity" />
+                    </div>
+                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>Antigravity</span>
+                  </div>
+
+                  {/* Nano Banana */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '2px solid var(--neon-emerald)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(16,185,129,0.3)' }}>
+                      <span style={{ fontSize: '28px' }}>🍌</span>
+                    </div>
+                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>Nano Banana</span>
+                  </div>
+
+                  {/* Google Flow */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '2px solid var(--neon-cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(6,182,212,0.3)' }}>
+                      <span style={{ fontFamily: 'var(--font-display)', fontWeight: '900', color: '#fff', fontSize: '16px', textShadow: '0 0 6px rgba(255,255,255,0.8)' }}>Flow</span>
+                    </div>
+                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>Google Flow</span>
+                  </div>
+
+                  {/* CapCut */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'rgba(255,255,255,0.02)', border: '2px solid var(--neon-purple)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 15px rgba(139,92,246,0.3)' }}>
+                      <img src="/capcut_logo.png" style={{ height: '28px', objectFit: 'contain' }} alt="CapCut" />
+                    </div>
+                    <span style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary)' }}>CapCut</span>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
