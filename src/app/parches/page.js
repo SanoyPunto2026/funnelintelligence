@@ -131,7 +131,6 @@ export default function ParchesPresentation() {
       {/* Header / Navbar */}
       <header className="parches-header">
         <div className="parches-logo-container">
-          <div className="parches-logo-box">S</div>
           <div>
             <h3 className="parches-logo-title" style={{ fontSize: '18px', tracking: '0.05em' }}>PARCHE DE IA #5</h3>
             <p className="parches-logo-subtitle">MEDELLÍN // COLOMBIA</p>
