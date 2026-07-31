@@ -161,10 +161,10 @@ export default function ParchesPresentation() {
 
         {/* SLIDE 2: QUIEN SOY + RESULTADOS SANO Y PUNTO */}
         <div className={`parches-slide ${currentSlide === 1 ? 'active' : ''}`}>
-          <div className="animate-fade-in" style={{ width: '100%', maxWidth: '950px', margin: '0 auto' }}>
+          <div className="animate-fade-in" style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
             <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// Quién soy & Resultados</span>
             
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
               <h2 className="parches-slide-title" style={{ fontSize: '48px', margin: 0 }}>Alejandro Ruiz</h2>
               <span className="parches-footer-tip" style={{ color: 'var(--neon-cyan)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>
@@ -174,26 +174,26 @@ export default function ParchesPresentation() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center', width: '100%' }}>
               {/* Asymmetrical Column Layout */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1.1fr', gap: '30px', width: '100%', maxWidth: '1200px', alignItems: 'center' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '25px', width: '100%', alignItems: 'center' }}>
                 
                 {/* Left Column: Huge Meta Suite Results Chart */}
-                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '24px', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--neon-cyan)', marginBottom: '12px', letterSpacing: '0.1em', alignSelf: 'start' }}>// META BUSINESS SUITE // 25.4 MILLONES DE REPRODUCCIONES</div>
-                  <img src="/sano_results_chart.png" alt="Meta Suite Results Chart" style={{ width: '100%', height: 'auto', maxHeight: '420px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 15px 35px rgba(0,0,0,0.6)' }} />
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--neon-cyan)', marginBottom: '8px', letterSpacing: '0.1em' }}>// META BUSINESS SUITE // 25.4 MILLONES DE REPRODUCCIONES</div>
+                  <img src="/sano_results_chart.png" alt="Meta Suite Results Chart" style={{ width: '100%', height: 'auto', maxHeight: '460px', objectFit: 'contain', borderRadius: '16px', boxShadow: '0 20px 40px rgba(0,0,0,0.6)' }} />
                 </div>
 
                 {/* Right Column: Profiles side-by-side */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', width: '100%' }}>
                   {/* Instagram Profile */}
-                  <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '20px', padding: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--neon-purple)', marginBottom: '8px', letterSpacing: '0.05em' }}>// INSTAGRAM</div>
-                    <img src="/sano_instagram.png" alt="Instagram Profile" style={{ width: '100%', height: 'auto', maxHeight: '380px', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 10px 25px rgba(0,0,0,0.5)' }} />
+                    <img src="/sano_instagram.png" alt="Instagram Profile" style={{ width: '100%', height: 'auto', maxHeight: '430px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 15px 30px rgba(0,0,0,0.5)' }} />
                   </div>
                   
                   {/* Facebook Profile */}
-                  <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '20px', padding: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--neon-emerald)', marginBottom: '8px', letterSpacing: '0.05em' }}>// FACEBOOK</div>
-                    <img src="/sano_facebook.png" alt="Facebook Profile" style={{ width: '100%', height: 'auto', maxHeight: '380px', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 10px 25px rgba(0,0,0,0.5)' }} />
+                    <img src="/sano_facebook.png" alt="Facebook Profile" style={{ width: '100%', height: 'auto', maxHeight: '430px', objectFit: 'contain', borderRadius: '12px', boxShadow: '0 15px 30px rgba(0,0,0,0.5)' }} />
                   </div>
                 </div>
 
