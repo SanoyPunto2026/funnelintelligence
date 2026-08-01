@@ -925,9 +925,9 @@
     gap: 15px;
   }
   .parches-slide {
-    max-height: 90%;
-    overflow-y: auto;
-    padding-bottom: 20px;
+    max-height: none;
+    overflow-y: visible;
+    padding-bottom: 0;
   }
   .parches-header, .parches-footer {
     padding: 0 20px;

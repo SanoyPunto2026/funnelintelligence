@@ -6,7 +6,76 @@ import './parches.css';
 const SLIDES_COUNT = 10;
 
 export default function ParchesPresentation() {
-  const [currentSlide, setCurrentSlide] = useState(0);
+    const [currentSlide, setCurrentSlide] = useState(0);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      
+      const scaleX = (viewportWidth * 0.95) / 1200;
+      const scaleY = (viewportHeight * 0.72) / 675; // leave room for header/footer
+      const newScale = Math.min(scaleX, scaleY, 1);
+      
+      setScale(newScale);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const downloadPresentationPDF = () => {
+    const executeDownload = () => {
+      const element = document.createElement('div');
+      element.style.background = '#05050a';
+      element.style.color = '#f8fafc';
+      element.style.width = '1200px';
+      element.style.padding = '0';
+      element.style.margin = '0';
+      
+      const slides = document.querySelectorAll('.parches-slide');
+      slides.forEach((slide, index) => {
+        const slideClone = slide.cloneNode(true);
+        slideClone.style.display = 'flex';
+        slideClone.style.opacity = '1';
+        slideClone.style.visibility = 'visible';
+        slideClone.style.position = 'relative';
+        slideClone.style.width = '1200px';
+        slideClone.style.height = '675px';
+        slideClone.style.maxHeight = 'none';
+        slideClone.style.maxWidth = 'none';
+        slideClone.style.transform = 'none';
+        slideClone.style.left = 'auto';
+        slideClone.style.top = 'auto';
+        slideClone.style.pointerEvents = 'none';
+        slideClone.style.pageBreakAfter = index < slides.length - 1 ? 'always' : 'auto';
+        slideClone.style.breakAfter = index < slides.length - 1 ? 'always' : 'auto';
+        
+        element.appendChild(slideClone);
+      });
+
+      const opt = {
+        margin:       0,
+        filename:     'Presentacion_Framework_IA.pdf',
+        image:        { type: 'png' },
+        html2canvas:  { scale: 3, useCORS: true, letterRendering: true, backgroundColor: '#05050a' },
+        jsPDF:        { unit: 'px', hotfixes: ['px_scaling'], format: [1200, 675], orientation: 'landscape' }
+      };
+      
+      html2pdf().set(opt).from(element).save();
+    };
+
+    if (typeof html2pdf !== 'undefined') {
+      executeDownload();
+    } else {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+      script.onload = executeDownload;
+      document.head.appendChild(script);
+    }
+  };
   const [direction, setDirection] = useState('forward');
   const [hotSeatIndex, setHotSeatIndex] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);
@@ -211,14 +280,50 @@ export default function ParchesPresentation() {
             <p className="parches-logo-subtitle">MEDELLÍN // COLOMBIA</p>
           </div>
         </div>
-        <div className="parches-status-badge">
-          <span className="parches-status-dot"></span>
-          <span>STATUS: IN LIVE</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+          <button 
+            onClick={downloadPresentationPDF}
+            style={{
+              background: 'linear-gradient(135deg, var(--neon-emerald), var(--neon-purple))',
+              color: '#000',
+              border: 'none',
+              padding: '8px 18px',
+              borderRadius: '999px',
+              fontWeight: '700',
+              fontSize: '12px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontFamily: 'var(--font-mono)',
+              boxShadow: '0 0 15px rgba(16, 185, 129, 0.2)',
+              transition: 'all 0.2s'
+            }}
+            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            📥 Descargar PDF
+          </button>
+          <div className="parches-status-badge">
+            <span className="parches-status-dot"></span>
+            <span>STATUS: IN LIVE</span>
+          </div>
         </div>
       </header>
 
       {/* Main Slide Area */}
       <section className="parches-viewport">
+        <div className="parches-slides-scale-container" style={{
+          transform: `scale(${scale})`,
+          transformOrigin: 'center center',
+          width: '1200px',
+          height: '675px',
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0
+        }}>
         
         {/* SLIDE 1: PORTADA */}
         <div className={`parches-slide ${currentSlide === 0 ? 'active' : ''}`}>
@@ -730,6 +835,7 @@ export default function ParchesPresentation() {
           </div>
         </div>
 
+      </div>
       </section>
 
       {/* Navigation Controls Bar */}
