@@ -27,38 +27,15 @@ export default function ParchesPresentation() {
   }, []);
 
   const downloadPresentationPDF = async () => {
-    const loadScript = (src) => new Promise((resolve, reject) => {
-      if (document.querySelector(`script[src="${src}"]`)) {
-        resolve();
-        return;
-      }
-      const s = document.createElement('script');
-      s.src = src;
-      s.onload = resolve;
-      s.onerror = reject;
-      document.head.appendChild(s);
-    });
+    // Expose libraries from the globally loaded html2pdf bundle (no network request needed)
+    const html2canvas = window.html2canvas;
+    const jsPDF = window.jspdf ? window.jspdf.jsPDF : window.jsPDF;
 
-    try {
-      if (typeof html2canvas === 'undefined') {
-        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
-      }
-      if (typeof window.jspdf === 'undefined') {
-        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
-      }
-    } catch (e) {
-      console.error('Error loading print dependencies:', e);
-      alert('Error de red al cargar las librerías de impresión.');
+    if (!html2canvas || !jsPDF) {
+      console.error('Libraries not loaded yet');
+      alert('Las librerías de PDF se están cargando. Por favor, intenta de nuevo en unos segundos.');
       return;
     }
-
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF({
-      orientation: 'landscape',
-      unit: 'in',
-      format: [16, 9]
-    });
-
     const slides = document.querySelectorAll('.parches-slide');
     const tempContainer = document.createElement('div');
     tempContainer.style.position = 'absolute';
