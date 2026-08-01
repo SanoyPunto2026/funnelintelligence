@@ -29,7 +29,7 @@ export default function ParchesPresentation() {
   const downloadPresentationPDF = () => {
     const executeDownload = () => {
       const element = document.createElement('div');
-      element.style.background = '#05050a';
+      element.style.background = '#030307';
       element.style.color = '#f8fafc';
       element.style.width = '1200px';
       element.style.padding = '0';
@@ -37,10 +37,13 @@ export default function ParchesPresentation() {
       element.style.position = 'fixed';
       element.style.left = '-9999px';
       element.style.top = '0';
+      element.style.boxSizing = 'border-box';
       
       const slides = document.querySelectorAll('.parches-slide');
       slides.forEach((slide, index) => {
         const slideClone = slide.cloneNode(true);
+        slideClone.classList.add('active');
+        
         slideClone.style.display = 'flex';
         slideClone.style.opacity = '1';
         slideClone.style.visibility = 'visible';
@@ -50,9 +53,23 @@ export default function ParchesPresentation() {
         slideClone.style.maxHeight = 'none';
         slideClone.style.maxWidth = 'none';
         slideClone.style.transform = 'none';
+        slideClone.style.transition = 'none';
         slideClone.style.left = 'auto';
         slideClone.style.top = 'auto';
         slideClone.style.pointerEvents = 'none';
+        slideClone.style.boxSizing = 'border-box';
+        slideClone.style.padding = '40px';
+        
+        // Replicate presentation background mesh gradient
+        slideClone.style.background = 'radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 45%), radial-gradient(circle at 50% 50%, #080810 0%, #030307 100%)';
+        
+        // Override glassmorphism cards so html2canvas renders them with a solid dark theme
+        const glassCards = slideClone.querySelectorAll('.parches-glass-card');
+        glassCards.forEach(card => {
+          card.style.background = 'rgba(10, 10, 20, 0.95)';
+          card.style.backdropFilter = 'none';
+        });
+        
         slideClone.style.pageBreakAfter = index < slides.length - 1 ? 'always' : 'auto';
         slideClone.style.breakAfter = index < slides.length - 1 ? 'always' : 'auto';
         
@@ -65,7 +82,7 @@ export default function ParchesPresentation() {
         margin:       0,
         filename:     'Presentacion_Framework_IA.pdf',
         image:        { type: 'png' },
-        html2canvas:  { scale: 2, useCORS: true, letterRendering: true, backgroundColor: '#05050a' },
+        html2canvas:  { scale: 2, useCORS: true, letterRendering: true, backgroundColor: '#030307' },
         jsPDF:        { unit: 'in', format: [16, 9], orientation: 'landscape' }
       };
       
