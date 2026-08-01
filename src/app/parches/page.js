@@ -34,6 +34,9 @@ export default function ParchesPresentation() {
       element.style.width = '1200px';
       element.style.padding = '0';
       element.style.margin = '0';
+      element.style.position = 'fixed';
+      element.style.left = '-9999px';
+      element.style.top = '0';
       
       const slides = document.querySelectorAll('.parches-slide');
       slides.forEach((slide, index) => {
@@ -56,15 +59,22 @@ export default function ParchesPresentation() {
         element.appendChild(slideClone);
       });
 
+      document.body.appendChild(element);
+
       const opt = {
         margin:       0,
         filename:     'Presentacion_Framework_IA.pdf',
         image:        { type: 'png' },
-        html2canvas:  { scale: 3, useCORS: true, letterRendering: true, backgroundColor: '#05050a' },
-        jsPDF:        { unit: 'px', hotfixes: ['px_scaling'], format: [1200, 675], orientation: 'landscape' }
+        html2canvas:  { scale: 2, useCORS: true, letterRendering: true, backgroundColor: '#05050a' },
+        jsPDF:        { unit: 'in', format: [16, 9], orientation: 'landscape' }
       };
       
-      html2pdf().set(opt).from(element).save();
+      html2pdf().set(opt).from(element).save().then(() => {
+        document.body.removeChild(element);
+      }).catch(err => {
+        console.error('Error generating PDF:', err);
+        document.body.removeChild(element);
+      });
     };
 
     if (typeof html2pdf !== 'undefined') {
