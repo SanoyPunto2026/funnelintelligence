@@ -628,7 +628,7 @@ export default function ParchesPresentation() {
             {/* Right Column: QR Code */}
             <div className="parches-form-card" style={{ padding: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
               <h3 className="parches-form-title" style={{ fontSize: '24px', marginBottom: '5px' }}>Escanea el QR</h3>
-              <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 25px' }}>Regístrate y descarga el framework gratis</p>
+              <p style={{ fontSize: '13px', color: 'var(--text-secondary)', margin: '0 0 25px' }}>Descarga el framework gratis al instante</p>
               
               {/* QR Code via API */}
               <div style={{ 
@@ -639,8 +639,8 @@ export default function ParchesPresentation() {
                 boxShadow: '0 10px 40px rgba(16, 185, 129, 0.3), 0 0 60px rgba(16, 185, 129, 0.1)',
               }}>
                 <img 
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://funnelintelligence.vercel.app/parches/registro&color=0a0a0f&bgcolor=ffffff&margin=0"
-                  alt="QR Code - Escanea para registrarte"
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://funnelintelligence.vercel.app/parches/descarga&color=0a0a0f&bgcolor=ffffff&margin=0"
+                  alt="QR Code - Escanea para descargar"
                   width={220}
                   height={220}
                   style={{ display: 'block', borderRadius: '8px' }}
@@ -648,7 +648,7 @@ export default function ParchesPresentation() {
               </div>
 
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--neon-emerald)', marginTop: '20px', letterSpacing: '0.05em' }}>
-                funnelintelligence.vercel.app/parches/registro
+                funnelintelligence.vercel.app/parches/descarga
               </p>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--text-muted)', marginTop: '5px' }}>
                 📥 Framework Estándar para Reels / TikTok con IA
