@@ -18,29 +18,34 @@ export default function ParchesPresentation() {
   // Hot Seat Questions/Debates
   const hotSeatQuestions = [
     {
-      title: "🎯 Propuesta de Valor",
-      question: "¿Qué vendes exactamente y qué dolor real quitas?",
-      tip: "Define el dolor cotidiano, no las características."
+      title: "🔥 DESAFÍO IA: La Idea de Video en 5 Segundos",
+      question: "Dime tu nicho y te daré un Gancho + 3 ideas de video viral generadas por IA en este instante.",
+      tip: "El público te da un nicho y modelas cómo Antigravity lo estructuraría de inmediato."
     },
     {
-      title: "🙋‍♀️ Tu Cliente Ideal",
-      question: "¿A quién le hablas? Descríbelo en una frase corta.",
-      tip: "Ej: Mujeres de 35-45 años que no tienen tiempo de cocinar."
+      title: "🧠 DEBATE IA: ¿El Guion Perfecto de Copiar-Pegar?",
+      question: "¿Cuál es el balance ideal entre lo que edita la IA y lo que ajusta tu toque humano?",
+      tip: "Discutir cómo la 'Creatividad Guiada' supera al simple spam de videos automatizados sin alma."
     },
     {
-      title: "🛑 La Barrera Mental",
-      question: "¿Cuál es tu mayor obstáculo para subir videos constantemente?",
-      tip: "Falta de ideas, miedo a la cámara, edición o perfeccionismo."
+      title: "⚡ HACK DE VELOCIDAD: El Combo Antigravity + Flow",
+      question: "Si pudieras automatizar el 90% de tu edición de video con un agente de IA, ¿qué harías con las 18 horas semanales que te sobran?",
+      tip: "El valor de delegar la ejecución técnica para enfocarse puramente en la estrategia de la oferta."
     },
     {
-      title: "🔥 Pasión Infinita",
-      question: "¿De qué tema hablarías gratis durante los próximos 3 años?",
-      tip: "Sin pasión real, te vas a aburrir antes de ver resultados."
+      title: "🎯 DESAFÍO IA: El Poro de Skincare Pixar",
+      question: "Si tu producto fuera un personaje 3D animado por IA, ¿cómo reaccionaría físicamente ante el problema que resuelve tu marca?",
+      tip: "Ejercicio creativo para conceptualizar el 'Sujeto Héroe' usando el framework de Sano y Punto."
     },
     {
-      title: "💰 La Oferta de $500 USD",
-      question: "Si tuvieras que vender un servicio de alto valor con IA, ¿qué sería?",
-      tip: "Empaqueta tu conocimiento en una oferta de alta conversión."
+      title: "💰 OPORTUNIDAD IA: El Infoproducto Express",
+      question: "¿Cómo usarías tu propio framework estandarizado para empaquetar tu conocimiento y venderlo como un imán de leads en 24 horas?",
+      tip: "La integración entre la creación constante y el embudo de ventas final."
+    },
+    {
+      title: "🛑 RETO IA: El Prompt de la Imagen Consistente",
+      question: "Diseña en vivo el prompt base de imagen para tu marca. ¿Qué elementos descriptivos garantizarían que la IA nunca deforme tu estilo?",
+      tip: "Cómo lograr consistencia visual sin perder la identidad de marca en plataformas de IA."
     }
   ];
 
@@ -575,12 +580,12 @@ export default function ParchesPresentation() {
         {/* SLIDE 9: DINAMICA INTERACTIVA - EL CONSULTORIO */}
         <div className={`parches-slide ${currentSlide === 8 ? 'active' : ''}`}>
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', width: '100%' }}>
-            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// CLINICA DE MARCAS</span>
-            <h2 className="parches-slide-title" style={{ textAlign: 'center', fontSize: '46px' }}>Hot Seat: Consultoría de Oferta</h2>
+            <span className="parches-badge" style={{ color: 'var(--neon-purple)', background: 'rgba(139, 92, 246, 0.05)' }}>// CLÍNICA DE MARCAS IA</span>
+            <h2 className="parches-slide-title" style={{ textAlign: 'center', fontSize: '46px' }}>Hot Seat: Ruleta de Desafíos IA</h2>
             
             {/* Question Card Box */}
             <div className="parches-hotseat-card" style={{ maxWidth: '650px', minHeight: '320px', marginTop: '20px' }}>
-              <div className="parches-hotseat-tag">TARJETA DE DEBATE {hotSeatIndex + 1}</div>
+              <div className="parches-hotseat-tag">RETOS & OPORTUNIDADES {hotSeatIndex + 1}</div>
               
               <div className={`parches-spin-transition ${isSpinning ? 'opacity-20 scale-95 blur-xs' : 'opacity-100 scale-100'}`} style={{ transition: 'all 0.12s ease-in-out' }}>
                 <h3 className="parches-hotseat-title" style={{ fontSize: '18px' }}>
