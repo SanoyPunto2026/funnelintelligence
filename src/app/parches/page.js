@@ -48,6 +48,8 @@ export default function ParchesPresentation() {
     document.body.appendChild(tempContainer);
 
     for (let i = 0; i < slides.length; i++) {
+      // Allow event loop to breathe to prevent Puppeteer CDP timeouts
+      await new Promise(resolve => setTimeout(resolve, 300));
       const slide = slides[i];
       const clone = slide.cloneNode(true);
       clone.classList.add('active');
