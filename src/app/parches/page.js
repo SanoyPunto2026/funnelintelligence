@@ -70,6 +70,16 @@ export default function ParchesPresentation() {
           card.style.backdropFilter = 'none';
         });
         
+        // Strip fade-in animation to prevent html2canvas from capturing at opacity: 0
+        const animElements = slideClone.querySelectorAll('.animate-fade-in');
+        animElements.forEach(el => {
+          el.classList.remove('animate-fade-in');
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+          el.style.animation = 'none';
+          el.style.transition = 'none';
+        });
+        
         slideClone.style.pageBreakAfter = index < slides.length - 1 ? 'always' : 'auto';
         slideClone.style.breakAfter = index < slides.length - 1 ? 'always' : 'auto';
         
