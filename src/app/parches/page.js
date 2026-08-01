@@ -390,34 +390,37 @@ export default function ParchesPresentation() {
 
             <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '30px', width: '100%', alignItems: 'center' }}>
               {/* Left Column: Code/Prompt box */}
-              <div style={{ background: 'rgba(5, 5, 10, 0.8)', border: '1px solid var(--glass-border)', padding: '25px', borderRadius: '16px', fontFamily: 'var(--font-mono)', fontSize: '14px', color: '#f8fafc', overflowX: 'auto', borderLeft: '4px solid var(--neon-purple)' }}>
-                <div style={{ color: 'var(--text-muted)', marginBottom: '8px' }}># prompt_sano_y_punto.txt</div>
-                <div style={{ color: 'var(--neon-purple)' }}>ACTÚA COMO:</div>
-                <div style={{ paddingLeft: '15px', marginBottom: '12px' }}>Redactor Creativo Experto en Sano y Punto</div>
+              <div style={{ background: 'rgba(5, 5, 10, 0.8)', border: '1px solid var(--glass-border)', padding: '25px', borderRadius: '16px', fontFamily: 'var(--font-mono)', fontSize: '13px', color: '#f8fafc', overflowX: 'auto', borderLeft: '4px solid var(--neon-purple)', maxHeight: '420px', overflowY: 'auto' }}>
+                <div style={{ color: 'var(--text-muted)', marginBottom: '8px' }}># prompt_vesicula_biliar.txt</div>
+                <div style={{ color: 'var(--neon-purple)' }}>CONCEPTO:</div>
+                <div style={{ paddingLeft: '15px', marginBottom: '10px' }}>Ayúdame a generar un video en base al frame "alimentos_que_retan.md". Quiero un video de "4 alimentos que retan tu vesícula biliar".</div>
                 
-                <div style={{ color: 'var(--neon-purple)' }}>APLICA FRAMEWORK:</div>
-                <div style={{ paddingLeft: '15px', marginBottom: '12px' }}>Estructura Pixar (Gancho integrado en el cuerpo)</div>
+                <div style={{ color: 'var(--neon-purple)' }}>REGLAS DE NEGOCIO:</div>
+                <div style={{ paddingLeft: '15px', marginBottom: '10px' }}>Que sean alimentos perjudiciales con respaldo científico y específicos (ej: pan tajado, no bollería industrial).</div>
                 
-                <div style={{ color: 'var(--neon-purple)' }}>INPUTS VARIABLES:</div>
-                <div style={{ paddingLeft: '15px', marginBottom: '12px' }}>[Alimentos / Órganos a incluir en la escena]</div>
+                <div style={{ color: 'var(--neon-purple)' }}>ESTRUCTURA DE ESCENAS:</div>
+                <div style={{ paddingLeft: '15px', marginBottom: '10px' }}>Solo 4 escenas + escena 0. El prompt solo se necesita en la escena 0. Sin locución ni texto en videos.</div>
                 
-                <div style={{ color: 'var(--neon-purple)' }}>RESTRICCIONES:</div>
-                <div style={{ paddingLeft: '15px' }}>CTA extremadamente breve (máximo 5 segundos al final)</div>
+                <div style={{ color: 'var(--neon-purple)' }}>EDICIÓN Y ASMR:</div>
+                <div style={{ paddingLeft: '15px', marginBottom: '10px' }}>Enfocar mucho en el efecto ASMR y movimiento de cámara.</div>
+
+                <div style={{ color: 'var(--neon-purple)' }}>CAPTION Y CTA:</div>
+                <div style={{ paddingLeft: '15px' }}>CTA: "Empezar a seguir Sano y Punto". En el caption, dar una recomendación rápida de cuántas veces comer cada producto para disfrutar sin hacer daño (ej: comer 1 vez al mes con razón válida).</div>
               </div>
 
               {/* Right Column: Key takeaways */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', padding: '20px', borderRadius: '16px' }}>
-                  <div style={{ fontSize: '28px', fontWeight: '950', color: 'var(--neon-emerald)' }}>1. Cero Creatividad</div>
-                  <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '4px' }}>La IA decide la narrativa exacta escena por escena.</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', padding: '18px', borderRadius: '16px' }}>
+                  <div style={{ fontSize: '24px', fontWeight: '950', color: 'var(--neon-emerald)' }}>1. Creatividad Guiada</div>
+                  <div style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '4px' }}>La creatividad no es libre ni caótica; tiene una ruta clara trazada para maximizar la efectividad.</div>
                 </div>
-                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', padding: '20px', borderRadius: '16px' }}>
-                  <div style={{ fontSize: '28px', fontWeight: '950', color: 'var(--neon-cyan)' }}>2. Estructura Rígida</div>
-                  <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '4px' }}>Mantiene el estilo viral sin espacio a la improvisación.</div>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', padding: '18px', borderRadius: '16px' }}>
+                  <div style={{ fontSize: '24px', fontWeight: '950', color: 'var(--neon-cyan)' }}>2. Estructura Flexible</div>
+                  <div style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '4px' }}>Un molde parametrizado (Frame) que define con precisión qué incluir y qué evitar.</div>
                 </div>
-                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', padding: '20px', borderRadius: '16px' }}>
-                  <div style={{ fontSize: '28px', fontWeight: '950', color: 'var(--neon-purple)' }}>3. Output Consistente</div>
-                  <div style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '4px' }}>Entrega guiones listos + prompts de imágenes para cada escena.</div>
+                <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', padding: '18px', borderRadius: '16px' }}>
+                  <div style={{ fontSize: '24px', fontWeight: '950', color: 'var(--neon-purple)' }}>3. Output Consistente</div>
+                  <div style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '4px' }}>Garantiza guiones estandarizados y copys optimizados listos para su distribución.</div>
                 </div>
               </div>
             </div>
