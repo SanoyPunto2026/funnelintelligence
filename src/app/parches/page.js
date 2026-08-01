@@ -279,21 +279,17 @@ export default function ParchesPresentation() {
                 </div>
               </div>
               
-              <div className="parches-sidebar-checklist" style={{ padding: '35px 30px' }}>
-                <div className="parches-checklist-badge">MÉTRICAS</div>
-                <h3 className="parches-checklist-title" style={{ fontSize: '20px', marginBottom: '25px' }}>📋 Ajustes</h3>
-                <div className="parches-check-item">
-                  <span className="parches-check-label">Target Ideal</span>
-                  <span className="parches-check-value emerald">Mujeres 35-45</span>
-                </div>
-                <div className="parches-check-item">
-                  <span className="parches-check-label">Enfoque</span>
-                  <span className="parches-check-value">Dolor Cotidiano</span>
-                </div>
-                <div className="parches-check-item">
-                  <span className="parches-check-label">Competidores</span>
-                  <span className="parches-check-value purple">Auditados</span>
-                </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', width: '100%' }}>
+                <img 
+                  src="/demographics_gender_age.png" 
+                  alt="Demografía de Género y Edad Sano y Punto" 
+                  style={{ width: '100%', height: 'auto', maxHeight: '240px', objectFit: 'contain', borderRadius: '16px', border: '1px solid var(--glass-border)', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} 
+                />
+                <img 
+                  src="/demographics_countries.png" 
+                  alt="Demografía por Países Sano y Punto" 
+                  style={{ width: '100%', height: 'auto', maxHeight: '240px', objectFit: 'contain', borderRadius: '16px', border: '1px solid var(--glass-border)', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} 
+                />
               </div>
             </div>
           </div>
