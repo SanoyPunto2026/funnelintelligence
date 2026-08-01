@@ -15,107 +15,107 @@ export default function ParchesPresentation() {
   const [formData, setFormData] = useState({ name: '', email: '', instagram: '' });
   const [leadsCount, setLeadsCount] = useState(0);
 
-  // Hot Seat Questions/Debates (20 Technical & Marketing Questions)
+  // Hot Seat Questions/Debates (20 Content Creation & AI Workflows)
   const hotSeatQuestions = [
     {
-      title: "🧠 DEBATE 1: ¿Estrategia de Volumen (30 Reels) o Retención (5 Videos)?",
-      question: "Para una marca de servicios o producto, ¿qué genera más conversiones: inundar el feed con 30 videos de calidad media automatizados, o subir solo 5 videos hiper-curados de alta retención?",
-      tip: "Analiza el impacto del volumen en el algoritmo vs el impacto de la confianza en la conversión final."
+      title: "🧠 DEBATE 1: ¿Guion 100% IA vs Guion con Toque Humano?",
+      question: "¿Dejarías que la IA (tipo ChatGPT) escriba y publique tus guiones de Reels automáticamente, o crees que la edición manual humana es obligatoria para poder vender?",
+      tip: "Debate sobre el impacto de la voz de marca vs la automatización total."
     },
     {
-      title: "🧠 DEBATE 2: ¿Avatar 3D vs. Rostro Humano para High-Ticket?",
-      question: "¿Es posible vender servicios de alto valor (>$1000 USD) usando personajes 3D y avatares generados por IA, o es indispensable la presencia física del fundador en cámara?",
-      tip: "Compara la escalabilidad de un sistema sin rostro vs la confianza tradicional de la marca personal."
+      title: "🧠 DEBATE 2: ¿Cantidad vs Calidad en la Era de la IA?",
+      question: "Con la facilidad que nos da la IA, ¿prefieres publicar 3 videos diarios de calidad promedio generados en minutos, o 1 solo video a la semana hiper-producido?",
+      tip: "Analiza el impacto del volumen en el algoritmo vs el impacto de la retención."
     },
     {
-      title: "🧠 DEBATE 3: ¿Edición automatizada con IA o editor humano?",
-      question: "Con herramientas como OpusClip y Premiere AI, ¿las marcas deben prescindir de editores de video humanos para optimizar costos, o la narrativa humana sigue siendo insustituible?",
-      tip: "Evalúa la reducción de presupuestos de marketing vs la pérdida de ritmo visual y storytelling."
+      title: "🧠 DEBATE 3: ¿Estructura Fija vs Improvisación Creativa?",
+      question: "¿Usar un 'Framework' estructurado (como el de Sano & Punto) limita tu creatividad a largo plazo, o es la única forma real de no quemarse al crear contenido?",
+      tip: "El balance entre sistematizar operaciones y mantener la creatividad."
     },
     {
-      title: "🧠 DEBATE 4: ¿SEO en buscadores de IA vs SEO tradicional?",
-      question: "Dado el cambio en las búsquedas, ¿es más rentable optimizar el contenido para ser citado por motores de IA (ChatGPT/Perplexity), o seguir enfocándose en Google y TikTok tradicional?",
-      tip: "Debate la distribución futura del tráfico y el descubrimiento de marcas."
+      title: "🧠 DEBATE 4: ¿Marca con Rostro vs Marca Sin Rostro (IA)?",
+      question: "Para escalar un negocio hoy, ¿es más rápido y rentable crear una marca visual con avatares 3D generados por IA, o salir tú mismo a grabar cada video?",
+      tip: "Compara la escalabilidad del sistema sin rostro vs la confianza de la marca personal."
     },
     {
-      title: "🧠 DEBATE 5: ¿El Framework fijo mata la originalidad del contenido?",
-      question: "Utilizar un framework parametrizado fijo con variables para crear todo tu contenido, ¿limita el alcance orgánico al volverse predecible, o es la única manera de lograr consistencia real?",
-      tip: "Contraste entre la innovación creativa y la predictibilidad operativa del contenido."
+      title: "🧠 DEBATE 5: ¿Delegar la Edición mata tu estilo?",
+      question: "Si automatizas toda tu edición de video con herramientas de IA en un clic, ¿pierdes la identidad visual de tu marca o simplemente estás ganando velocidad?",
+      tip: "Evalúa si el estilo propio depende del esfuerzo manual o de las directrices creativas."
     },
     {
-      title: "🧠 DEBATE 6: ¿IA para lluvia de ideas vs IA para el guion final?",
-      question: "Desde el punto de vista de eficiencia, ¿es mejor usar la IA solo como disparador de ideas y estructurar el guion a mano, o usar la IA para redactar el guion completo?",
-      tip: "Compara los tiempos de edición de guion vs el impacto de la voz de marca en la conversión."
+      title: "🧠 DEBATE 6: ¿Voz Humana vs Voz Clonada?",
+      question: "Para un Reel educativo, ¿crees que el público rechaza las voces clonadas ultra-realistas por IA, o ya nadie nota la diferencia si el contenido es suficientemente bueno?",
+      tip: "Discute la percepción del usuario y el límite de lo 'uncanny' (valle inquietante)."
     },
     {
-      title: "🧠 DEBATE 7: ¿Crear un Agente de IA propio o usar GPTs públicos?",
-      question: "Para una empresa que crea contenido, ¿vale la pena invertir en el desarrollo de un agente de IA propio (tipo Antigravity), o es suficiente con usar custom GPTs y prompts estándar?",
-      tip: "Evalúa costos de desarrollo, control de datos, consistencia y portabilidad del framework."
+      title: "🧠 DEBATE 7: ¿IA para Ideas vs IA para Ejecución?",
+      question: "En tu flujo de trabajo, ¿prefieres usar la IA solo para que te dé ideas de contenido (brainstorming), o le exiges que te entregue el guion completo listo para grabar?",
+      tip: "Compara los tiempos de fricción en la redacción vs la delegación completa."
     },
     {
-      title: "🧠 DEBATE 8: ¿QR directo de descarga vs Formulario de registro?",
-      question: "En una charla o evento físico, ¿qué convierte mejor: redirigir a un QR directo que descarga el framework al instante (fricción cero), o capturar datos en un formulario de registro primero?",
-      tip: "Analiza el valor de capturar el contacto vs la velocidad de entrega y la primera impresión."
+      title: "🧠 DEBATE 8: ¿Replicar a la Competencia vs Inventar?",
+      question: "Si usas IA para extraer la estructura exacta de un Reel viral de tu competencia y adaptarlo a tu nicho, ¿es un hack de crecimiento estratégico o falta de originalidad?",
+      tip: "Debate la línea entre modelar estructuras virales y la clonación creativa."
     },
     {
-      title: "🧠 DEBATE 9: ¿Identidad visual uniforme de IA vs Videos de Stock reales?",
-      question: "Para captar la atención en Reels, ¿convierte más un estilo visual uniforme generado por IA (tipo Sano & Punto) o mezclar videos reales de stock de diferentes estéticas?",
-      tip: "Debate el impacto de la consistencia visual de marca vs la estimulación visual variada del feed."
+      title: "🧠 DEBATE 9: ¿Atención (Vistas) vs Intención (Leads)?",
+      question: "¿De qué sirve usar IA para tener un Reel de 1 millón de vistas si no tienes un lead magnet automatizado (como un QR o embudo) para capturar esos contactos?",
+      tip: "Analiza el objetivo final del contenido: viralidad de vanidad vs conversión real."
     },
     {
-      title: "🧠 DEBATE 10: ¿Optimizar para Reproducciones (Alcance) o Clicks (Conversión)?",
-      question: "Si un video de IA tiene 1 millón de vistas pero cero conversiones, y otro tiene 5,000 vistas pero genera 10 clientes, ¿cuál es el verdadero KPI que debe optimizar una empresa?",
-      tip: "Debate sobre la distribución masiva del algoritmo vs la segmentación de la oferta."
+      title: "🧠 DEBATE 10: ¿Música Viral vs Audio Limpio/ASMR?",
+      question: "Para retener la atención, ¿prefieres depender de los audios en tendencia de Instagram/TikTok, o crear tu propia atmósfera de sonido (ASMR) como hace Sano & Punto?",
+      tip: "Debate la dependencia del motor de recomendación vs el valor de producción del diseño sonoro."
     },
     {
-      title: "🧠 DEBATE 11: ¿Muchos canales de nicho o un solo canal multiformato?",
-      question: "Con la facilidad de automatizar canales con IA, ¿es mejor lanzar múltiples cuentas de nicho hiper-específicas o consolidar toda la audiencia bajo un solo canal principal?",
-      tip: "Analiza el esfuerzo de distribución de la IA vs el peso de la autoridad de marca única."
+      title: "🧠 DEBATE 11: ¿El Gancho (Hook) o el Desarrollo?",
+      question: "Si tienes poco tiempo para optimizar un Reel con IA, ¿inviertes el 80% del esfuerzo en perfeccionar los primeros 3 segundos (Gancho) o en la explicación del video?",
+      tip: "Discute dónde recae el mayor peso de retención según el algoritmo."
     },
     {
-      title: "🧠 DEBATE 12: ¿Chatbots de IA vs Interacción manual humana en DMs?",
-      question: "Para cerrar ventas por mensaje directo, ¿los agentes de IA (ManyChat/bots) convierten más al responder en segundos, o el retraso de una persona manual convierte mejor por empatía?",
-      tip: "Evalúa las tasas de conversión y la fricción del usuario en embudos conversacionales."
+      title: "🧠 DEBATE 12: ¿Automatización de DMs vs Respuesta Manual?",
+      question: "Si un Reel viral explota, ¿es mejor automatizar las respuestas en comentarios (con IA) para entregar tu oferta al instante, o la respuesta manual genera más confianza?",
+      tip: "Evalúa las tasas de conversión y fricción del usuario en embudos de chat."
     },
     {
-      title: "🧠 DEBATE 13: ¿Música viral del algoritmo vs ASMR y audio personalizado?",
-      question: "Para retener audiencia en Reels, ¿el algoritmo responde mejor a las canciones virales en tendencia o a una producción de audio con locución clara y efectos ASMR?",
-      tip: "Debate la dependencia del motor de recomendación vs el valor de producción del contenido."
+      title: "🧠 DEBATE 13: ¿Videos Largos vs Videos Cortos con IA?",
+      question: "Con la IA reduciendo los tiempos de producción, ¿deberíamos enfocarnos 100% en contenido vertical corto, o el formato largo de YouTube sigue siendo el rey para vender?",
+      tip: "Compara el descubrimiento rápido (Reels) vs la fidelización profunda (Videos largos)."
     },
     {
-      title: "🧠 DEBATE 14: ¿Costo de API de IA vs Costo de redactores Junior?",
-      question: "A nivel operativo en una agencia, ¿es más eficiente construir flujos de prompts y APIs para automatizar copys, o es mejor contratar redactores junior para esa misma tarea?",
-      tip: "Evalúa consistencia de calidad, velocidad de entrega y escalabilidad del costo."
+      title: "🧠 DEBATE 14: ¿El fin de la edición de video tradicional?",
+      question: "Con editores automáticos impulsados por IA, ¿sigue siendo rentable para un creador contratar un editor humano mensual, o todo el presupuesto debería ir a escalar pauta?",
+      tip: "Analiza la eficiencia de costos y la comoditización de la edición básica."
     },
     {
-      title: "🧠 DEBATE 15: ¿Casos de estudio propios vs Educación sobre el dolor del cliente?",
-      question: "Para capturar leads B2B, ¿los ganchos estructurados como caso de estudio propio ('Cómo logré...') rinden mejor que los de educación sobre problemas comunes ('El error al...')?",
-      tip: "Compara el storytelling de autoridad de la marca frente a la educación del problema del cliente."
+      title: "🧠 DEBATE 15: ¿Un solo nicho vs Variedad automatizada?",
+      question: "Si la IA te permite crear contenido de cualquier tema en minutos, ¿es mejor mantener una cuenta hiper-enfocada en un solo problema, o hablar de varios temas para ganar alcance?",
+      tip: "El balance entre la autoridad específica de nicho y el alcance masivo general."
     },
     {
-      title: "🧠 DEBATE 16: ¿Video generativo realista vs Animación 3D estilizada?",
-      question: "Para el futuro del video corporativo con IA, ¿las marcas deben apostar por video hiperrealista (tipo Sora), o mantener una identidad visual ilustrativa y estilizada propia?",
-      tip: "Analiza la saturación de lo hiperrealista y el valor de la dirección de arte única."
+      title: "🧠 DEBATE 16: ¿Subtítulos Estilo Hormiga vs Minimalismo?",
+      question: "¿Los subtítulos súper rápidos y coloridos realmente aumentan la retención, o ya están saturando visualmente al usuario y es mejor volver a diseños limpios y sutiles?",
+      tip: "Analiza la fatiga visual del formato TikTok vs la elegancia corporativa."
     },
     {
-      title: "🧠 DEBATE 17: ¿Subtítulos dinámicos de colores vs Subtítulos minimalistas?",
-      question: "En la retención de los primeros 5 segundos de un video, ¿los subtítulos rápidos de colores (estilo Hormiga) ayudan o distraen a una audiencia profesional y corporativa?",
-      tip: "Analiza el impacto visual de los subtítulos según el público objetivo (B2B vs B2C)."
+      title: "🧠 DEBATE 17: ¿Optimizar para el Algoritmo o para el Cliente?",
+      question: "Al promptear a la IA, ¿le pides que estructure el guion para que se vuelva viral en la plataforma, o que lo escriba para que le hable únicamente a tu comprador ideal?",
+      tip: "Debate sobre el tráfico basura no calificado vs leads calificados costosos."
     },
     {
-      title: "🧠 DEBATE 18: ¿Re-propósito de contenido automatizado vs Adaptación nativa?",
-      question: "Usar IA para adaptar un mismo video a LinkedIn, Instagram y TikTok automáticamente, ¿destruye el rendimiento por no ser nativo de cada red o es óptimo por volumen?",
-      tip: "Debate el alcance cross-platform eficiente vs la optimización de experiencia nativa."
+      title: "🧠 DEBATE 18: ¿Reutilización Nativa vs Copiar-Pegar? ",
+      question: "¿Usar automatizaciones para publicar exactamente el mismo video de TikTok en Reels y Shorts funciona igual de bien, o hay que adaptar nativamente el formato para cada red?",
+      tip: "El impacto del esfuerzo de adaptación vs la conveniencia de la distribución masiva."
     },
     {
-      title: "🧠 DEBATE 19: ¿Llamado a la acción (CTA) en el gancho o al final?",
-      question: "Para aumentar conversiones a un Lead Magnet con QR, ¿es mejor hacer el llamado a la acción al inicio del video sacrificando retención, o dejarlo estrictamente al final?",
-      tip: "Analiza la fricción y el comportamiento del usuario en conversión móvil."
+      title: "🧠 DEBATE 19: ¿El Llamado a la Acción (CTA) al inicio o al final?",
+      question: "En un video automatizado de 30 segundos, ¿haces el llamado a la acción agresivo en el segundo 10, o esperas a que la persona reciba todo el valor hasta el final del Reel?",
+      tip: "Analiza el abandono de visualización vs la intención de compra temprana."
     },
     {
-      title: "🧠 DEBATE 20: ¿Inversión en pauta publicitaria vs Tráfico orgánico con IA?",
-      question: "Si puedes automatizar la creación de contenido orgánico a costo casi cero con IA, ¿vale la pena seguir invirtiendo en Meta Ads para captar leads o el orgánico es suficiente?",
-      tip: "Compara el costo de adquisición de leads (CAC) y el tiempo necesario para escalar ambos canales."
+      title: "🧠 DEBATE 20: ¿Aprender a grabar o aprender a promptear?",
+      question: "Para alguien que empieza a crear contenido hoy, ¿qué habilidad le será más rentable en 2 años: ser un experto comunicando frente a la cámara, o ser un maestro de los prompts IA?",
+      tip: "Discute el valor del carisma humano frente al apalancamiento tecnológico."
     }
   ];
 
