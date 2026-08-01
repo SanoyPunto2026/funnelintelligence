@@ -550,8 +550,10 @@ function showView(v, preventPush = false){
   }
   const t={action:["Action Center","Prioridades y decisiones del día."],agency:["Agency Health","Promedio operativo de TRD según rendimiento de todos sus clientes."],engine:["Funnel Health Engine","Motor configurable de scoring, pesos, simulación e impacto."],clients:["Clients","Clientes como entidad principal del sistema."],client:["Client Workspace","Funnel Intelligence y pipeline comercial por cliente."],ads:["Ad Intelligence","Creativos conectados a citas y movimiento CRM."],leads:["Lead Explorer","Leads filtrados por cliente, estado y riesgo."],risks:["Risks","Cuentas y etapas que requieren atención."],alerts:["Alert Engine","Alertas automáticas sobre salud, atribución, actividad y progresión."],opportunities:["Opportunities","Aprendizajes replicables y mejoras potenciales."],ai:["AI Analyst","Preguntas sobre Meta + Leadtion."],academy:["Funnel Health Academy","Glosario, interpretación y guía rápida del sistema."]}[v];
   if(t) {
-    document.getElementById('pageTitle').textContent=t[0];
-    document.getElementById('pageSubtitle').textContent=t[1];
+    const titleEl = document.getElementById('pageTitle');
+    const subtitleEl = document.getElementById('pageSubtitle');
+    if (titleEl) titleEl.textContent=t[0];
+    if (subtitleEl) subtitleEl.textContent=t[1];
   }
   
   if (!preventPush && pathMap[v]) {
