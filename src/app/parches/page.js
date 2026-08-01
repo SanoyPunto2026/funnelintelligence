@@ -430,7 +430,6 @@ export default function ParchesPresentation() {
             
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
               <h2 className="parches-slide-title" style={{ fontSize: '42px', margin: 0 }}>Flywheel Creativo</h2>
-              <span className="parches-footer-tip" style={{ color: 'var(--neon-emerald)', fontWeight: 'bold' }}>DEMO EN VIVO // DE LA IDEA AL POST</span>
             </div>
 
             {/* Cyclical Flywheel Timeline Grid - Winding loop pipeline */}
