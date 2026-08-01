@@ -15,37 +15,57 @@ export default function ParchesPresentation() {
   const [formData, setFormData] = useState({ name: '', email: '', instagram: '' });
   const [leadsCount, setLeadsCount] = useState(0);
 
-  // Hot Seat Questions/Debates
+  // Hot Seat Questions/Debates (10 Provocative AI Questions)
   const hotSeatQuestions = [
     {
-      title: "🔥 DESAFÍO IA: La Idea de Video en 5 Segundos",
-      question: "Dime tu nicho y te daré un Gancho + 3 ideas de video viral generadas por IA en este instante.",
-      tip: "El público te da un nicho y modelas cómo Antigravity lo estructuraría de inmediato."
+      title: "🧠 DEBATE 1: ¿Saldrías en cámara o usarías avatares de IA?",
+      question: "¿Es mejor humanizar una marca mostrando tu propio rostro o usar avatares/animaciones de IA de alta calidad para no volver a grabar un video nunca más?",
+      tip: "Compara la conexión humana tradicional vs la escalabilidad e internacionalización que da la IA."
     },
     {
-      title: "🧠 DEBATE IA: ¿El Guion Perfecto de Copiar-Pegar?",
-      question: "¿Cuál es el balance ideal entre lo que edita la IA y lo que ajusta tu toque humano?",
-      tip: "Discutir cómo la 'Creatividad Guiada' supera al simple spam de videos automatizados sin alma."
+      title: "🧠 DEBATE 2: ¿El guion 100% IA realmente vende?",
+      question: "¿Crees que un guion de Reels escrito en un 100% por Inteligencia Artificial, sin edición ni curación humana, puede construir una marca con autoridad y vender?",
+      tip: "Discute los límites del spam automático vs la curación y valor que aporta el humano."
     },
     {
-      title: "⚡ HACK DE VELOCIDAD: El Combo Antigravity + Flow",
-      question: "Si pudieras automatizar el 90% de tu edición de video con un agente de IA, ¿qué harías con las 18 horas semanales que te sobran?",
-      tip: "El valor de delegar la ejecución técnica para enfocarse puramente en la estrategia de la oferta."
+      title: "🧠 DEBATE 3: ¿Delegar la edición mata la marca personal?",
+      question: "Si automatizas el 90% de la edición de tus videos usando agentes de IA, ¿se pierde la esencia del creador o simplemente estás ganando velocidad?",
+      tip: "Analiza si el 'estilo propio' depende de pasar horas cortando clips o de las ideas de fondo."
     },
     {
-      title: "🎯 DESAFÍO IA: El Poro de Skincare Pixar",
-      question: "Si tu producto fuera un personaje 3D animado por IA, ¿cómo reaccionaría físicamente ante el problema que resuelve tu marca?",
-      tip: "Ejercicio creativo para conceptualizar el 'Sujeto Héroe' usando el framework de Sano y Punto."
+      title: "🧠 DEBATE 4: ¿Copia descarada o benchmark inteligente?",
+      question: "Cuando la IA te ayuda a analizar los videos virales de tu competencia para replicar sus estructuras, ¿estás haciendo benchmarking inteligente o robando creatividad?",
+      tip: "Debate la delgada línea entre modelar estructuras virales exitosas y plagiar ideas originales."
     },
     {
-      title: "💰 OPORTUNIDAD IA: El Infoproducto Express",
-      question: "¿Cómo usarías tu propio framework estandarizado para empaquetar tu conocimiento y venderlo como un imán de leads en 24 horas?",
-      tip: "La integración entre la creación constante y el embudo de ventas final."
+      title: "🧠 DEBATE 5: ¿La IA destruirá los trabajos creativos en 3 años?",
+      question: "¿Crees que los copywriters, editores de video e ilustradores tradicionales desaparecerán en 3 años o se convertirán obligatoriamente en operadores de agentes de IA?",
+      tip: "Discutan cómo la velocidad de producción redefinirá el mercado laboral de las agencias."
     },
     {
-      title: "🛑 RETO IA: El Prompt de la Imagen Consistente",
-      question: "Diseña en vivo el prompt base de imagen para tu marca. ¿Qué elementos descriptivos garantizarían que la IA nunca deforme tu estilo?",
-      tip: "Cómo lograr consistencia visual sin perder la identidad de marca en plataformas de IA."
+      title: "🧠 DEBATE 6: ¿Cantidad o calidad para ganarle al algoritmo?",
+      question: "Con la IA es fácil hacer 30 videos al mes. ¿Prefieres subir 30 videos promedio generados por IA o 5 videos hiper-curados y producidos minuciosamente?",
+      tip: "Compara la estrategia de volumen de impactos vs la estrategia de videos de alta retención."
+    },
+    {
+      title: "🧠 DEBATE 7: ¿Se puede generar confianza real con imágenes 3D de IA?",
+      question: "¿Puede una marca que solo utiliza personajes 3D y assets generados por IA (tipo Sano & Punto) generar el mismo nivel de confianza y ventas que una persona real?",
+      tip: "Debate si el valor de la información y la consistencia pesan más que la empatía física humana."
+    },
+    {
+      title: "🧠 DEBATE 8: ¿Es ético no avisar que usas voces de IA?",
+      question: "¿Es obligatorio o éticamente necesario colocar una etiqueta de 'Contenido generado por IA' cuando utilizas voces clonadas ultra-realistas en tus videos?",
+      tip: "Explora la percepción del espectador cuando descubre que la voz que escucha no pertenece a un humano real."
+    },
+    {
+      title: "🧠 DEBATE 9: ¿Aprender a programar o aprender a promptear?",
+      question: "Para un creador de contenido o emprendedor digital hoy, ¿es más valioso aprender a promptear agentes de IA o aprender lógica tradicional y código?",
+      tip: "Discute el auge de las herramientas 'no-code/low-code' y el rol del promper como el nuevo director."
+    },
+    {
+      title: "🧠 DEBATE 10: ¿La IA nos está volviendo flojos o eficientes?",
+      question: "¿La IA realmente potencia nuestra creatividad al quitarnos el trabajo repetitivo, o nos está acostumbrando a pensar menos al darnos ideas pre-masticadas?",
+      tip: "El peligro de la homogeneización del contenido cuando todos los creadores usan los mismos prompts."
     }
   ];
 
