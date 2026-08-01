@@ -15,12 +15,12 @@ export default function ParchesPresentation() {
   const [formData, setFormData] = useState({ name: '', email: '', instagram: '' });
   const [leadsCount, setLeadsCount] = useState(0);
 
-  // Hot Seat Questions/Debates (10 Provocative AI Questions)
+  // Hot Seat Questions/Debates (20 Provocative AI Questions)
   const hotSeatQuestions = [
     {
       title: "🧠 DEBATE 1: ¿Saldrías en cámara o usarías avatares de IA?",
       question: "¿Es mejor humanizar una marca mostrando tu propio rostro o usar avatares/animaciones de IA de alta calidad para no volver a grabar un video nunca más?",
-      tip: "Compara la conexión humana tradicional vs la escalabilidad e internacionalización que da la IA."
+      tip: "Compara la conexión humana tradicional vs la scalabilidad que da la IA."
     },
     {
       title: "🧠 DEBATE 2: ¿El guion 100% IA realmente vende?",
@@ -66,6 +66,56 @@ export default function ParchesPresentation() {
       title: "🧠 DEBATE 10: ¿La IA nos está volviendo flojos o eficientes?",
       question: "¿La IA realmente potencia nuestra creatividad al quitarnos el trabajo repetitivo, o nos está acostumbrando a pensar menos al darnos ideas pre-masticadas?",
       tip: "El peligro de la homogeneización del contenido cuando todos los creadores usan los mismos prompts."
+    },
+    {
+      title: "🧠 DEBATE 11: ¿De quién es el copyright de las imágenes de IA?",
+      question: "Si creas una marca con ilustraciones de IA (como Sano & Punto), ¿es ético registrar esos personajes como propiedad intelectual propia o pertenecen al dominio público?",
+      tip: "Debate la propiedad creativa del prompt vs la generación algorítmica de la máquina."
+    },
+    {
+      title: "🧠 DEBATE 12: ¿La IA homogeneizará todo el contenido?",
+      question: "Si todos los creadores de un nicho usan ChatGPT y Midjourney para sus Reels, ¿terminaremos consumiendo videos idénticos con la misma estética y guiones?",
+      tip: "Analiza cómo destacar cuando todos tienen acceso a la misma tecnología."
+    },
+    {
+      title: "🧠 DEBATE 13: ¿Automatizar comentarios aleja a tu comunidad?",
+      question: "¿Es aceptable usar automatizaciones de chat (como ManyChat o agentes de IA) para responder comentarios y DMs, o rompe la confianza de la comunidad?",
+      tip: "Contrasta la eficiencia de responder al instante a miles vs la calidez de un mensaje humano manual."
+    },
+    {
+      title: "🧠 DEBATE 14: ¿Se puede aprender de salud o finanzas de una IA?",
+      question: "¿Deberíamos confiar en el contenido educativo sobre salud, finanzas o leyes si sabemos que el guion fue estructurado por una IA sin un título profesional detrás?",
+      tip: "Debate la responsabilidad de los creadores y el peligro de la desinformación generativa."
+    },
+    {
+      title: "🧠 DEBATE 15: ¿Qué importa más, la idea original o el prompt?",
+      question: "En la era de la IA generativa, ¿quién es el verdadero creador: el que tiene la idea conceptual en su mente o el que sabe escribir el prompt técnico perfecto?",
+      tip: "Analiza la democratización del arte y la técnica."
+    },
+    {
+      title: "🧠 DEBATE 16: ¿El algoritmo premia la imperfección humana?",
+      question: "¿Tiene más alcance y retención un video casero, imperfecto y grabado de afán, que un video con imágenes impecables generadas por IA?",
+      tip: "Compara la empatía de la imperfección orgánica vs el impacto visual de la perfección sintética."
+    },
+    {
+      title: "🧠 DEBATE 17: ¿La IA mata el proceso de aprendizaje?",
+      question: "Al delegar la redacción y edición a la IA desde el primer día, ¿los nuevos creadores perderán la capacidad de aprender las bases de la escritura y la narrativa?",
+      tip: "Analiza si usar atajos tecnológicos atrofia el desarrollo de habilidades fundamentales."
+    },
+    {
+      title: "🧠 DEBATE 18: ¿Es el SEO por IA el fin de los buscadores?",
+      question: "Si la gente busca información directamente en ChatGPT o Perplexity en lugar de Google o TikTok, ¿los creadores deberíamos optimizar contenido para humanos o para los crawlers de IA?",
+      tip: "El cambio radical en la distribución del tráfico orgánico en internet."
+    },
+    {
+      title: "🧠 DEBATE 19: ¿Las marcas automatizadas aburren más?",
+      question: "¿Tiene más probabilidades de éxito comercial una marca sin rostro impulsada por IA con un gran framework, que una marca corporativa tradicional con un gran presupuesto?",
+      tip: "Evalúa la agilidad de los sistemas automatizados frente a las burocracias de marketing."
+    },
+    {
+      title: "🧠 DEBATE 20: ¿Comprarías un curso creado en 2 horas con IA?",
+      question: "Si descubres que el curso o producto digital de un creador fue estructurado y redactado con IA en una tarde, ¿sentirías que te estafaron o te importaría solo el resultado final?",
+      tip: "Debate la percepción del valor del esfuerzo humano vs el valor del resultado práctico."
     }
   ];
 
