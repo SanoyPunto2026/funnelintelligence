@@ -26,93 +26,112 @@ export default function ParchesPresentation() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const downloadPresentationPDF = () => {
-    const executeDownload = () => {
-      const element = document.createElement('div');
-      element.style.background = '#030307';
-      element.style.color = '#f8fafc';
-      element.style.width = '1200px';
-      element.style.padding = '0';
-      element.style.margin = '0';
-      element.style.position = 'fixed';
-      element.style.left = '-9999px';
-      element.style.top = '0';
-      element.style.boxSizing = 'border-box';
-      
-      const slides = document.querySelectorAll('.parches-slide');
-      slides.forEach((slide, index) => {
-        const slideClone = slide.cloneNode(true);
-        slideClone.classList.add('active');
-        
-        slideClone.style.display = 'flex';
-        slideClone.style.opacity = '1';
-        slideClone.style.visibility = 'visible';
-        slideClone.style.position = 'relative';
-        slideClone.style.width = '1200px';
-        slideClone.style.height = '675px';
-        slideClone.style.maxHeight = 'none';
-        slideClone.style.maxWidth = 'none';
-        slideClone.style.transform = 'none';
-        slideClone.style.transition = 'none';
-        slideClone.style.left = 'auto';
-        slideClone.style.top = 'auto';
-        slideClone.style.pointerEvents = 'none';
-        slideClone.style.boxSizing = 'border-box';
-        slideClone.style.padding = '40px';
-        
-        // Replicate presentation background mesh gradient
-        slideClone.style.background = 'radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 45%), radial-gradient(circle at 50% 50%, #080810 0%, #030307 100%)';
-        
-        // Override glassmorphism cards so html2canvas renders them with a solid dark theme
-        const glassCards = slideClone.querySelectorAll('.parches-glass-card');
-        glassCards.forEach(card => {
-          card.style.background = 'rgba(10, 10, 20, 0.95)';
-          card.style.backdropFilter = 'none';
-        });
-        
-        // Strip fade-in animation to prevent html2canvas from capturing at opacity: 0
-        const animElements = slideClone.querySelectorAll('.animate-fade-in');
-        animElements.forEach(el => {
-          el.classList.remove('animate-fade-in');
-          el.style.opacity = '1';
-          el.style.transform = 'none';
-          el.style.animation = 'none';
-          el.style.transition = 'none';
-        });
-        
-        slideClone.style.pageBreakAfter = index < slides.length - 1 ? 'always' : 'auto';
-        slideClone.style.breakAfter = index < slides.length - 1 ? 'always' : 'auto';
-        
-        element.appendChild(slideClone);
-      });
+  const downloadPresentationPDF = async () => {
+    const loadScript = (src) => new Promise((resolve, reject) => {
+      if (document.querySelector(`script[src="${src}"]`)) {
+        resolve();
+        return;
+      }
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
 
-      document.body.appendChild(element);
-
-      const opt = {
-        margin:       0,
-        filename:     'Presentacion_Framework_IA.pdf',
-        image:        { type: 'png' },
-        html2canvas:  { scale: 2, useCORS: true, letterRendering: true, backgroundColor: '#030307' },
-        jsPDF:        { unit: 'in', format: [16, 9], orientation: 'landscape' }
-      };
-      
-      html2pdf().set(opt).from(element).save().then(() => {
-        document.body.removeChild(element);
-      }).catch(err => {
-        console.error('Error generating PDF:', err);
-        document.body.removeChild(element);
-      });
-    };
-
-    if (typeof html2pdf !== 'undefined') {
-      executeDownload();
-    } else {
-      const script = document.createElement('script');
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-      script.onload = executeDownload;
-      document.head.appendChild(script);
+    try {
+      if (typeof html2canvas === 'undefined') {
+        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
+      }
+      if (typeof window.jspdf === 'undefined') {
+        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+      }
+    } catch (e) {
+      console.error('Error loading print dependencies:', e);
+      alert('Error de red al cargar las librerías de impresión.');
+      return;
     }
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({
+      orientation: 'landscape',
+      unit: 'in',
+      format: [16, 9]
+    });
+
+    const slides = document.querySelectorAll('.parches-slide');
+    const tempContainer = document.createElement('div');
+    tempContainer.style.position = 'absolute';
+    tempContainer.style.left = '0';
+    tempContainer.style.top = '0';
+    tempContainer.style.zIndex = '-9999';
+    tempContainer.style.background = '#030307';
+    tempContainer.style.width = '1200px';
+    tempContainer.style.boxSizing = 'border-box';
+    document.body.appendChild(tempContainer);
+
+    for (let i = 0; i < slides.length; i++) {
+      const slide = slides[i];
+      const clone = slide.cloneNode(true);
+      clone.classList.add('active');
+      
+      clone.style.display = 'flex';
+      clone.style.opacity = '1';
+      clone.style.visibility = 'visible';
+      clone.style.position = 'relative';
+      clone.style.width = '1200px';
+      clone.style.height = '675px';
+      clone.style.maxHeight = 'none';
+      clone.style.maxWidth = 'none';
+      clone.style.transform = 'none';
+      clone.style.transition = 'none';
+      clone.style.left = 'auto';
+      clone.style.top = 'auto';
+      clone.style.padding = '40px';
+      clone.style.boxSizing = 'border-box';
+      clone.style.background = 'radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 45%), radial-gradient(circle at 50% 50%, #080810 0%, #030307 100%)';
+      
+      const glassCards = clone.querySelectorAll('.parches-glass-card');
+      glassCards.forEach(card => {
+        card.style.background = 'rgba(10, 10, 20, 0.95)';
+        card.style.backdropFilter = 'none';
+      });
+
+      const animElements = clone.querySelectorAll('.animate-fade-in');
+      animElements.forEach(el => {
+        el.classList.remove('animate-fade-in');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.animation = 'none';
+        el.style.transition = 'none';
+      });
+
+      tempContainer.appendChild(clone);
+
+      try {
+        const canvas = await html2canvas(clone, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: '#030307',
+          logging: false
+        });
+
+        tempContainer.removeChild(clone);
+
+        const imgData = canvas.toDataURL('image/png');
+        if (i > 0) {
+          pdf.addPage([16, 9], 'landscape');
+        }
+        pdf.addImage(imgData, 'PNG', 0, 0, 16, 9);
+      } catch (err) {
+        console.error('Error rendering slide:', i, err);
+      }
+    }
+
+    document.body.removeChild(tempContainer);
+    pdf.save('Presentacion_Framework_IA.pdf');
   };
+
   const [direction, setDirection] = useState('forward');
   const [hotSeatIndex, setHotSeatIndex] = useState(0);
   const [isSpinning, setIsSpinning] = useState(false);

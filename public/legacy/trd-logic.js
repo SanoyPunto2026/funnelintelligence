@@ -2615,12 +2615,27 @@ async function sendAIChatMessage() {
 
 function renderAll(){
   if (!DATA || !DATA.clients || DATA.clients.length === 0) {
-    showEmptyState(window.activeViewId || 'view-action');
+    if (document.getElementById('view-action')) {
+      showEmptyState(window.activeViewId || 'view-action');
+    }
     const widget = document.getElementById('sidebar-widget');
     if (widget) widget.innerHTML = '';
     return;
   }
-  applyDateRange();recalculateEngineScores();renderAction();renderAgency();renderEngine();renderClients();renderClient();renderAds();renderLeads();renderRisks();renderAlerts();renderOps();renderAI();renderAcademy();
+  applyDateRange();
+  recalculateEngineScores();
+  if (document.getElementById('view-action')) renderAction();
+  if (document.getElementById('view-agency')) renderAgency();
+  if (document.getElementById('view-engine')) renderEngine();
+  if (document.getElementById('view-clients')) renderClients();
+  if (document.getElementById('view-client')) renderClient();
+  if (document.getElementById('view-ads')) renderAds();
+  if (document.getElementById('view-leads')) renderLeads();
+  if (document.getElementById('view-risks')) renderRisks();
+  if (document.getElementById('view-alerts')) renderAlerts();
+  if (document.getElementById('view-ops')) renderOps();
+  if (document.getElementById('view-ai')) renderAI();
+  if (document.getElementById('view-academy')) renderAcademy();
   updateSidebarWidget();
 }
 document.body.classList.toggle('learning-on',learningMode);
