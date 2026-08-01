@@ -2638,8 +2638,10 @@ function renderAll(){
   if (document.getElementById('view-academy')) renderAcademy();
   updateSidebarWidget();
 }
-document.body.classList.toggle('learning-on',learningMode);
-const initialPath = window.location.pathname.replace(/^\//, '');
-const initialView = viewMap[initialPath] || 'action';
-showView(initialView, true);
-updateLearningButton();
+if (document.getElementById('view-action')) {
+  document.body.classList.toggle('learning-on',learningMode);
+  const initialPath = window.location.pathname.replace(/^\//, '');
+  const initialView = viewMap[initialPath] || 'action';
+  showView(initialView, true);
+  updateLearningButton();
+}
